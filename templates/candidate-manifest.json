@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "candidate_id": "",
+  "source_commit": "",
+  "candidate_ota": "candidate.zigbee",
+  "candidate_sha256": "",
+  "baseline_manifest": "baseline.json",
+  "rollback_ota": "rollback-forced.zigbee",
+  "rollback_sha256": "",
+  "pm_default_enabled": false,
+  "recovery_critical_changes": [],
+  "offline_checks": {
+    "build": "PENDING",
+    "unit_tests": "PENDING",
+    "policy_tests": "PENDING"
+  },
+  "empirical_gates": {
+    "ota_canary": "PENDING",
+    "post_boot_health": "PENDING",
+    "rollback_round_trip": "PENDING",
+    "pm_activation": "PENDING"
+  },
+  "notes": ""
+}
