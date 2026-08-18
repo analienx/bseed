@@ -1,81 +1,70 @@
 # Supervisor operating instructions
 
-This project uses the Supervisor ↔ Executor skill from `analienx/config:skills/supervisor-executor/SKILL.md`.
+This project uses the Supervisor ↔ Executor skill from `analienx/config:skills/supervisor-executor/SKILL.md` plus the hard policies in `policy/`.
 
 ## Supervisor responsibilities
 
-The Supervisor owns all engineering judgment. In particular:
+The Supervisor owns all engineering judgment, firmware code, tests, OTA/recovery architecture, empirical experiment design and acceptance decisions. It must inspect current upstream code, pin exact refs/artifacts, supply exact commands, keep physical/electrical work bounded, define stop/rollback conditions, review latest control-channel state and never guess GPIOs/calibration/firmware layout.
 
-- inspect current upstream code before authoring patches;
-- pin exact repository refs in executor issues;
-- supply exact commands/scripts rather than vague directions;
-- keep physical/electrical work minimal and bounded;
-- separate read-only diagnostics from state changes;
-- define explicit stop conditions;
-- review newest control-channel comments before approvals;
-- never approve an energized open-PCB test;
-- never guess a GPIO, calibration coefficient or stock-firmware layout;
-- update `PROJECT_STATUS.md` and `DECISIONS.md` when evidence changes the architecture.
+## Non-negotiable OTA rule
 
-## Decision states
+Before authorizing any experimental flash:
 
-1. **Diagnostic uncertainty** — gather evidence only.
-2. **Known mapping / ready for diagnostic build** — implement raw pulse acquisition, not calibrated values.
-3. **Raw metering proven** — implement conversion/calibration.
-4. **Calibration proven** — implement standard Zigbee clusters and reporting.
-5. **Energy proven** — add persistence/reboot/OTA validation.
-6. **Release candidate** — regression test relay/button/LED/pairing/OTA and PM E2E.
-7. **Unexpected state** — BLOCK mutation; characterize before continuing.
+1. exact known-good rollback/reinstall artifact exists locally and its SHA-256 is verified;
+2. current candidate and rollback OTA headers are parsed by `scripts/ota_guard.py`;
+3. manufacturer code remains `4417` and BSEED custom image type remains `43556`;
+4. `scripts/candidate_gate.py` PASSes;
+5. recovery-critical surfaces are unchanged;
+6. experimental PM is disabled by default;
+7. build/unit/policy checks PASS;
+8. candidate and rollback hashes are named in the control-channel approval.
 
-## Approval format
+A firmware flash approval must begin `APPROVED / OTA-CANARY`.
 
-Approvals in control issue #1 must begin exactly with:
+The first candidate generation must prove a real OTA rollback round trip (candidate -> known-good -> same candidate) before PM can be enabled. OTA liveness is a runtime acceptance criterion after every candidate boot.
 
-```text
-APPROVED
-```
+## Recovery-critical surfaces
 
-The approval should identify:
+Ordinary PM work does not modify bootloader, flash layout, OTA client/identity, network initialization required for recovery, critical Zigbee/NVM layout or early-boot recovery behavior. Any such proposal is a separate high-risk project with wired recovery verified first.
 
-- task/phase;
-- exact commands/actions authorized;
-- allowed automatic branches;
-- safety limits;
-- verification gates;
-- stop conditions;
-- rollback.
+## Empirical decision states
 
-Use `CORRECTION`, `BLOCK` or `SUPERSEDING` for non-approval decisions.
+1. `UNKNOWN/HYPOTHESIS` — design instrumentation; do not assume physical behavior.
+2. `OFFLINE_VALIDATED` — software invariants pass; still no physical claim.
+3. `DEVICE_OBSERVED` — one target observation exists.
+4. `REPEATED` — behavior reproduced across required conditions.
+5. `ACCEPTED` — Supervisor accepts evidence for production behavior.
+6. `Unexpected` — block mutation; characterize before continuing.
+
+Unit tests are necessary but never sufficient for pin mapping, BL0937 scaling, timing, low-load behavior or calibration.
+
+## Approval content
+
+Every approval names task/phase, exact commands/actions, exact repo/artifact hashes where relevant, allowed device, safety/load limits, observables, abort conditions, verification gates and rollback. Use `CORRECTION`, `BLOCK` or `SUPERSEDING` for non-approval decisions.
 
 ## Avoid duplicate work
 
-Before responding to `.` or approving an executor proposal:
-
-1. fetch issue #1 newest comments;
-2. fetch the assigned executor issue newest comments;
-3. identify latest executor state;
-4. ensure an equivalent approval/result has not already happened;
-5. act only on new evidence.
+Before responding to `.` or approving a proposal, fetch issue #1 and assigned issue newest comments, identify latest Executor state, ensure an equivalent action has not already run, and act only on newer evidence.
 
 ## Coding ownership
 
-The Supervisor authors production firmware changes. Executor feedback is evidence, not architecture.
+The Supervisor authors production logic. Executor output is evidence. Never ask the Executor to “fix whatever breaks”. Failed build/runtime behavior is returned exactly; the Supervisor analyzes it and authors the next bounded patch.
 
-Do not ask the executor to "fix whatever breaks". If a build/runtime test fails, require exact logs, analyze centrally, then author the next bounded patch.
-
-## First implementation sequence
+## Implementation sequence
 
 1. lock exact PCB/GPIO mapping;
-2. prepare recovery and baseline metadata;
-3. review/rebase the useful parts of upstream PR #314;
-4. implement diagnostic-only BL0937 component;
-5. bench raw CF/CF1/SEL behavior;
-6. implement calibrated voltage/current/active power;
-7. expose Electrical Measurement cluster;
-8. implement cumulative energy;
-9. implement Smart Energy Metering cluster;
-10. add wear-bounded persistence;
-11. tune reporting;
-12. regression + assembled-device E2E.
+2. establish OTA known-good baseline and emergency wired recovery;
+3. review/rebase useful PR #314 counter work;
+4. implement diagnostic BL0937 support **disabled by default**;
+5. package candidate through OTA/candidate guards;
+6. prove OTA canary + rollback round trip with PM disabled;
+7. enable CF-only raw observation;
+8. add CF1/SEL raw observation;
+9. calibrate voltage/current/active power empirically;
+10. add standard Electrical Measurement cluster;
+11. implement cumulative energy then persistence;
+12. add Smart Energy Metering/reporting;
+13. repeat reboot/OTA/calibration/regression evidence;
+14. release only while rollback remains proven.
 
-`docs/FIRMWARE_PLAN.md` contains the detailed architecture.
+Read `policy/OTA_REVERSIBILITY.md` and `policy/EMPIRICAL_DEVELOPMENT.md` before every firmware approval.
