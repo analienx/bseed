@@ -22,6 +22,8 @@ jobs:
         run: |
           python -m py_compile scripts/ota_guard.py
           python -m py_compile scripts/candidate_gate.py
+          python -m py_compile scripts/recovery_surface_guard.py
+          python -m py_compile scripts/preflash_gate.py
           python -m py_compile scripts/record-observation.py
           python -m py_compile scripts/validate-evidence.py
           python -m py_compile scripts/sanitize-z2m-json.py
@@ -29,6 +31,8 @@ jobs:
         run: |
           python scripts/ota_guard.py self-test
           python scripts/candidate_gate.py --self-test
+          python scripts/recovery_surface_guard.py --self-test
+          python scripts/preflash_gate.py --self-test
           python scripts/validate-evidence.py --self-test
       - name: Unit tests
         run: python -m unittest discover -s tests -v
