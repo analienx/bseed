@@ -2,153 +2,178 @@
 
 Status: **MANDATORY / HARD GATE**
 
-This policy governs every firmware experiment on BSEED `_TZ3000_b28wrpvx` / `TS011F-BS-PM`.
+This policy governs every firmware experiment on BSEED `_TZ3000_b28wrpvx` / `TS011F-BS-PM` and must be read together with `policy/BRICK_THREAT_MODEL.md`.
 
 ## Core rule
 
 No experimental firmware may be offered to the Executor unless the Supervisor has evidence that:
 
-1. the artifact is a structurally valid Zigbee OTA image for the same custom-firmware identity;
-2. the current known-good firmware is preserved as an exact rollback/reinstall artifact with a recorded hash;
-3. a device-accepted rollback/reinstall path is documented;
-4. the candidate does not modify a recovery-critical surface unless a separate high-risk recovery-infrastructure issue explicitly authorizes it;
-5. offline checks pass;
-6. experimental PM behavior is disabled by default after OTA;
-7. the first live gate proves boot, Zigbee rejoin, existing relay/button/LED behavior and OTA liveness before PM is enabled;
-8. rollback is empirically round-trip tested before advancing to higher-risk PM stages.
+1. the exact target/canary is the confirmed BSEED PM hardware and PCB revision;
+2. the current known-good firmware is preserved as an exact **forced/reinstall** OTA artifact with a recorded SHA-256;
+3. that exact known-good forced artifact has already passed an **LKG self-reinstall drill on the canary while it is still known-good**;
+4. a verified full-flash backup exists locally and emergency unpowered SWS readback/recovery access has been proven before experimental flashing;
+5. the candidate is a structurally valid Zigbee OTA **and** structurally valid Telink payload for the same custom-firmware identity and startup scheme;
+6. the candidate contains the exact frozen BSEED base config `b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;`;
+7. the candidate source does not modify a recovery-critical surface;
+8. device-config writes and base GPIO changes are prohibited;
+9. offline build/stub/policy/source checks pass;
+10. experimental PM behavior is disabled by default after every reboot during discovery;
+11. the live preflash state gate passes immediately before authorization;
+12. the first live candidate proves boot, Zigbee rejoin, relay/button/LED baseline and OTA liveness before PM is enabled;
+13. candidate → known-good → same-candidate OTA rollback round trip is empirically proven before PM activation.
 
-A successful compile is never sufficient authorization to flash.
+A successful compile, OTA file generation or simulator test is never sufficient authorization to flash.
 
 ## Important limitation
 
-`OTA-reversible` is a workflow property, not an absolute guarantee. A bad application can fail before Zigbee/OTA becomes available. Therefore this project minimizes risk by freezing recovery-critical code, keeping an exact known-good artifact, using staged runtime activation, testing rollback on the actual target and maintaining wired SWS as an emergency-only fallback.
+`OTA-reversible` is a workflow property, not an absolute guarantee. A bad application may fail before Zigbee/OTA becomes available. The project therefore treats any state requiring the enclosure to be opened for recovery as a **brick-class prevention failure**, even if SWS can ultimately restore it.
 
-Routine development is OTA-only. Wired SWS is not the normal experiment path.
+Routine development is OTA-only. Wired SWS is emergency recovery, performed only with the socket completely disconnected from mains and loads.
 
 ## Frozen recovery-critical surfaces
 
 Ordinary PM work must not alter:
 
-- bootloader or boot handoff;
-- flash partition/layout assumptions;
-- OTA client/cluster implementation;
+- `device_db.yaml` / the existing BSEED base config and board role;
+- bootloader/boot handoff/startup markers;
+- Telink flash slot addresses, maximum image size or linker/start layout;
+- `src/telink/ota_reformating/**` and RAM flash write/erase/status code;
+- Telink `main.c` early-boot behavior;
+- OTA client/cluster implementation and callback;
 - OTA manufacturer code or custom firmware image type;
 - Zigbee radio/network initialization required to rejoin;
-- device identity used for OTA matching;
-- critical Zigbee/NVM storage layout;
+- config/NVM parsing and existing NVM item layout;
+- reset/factory-reset path;
 - watchdog/early-boot behavior needed for stable startup;
 - code required to receive/apply the next OTA.
 
-Any change above requires a separate `[SUPERVISOR][HIGH-RISK]` issue, verified wired recovery, its own rollback plan and no combined PM feature work.
+`scripts/recovery_surface_guard.py` enforces these source boundaries. Any legitimate need to change a protected surface becomes a separate `[SUPERVISOR][HIGH-RISK][RECOVERY-INFRA]` project and is never combined with PM feature work.
 
-## Locked target OTA identity
+## Locked target identity
 
-For the pinned upstream BSEED profile:
+- board: `WALL_OUTLET_BSEED_TS011F_PM`;
+- manufacturer/model: `b28wrpvx` / `TS011F-BS-PM`;
+- MCU: ZTU / Telink TLSR8258;
+- role: router;
+- base config: `b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;`;
+- OTA manufacturer code: `4417` (`0x1141`);
+- custom firmware image type: `43556` (`0xAA24`).
 
-- manufacturer code: `4417` (`0x1141`);
-- custom firmware image type: `43556` (`0xAA24`);
-- upstream supports custom→custom OTA;
-- upstream publishes `*-FORCE.json` / forced artifacts for same-version reinstall and branch/mode switching.
+Do not assume image type uniquely identifies the physical board. A candidate index is isolated to one project-local canary device and automatic/bulk OTA is disabled.
 
-Do not assume that an arbitrary older image is a working rollback simply because an OTA server can present it. The rollback artifact itself must be proven accepted on this target.
+## Device-config immutability
+
+The writable Basic-cluster device config is a recovery-critical interface because it is persisted to NVM, applied during boot, controls GPIO assignments and can alter OTA image type through an `i...` entry.
+
+Therefore **writing `device_config` is prohibited during all BSEED PM experiments**. PM CF/CF1/SEL configuration must be implemented separately and must not mutate the established base string.
 
 ## Candidate gates
 
-### R0 — known-good baseline
+### R0 — known-good recovery baseline
 
 Before first experimental OTA:
 
-- record current firmware version/build;
-- identify the exact known-good OTA/reinstall artifact;
-- record SHA-256, size, OTA header and source commit/release;
-- identify a proven forced/reinstall route;
-- capture current Zigbee2MQTT OTA metadata;
-- verify emergency wired SWS recovery availability before higher-risk work.
+- identify exact canary and PCB revision;
+- record current custom firmware version/build and exact config;
+- obtain exact known-good forced/reinstall OTA file;
+- parse it with the current `ota_guard.py`;
+- record SHA-256 and source/release;
+- capture current Zigbee2MQTT converter/index/OTA state;
+- preserve/verify a full flash backup;
+- prove unpowered SWS readback/recovery access;
+- perform the **LKG self-reinstall drill** using the exact rollback file;
+- after reinstall, verify known-good version, rejoin, relay/button/LED and OTA liveness.
 
-No known-good rollback artifact => flashing is blocked.
+Failure of any item => experimental flashing is blocked.
 
-### R1 — artifact packaging
+### R1 — artifact integrity
 
-`python scripts/ota_guard.py verify-candidate ...` must PASS against the known-good baseline.
+`ota_guard.py` must validate:
 
-Hard failures include malformed OTA headers, image-size mismatch, manufacturer/image-type changes, unexpected hardware-version constraints and candidate identity drift.
+- Zigbee OTA magic/header/lengths/optional fields;
+- manufacturer/image type;
+- one firmware sub-element with correct length;
+- Telink inner image magic;
+- embedded firmware size and `<= 0x40000` OTA-slot limit;
+- Telink CRC;
+- startup flag unchanged from LKG;
+- outer/inner version consistency or explicit forced mode;
+- exact frozen BSEED config present exactly once.
 
-### R2 — offline behavior
+### R2 — source and candidate integrity
 
-Before device flash:
+Before target flash:
 
-- build PASS;
-- unit/simulator tests PASS;
-- policy CI PASS;
+- immutable clean source commit;
+- `recovery_surface_guard.py` PASS;
+- firmware build PASS;
+- upstream stub tests PASS;
+- project policy tests PASS;
 - PM disabled by default;
-- no recovery-critical surface changed;
-- exact candidate SHA-256 recorded;
-- exact rollback SHA-256 recorded;
+- no recovery-critical changes;
+- no device-config/base-GPIO/NVM-schema changes during current development phases;
+- exact candidate and rollback hashes recorded;
 - `candidate_gate.py` PASS.
 
-### R3 — OTA canary
+### R3 — live preflash gate
 
-Use one designated development socket only. Install candidate by OTA. After reboot **do not enable PM**.
+Immediately before a flash proposal, `preflash_gate.py` must PASS. It verifies exact target identity, recovery files, LKG drill evidence, SWS/backup proof, normal-device baseline, OTA liveness, converter/index state, isolated/manual OTA, stable power, closed enclosure, no connected load/automation interference, and absence of reset anomalies.
 
-Observe boot/rejoin, stable uptime/reset behavior, sane relay state, physical button, LEDs, Zigbee command response and OTA-client liveness. Failure at any point => stop; PM remains disabled.
+### R4 — OTA canary
 
-### R4 — rollback round trip
+One designated socket only. Install candidate by OTA. After reboot **PM remains disabled**.
 
-Before enabling PM on the first candidate generation:
+Verify stable boot/uptime, rejoin, relay, physical button, LEDs, Zigbee command response and OTA-client liveness. Any failure => stop; do not activate PM and do not improvise another image.
 
-1. OTA install the exact known-good rollback/reinstall artifact.
-2. Verify known-good version, rejoin, relay/button/LED and OTA liveness.
-3. OTA reinstall the exact candidate artifact.
-4. Repeat R3 health verification.
+### R5 — candidate rollback round trip
 
-Only a successful target-device round trip can promote rollback from assumed to proven.
+Before first PM activation:
 
-### R5 — runtime PM activation
+1. OTA install exact known-good forced/reinstall artifact.
+2. Verify expected LKG version, rejoin, relay/button/LED and OTA liveness.
+3. OTA reinstall the exact same candidate artifact/hash.
+4. Repeat R4 health verification.
 
-Experimental PM must be runtime-gated. Preferred design:
+Only this target-device round trip promotes candidate recovery from assumed to proven.
 
-- firmware boots with PM disabled;
-- PM is enabled only after normal Zigbee health is established;
-- activation is reversible without reflashing where practical;
-- a PM fault/repeated-reset condition leaves PM disabled on subsequent boot;
-- relay control and OTA remain independent of PM.
+### R6 — runtime PM activation
 
-First activation proves raw observability only; it must not immediately enable calibrated production measurements.
+During discovery:
 
-### R6 — staged empirical expansion
+- PM boots disabled every time;
+- PM activation is manual and volatile;
+- PM can run only after normal Zigbee/OTA health is already established;
+- a PM failure/reboot returns to disabled state;
+- relay and OTA operation do not depend on successful PM initialization;
+- first activation adds one hardware risk dimension at a time: CF, then CF1, then SEL.
 
-Advance one risk dimension at a time:
+### R7 — persistence/release
 
-1. CF raw pulses;
-2. CF1 + SEL raw behavior;
-3. raw diagnostic reporting;
-4. conversion/calibration;
-5. standard Zigbee measurement clusters;
-6. cumulative energy;
-7. persistence;
-8. reporting optimization.
-
-Each stage retains the previous proven rollback path.
+PM persistence/NVM is forbidden until raw acquisition/calibration/cluster behavior is proven. When persistence is later introduced it requires its own NVM review, a new non-colliding item, safe defaults/integrity checking, bounded writes, and another rollback round trip proving the older LKG remains valid.
 
 ## Candidate rollback bundle
 
-Every flashable candidate must locally contain or reference:
+Every flashable candidate locally contains or references:
 
-- exact candidate OTA image and SHA-256;
-- source commit;
-- `candidate_manifest.json`;
+- exact candidate OTA and SHA-256;
+- exact source commit;
+- schema-2 `candidate_manifest.json`;
 - `ota_guard` report;
-- baseline manifest;
-- exact rollback/reinstall artifact and SHA-256;
-- exact OTA procedure;
-- expected post-rollback version;
-- post-rollback verification checklist.
+- `recovery_surface_guard` report;
+- `candidate_gate` report;
+- live `preflash_gate` report;
+- LKG baseline manifest;
+- exact forced/reinstall rollback OTA and SHA-256;
+- LKG self-reinstall evidence;
+- verified full-flash backup/hash;
+- emergency SWS recovery evidence;
+- exact OTA procedure and post-rollback verification checklist.
 
-Binary firmware remains local or in explicitly approved CI artifacts; do not casually commit it.
+Firmware/raw backups remain local or in explicitly approved CI artifacts; do not casually commit them.
 
 ## Stop conditions
 
-Stop further flashing when OTA stops responding, the device fails to rejoin, reset loops occur, relay/button behavior changes unexpectedly, the artifact identity changes, rollback cannot be located/hash-verified, observed behavior violates the pre-registered experiment, enclosure/insulation is uncertain, or abnormal heat/odor/sound/smoke/electrical behavior appears.
+Stop further flashing when any guard fails, identity/config differs, OTA stops responding, the device fails to rejoin, reset loops occur, relay/button/LED behavior changes unexpectedly, rollback/backup cannot be hash-verified, the experiment violates its pre-registration, or any abnormal electrical/thermal behavior appears.
 
 A stopped experiment is evidence. Do not improvise.
 
@@ -158,4 +183,4 @@ A firmware flash approval must begin exactly:
 
 `APPROVED / OTA-CANARY`
 
-and name the candidate ID, exact repo commit, candidate path/hash, rollback path/hash, allowed device ID, permitted observations, abort conditions and whether PM activation is forbidden or allowed.
+and name candidate ID/stage, exact source commit, candidate path/hash, rollback path/hash, canary ID, the four guard results, LKG self-reinstall evidence, permitted actions/observations, abort conditions and whether PM activation is forbidden or allowed.
