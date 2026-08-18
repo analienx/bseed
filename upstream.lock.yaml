@@ -1,0 +1,26 @@
+schema: 1
+observed_at: 2026-08-18
+firmware_upstream:
+  repo: romasku/tuya-zigbee-switch
+  branch: main
+  commit: bf1059ee4c029e320a97fbfa6b07bd6ce4aa1702
+pm_precursor_pr:
+  number: 314
+  url: https://github.com/romasku/tuya-zigbee-switch/pull/314
+  state: open
+  merged: false
+  head_branch: hardware-pulse-counting
+  head_commit: 47611b7d9d4b782556392416769fdb24226a8302
+  recorded_base_commit: 8234061fd095d4e37639c4d67146d3392a242151
+hardware:
+  stock_manufacturer: _TZ3000_b28wrpvx
+  stock_model: TS011F
+  project_model: TS011F-BS-PM
+  module: ZTU
+  mcu_family: Telink
+  mcu: TLSR8258
+  meter_ic: BL0937
+notes:
+  - Do not update refs automatically.
+  - Supervisor must inspect upstream changes before changing this lock.
+  - PR 314 is source material, not an approved merge.
