@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "experiment_id": "",
+  "candidate_id": "",
+  "device_id": "DEV-001",
+  "evidence_state_before": "HYPOTHESIS",
+  "hypothesis": "",
+  "stimulus": "",
+  "baseline_control": "",
+  "observables": [],
+  "expected_signature": "",
+  "duration_s": null,
+  "pass_criteria": [],
+  "fail_criteria": [],
+  "inconclusive_criteria": [],
+  "abort_conditions": [],
+  "permitted_load_envelope": "",
+  "mutation_required": false,
+  "rollback_reference": ""
+}
