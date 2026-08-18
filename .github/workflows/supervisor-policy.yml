@@ -22,6 +22,7 @@ jobs:
         run: |
           python -m py_compile scripts/ota_guard.py
           python -m py_compile scripts/candidate_gate.py
+          python -m py_compile scripts/record-observation.py
           python -m py_compile scripts/validate-evidence.py
           python -m py_compile scripts/sanitize-z2m-json.py
       - name: Tool self-tests
