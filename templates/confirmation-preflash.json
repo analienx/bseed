@@ -14,6 +14,7 @@
     "cf1": "PC2",
     "sel": "PB1"
   },
+  "metering_candidate_manifest": "",
   "metering_candidate_gate_report": "",
   "recovery_class_a_report": "",
   "candidate_sha256": "",
