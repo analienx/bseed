@@ -22,6 +22,7 @@ jobs:
         run: |
           python -m py_compile scripts/ota_guard.py
           python -m py_compile scripts/candidate_gate.py
+          python -m py_compile scripts/metering_candidate_gate.py
           python -m py_compile scripts/recovery_surface_guard.py
           python -m py_compile scripts/preflash_gate.py
           python -m py_compile scripts/class_a_gate.py
@@ -34,6 +35,7 @@ jobs:
         run: |
           python scripts/ota_guard.py self-test
           python scripts/candidate_gate.py --self-test
+          python scripts/metering_candidate_gate.py --self-test
           python scripts/recovery_surface_guard.py --self-test
           python scripts/preflash_gate.py --self-test
           python scripts/class_a_gate.py --self-test
