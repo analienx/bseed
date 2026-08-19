@@ -46,7 +46,7 @@ class MeteringOverlayTests(unittest.TestCase):
                 '#include <string.h>',
                 module.GLOBAL_NEEDLE,
                 '',
-                'void parse_config() {',
+                module.PARSE_START_NEEDLE,
                 '    const char *zb_manufacturer = "b28wrpvx";',
                 '    const char *zb_model = "TS011F-BS-PM";',
                 '    for (;;) {',
@@ -75,6 +75,10 @@ class MeteringOverlayTests(unittest.TestCase):
             'energy_monitoring_enabled && energy_monitoring_protect_relay &&',
             updated,
         )
+        self.assertIn(
+            'energy_monitoring_protect_relay = 1;\n    device_config_read_from_nv();',
+            updated,
+        )
 
         second, changed_again = module.overlay_config_parser(updated)
         self.assertFalse(changed_again)
@@ -99,6 +103,16 @@ class MeteringOverlayTests(unittest.TestCase):
         self.assertIn('A1', module.POST_PARSE_REPLACEMENT)
         self.assertIn('C2', module.POST_PARSE_REPLACEMENT)
         self.assertIn('B1', module.POST_PARSE_REPLACEMENT)
+
+    def test_policy_is_reset_before_every_config_parse(self):
+        self.assertIn(
+            'energy_monitoring_protect_relay = 1;',
+            module.PARSE_START_REPLACEMENT,
+        )
+        self.assertLess(
+            module.PARSE_START_REPLACEMENT.index('energy_monitoring_protect_relay = 1;'),
+            module.PARSE_START_REPLACEMENT.index('device_config_read_from_nv();'),
+        )
 
 
 if __name__ == '__main__':
