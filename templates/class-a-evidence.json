@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "device_id": "DEV-001",
+  "pcb_revision": "",
+  "hardware": {
+    "A-H01": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H02": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H03": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H04": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H05": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H06": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H07": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H08": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H09": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H10": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H11": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H12": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H13": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H14": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""}
+  },
+  "recovery": {
+    "A-R01": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-R02": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-R03": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-R04": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-R05": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-R06": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-R07": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""}
+  },
+  "notes": ""
+}
