@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "device_id": "DEV-001",
+  "pcb_revision": "",
+  "runtime_profile": {
+    "manufacturer_name": "b28wrpvx",
+    "model_id": "TS011F-BS-PM",
+    "device_type": "router",
+    "mcu": "TLSR8258",
+    "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;"
+  },
+  "source_mapping": {
+    "cf": "PA1",
+    "cf1": "PC2",
+    "sel": "PB1"
+  },
+  "metering_candidate_gate_report": "",
+  "recovery_class_a_report": "",
+  "candidate_sha256": "",
+  "rollback_sha256": "",
+  "relay_baseline": "PENDING",
+  "button_baseline": "PENDING",
+  "led_baseline": "PENDING",
+  "network_joined": "PENDING",
+  "ota_liveness": "PENDING",
+  "lkg_self_reinstall": "PENDING",
+  "sws_recovery_readback": "PENDING",
+  "full_flash_backup_verified": "PENDING",
+  "enclosure_closed": "PENDING",
+  "relay_off_before_ota": "PENDING",
+  "load_disconnected_during_ota": "PENDING",
+  "canary_automations_disabled": "PENDING",
+  "automatic_ota_disabled": "PENDING",
+  "bulk_update_disabled": "PENDING",
+  "stable_power": "PENDING",
+  "ota_link_quality": "PENDING",
+  "device_config_writes_prohibited": true,
+  "factory_reset_prohibited": true,
+  "test_plan": {
+    "kind": "automated_canary_validation",
+    "max_declared_load_w": 150,
+    "minimum_cycles": 3,
+    "load_type": "resistive"
+  },
+  "notes": ""
+}
