@@ -1,8 +1,18 @@
 name: Build BSEED metering canary
 
-# Deliberately manual. Building a candidate is not authorization to flash it.
+# Safe/offline only: this workflow builds and validates artifacts; it has no
+# access to the physical device and never authorizes flashing.
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - agent/bootstrap-bl0937-pm
+    paths:
+      - '.github/workflows/build-metering-canary.yml'
+      - 'scripts/apply-metering-overlay.py'
+      - 'scripts/metering_overlay_guard.py'
+      - 'scripts/ota_guard.py'
+      - 'metering-source.lock.json'
 
 permissions:
   contents: read
@@ -10,7 +20,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     env:
       SOURCE_REPO: https://github.com/HobboRobin/tuya-zigbee-switch-with-metering.git
       SOURCE_COMMIT: 8b8cc4924a353b35880666f7b48f0afbee89eb17
@@ -23,16 +33,10 @@ jobs:
       - name: Checkout supervisor project
         uses: actions/checkout@v4
 
-      - name: Install build dependencies
+      - name: Install host dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y make python3 python3-pytest yq unzip wget gcc-arm-none-eabi
-
-      - name: Set up JDK 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '21'
+          sudo apt-get install -y make python3 python3-venv yq unzip wget
 
       - name: Fetch pinned hardware-proven metering source
         run: |
@@ -42,14 +46,13 @@ jobs:
           test "$(git -C .work/tuya-zigbee-switch-metering rev-parse HEAD)" = "$SOURCE_COMMIT"
           test -z "$(git -C .work/tuya-zigbee-switch-metering status --porcelain)"
 
-      - name: Restore downstream SDK/toolchain cache
+      - name: Restore Telink SDK/toolchain + Python venv cache
         uses: actions/cache@v4
         with:
           path: |
             .work/tuya-zigbee-switch-metering/telink_tools
-            .work/tuya-zigbee-switch-metering/silabs_tools
             .work/tuya-zigbee-switch-metering/.venv
-          key: bseed-metering-tools-${{ runner.os }}-${{ env.SOURCE_COMMIT }}
+          key: bseed-metering-telink-${{ runner.os }}-${{ env.SOURCE_COMMIT }}-${{ hashFiles('metering-source.lock.json') }}
 
       - name: Apply minimal NVM-preserving BSEED overlay
         run: |
@@ -74,20 +77,20 @@ jobs:
           cp .work/tuya-zigbee-switch-metering/zigbee2mqtt/converters/switch_custom.js \
              artifacts/switch_custom.js
 
-      - name: Install downstream SDK/toolchain
+      - name: Install only Telink toolchain and Python environment
         working-directory: .work/tuya-zigbee-switch-metering
         run: |
-          make setup || {
-            echo 'Downstream make setup failed.' >&2
-            find silabs_tools -path '*/configuration/*.log' -type f -print -exec tail -n 200 {} \; 2>/dev/null || true
-            exit 1
-          }
+          make telink/tools/all
+          if [ ! -x .venv/bin/python ]; then
+            make setup_venv
+          fi
+          .venv/bin/python -m pip install -r requirements.txt
+          make telink/tools/verify
 
       - name: Run downstream firmware tests
         working-directory: .work/tuya-zigbee-switch-metering
         run: |
-          source .venv/bin/activate
-          make tests
+          .venv/bin/python -m pytest tests/ -v
 
       - name: Recheck exact source overlay after setup/tests
         run: |
@@ -98,7 +101,6 @@ jobs:
       - name: Build only the BSEED b28wrpvx router
         working-directory: .work/tuya-zigbee-switch-metering
         run: |
-          source .venv/bin/activate
           BOARD="$BOARD" DEVICE_TYPE="$DEVICE_TYPE" make board/build
           ls -lah "bin/router/$BOARD"
 
