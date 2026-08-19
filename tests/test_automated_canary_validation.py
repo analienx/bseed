@@ -1,10 +1,12 @@
 import importlib.util
 import json
+import sys
 from pathlib import Path
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "automated_canary_validation.py"
 spec = importlib.util.spec_from_file_location("bseed_canary_validation", SCRIPT)
 mod = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = mod
 assert spec.loader is not None
 spec.loader.exec_module(mod)
 
