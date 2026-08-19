@@ -29,6 +29,7 @@ jobs:
           python -m py_compile scripts/validate-evidence.py
           python -m py_compile scripts/sanitize-z2m-json.py
           python -m py_compile scripts/apply-metering-overlay.py
+          python -m py_compile scripts/metering_overlay_guard.py
       - name: Tool self-tests
         run: |
           python scripts/ota_guard.py self-test
@@ -37,5 +38,6 @@ jobs:
           python scripts/preflash_gate.py --self-test
           python scripts/class_a_gate.py --self-test
           python scripts/validate-evidence.py --self-test
+          python scripts/metering_overlay_guard.py --self-test
       - name: Unit tests
         run: python -m unittest discover -s tests -v
