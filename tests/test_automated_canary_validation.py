@@ -1,6 +1,7 @@
 import importlib.util
 import json
 import sys
+import unittest
 from pathlib import Path
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "automated_canary_validation.py"
@@ -48,39 +49,40 @@ def good_cycles():
     ]
 
 
-def test_good_mapping_confirmation_passes():
-    result = mod.evaluate_cycles(good_cycles(), fixture_cfg())
-    assert result["status"] == "PASS"
-    assert result["mapping_confirmation"]["cf_pa1_confirmed"] is True
-    assert result["mapping_confirmation"]["cf1_pc2_confirmed"] is True
-    assert result["mapping_confirmation"]["sel_pb1_confirmed"] is True
+class AutomatedCanaryValidationTests(unittest.TestCase):
+    def test_good_mapping_confirmation_passes(self):
+        result = mod.evaluate_cycles(good_cycles(), fixture_cfg())
+        self.assertEqual(result["status"], "PASS")
+        self.assertTrue(result["mapping_confirmation"]["cf_pa1_confirmed"])
+        self.assertTrue(result["mapping_confirmation"]["cf1_pc2_confirmed"])
+        self.assertTrue(result["mapping_confirmation"]["sel_pb1_confirmed"])
+
+    def test_voltage_swapped_or_implausible_fails(self):
+        cycles = json.loads(json.dumps(good_cycles()))
+        cycles[1]["on"]["voltage"]["median"] = 90
+        result = mod.evaluate_cycles(cycles, fixture_cfg())
+        self.assertEqual(result["status"], "FAIL")
+        self.assertTrue(any("voltage" in e.lower() for e in result["errors"]))
+
+    def test_missing_current_fails(self):
+        cycles = json.loads(json.dumps(good_cycles()))
+        cycles[0]["on"]["current"]["median"] = None
+        result = mod.evaluate_cycles(cycles, fixture_cfg())
+        self.assertEqual(result["status"], "FAIL")
+
+    def test_non_monotonic_energy_fails(self):
+        cycles = good_cycles()
+        cycles[2]["on"]["energy"]["median"] = 0.999
+        result = mod.evaluate_cycles(cycles, fixture_cfg())
+        self.assertEqual(result["status"], "FAIL")
+        self.assertTrue(any("energy counter decreased" in e for e in result["errors"]))
+
+    def test_repeatability_failure_is_detected(self):
+        cycles = good_cycles()
+        cycles[2]["on"]["power"]["median"] = 120
+        result = mod.evaluate_cycles(cycles, fixture_cfg())
+        self.assertEqual(result["status"], "FAIL")
 
 
-def test_voltage_swapped_or_implausible_fails():
-    cycles = json.loads(json.dumps(good_cycles()))
-    cycles[1]["on"]["voltage"]["median"] = 90
-    result = mod.evaluate_cycles(cycles, fixture_cfg())
-    assert result["status"] == "FAIL"
-    assert any("voltage" in e.lower() for e in result["errors"])
-
-
-def test_missing_current_fails():
-    cycles = json.loads(json.dumps(good_cycles()))
-    cycles[0]["on"]["current"]["median"] = None
-    result = mod.evaluate_cycles(cycles, fixture_cfg())
-    assert result["status"] == "FAIL"
-
-
-def test_non_monotonic_energy_fails():
-    cycles = good_cycles()
-    cycles[2]["on"]["energy"]["median"] = 0.999
-    result = mod.evaluate_cycles(cycles, fixture_cfg())
-    assert result["status"] == "FAIL"
-    assert any("energy counter decreased" in e for e in result["errors"])
-
-
-def test_repeatability_failure_is_detected():
-    cycles = good_cycles()
-    cycles[2]["on"]["power"]["median"] = 120
-    result = mod.evaluate_cycles(cycles, fixture_cfg())
-    assert result["status"] == "FAIL" or any("repeatability" in e for e in result["errors"])
+if __name__ == "__main__":
+    unittest.main()
