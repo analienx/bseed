@@ -26,6 +26,9 @@ jobs:
           python -m py_compile scripts/recovery_surface_guard.py
           python -m py_compile scripts/preflash_gate.py
           python -m py_compile scripts/class_a_gate.py
+          python -m py_compile scripts/confirmation_preflash_gate.py
+          python -m py_compile scripts/functional_confirmation_gate.py
+          python -m py_compile scripts/automated_canary_validation.py
           python -m py_compile scripts/record-observation.py
           python -m py_compile scripts/validate-evidence.py
           python -m py_compile scripts/sanitize-z2m-json.py
@@ -39,6 +42,9 @@ jobs:
           python scripts/recovery_surface_guard.py --self-test
           python scripts/preflash_gate.py --self-test
           python scripts/class_a_gate.py --self-test
+          python scripts/confirmation_preflash_gate.py --self-test
+          python scripts/functional_confirmation_gate.py --self-test
+          python scripts/automated_canary_validation.py templates/canary-validation.json --self-test
           python scripts/validate-evidence.py --self-test
           python scripts/metering_overlay_guard.py --self-test
       - name: Unit tests
