@@ -54,17 +54,19 @@
 
 **Boundary:** this closes the **source-discovery** unknowns and unblocks coding/builds. It does not substitute for exact-canary `DEVICE_CONFIRMED` evidence required by the project's pre-flash Class A gate.
 
-## D-011 — Minimal first-canary behavior surface
+## D-011 — Preserve runtime `device_config`; activate metering by exact identity
 
-**Decision:** do not ship unrelated downstream behavior changes in the first project canary. Preserve the established socket-control tokens `LC3;SB5u;RD2;IB4` exactly, add only `EPA1C2B1` for pulse metering, and add project-local `NOOL` to prevent the downstream overload state machine from actuating the relay.
-
-The first candidate config is therefore:
+**Decision:** the first project canary keeps the existing BSEED config **byte-for-byte**:
 
 ```text
-b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;EPA1C2B1;NOOL;M;
+b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;
 ```
 
-**Reason:** downstream `LC3p`/`IB4p` PWM controls and automatic overload relay actuation are useful features, but they increase the first canary's behavioral delta without being required to restore energy monitoring.
+Do **not** require an `EP...` token, a runtime `device_config` write, or a factory reset. Instead, after parsing the config, the candidate checks the exact custom identity `b28wrpvx` + `TS011F-BS-PM`. If no meter was explicitly configured, it initializes the already-proven pulse backend on `CF=PA1`, `CF1=PC2`, `SEL=PB1`.
+
+For that exact identity, overload measurements remain available but the downstream overload state machine is not connected to the relay in the first canary.
+
+**Reason:** already-converted devices persist `device_config` in NVM. Merely changing the compiled default to add `EPA1C2B1` would not reliably affect an existing socket after OTA and would create pressure to rewrite/reset NVM. The identity-scoped fallback adds PM while preserving current relay/button/LED semantics and recovery assumptions.
 
 ## D-012 — Calibration is reusable evidence, not immutable truth
 
@@ -75,3 +77,9 @@ b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;EPA1C2B1;NOOL;M;
 ## D-013 — Build artifacts are evidence, not flash authorization
 
 **Decision:** the canary build workflow is `workflow_dispatch` only and uploads the candidate plus provenance/hashes as CI artifacts. Producing a valid image never authorizes OTA by itself. Issue #5 recovery proof and the project's pre-flash gates remain mandatory before a canary flash.
+
+## D-014 — Coordinator metadata is pinned separately from firmware config
+
+**Decision:** package the downstream 1.2.5 `switch_custom.js` converter from Git blob `53b7c7bc66df95ca0316a98398f37bcee04a2a23` with the canary artifacts instead of regenerating it from the NVM-preserving candidate `device_db`.
+
+**Reason:** converter generation uses the device config to infer PM exposes. Our firmware intentionally removes the explicit `EP` token from that config, but the runtime firmware still exposes the standard metering clusters. The already-generated downstream converter correctly describes those clusters and is pinned/hash-checked independently.
