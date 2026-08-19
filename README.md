@@ -70,10 +70,12 @@ Because converted devices persist this config in NVM, the project does **not** r
 - `metering-source.lock.json` — pinned downstream implementation/mapping/calibration/converter provenance.
 - `scripts/apply-metering-overlay.py` — deterministic two-file canary overlay.
 - `scripts/metering_overlay_guard.py` — byte-for-byte proof that the firmware worktree equals pinned source + reviewed overlay.
-- `scripts/metering_candidate_gate.py` — artifact/source/converter/rollback gate for this adopted implementation path.
+- `scripts/metering_candidate_gate.py` — artifact/source/converter/provenance/rollback gate for this adopted implementation path.
 - `templates/metering-candidate-manifest.json` — manifest consumed by that gate.
 - `scripts/new-metering-candidate.ps1` — prepares a local candidate evidence workspace; does not flash.
-- `.github/workflows/build-metering-canary.yml` — manual-only reproducible canary build/package workflow.
+- `.github/workflows/build-metering-canary.yml` — offline canary build/package workflow run by the implementation PR and available for manual dispatch.
+
+The firmware build checks out the actual reviewed supervisor head SHA, runs the downstream test prerequisites, builds only the BSEED Telink router, validates normal + forced custom OTA images, and emits `build-provenance.json` binding source/overlay/converter/artifact hashes to that exact supervisor commit. Stale PR builds are serialized/cancelled per PR.
 
 The build packages the pinned downstream Zigbee2MQTT `switch_custom.js` separately because the firmware deliberately preserves the old config while still exposing Electrical Measurement and Smart Energy Metering clusters at runtime.
 
@@ -86,7 +88,7 @@ Before an experimental OTA on one canary:
 1. tie one exact physical socket/PCB revision to the source-confirmed BL0937/ZTU design;
 2. confirm the source-known `PA1/PC2/PB1` routes on that exact canary (issue #3 / Class A);
 3. prove the known-good custom OTA reinstall + unpowered SWS/full-flash recovery path on that same canary (issue #5);
-4. pass the artifact/candidate/live preflash gates.
+4. pass the source/artifact/candidate/live preflash gates.
 
 No fleet update or experimental flash is authorized by this README.
 
