@@ -2,14 +2,26 @@
 """Apply/verify the minimal BSEED metering overlay to the pinned downstream source.
 
 The downstream fork already contains hardware-tested power metering for
-_TZ3000_b28wrpvx.  The project canary intentionally removes two unrelated
-behaviour changes from that release:
+_TZ3000_b28wrpvx.  The project canary deliberately keeps the *existing* BSEED
+runtime config byte-for-byte:
 
-* LED PWM flags are removed so PC3/PB4 keep the existing on/off semantics.
-* overload relay actuation is disabled explicitly with a NOOL config token.
+    b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;
 
-The overlay is deliberately narrow and guarded.  It refuses to touch an
-unexpected source revision or an already-dirty checkout.
+That is important because converted devices persist device_config in NVM; merely
+changing the compiled default would not reliably activate metering after OTA and
+would tempt us to write/reset NVM.  Instead this overlay adds an identity-scoped
+fallback in config_parser.c: when the exact b28wrpvx / TS011F-BS-PM identity is
+parsed without an explicit EP/EB meter token, firmware initializes the already
+proven pulse backend on CF=PA1, CF1=PC2, SEL=PB1.
+
+The fallback also suppresses downstream overload relay actuation for this BSEED
+identity.  Measurement remains active, but the first canary cannot switch the
+relay because of a new PM-derived protection policy.  Existing control GPIOs,
+NVM device_config, OTA identity and normal relay/button/LED semantics remain
+unchanged.
+
+The overlay is deliberately narrow and source-guarded.  It refuses an unexpected
+source revision, an already-dirty checkout on apply, or a partial overlay.
 """
 
 from __future__ import annotations
@@ -25,42 +37,67 @@ DEVICE_KEY = "OUTLET_BSEED_PM_TS011F_b28wrpvx"
 ORIGINAL_CONFIG = (
     "b28wrpvx;TS011F-BS-PM;LC3p;SB5u;RD2;IB4p;EPA1C2B1;M;"
 )
-CANDIDATE_CONFIG = (
-    "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;EPA1C2B1;NOOL;M;"
-)
+CANDIDATE_CONFIG = "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;"
 
 GLOBAL_NEEDLE = (
     "static uint8_t            energy_monitoring_enabled  = 0;\n"
     "static uint8_t            energy_monitoring_endpoint = 1;"
 )
 GLOBAL_REPLACEMENT = GLOBAL_NEEDLE + (
-    "\nstatic uint8_t            overload_protection_enabled = 1;"
+    "\n// The project BSEED canary measures power but must not gain a new relay-\n"
+    "// actuation policy. Explicit meter configs on other devices retain the\n"
+    "// downstream overload behavior.\n"
+    "static uint8_t            energy_monitoring_protect_relay = 1;"
 )
 
-PARSE_START_NEEDLE = "void parse_config() {\n    device_config_read_from_nv();"
-PARSE_START_REPLACEMENT = (
-    "void parse_config() {\n"
-    "    // Config may be reparsed at runtime; never carry a previous NOOL state.\n"
-    "    overload_protection_enabled = 1;\n"
-    "    device_config_read_from_nv();"
-)
+POST_PARSE_NEEDLE = """        }
+    }
 
-OL_NEEDLE = "        } else if (entry[0] == 'O' && entry[1] == 'L') {"
-OL_REPLACEMENT = (
-    "        } else if (strcmp(entry, \"NOOL\") == 0) {\n"
-    "            // Project canary safety token: keep energy measurement active\n"
-    "            // while preventing the downstream overload state machine from\n"
-    "            // actuating the socket relay. This is intentionally opt-out and\n"
-    "            // local to configs that carry NOOL.\n"
-    "            overload_protection_enabled = 0;\n"
-    + OL_NEEDLE
-)
+    peripherals_init();
+"""
+POST_PARSE_REPLACEMENT = """        }
+    }
+
+    // Project canary compatibility path for the exact hardware-verified BSEED
+    // PM identity. Converted devices keep device_config in NVM, so an existing
+    // socket can legitimately boot this firmware with the original config that
+    // has no EP token. Do not mutate/reset that NVM merely to enable metering.
+    // Instead initialise the proven BL0937-compatible pulse backend here.
+    if (strcmp(zb_manufacturer, "b28wrpvx") == 0 &&
+        strcmp(zb_model, "TS011F-BS-PM") == 0) {
+        energy_monitoring_protect_relay = 0;
+
+        if (!energy_monitoring_enabled) {
+            hal_gpio_pin_t cf_pin  = hal_gpio_parse_pin("A1");
+            hal_gpio_pin_t cf1_pin = hal_gpio_parse_pin("C2");
+            hal_gpio_pin_t sel_pin = hal_gpio_parse_pin("B1");
+
+            if (hlw8012_init(&hlw8012_device, cf_pin, cf1_pin, sel_pin) == 0) {
+                // b28wrpvx hardware validation established the default SEL
+                // polarity; calibration is seeded from this board's compiled
+                // hlw8012_* multipliers in device_db.yaml.
+                hlw8012_set_sel_inverted(&hlw8012_device, 0);
+                energy_meter = hlw8012_as_energy_meter(&hlw8012_device);
+                electrical_measurement_cluster_init(&elec_meas_cluster,
+                                                    energy_meter);
+                metering_cluster_init(&metering_cluster_inst, energy_meter);
+                energy_monitoring_enabled  = 1;
+                energy_monitoring_endpoint = 1;
+                printf("Config: implicit b28wrpvx BL0937 metering "
+                       "CF=%04x CF1=%04x SEL=%04x\\r\\n",
+                       cf_pin, cf1_pin, sel_pin);
+            }
+        }
+    }
+
+    peripherals_init();
+"""
 
 PROTECTED_RELAY_NEEDLE = (
     "    if (energy_monitoring_enabled && relay_clusters_cnt > 0) {"
 )
 PROTECTED_RELAY_REPLACEMENT = (
-    "    if (energy_monitoring_enabled && overload_protection_enabled &&\n"
+    "    if (energy_monitoring_enabled && energy_monitoring_protect_relay &&\n"
     "        relay_clusters_cnt > 0) {"
 )
 
@@ -79,10 +116,13 @@ def _replace_once(text: str, old: str, new: str, label: str) -> str:
 
 
 def overlay_device_db(text: str) -> Tuple[str, bool]:
-    """Return (new_text, changed). Supports original or already-overlaid text."""
+    """Restore the project's established BSEED default config, preserving calibration."""
     if CANDIDATE_CONFIG in text:
         if ORIGINAL_CONFIG in text:
-            raise RuntimeError("device_db contains both original and candidate config")
+            raise RuntimeError("device_db contains both downstream and canary configs")
+        for marker in CALIBRATION_MARKERS:
+            if marker not in text:
+                raise RuntimeError(f"device_db missing expected calibration marker: {marker}")
         return text, False
 
     if DEVICE_KEY not in text:
@@ -90,7 +130,6 @@ def overlay_device_db(text: str) -> Tuple[str, bool]:
     if ORIGINAL_CONFIG not in text:
         raise RuntimeError("device_db target config does not match pinned downstream source")
 
-    # Require the known downstream calibration to exist before adopting it.
     for marker in CALIBRATION_MARKERS:
         if marker not in text:
             raise RuntimeError(f"device_db missing expected calibration marker: {marker}")
@@ -99,20 +138,22 @@ def overlay_device_db(text: str) -> Tuple[str, bool]:
 
 
 def overlay_config_parser(text: str) -> Tuple[str, bool]:
-    """Apply the NOOL parser/relay gate, or validate an already-overlaid parser."""
+    """Add the identity-scoped implicit meter and overload relay gate."""
     post_markers = (
-        "overload_protection_enabled = 1;",
-        'strcmp(entry, "NOOL") == 0',
-        "energy_monitoring_enabled && overload_protection_enabled &&",
+        "energy_monitoring_protect_relay = 1;",
+        'strcmp(zb_manufacturer, "b28wrpvx") == 0',
+        'hal_gpio_parse_pin("A1")',
+        'hal_gpio_parse_pin("C2")',
+        'hal_gpio_parse_pin("B1")',
+        "energy_monitoring_enabled && energy_monitoring_protect_relay &&",
     )
     if all(marker in text for marker in post_markers):
         return text, False
     if any(marker in text for marker in post_markers):
-        raise RuntimeError("config_parser has a partial/inconsistent metering overlay")
+        raise RuntimeError("config_parser has a partial/inconsistent BSEED metering overlay")
 
-    text = _replace_once(text, GLOBAL_NEEDLE, GLOBAL_REPLACEMENT, "overload global")
-    text = _replace_once(text, PARSE_START_NEEDLE, PARSE_START_REPLACEMENT, "parse reset")
-    text = _replace_once(text, OL_NEEDLE, OL_REPLACEMENT, "NOOL parser token")
+    text = _replace_once(text, GLOBAL_NEEDLE, GLOBAL_REPLACEMENT, "meter policy global")
+    text = _replace_once(text, POST_PARSE_NEEDLE, POST_PARSE_REPLACEMENT, "implicit meter hook")
     text = _replace_once(
         text,
         PROTECTED_RELAY_NEEDLE,
@@ -162,26 +203,40 @@ def verify_post_state(root: Path) -> dict:
         if marker not in db:
             raise RuntimeError(f"post-overlay calibration marker missing: {marker}")
     for marker in (
-        "static uint8_t            overload_protection_enabled = 1;",
-        'strcmp(entry, "NOOL") == 0',
-        "energy_monitoring_enabled && overload_protection_enabled &&",
+        "static uint8_t            energy_monitoring_protect_relay = 1;",
+        'strcmp(zb_manufacturer, "b28wrpvx") == 0',
+        'strcmp(zb_model, "TS011F-BS-PM") == 0',
+        'hal_gpio_parse_pin("A1")',
+        'hal_gpio_parse_pin("C2")',
+        'hal_gpio_parse_pin("B1")',
+        "hlw8012_set_sel_inverted(&hlw8012_device, 0);",
+        "energy_monitoring_enabled && energy_monitoring_protect_relay &&",
     ):
         if marker not in parser:
             raise RuntimeError(f"post-overlay parser marker missing: {marker}")
 
-    # The candidate must preserve all established control GPIOs and add only the
-    # already hardware-verified meter GPIOs.
-    required_tokens = ("LC3", "SB5u", "RD2", "IB4", "EPA1C2B1", "NOOL", "M")
-    for token in required_tokens:
+    required_control_tokens = ("LC3", "SB5u", "RD2", "IB4", "M")
+    for token in required_control_tokens:
         if f";{token};" not in f";{CANDIDATE_CONFIG}":
-            raise RuntimeError(f"internal candidate config invariant failed for token {token}")
+            raise RuntimeError(f"control config invariant failed for token {token}")
+    if "EP" in CANDIDATE_CONFIG or "EB" in CANDIDATE_CONFIG:
+        raise RuntimeError("candidate config must not require a meter token/NVM rewrite")
+    if "p" in CANDIDATE_CONFIG:
+        raise RuntimeError("candidate config must not opt into downstream PWM LED behavior")
 
     return {
         "source_commit": PINNED_SOURCE_COMMIT,
         "device_key": DEVICE_KEY,
         "candidate_config": CANDIDATE_CONFIG,
-        "control_gpio": {"network_led": "PC3", "button": "PB5", "relay": "PD2", "indicator": "PB4"},
+        "nvm_device_config_write_required": False,
+        "control_gpio": {
+            "network_led": "PC3",
+            "button": "PB5",
+            "relay": "PD2",
+            "indicator": "PB4",
+        },
         "meter_gpio": {"cf": "PA1", "cf1": "PC2", "sel": "PB1"},
+        "meter_activation": "identity_scoped_implicit_fallback",
         "overload_relay_actuation": False,
         "calibration": {
             "voltage_multiplier": 161460,
@@ -209,7 +264,7 @@ def apply_overlay(root: Path) -> dict:
 
     manifest = verify_post_state(root)
     manifest["changed_files"] = [
-        str(path)
+        str(path.relative_to(root)).replace("\\", "/")
         for path, changed in ((db_path, db_changed), (parser_path, parser_changed))
         if changed
     ]
