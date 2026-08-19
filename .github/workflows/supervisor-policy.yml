@@ -28,6 +28,7 @@ jobs:
           python -m py_compile scripts/record-observation.py
           python -m py_compile scripts/validate-evidence.py
           python -m py_compile scripts/sanitize-z2m-json.py
+          python -m py_compile scripts/apply-metering-overlay.py
       - name: Tool self-tests
         run: |
           python scripts/ota_guard.py self-test
