@@ -24,22 +24,54 @@
 
 ## D-005 — Do not blindly merge upstream PR #314
 
-**Decision:** treat PR #314 as source material. Rebase/review the useful Telink counter implementation against the pinned upstream before integration.
+**Decision:** treat PR #314 as historical/source material rather than blindly merging it.
 
-**Reason:** the PR is open, based on an older main commit, and explicitly does not implement PM end to end.
+**Reason:** a later downstream fork now contains the complete Telink pulse-counter + metering implementation and has been hardware-tested on the exact `_TZ3000_b28wrpvx` family. PR #314 remains useful provenance, but it is no longer the shortest implementation path.
 
-## D-006 — Diagnostic-first firmware
+## D-006 — Diagnostic-first firmware (superseded for implementation, retained for validation)
 
-**Decision:** first device build exposes raw pulse observations only. It must not report apparently calibrated voltage/current/power until calibration evidence exists.
+**Original decision:** first device build would expose raw pulse observations only and would not report calibrated V/A/W.
+
+**Superseding decision:** source discovery found a hardware-tested downstream implementation with raw pulse diagnostics, standard clusters and measured calibration for `_TZ3000_b28wrpvx`. We will reuse that implementation rather than deliberately removing working measurement code. The first **project canary** still treats downstream calibration as provisional until confirmed on the exact project socket, and raw `CF`/`CF1`/`SEL` diagnostics remain part of acceptance.
 
 ## D-007 — Standard Zigbee clusters
 
-**Decision:** final PM should use standard Electrical Measurement and Smart Energy Metering server clusters rather than a BSEED-only proprietary reporting path where upstream architecture allows it.
+**Decision:** PM uses standard Electrical Measurement and Smart Energy Metering server clusters. The downstream implementation already follows this architecture and is therefore preferred over a new proprietary path.
 
 ## D-008 — Energy persistence
 
-**Decision:** cumulative energy uses a 64-bit RAM accumulator plus wear-bounded persistent checkpoints. Never write flash per pulse.
+**Decision:** cumulative energy must remain wear-conscious. The adopted downstream code currently checkpoints accumulated Wh every five minutes using the Telink NVM layer. This is acceptable for the first functional canary but is explicitly marked for endurance review before broad deployment; no design may write flash per pulse.
 
 ## D-009 — Evidence hygiene
 
 **Decision:** raw firmware dumps and unsanitized device metadata are local-only. Git contains sanitized, reproducible evidence only.
+
+## D-010 — Reuse the hardware-proven downstream implementation
+
+**Decision:** pin `HobboRobin/tuya-zigbee-switch-with-metering@8b8cc4924a353b35880666f7b48f0afbee89eb17` as the implementation source for the first BSEED PM candidate.
+
+**Evidence:** downstream commit `37de8385e5a661505ac9bc8d47b2e7791c7a5493` records the `_TZ3000_b28wrpvx` metering GPIOs as hardware-verified: `CF=PA1`, `CF1=PC2`, `SEL=PB1`. Later hardware calibration established V/A/W multipliers `161460 / 144679 / 16989`.
+
+**Boundary:** this closes the **source-discovery** unknowns and unblocks coding/builds. It does not substitute for exact-canary `DEVICE_CONFIRMED` evidence required by the project's pre-flash Class A gate.
+
+## D-011 — Minimal first-canary behavior surface
+
+**Decision:** do not ship unrelated downstream behavior changes in the first project canary. Preserve the established socket-control tokens `LC3;SB5u;RD2;IB4` exactly, add only `EPA1C2B1` for pulse metering, and add project-local `NOOL` to prevent the downstream overload state machine from actuating the relay.
+
+The first candidate config is therefore:
+
+```text
+b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;EPA1C2B1;NOOL;M;
+```
+
+**Reason:** downstream `LC3p`/`IB4p` PWM controls and automatic overload relay actuation are useful features, but they increase the first canary's behavioral delta without being required to restore energy monitoring.
+
+## D-012 — Calibration is reusable evidence, not immutable truth
+
+**Decision:** compile the downstream hardware-measured multipliers into the candidate because they are better than guessed/default constants, but validate them against an external reference meter on the exact assembled project canary before declaring calibration accepted.
+
+**Acceptance:** voltage/current/power accuracy and low-load behavior are Class B runtime validation items. If the exact canary requires fine-tuning, use the downstream runtime calibration mechanism rather than changing GPIO identity or OTA identity.
+
+## D-013 — Build artifacts are evidence, not flash authorization
+
+**Decision:** the canary build workflow is `workflow_dispatch` only and uploads the candidate plus provenance/hashes as CI artifacts. Producing a valid image never authorizes OTA by itself. Issue #5 recovery proof and the project's pre-flash gates remain mandatory before a canary flash.
