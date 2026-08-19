@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "observed_at": "2026-08-19",
   "source": {
     "repo": "HobboRobin/tuya-zigbee-switch-with-metering",
@@ -18,7 +18,7 @@
     "module": "ZTU",
     "mcu": "TLSR8258",
     "meter_ic_on_project_canary": "BL0937",
-    "reused_driver": "HLW8012/BL0937 pulse-compatible EP backend"
+    "reused_driver": "HLW8012/BL0937 pulse-compatible backend"
   },
   "hardware_mapping": {
     "cf": "PA1",
@@ -40,13 +40,20 @@
     "image_type": 43556,
     "file_version": 302329857,
     "sha512": "daebe99b57d18bc9eca1811c2ffc522a8b7f1b20e0e41c1597372efbd3bcba68d1669bf843d6554f79b855a6fa784158bddbf364801648d857069a35e47c91c8",
-    "note": "Reference artifact only. The project canary overlay intentionally changes the source and therefore must produce a different hash."
+    "note": "Reference downstream artifact only. The project canary overlay intentionally changes source behavior and must produce its own hash."
   },
   "canary_overlay": {
-    "preserved_control_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
-    "candidate_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;EPA1C2B1;NOOL;M;",
-    "metering_token": "EPA1C2B1",
-    "disable_overload_token": "NOOL",
-    "reason": "Preserve existing relay/button/LED semantics for the first canary; add only pulse metering and explicitly prevent the downstream overload state machine from actuating the relay."
+    "preserved_device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+    "candidate_device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+    "nvm_device_config_write_required": false,
+    "meter_activation": "identity-scoped implicit fallback in config_parser.c",
+    "meter_gpio": {
+      "cf": "PA1",
+      "cf1": "PC2",
+      "sel": "PB1"
+    },
+    "overload_relay_actuation": false,
+    "downstream_pwm_led_flags_removed": true,
+    "reason": "An already-converted socket can retain its original device_config in NVM across OTA. The canary therefore preserves that config byte-for-byte and initializes the proven meter pins from the exact b28wrpvx/TS011F-BS-PM identity without a device-config write or factory reset."
   }
 }
