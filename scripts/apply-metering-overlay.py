@@ -50,6 +50,17 @@ GLOBAL_REPLACEMENT = GLOBAL_NEEDLE + (
     "static uint8_t            energy_monitoring_protect_relay = 1;"
 )
 
+PARSE_START_NEEDLE = "void parse_config() {\n    device_config_read_from_nv();"
+PARSE_START_REPLACEMENT = (
+    "void parse_config() {\n"
+    "    // parse_config can be invoked again after a runtime config update.\n"
+    "    // Never leak the b28wrpvx canary's relay-protection policy into a\n"
+    "    // subsequently parsed identity. The exact BSEED match below opts out\n"
+    "    // again after the fresh config has been parsed.\n"
+    "    energy_monitoring_protect_relay = 1;\n"
+    "    device_config_read_from_nv();"
+)
+
 POST_PARSE_NEEDLE = """        }
     }
 
@@ -140,7 +151,9 @@ def overlay_device_db(text: str) -> Tuple[str, bool]:
 def overlay_config_parser(text: str) -> Tuple[str, bool]:
     """Add the identity-scoped implicit meter and overload relay gate."""
     post_markers = (
-        "energy_monitoring_protect_relay = 1;",
+        "static uint8_t            energy_monitoring_protect_relay = 1;",
+        "void parse_config() {\n    // parse_config can be invoked again after a runtime config update.",
+        "    energy_monitoring_protect_relay = 1;\n    device_config_read_from_nv();",
         'strcmp(zb_manufacturer, "b28wrpvx") == 0',
         'hal_gpio_parse_pin("A1")',
         'hal_gpio_parse_pin("C2")',
@@ -153,6 +166,7 @@ def overlay_config_parser(text: str) -> Tuple[str, bool]:
         raise RuntimeError("config_parser has a partial/inconsistent BSEED metering overlay")
 
     text = _replace_once(text, GLOBAL_NEEDLE, GLOBAL_REPLACEMENT, "meter policy global")
+    text = _replace_once(text, PARSE_START_NEEDLE, PARSE_START_REPLACEMENT, "policy reset")
     text = _replace_once(text, POST_PARSE_NEEDLE, POST_PARSE_REPLACEMENT, "implicit meter hook")
     text = _replace_once(
         text,
@@ -204,6 +218,8 @@ def verify_post_state(root: Path) -> dict:
             raise RuntimeError(f"post-overlay calibration marker missing: {marker}")
     for marker in (
         "static uint8_t            energy_monitoring_protect_relay = 1;",
+        "void parse_config() {\n    // parse_config can be invoked again after a runtime config update.",
+        "    energy_monitoring_protect_relay = 1;\n    device_config_read_from_nv();",
         'strcmp(zb_manufacturer, "b28wrpvx") == 0',
         'strcmp(zb_model, "TS011F-BS-PM") == 0',
         'hal_gpio_parse_pin("A1")',
