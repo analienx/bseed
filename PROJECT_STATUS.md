@@ -148,16 +148,25 @@ Validates Zigbee OTA structure, BSEED OTA identity, Telink payload magic/size/CR
 - legacy Romasku-from-scratch candidates: `scripts/recovery_surface_guard.py`;
 - adopted metering canary: `scripts/metering_overlay_guard.py`, which validates pinned downstream + exact reviewed overlay.
 
-### 4. Candidate/live gates
+### 4. Candidate gate
 
-`candidate_gate.py` / `preflash_gate.py` remain the flash-authorization path. Their legacy staged-PM assumptions are being retained for old candidates; the adopted metering canary must not be flashed until its candidate manifest/gate reflects the pinned downstream-overlay provenance and the Class A/recovery gates pass.
+- legacy staged candidates: `scripts/candidate_gate.py`;
+- adopted metering candidate: `scripts/metering_candidate_gate.py` + `templates/metering-candidate-manifest.json`.
+
+The adopted gate validates the exact downstream source/overlay report, preserved board/config/OTA identity, PA1/PC2/PB1 meter mapping, disabled overload relay actuation, candidate and rollback hashes, OTA structure, pinned Z2M converter Git blob and all recorded offline checks.
+
+`scripts/new-metering-candidate.ps1` creates the local manifest/evidence workspace but does not authorize or execute OTA.
+
+### 5. Live preflash gate — `scripts/preflash_gate.py`
+
+Still requires a zero-unknown `class_a_gate.py --mode all` report plus fresh healthy canary state, exact rollback evidence and no pending device-config mutation before an OTA proposal can be considered.
 
 ## Revised deployment ladder
 
 1. **Offline implementation/build** — reuse pinned downstream PM stack; no hardware execution required.
 2. **Exact-canary confirmation** — confirm the chosen socket matches the source-proven BL0937/ZTU board and `PA1/PC2/PB1` mapping.
 3. **Recovery proof** — close issue #5 on that same canary, including LKG self-reinstall + unpowered SWS backup/readback.
-4. **Artifact/candidate gates** — exact source overlay, OTA identity/config/hash and rollback evidence all PASS.
+4. **Artifact/candidate gates** — exact source overlay, OTA identity/config/hash, converter pin and rollback evidence all PASS.
 5. **One assembled-device canary OTA** — no exposed PCB; load disconnected for the update; no fleet/bulk action.
 6. **Functional validation** — relay/button/LED/rejoin/OTA first, then CF/CF1/SEL diagnostics and V/A/W.
 7. **Calibration/energy validation** — resistive reference points, low-load behavior, accumulated Wh and reboot persistence.
@@ -166,13 +175,14 @@ Validates Zigbee OTA structure, BSEED OTA identity, Telink payload magic/size/CR
 ## Current state
 
 ```text
-SOURCE_MAPPING       = CONFIRMED (PA1 / PC2 / PB1)
-PM_IMPLEMENTATION    = REUSED + AUDITED DOWNSTREAM
-SUPERVISOR_CODING    = ACTIVE / NOT BLOCKED BY HARDWARE DISCOVERY
-EXACT_CANARY_CLASS_A = OPEN (issue #3, confirmation not discovery)
-RECOVERY_CLASS_A     = OPEN (issue #5; may proceed in parallel)
-CANARY_BUILD_PIPELINE= IMPLEMENTED, MANUAL ONLY
-EXPERIMENTAL_OTA     = NOT AUTHORIZED
+SOURCE_MAPPING        = CONFIRMED (PA1 / PC2 / PB1)
+PM_IMPLEMENTATION     = REUSED + AUDITED DOWNSTREAM
+SUPERVISOR_CODING     = IMPLEMENTED ON agent/adopt-proven-metering
+EXACT_CANARY_CLASS_A  = OPEN (issue #3, confirmation not discovery)
+RECOVERY_CLASS_A      = OPEN (issue #5; may proceed in parallel)
+CANARY_BUILD_PIPELINE = IMPLEMENTED, MANUAL ONLY
+METERING_CANDIDATE_GATE = IMPLEMENTED
+EXPERIMENTAL_OTA      = NOT AUTHORIZED
 ```
 
 No experimental firmware flash is currently authorized.
