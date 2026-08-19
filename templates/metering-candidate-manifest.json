@@ -35,7 +35,7 @@
   },
   "candidate": {
     "ota_mode": "normal",
-    "ota": "candidate.zigbee",
+    "ota": "bseed-b28wrpvx-metering-canary.zigbee",
     "sha256": ""
   },
   "converter": {
