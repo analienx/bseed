@@ -1,0 +1,143 @@
+name: Build BSEED metering canary
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      SOURCE_REPO: https://github.com/HobboRobin/tuya-zigbee-switch-with-metering.git
+      SOURCE_COMMIT: 8b8cc4924a353b35880666f7b48f0afbee89eb17
+      BOARD: OUTLET_BSEED_PM_TS011F_b28wrpvx
+      DEVICE_TYPE: router
+      EXPECTED_CONFIG: b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;EPA1C2B1;NOOL;M;
+
+    steps:
+      - name: Checkout supervisor project
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y make python3 python3-pytest yq unzip wget gcc-arm-none-eabi
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Cache downstream Telink/Silabs setup
+        uses: actions/cache@v4
+        with:
+          path: |
+            .work/tuya-zigbee-switch-metering/telink_tools
+            .work/tuya-zigbee-switch-metering/silabs_tools
+            .work/tuya-zigbee-switch-metering/.venv
+          key: bseed-metering-tools-${{ runner.os }}-${{ env.SOURCE_COMMIT }}
+
+      - name: Fetch pinned hardware-proven metering source
+        run: |
+          rm -rf .work/tuya-zigbee-switch-metering
+          git clone --filter=blob:none "$SOURCE_REPO" .work/tuya-zigbee-switch-metering
+          git -C .work/tuya-zigbee-switch-metering checkout --detach "$SOURCE_COMMIT"
+          test "$(git -C .work/tuya-zigbee-switch-metering rev-parse HEAD)" = "$SOURCE_COMMIT"
+          test -z "$(git -C .work/tuya-zigbee-switch-metering status --porcelain)"
+
+      - name: Apply minimal BSEED canary overlay
+        run: |
+          mkdir -p artifacts
+          python3 scripts/apply-metering-overlay.py \
+            --source .work/tuya-zigbee-switch-metering \
+            --apply \
+            --json-out artifacts/overlay.json
+          python3 scripts/apply-metering-overlay.py \
+            --source .work/tuya-zigbee-switch-metering \
+            --verify \
+            --json-out artifacts/overlay-verified.json
+
+      - name: Install downstream SDK/toolchain
+        working-directory: .work/tuya-zigbee-switch-metering
+        run: |
+          make setup || {
+            echo 'Downstream make setup failed.' >&2
+            find silabs_tools -path '*/configuration/*.log' -type f -maxdepth 8 -print -exec tail -n 200 {} \; 2>/dev/null || true
+            exit 1
+          }
+
+      - name: Run downstream firmware tests
+        working-directory: .work/tuya-zigbee-switch-metering
+        run: |
+          source .venv/bin/activate
+          make tests
+
+      - name: Build only the BSEED b28wrpvx router
+        working-directory: .work/tuya-zigbee-switch-metering
+        run: |
+          source .venv/bin/activate
+          BOARD="$BOARD" DEVICE_TYPE="$DEVICE_TYPE" make board/build
+          ls -lah "bin/router/$BOARD"
+
+      - name: Select and validate canary OTA artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          mapfile -t images < <(find ".work/tuya-zigbee-switch-metering/bin/router/$BOARD" \
+            -maxdepth 1 -type f -name '*.zigbee' ! -name '*from_tuya*' | sort)
+          if [ "${#images[@]}" -ne 1 ]; then
+            printf 'Expected exactly one custom-to-custom .zigbee image, found %s\n' "${#images[@]}" >&2
+            printf '%s\n' "${images[@]}" >&2
+            exit 1
+          fi
+          cp "${images[0]}" artifacts/bseed-b28wrpvx-metering-canary.zigbee
+          python3 scripts/ota_guard.py inspect \
+            artifacts/bseed-b28wrpvx-metering-canary.zigbee \
+            --required-ascii "$EXPECTED_CONFIG" \
+            --json-out artifacts/ota-inspect.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('artifacts/ota-inspect.json').read_text())
+          h = p['header']
+          t = p['telink']
+          assert h['manufacturer_code'] == 4417, h
+          assert h['image_type'] == 43556, h
+          assert h['file_version'] != 0xFFFFFFFF, h
+          assert t['required_ascii_occurrences'] == 1, t
+          assert t['payload_size'] <= 0x40000, t
+          print('OTA_IDENTITY_PASS manufacturer=4417 image_type=43556')
+          PY
+          sha256sum artifacts/bseed-b28wrpvx-metering-canary.zigbee | tee artifacts/SHA256SUMS
+          sha512sum artifacts/bseed-b28wrpvx-metering-canary.zigbee | tee artifacts/SHA512SUMS
+
+      - name: Record immutable build provenance
+        run: |
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          provenance = {
+              'schema': 1,
+              'supervisor_commit': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+              'metering_source_repo': 'HobboRobin/tuya-zigbee-switch-with-metering',
+              'metering_source_commit': '8b8cc4924a353b35880666f7b48f0afbee89eb17',
+              'board': 'OUTLET_BSEED_PM_TS011F_b28wrpvx',
+              'device_type': 'router',
+              'expected_config': 'b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;EPA1C2B1;NOOL;M;',
+              'flash_authorized': False,
+          }
+          Path('artifacts/build-provenance.json').write_text(json.dumps(provenance, indent=2) + '\n')
+          PY
+
+      - name: Upload canary build evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: bseed-b28wrpvx-metering-canary-${{ github.sha }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 30
