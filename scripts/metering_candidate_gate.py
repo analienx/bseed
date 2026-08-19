@@ -14,6 +14,7 @@ SOURCE_REPO = "HobboRobin/tuya-zigbee-switch-with-metering"
 SOURCE_COMMIT = "8b8cc4924a353b35880666f7b48f0afbee89eb17"
 EXPECTED_CONFIG = "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;"
 EXPECTED_CONVERTER_BLOB = "53b7c7bc66df95ca0316a98398f37bcee04a2a23"
+EXPECTED_METER_GPIO = {"cf": "PA1", "cf1": "PC2", "sel": "PB1"}
 FORCED_FILE_VERSION = 0xFFFFFFFF
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$", re.I)
 
@@ -55,6 +56,7 @@ REQUIRED_OFFLINE_CHECKS = {
     "source_guard",
     "ota_guard",
     "converter_pin",
+    "build_provenance",
 }
 EXPECTED_OVERLAY_FILES = [
     "device_db.yaml",
@@ -112,14 +114,21 @@ def _check_exact_dict(
             )
 
 
+def _require_sha256(value: Any, field: str, errors: list[str]) -> str:
+    value = str(value or "")
+    if not SHA256_RE.fullmatch(value):
+        errors.append(f"{field} must be a full SHA-256")
+    return value.lower()
+
+
 def evaluate(path: Path) -> dict[str, Any]:
     m = load_json(path)
     base = path.parent.resolve()
     errors: list[str] = []
     warnings: list[str] = []
 
-    if m.get("schema_version") != 1:
-        errors.append("schema_version must be 1")
+    if m.get("schema_version") != 2:
+        errors.append("schema_version must be 2")
     if m.get("candidate_kind") != "adopted_bseed_metering":
         errors.append("candidate_kind must be adopted_bseed_metering")
 
@@ -138,9 +147,27 @@ def evaluate(path: Path) -> dict[str, Any]:
         errors.append(f"source.repo must be {SOURCE_REPO}")
     if source.get("commit") != SOURCE_COMMIT:
         errors.append(f"source.commit must be pinned {SOURCE_COMMIT}")
-    for key in ("overlay_script_sha256", "overlay_guard_sha256"):
-        if not SHA256_RE.fullmatch(str(source.get(key, ""))):
-            errors.append(f"source.{key} must be a full SHA-256")
+
+    overlay_script_hash = _require_sha256(
+        source.get("overlay_script_sha256"), "source.overlay_script_sha256", errors
+    )
+    overlay_guard_hash = _require_sha256(
+        source.get("overlay_guard_sha256"), "source.overlay_guard_sha256", errors
+    )
+
+    # Bind the manifest to the exact supervisor tooling executing this gate.
+    local_overlay_script = Path(__file__).with_name("apply-metering-overlay.py")
+    local_overlay_guard = Path(__file__).with_name("metering_overlay_guard.py")
+    if local_overlay_script.is_file() and overlay_script_hash:
+        if sha256_file(local_overlay_script) != overlay_script_hash:
+            errors.append("source.overlay_script_sha256 does not match local reviewed overlay script")
+    else:
+        errors.append("local apply-metering-overlay.py is missing")
+    if local_overlay_guard.is_file() and overlay_guard_hash:
+        if sha256_file(local_overlay_guard) != overlay_guard_hash:
+            errors.append("source.overlay_guard_sha256 does not match local reviewed overlay guard")
+    else:
+        errors.append("local metering_overlay_guard.py is missing")
 
     _check_exact_dict(m.get("board_profile"), EXPECTED_PROFILE, "board_profile", errors)
     _check_exact_dict(m.get("meter"), EXPECTED_METER, "meter", errors)
@@ -167,7 +194,7 @@ def evaluate(path: Path) -> dict[str, Any]:
             if checks.get(key) != "PASS":
                 errors.append(f"offline_checks.{key} must be PASS")
 
-    # Exact source overlay report.
+    # Exact source overlay report produced by CI.
     source_guard_path = resolve(base, str(source.get("source_guard_report", "")))
     if not source_guard_path.is_file():
         errors.append(f"source guard report does not exist: {source_guard_path}")
@@ -189,7 +216,7 @@ def evaluate(path: Path) -> dict[str, Any]:
                 errors.append("source guard overlay does not preserve device_config")
             if ov.get("nvm_device_config_write_required") is not False:
                 errors.append("source guard overlay requires a forbidden device_config write")
-            if ov.get("meter_gpio") != {"cf": "PA1", "cf1": "PC2", "sel": "PB1"}:
+            if ov.get("meter_gpio") != EXPECTED_METER_GPIO:
                 errors.append("source guard meter GPIO mapping mismatch")
             if ov.get("overload_relay_actuation") is not False:
                 errors.append("source guard allows overload relay actuation")
@@ -204,12 +231,10 @@ def evaluate(path: Path) -> dict[str, Any]:
     if ota_mode not in {"normal", "forced"}:
         errors.append("candidate.ota_mode must be normal or forced")
     candidate_path = resolve(base, str(candidate.get("ota", "")))
-    candidate_hash = str(candidate.get("sha256", ""))
+    candidate_hash = _require_sha256(candidate.get("sha256"), "candidate.sha256", errors)
     if not candidate_path.is_file():
         errors.append(f"candidate OTA does not exist: {candidate_path}")
-    elif not SHA256_RE.fullmatch(candidate_hash):
-        errors.append("candidate.sha256 must be a full SHA-256")
-    elif sha256_file(candidate_path).lower() != candidate_hash.lower():
+    elif candidate_hash and sha256_file(candidate_path) != candidate_hash:
         errors.append("candidate OTA hash mismatch")
 
     converter = m.get("converter")
@@ -217,31 +242,78 @@ def evaluate(path: Path) -> dict[str, Any]:
         errors.append("converter must be an object")
         converter = {}
     converter_path = resolve(base, str(converter.get("path", "")))
-    converter_hash = str(converter.get("sha256", ""))
+    converter_hash = _require_sha256(converter.get("sha256"), "converter.sha256", errors)
     if converter.get("git_blob") != EXPECTED_CONVERTER_BLOB:
         errors.append("converter.git_blob does not match pinned downstream converter")
     if not converter_path.is_file():
         errors.append(f"converter does not exist: {converter_path}")
     else:
-        if not SHA256_RE.fullmatch(converter_hash):
-            errors.append("converter.sha256 must be a full SHA-256")
-        elif sha256_file(converter_path).lower() != converter_hash.lower():
+        if converter_hash and sha256_file(converter_path) != converter_hash:
             errors.append("converter SHA-256 mismatch")
         if git_blob_sha1(converter_path) != EXPECTED_CONVERTER_BLOB:
             errors.append("converter contents do not match pinned Git blob")
+
+    # Bind candidate/converter/source to CI-produced immutable build provenance.
+    provenance_path = resolve(base, str(m.get("build_provenance", "")))
+    provenance: dict[str, Any] = {}
+    if not provenance_path.is_file():
+        errors.append(f"build provenance does not exist: {provenance_path}")
+    else:
+        try:
+            provenance = load_json(provenance_path)
+            if provenance.get("schema") != 3:
+                errors.append("build provenance schema must be 3")
+            if provenance.get("supervisor_commit") != supervisor_commit:
+                errors.append("build provenance supervisor_commit mismatch")
+            if provenance.get("metering_source_repo") != SOURCE_REPO:
+                errors.append("build provenance source repo mismatch")
+            if provenance.get("metering_source_commit") != SOURCE_COMMIT:
+                errors.append("build provenance source commit mismatch")
+            if provenance.get("overlay_script_sha256") != overlay_script_hash:
+                errors.append("build provenance overlay script hash mismatch")
+            if provenance.get("overlay_guard_sha256") != overlay_guard_hash:
+                errors.append("build provenance overlay guard hash mismatch")
+            if provenance.get("z2m_converter_git_blob") != EXPECTED_CONVERTER_BLOB:
+                errors.append("build provenance converter Git blob mismatch")
+            if converter_hash and provenance.get("z2m_converter_sha256") != converter_hash:
+                errors.append("build provenance converter SHA-256 mismatch")
+            if provenance.get("board") != "OUTLET_BSEED_PM_TS011F_b28wrpvx":
+                errors.append("build provenance board mismatch")
+            if provenance.get("device_type") != "router":
+                errors.append("build provenance device_type mismatch")
+            if provenance.get("preserved_device_config") != EXPECTED_CONFIG:
+                errors.append("build provenance device_config mismatch")
+            if provenance.get("meter_gpio") != EXPECTED_METER_GPIO:
+                errors.append("build provenance meter GPIO mismatch")
+            if provenance.get("nvm_device_config_write_required") is not False:
+                errors.append("build provenance requires device_config write")
+            if provenance.get("overload_relay_actuation") is not False:
+                errors.append("build provenance allows overload relay actuation")
+            if provenance.get("flash_authorized") is not False:
+                errors.append("build provenance must explicitly state flash_authorized=false")
+
+            artifact_key = "candidate_normal" if ota_mode == "normal" else "candidate_forced"
+            built = provenance.get(artifact_key)
+            if not isinstance(built, dict):
+                errors.append(f"build provenance missing {artifact_key}")
+            else:
+                if candidate_hash and built.get("sha256") != candidate_hash:
+                    errors.append(f"build provenance {artifact_key} hash mismatch")
+                if candidate_path.name and built.get("file_name") != candidate_path.name:
+                    errors.append(f"build provenance {artifact_key} filename mismatch")
+        except json.JSONDecodeError:
+            errors.append("build provenance is not valid JSON")
 
     rollback = m.get("rollback")
     if not isinstance(rollback, dict):
         errors.append("rollback must be an object")
         rollback = {}
     rollback_path = resolve(base, str(rollback.get("ota", "")))
-    rollback_hash = str(rollback.get("sha256", ""))
+    rollback_hash = _require_sha256(rollback.get("sha256"), "rollback.sha256", errors)
     baseline_path = resolve(base, str(rollback.get("baseline_manifest", "")))
     if not rollback_path.is_file():
         errors.append(f"rollback OTA does not exist: {rollback_path}")
-    elif not SHA256_RE.fullmatch(rollback_hash):
-        errors.append("rollback.sha256 must be a full SHA-256")
-    elif sha256_file(rollback_path).lower() != rollback_hash.lower():
+    elif rollback_hash and sha256_file(rollback_path) != rollback_hash:
         errors.append("rollback OTA hash mismatch")
     if not baseline_path.is_file():
         errors.append(f"rollback baseline manifest does not exist: {baseline_path}")
@@ -268,7 +340,7 @@ def evaluate(path: Path) -> dict[str, Any]:
     if baseline_path.is_file() and rollback_path.is_file():
         try:
             baseline = load_json(baseline_path)
-            if baseline.get("header", {}).get("sha256", "").lower() != rollback_hash.lower():
+            if baseline.get("header", {}).get("sha256", "").lower() != rollback_hash:
                 errors.append("baseline manifest does not describe exact rollback hash")
         except json.JSONDecodeError:
             errors.append("rollback baseline manifest is not valid JSON")
@@ -309,10 +381,11 @@ def evaluate(path: Path) -> dict[str, Any]:
                 warnings.append("forced candidate must use an isolated canary-only OTA index")
 
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "kind": "metering_candidate_gate",
         "status": "PASS" if not errors else "FAIL",
         "candidate_id": candidate_id,
+        "supervisor_commit": supervisor_commit,
         "errors": errors,
         "warnings": warnings,
         "next_gate": "LIVE_PREFLASH_GATE" if not errors else "BLOCKED",
@@ -331,11 +404,10 @@ def main() -> int:
     if args.self_test:
         assert SOURCE_COMMIT == "8b8cc4924a353b35880666f7b48f0afbee89eb17"
         assert EXPECTED_PROFILE["device_config"] == EXPECTED_CONFIG
-        assert EXPECTED_METER["cf_gpio"] == "PA1"
-        assert EXPECTED_METER["cf1_gpio"] == "PC2"
-        assert EXPECTED_METER["sel_gpio"] == "PB1"
+        assert EXPECTED_METER_GPIO == {"cf": "PA1", "cf1": "PC2", "sel": "PB1"}
         assert EXPECTED_METER["overload_relay_actuation"] is False
         assert EXPECTED_CONVERTER_BLOB == "53b7c7bc66df95ca0316a98398f37bcee04a2a23"
+        assert "build_provenance" in REQUIRED_OFFLINE_CHECKS
         print("SELF_TEST=PASS")
         return 0
 
