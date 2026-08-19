@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "device_id": "DEV-001",
+  "pcb_revision": "SOURCE_MATCH_PENDING_FUNCTIONAL_CONFIRMATION",
+  "mqtt": {
+    "host": "127.0.0.1",
+    "port": 1883,
+    "base_topic": "zigbee2mqtt",
+    "username_env": "BSEED_MQTT_USER",
+    "password_env": "BSEED_MQTT_PASSWORD",
+    "tls": false,
+    "connect_timeout_s": 15
+  },
+  "device": {
+    "friendly_name": "",
+    "relay_property": "state_relay",
+    "property_aliases": {
+      "state": ["state_relay", "state"],
+      "voltage": ["voltage_switch", "voltage"],
+      "current": ["current_switch", "current"],
+      "power": ["power_switch", "power"],
+      "energy": ["energy_switch", "energy"],
+      "linkquality": ["linkquality"]
+    }
+  },
+  "load": {
+    "operator_setup_ack": false,
+    "type": "resistive",
+    "declared_w": 60,
+    "max_allowed_declared_w": 150,
+    "description": "One fixed, known low-power resistive load. No heater, kettle, motor or unknown appliance."
+  },
+  "test": {
+    "cycles": 3,
+    "off_settle_s": 15,
+    "on_settle_s": 20,
+    "sample_window_s": 30,
+    "sample_period_s": 2,
+    "command_timeout_s": 10,
+    "max_state_stale_s": 35,
+    "max_runtime_s": 600,
+    "max_power_w": 180,
+    "max_current_a": 1.0,
+    "min_on_power_w": 15,
+    "min_on_current_a": 0.05,
+    "max_off_power_w": 8,
+    "max_off_current_a": 0.08,
+    "voltage_min_v": 180,
+    "voltage_max_v": 260,
+    "max_voltage_step_fraction": 0.12,
+    "min_power_step_ratio": 4.0,
+    "max_cycle_power_cv": 0.25,
+    "require_energy_increase": true,
+    "auto_interview": true,
+    "auto_configure": true,
+    "ota_health_check": true
+  },
+  "hard_kill": {
+    "enabled": false,
+    "topic": "",
+    "safe_payload": "OFF",
+    "qos": 1
+  },
+  "output_dir": ".local/canary-validation"
+}
