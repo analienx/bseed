@@ -1,5 +1,6 @@
 name: Build BSEED metering canary
 
+# Deliberately manual. Building a candidate is not authorization to flash it.
 on:
   workflow_dispatch:
 
@@ -32,15 +33,6 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Cache downstream Telink/Silabs setup
-        uses: actions/cache@v4
-        with:
-          path: |
-            .work/tuya-zigbee-switch-metering/telink_tools
-            .work/tuya-zigbee-switch-metering/silabs_tools
-            .work/tuya-zigbee-switch-metering/.venv
-          key: bseed-metering-tools-${{ runner.os }}-${{ env.SOURCE_COMMIT }}
-
       - name: Fetch pinned hardware-proven metering source
         run: |
           rm -rf .work/tuya-zigbee-switch-metering
@@ -48,6 +40,15 @@ jobs:
           git -C .work/tuya-zigbee-switch-metering checkout --detach "$SOURCE_COMMIT"
           test "$(git -C .work/tuya-zigbee-switch-metering rev-parse HEAD)" = "$SOURCE_COMMIT"
           test -z "$(git -C .work/tuya-zigbee-switch-metering status --porcelain)"
+
+      - name: Restore downstream SDK/toolchain cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .work/tuya-zigbee-switch-metering/telink_tools
+            .work/tuya-zigbee-switch-metering/silabs_tools
+            .work/tuya-zigbee-switch-metering/.venv
+          key: bseed-metering-tools-${{ runner.os }}-${{ env.SOURCE_COMMIT }}
 
       - name: Apply minimal BSEED canary overlay
         run: |
@@ -66,7 +67,7 @@ jobs:
         run: |
           make setup || {
             echo 'Downstream make setup failed.' >&2
-            find silabs_tools -path '*/configuration/*.log' -type f -maxdepth 8 -print -exec tail -n 200 {} \; 2>/dev/null || true
+            find silabs_tools -path '*/configuration/*.log' -type f -print -exec tail -n 200 {} \; 2>/dev/null || true
             exit 1
           }
 
