@@ -21,6 +21,7 @@ EXPECTED = {
 }
 
 PASS_FIELDS = (
+    "class_a_closed",
     "network_joined",
     "converter_loaded",
     "candidate_index_isolated",
@@ -94,6 +95,32 @@ def evaluate(path: Path) -> dict[str, Any]:
         if state.get(key) is not False:
             errors.append(f"{key} must be false")
 
+    # Class A closure report is independently machine checked and must match the canary.
+    class_a_raw = str(state.get("class_a_gate_report", ""))
+    if not class_a_raw:
+        errors.append("class_a_gate_report path is required")
+    else:
+        class_a_path = resolve(base, class_a_raw)
+        if not class_a_path.is_file():
+            errors.append(f"class_a_gate_report does not exist: {class_a_path}")
+        else:
+            try:
+                class_a = json.loads(class_a_path.read_text(encoding="utf-8"))
+                if class_a.get("kind") != "class_a_gate":
+                    errors.append("class_a_gate_report has wrong kind")
+                if class_a.get("mode") != "all":
+                    errors.append("class_a_gate_report must be produced with --mode all")
+                if class_a.get("status") != "PASS":
+                    errors.append("class_a_gate_report status is not PASS")
+                if class_a.get("class_a_unknown_count") != 0:
+                    errors.append("class_a_gate_report unknown count is not zero")
+                if class_a.get("device_id") != device_id:
+                    errors.append("class_a_gate_report device_id does not match preflash canary")
+                if class_a.get("pcb_revision") != pcb:
+                    errors.append("class_a_gate_report PCB revision does not match preflash state")
+            except json.JSONDecodeError:
+                errors.append("class_a_gate_report is not valid JSON")
+
     current_build = str(state.get("current_sw_build_id", ""))
     if not current_build:
         errors.append("current_sw_build_id is required")
@@ -142,6 +169,7 @@ def evaluate(path: Path) -> dict[str, Any]:
         "kind": "preflash_gate",
         "status": "PASS" if not errors else "FAIL",
         "device_id": device_id,
+        "pcb_revision": pcb,
         "errors": errors,
         "warnings": warnings,
         "next_gate": "ELIGIBLE_FOR_SUPERVISOR_OTA_CANARY_REVIEW" if not errors else "BLOCKED",
@@ -158,6 +186,7 @@ def main() -> int:
     if args.self_test:
         assert EXPECTED["ota_image_type"] == 43556
         assert EXPECTED["device_config"].endswith("M;")
+        assert "class_a_closed" in PASS_FIELDS
         assert "lkg_self_reinstall" in PASS_FIELDS
         assert "sws_recovery_readback" in PASS_FIELDS
         print("SELF_TEST=PASS")
