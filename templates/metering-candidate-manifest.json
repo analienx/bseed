@@ -1,8 +1,9 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "candidate_kind": "adopted_bseed_metering",
   "candidate_id": "",
   "supervisor_commit": "",
+  "build_provenance": "build-provenance.json",
   "source": {
     "repo": "HobboRobin/tuya-zigbee-switch-with-metering",
     "commit": "8b8cc4924a353b35880666f7b48f0afbee89eb17",
@@ -62,7 +63,8 @@
     "project_policy_tests": "PENDING",
     "source_guard": "PENDING",
     "ota_guard": "PENDING",
-    "converter_pin": "PENDING"
+    "converter_pin": "PENDING",
+    "build_provenance": "PENDING"
   },
   "notes": ""
 }
