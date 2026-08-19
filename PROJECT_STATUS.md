@@ -4,128 +4,175 @@ Last Supervisor update: **2026-08-19**.
 
 ## Goal
 
-Add reliable BL0937 power monitoring to BSEED `_TZ3000_b28wrpvx` / custom `b28wrpvx` / `TS011F-BS-PM` while preserving normal socket behavior and keeping every experimental step recoverable through the already-working OTA path.
+Restore reliable voltage/current/power/energy monitoring on BSEED `_TZ3000_b28wrpvx` / custom `b28wrpvx` / `TS011F-BS-PM` while preserving the custom firmware's good routing/binding and existing socket controls.
 
-For this project, requiring the socket to be opened to restore update capability is a **brick-class failure**, even if emergency SWS recovery can ultimately restore it.
+For this project, requiring the socket to be opened to restore ordinary OTA update capability is a **brick-class failure**, even if emergency SWS recovery can ultimately restore it.
 
-## Source-confirmed upstream state
+## Implementation source — no longer a from-scratch PM port
 
-Pinned upstream main: `romasku/tuya-zigbee-switch@bf1059ee4c029e320a97fbfa6b07bd6ce4aa1702`.
+The original Romasku baseline remains pinned for provenance:
 
-Upstream PR #314 remains source material for Telink GPIO counters, not a complete or pre-approved PM implementation. Pinned PR head: `47611b7d9d4b782556392416769fdb24226a8302`.
+- `romasku/tuya-zigbee-switch@bf1059ee4c029e320a97fbfa6b07bd6ce4aa1702`
+- upstream GPIO-counter precursor PR #314 head: `47611b7d9d4b782556392416769fdb24226a8302`
 
-Known BSEED PM base profile:
+However, the shortest audited implementation path is now the later downstream fork:
+
+- `HobboRobin/tuya-zigbee-switch-with-metering@8b8cc4924a353b35880666f7b48f0afbee89eb17`
+- release lineage: 1.2.5
+- exact source/provenance is pinned in `metering-source.lock.json`
+
+That fork already contains the Telink hardware pulse-counter backend, BL0937/HLW8012-compatible pulse metering, Electrical Measurement + Smart Energy Metering clusters, diagnostics, calibration, energy accumulation/persistence and a matching Zigbee2MQTT converter.
+
+## Frozen BSEED control/OTA identity
 
 ```text
-board: WALL_OUTLET_BSEED_TS011F_PM
 manufacturer/model: b28wrpvx / TS011F-BS-PM
 role: router
 MCU: ZTU / Telink TLSR8258
-config: b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;
+runtime device_config: b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;
+network/status LED: PC3
+button: PB5
+relay: PD2
+relay indicator: PB4
 OTA manufacturer: 4417 / 0x1141
 OTA image type: 43556 / 0xAA24
 ```
 
-## Class A closure state
+The project canary deliberately preserves that runtime `device_config` byte-for-byte. No device-config write or factory reset is required to activate PM.
 
-Hard policy: `policy/CLASS_A_CLOSURE.md`.
+## Power-meter mapping — source-confirmed
 
-Class A means a fact whose wrong value could cause unsafe GPIO drive, wrong-target firmware, hardware damage or loss of OTA/recovery. Class A facts must be made exact before experimental firmware; calibration/timing/filtering remain Class B and are intentionally discovered later at runtime.
+Downstream commit `37de8385e5a661505ac9bc8d47b2e7791c7a5493` records the exact `_TZ3000_b28wrpvx` mapping as hardware-verified:
 
-### Already source-confirmed Class A invariants
+| Signal | BL0937 function | TLSR8258 GPIO | Source state |
+|---|---|---|---|
+| CF | active-power pulse | **PA1** | SOURCE_CONFIRMED |
+| CF1 | RMS current/voltage pulse | **PC2** | SOURCE_CONFIRMED |
+| SEL | CF1 selector | **PB1** | SOURCE_CONFIRMED |
 
-- target board/MCU/router profile;
-- frozen base config and existing GPIOs (`D2` relay, `B5` button, `C3` status LED, `B4` indicator);
-- OTA identity `4417/43556`;
-- Telink `0x40000` OTA slot limit;
-- protected early-boot/OTA/NVM/config source surfaces.
+Downstream hardware calibration for this fingerprint is also available:
 
-### Hardware Class A — issue #3
+```text
+voltage multiplier = 161460
+current multiplier = 144679
+power multiplier   = 16989
+```
 
-A-H01..A-H14 must all become `DEVICE_CONFIRMED` on one exact canary. Current status: **OPEN / BLOCKING** because no Executor result has yet closed the exact board-level facts.
+These values are reused as the canary defaults but remain Class B runtime values until checked against an external reference meter on our exact socket.
 
-Required closure includes exact canary/PCB, runtime identity/config, BL0937 on that canary, BL0937 VDD/GND logic paths, complete CF/CF1/SEL ZTU-pin/TLSR-GPIO/resistance/topology, collision proof against existing GPIOs and SWS/RST/3V3/GND, exact recovery points, and an annotated board map.
+## Exact-canary Class A state
 
-### Recovery Class A — issue #5
+Hard policy remains `policy/CLASS_A_CLOSURE.md`.
 
-A-R01..A-R07 must all become `RECOVERY_PROVEN`. Current status: **BLOCKED BY #3**.
+The important change is that issue #3 is no longer a discovery exercise. The source mapping above is sufficient for coding and offline builds. Before **flashing**, the selected physical canary still has to confirm that it is the same PCB/meter implementation and that PA1/PC2/PB1 do not conflict with the already-proven controls/recovery points.
 
-Required closure includes exact LKG FORCE artifact/hash, LKG self-reinstall, post-reinstall OTA liveness, actual unpowered SWS readback, reproducible full-flash backup, proven recovery wiring and final reassembled known-good health.
+Therefore:
 
-### Machine enforcement
+```text
+MAPPING_SOURCE_CONFIDENCE = CONFIRMED
+CODING_BLOCKED_BY_MAPPING = NO
+OTA_BLOCKED_BY_EXACT_CANARY_CONFIRMATION = YES
+```
 
-- `templates/class-a-evidence.json` stores the exact canary evidence;
-- `scripts/class_a_gate.py` validates hardware/recovery closure and rejects runtime-identity drift, protected GPIO collisions, SWS/RST/3V3/GND pin collisions and incomplete evidence;
-- `scripts/preflash_gate.py` now requires a matching `class_a_gate.py --mode all` PASS report with `class_a_unknown_count=0`.
+Existing photographs already identify Belling BL0937, `R001` shunt and ZTU/TLSR8258. Exact-canary confirmation must tie those observations to one chosen socket; it must not involve energized exposed-PCB probing.
 
-No experimental OTA can therefore pass the preflash gate while a Class A fact remains unknown.
+## Recovery Class A — issue #5
 
-## Hardware evidence already available
+Recovery proof remains mandatory before experimental OTA, but it does **not** need to wait for new PM coding.
 
-Existing photographs identify Belling `BL0937`, `R001` current shunt and Tuya ZTU/Telink hardware. Because earlier photographs may contain more than one board marking/revision, those observations are not promoted to exact-canary Class A closure until issue #3 ties them to the chosen canary.
+Required evidence on the exact canary:
 
-Exact target mappings remain blocking:
+- exact known-good custom-to-custom FORCE/reinstall OTA + hash;
+- successful LKG self-reinstall and post-reinstall relay/button/LED/rejoin/OTA health;
+- unpowered SWS readback;
+- reproducible full-flash backup + hash;
+- documented recovery wiring/points;
+- final reassembled known-good state.
 
-| Signal | BL0937 pin | State |
-|---|---:|---|
-| CF | 6 | exact ZTU/Telink GPIO BLOCKING_UNKNOWN |
-| CF1 | 7 | exact ZTU/Telink GPIO BLOCKING_UNKNOWN |
-| SEL | 8 | exact ZTU/Telink GPIO BLOCKING_UNKNOWN |
+Issue #5 can proceed in parallel with final exact-canary pin confirmation.
 
-## Brick-prevention policies
+## First project canary design
 
-Hard policies:
+Supervisor branch: `agent/adopt-proven-metering`.
 
-- `policy/CLASS_A_CLOSURE.md` — dangerous facts must be exact before experiments;
-- `policy/BRICK_THREAT_MODEL.md` — known brick/soft-brick threat inventory and deployment ladder;
-- `policy/OTA_REVERSIBILITY.md` — OTA/recovery invariants and rollback proof;
-- `policy/EMPIRICAL_DEVELOPMENT.md` — empirical evidence ladder and one-variable-at-a-time experiments.
+The candidate does **not** add `EPA1C2B1` to the persisted/compiled BSEED config. Converted devices may retain their old `device_config` in NVM across OTA, so relying on a changed default would be unreliable and could require an unnecessary NVM write/reset.
 
-Key rule: `UNKNOWN` Class A/recovery state means **DO NOT FLASH**.
+Instead `scripts/apply-metering-overlay.py` makes two tightly-scoped source changes to the pinned downstream release:
+
+1. restore the BSEED default config to the existing project value:
+   `b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;`
+2. in `config_parser.c`, when the exact parsed identity is `b28wrpvx` + `TS011F-BS-PM` and no meter token was supplied, initialize the proven pulse meter implicitly on `PA1/PC2/PB1`.
+
+For that exact identity the first canary intentionally **does not connect the downstream overload-protection state machine to the relay**. This prevents PM restoration from also introducing a new automatic relay-actuation policy.
+
+The downstream PWM LED flags are likewise omitted, preserving existing PC3/PB4 on/off behavior.
+
+## Reproducible source/build controls
+
+- `metering-source.lock.json` pins downstream source, mapping, calibration and converter provenance.
+- `scripts/apply-metering-overlay.py` refuses an unexpected source revision or dirty apply target.
+- `scripts/metering_overlay_guard.py` regenerates the expected two modified files from the pinned Git blobs and requires byte-for-byte equality; an allow-list by filename alone is not sufficient.
+- `.github/workflows/build-metering-canary.yml` is manual-only and builds only `OUTLET_BSEED_PM_TS011F_b28wrpvx` as a router.
+- the workflow runs downstream tests, validates the exact overlay before and after tests, validates normal + forced OTA structure/CRC/config/identity with `ota_guard.py`, hashes artifacts and records provenance.
+- the workflow packages the pinned downstream Zigbee2MQTT `switch_custom.js` converter (Git blob `53b7c7bc66df95ca0316a98398f37bcee04a2a23`) rather than regenerating it from the NVM-preserving config.
+- producing an artifact is **not** flash authorization.
+
+## Metering implementation audit notes
+
+Reused downstream behavior already present:
+
+- Telink hardware GPIO counters for CF/CF1;
+- 5 s accurate pulse sample window and SEL multiplexing;
+- raw `freq_cf`, `freq_cf1`, `sel_state` diagnostics;
+- voltage/current/active power;
+- cumulative energy;
+- standard Zigbee Electrical Measurement and Smart Energy Metering clusters;
+- runtime calibration + persisted multipliers;
+- Z2M reporting configuration;
+- apparent power, total PF and reactive-power magnitude derivation.
+
+Known follow-up item before fleet deployment: current downstream energy persistence checkpoints accumulated Wh every five minutes through Telink NVM. It is acceptable for a first functional canary but should receive a separate endurance/wear review after metering is validated.
 
 ## Machine-enforced gates
 
 ### 1. Class A gate — `scripts/class_a_gate.py`
 
-Closes dangerous hardware/recovery facts and validates canary identity plus GPIO/recovery-pin collisions.
+Requires exact project canary identity, PCB/recovery evidence and zero unknown Class A facts before experimental OTA.
 
 ### 2. Artifact gate — `scripts/ota_guard.py`
 
-Validates Zigbee OTA structure, exact BSEED identity, Telink payload magic/size/CRC/startup flag/version and frozen base config.
+Validates Zigbee OTA structure, BSEED OTA identity, Telink payload magic/size/CRC/startup flag/version and the preserved base config.
 
-### 3. Source-diff gate — `scripts/recovery_surface_guard.py`
+### 3. Source gate
 
-Rejects changes to recovery-critical upstream source/config paths.
+- legacy Romasku-from-scratch candidates: `scripts/recovery_surface_guard.py`;
+- adopted metering canary: `scripts/metering_overlay_guard.py`, which validates pinned downstream + exact reviewed overlay.
 
-### 4. Candidate gate — `scripts/candidate_gate.py`
+### 4. Candidate/live gates
 
-Requires exact board/MCU/router/config identity, immutable source, verified candidate/rollback hashes, forced LKG rollback and offline checks.
+`candidate_gate.py` / `preflash_gate.py` remain the flash-authorization path. Their legacy staged-PM assumptions are being retained for old candidates; the adopted metering canary must not be flashed until its candidate manifest/gate reflects the pinned downstream-overlay provenance and the Class A/recovery gates pass.
 
-### 5. Live device gate — `scripts/preflash_gate.py`
+## Revised deployment ladder
 
-Requires a zero-unknown Class A report plus fresh healthy canary/OTA/recovery/operational state immediately before a flash proposal.
+1. **Offline implementation/build** — reuse pinned downstream PM stack; no hardware execution required.
+2. **Exact-canary confirmation** — confirm the chosen socket matches the source-proven BL0937/ZTU board and `PA1/PC2/PB1` mapping.
+3. **Recovery proof** — close issue #5 on that same canary, including LKG self-reinstall + unpowered SWS backup/readback.
+4. **Artifact/candidate gates** — exact source overlay, OTA identity/config/hash and rollback evidence all PASS.
+5. **One assembled-device canary OTA** — no exposed PCB; load disconnected for the update; no fleet/bulk action.
+6. **Functional validation** — relay/button/LED/rejoin/OTA first, then CF/CF1/SEL diagnostics and V/A/W.
+7. **Calibration/energy validation** — resistive reference points, low-load behavior, accumulated Wh and reboot persistence.
+8. **Only after acceptance** — consider PWM LEDs, overload protection, persistence endurance improvements and broader rollout as separate changes.
 
-## Deployment ladder
-
-1. P0 issue #3 closes hardware Class A;
-2. P1 issue #5 closes recovery Class A and LKG self-reinstall;
-3. P2 no-functional-change pipeline candidate + candidate→LKG→candidate round trip;
-4. P3 PM plumbing compiled but inactive;
-5. P4 volatile activation control only, touching no PM GPIO;
-6. P5 confirmed CF input/counter only;
-7. P6 confirmed CF1 input/counter;
-8. P7 confirmed SEL output;
-9. P8+ calibration → clusters → energy → persistence → reporting, one risk dimension at a time.
-
-During discovery every reboot returns PM to disabled.
-
-## Current blocker summary
+## Current state
 
 ```text
-CLASS_A_SOURCE   = CONFIRMED
-CLASS_A_HARDWARE = OPEN (issue #3)
-CLASS_A_RECOVERY = BLOCKED_BY_HARDWARE (issue #5)
-EXPERIMENTAL_OTA = NOT_AUTHORIZED
+SOURCE_MAPPING       = CONFIRMED (PA1 / PC2 / PB1)
+PM_IMPLEMENTATION    = REUSED + AUDITED DOWNSTREAM
+SUPERVISOR_CODING    = ACTIVE / NOT BLOCKED BY HARDWARE DISCOVERY
+EXACT_CANARY_CLASS_A = OPEN (issue #3, confirmation not discovery)
+RECOVERY_CLASS_A     = OPEN (issue #5; may proceed in parallel)
+CANARY_BUILD_PIPELINE= IMPLEMENTED, MANUAL ONLY
+EXPERIMENTAL_OTA     = NOT AUTHORIZED
 ```
 
 No experimental firmware flash is currently authorized.
