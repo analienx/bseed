@@ -3,29 +3,29 @@
   "device_id": "DEV-001",
   "pcb_revision": "",
   "hardware": {
-    "A-H01": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H02": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H03": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H04": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H05": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H06": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H07": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H08": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H09": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H10": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
+    "A-H01": {"status": "BLOCKING_UNKNOWN", "value": {"same_physical_socket": false, "pcb_front": "", "pcb_rear": ""}, "evidence": ""},
+    "A-H02": {"status": "BLOCKING_UNKNOWN", "value": {"manufacturer_name": "", "model_id": "", "device_type": "", "mcu": "", "device_config": "", "sw_build_id": ""}, "evidence": ""},
+    "A-H03": {"status": "BLOCKING_UNKNOWN", "value": {"meter_ic": "", "pin1_orientation_confirmed": false}, "evidence": ""},
+    "A-H04": {"status": "BLOCKING_UNKNOWN", "value": false, "evidence": ""},
+    "A-H05": {"status": "BLOCKING_UNKNOWN", "value": false, "evidence": ""},
+    "A-H06": {"status": "BLOCKING_UNKNOWN", "value": {"signal": "CF", "bl0937_pin": 6, "ztu_pin": 0, "gpio": "", "resistance_ohm": 0, "topology": ""}, "evidence": ""},
+    "A-H07": {"status": "BLOCKING_UNKNOWN", "value": {"signal": "CF1", "bl0937_pin": 7, "ztu_pin": 0, "gpio": "", "resistance_ohm": 0, "topology": ""}, "evidence": ""},
+    "A-H08": {"status": "BLOCKING_UNKNOWN", "value": {"signal": "SEL", "bl0937_pin": 8, "ztu_pin": 0, "gpio": "", "resistance_ohm": 0, "topology": ""}, "evidence": ""},
+    "A-H09": {"status": "BLOCKING_UNKNOWN", "value": {"cf_input_path": "", "cf1_input_path": "", "active_or_inverting_stage_present": "UNKNOWN"}, "evidence": ""},
+    "A-H10": {"status": "BLOCKING_UNKNOWN", "value": {"sel_drive_path": "", "active_or_inverting_stage_present": "UNKNOWN"}, "evidence": ""},
     "A-H11": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
     "A-H12": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H13": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-H14": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""}
+    "A-H13": {"status": "BLOCKING_UNKNOWN", "value": {"sws_ztu_pin": 4, "rst_ztu_pin": 18, "vcc_ztu_pin": 14, "gnd_ztu_pin": 13, "physical_points_identified": false}, "evidence": ""},
+    "A-H14": {"status": "BLOCKING_UNKNOWN", "value": {"annotated_board_map_complete": false}, "evidence": ""}
   },
   "recovery": {
-    "A-R01": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-R02": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-R03": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-R04": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-R05": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-R06": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""},
-    "A-R07": {"status": "BLOCKING_UNKNOWN", "value": "", "evidence": ""}
+    "A-R01": {"status": "BLOCKING_UNKNOWN", "value": {"path": "", "sha256": ""}, "evidence": ""},
+    "A-R02": {"status": "BLOCKING_UNKNOWN", "value": false, "evidence": ""},
+    "A-R03": {"status": "BLOCKING_UNKNOWN", "value": false, "evidence": ""},
+    "A-R04": {"status": "BLOCKING_UNKNOWN", "value": false, "evidence": ""},
+    "A-R05": {"status": "BLOCKING_UNKNOWN", "value": false, "evidence": ""},
+    "A-R06": {"status": "BLOCKING_UNKNOWN", "value": false, "evidence": ""},
+    "A-R07": {"status": "BLOCKING_UNKNOWN", "value": false, "evidence": ""}
   },
   "notes": ""
 }
