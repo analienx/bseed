@@ -30,8 +30,20 @@ jobs:
       CONVERTER_BLOB: 53b7c7bc66df95ca0316a98398f37bcee04a2a23
 
     steps:
-      - name: Checkout supervisor project
+      - name: Checkout exact supervisor head
         uses: actions/checkout@v4
+        with:
+          # pull_request normally checks out a synthetic merge ref. Firmware
+          # provenance must point at the immutable reviewed head instead.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Assert checkout identity
+        run: |
+          expected='${{ github.event.pull_request.head.sha || github.sha }}'
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$expected"
+          echo "SUPERVISOR_COMMIT=$actual" >> "$GITHUB_ENV"
 
       - name: Install host dependencies
         run: |
@@ -154,19 +166,25 @@ jobs:
       - name: Record immutable build provenance
         run: |
           python3 - <<'PY'
-          import hashlib, json, subprocess
+          import hashlib, json, os
           from pathlib import Path
 
           def sha256(path):
               return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
+          normal_path = Path('artifacts/bseed-b28wrpvx-metering-canary.zigbee')
+          forced_path = Path('artifacts/bseed-b28wrpvx-metering-canary-forced.zigbee')
+          normal = json.loads(Path('artifacts/ota-inspect.json').read_text())
+          forced = json.loads(Path('artifacts/ota-inspect-forced.json').read_text())
           provenance = {
-              'schema': 2,
-              'supervisor_commit': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+              'schema': 3,
+              'supervisor_commit': os.environ['SUPERVISOR_COMMIT'],
               'metering_source_repo': 'HobboRobin/tuya-zigbee-switch-with-metering',
               'metering_source_commit': '8b8cc4924a353b35880666f7b48f0afbee89eb17',
               'overlay_script_sha256': sha256('scripts/apply-metering-overlay.py'),
               'overlay_guard_sha256': sha256('scripts/metering_overlay_guard.py'),
+              'source_guard_sha256': sha256('artifacts/source-guard.json'),
+              'source_guard_post_tests_sha256': sha256('artifacts/source-guard-post-tests.json'),
               'z2m_converter_git_blob': '53b7c7bc66df95ca0316a98398f37bcee04a2a23',
               'z2m_converter_sha256': sha256('artifacts/switch_custom.js'),
               'board': 'OUTLET_BSEED_PM_TS011F_b28wrpvx',
@@ -175,6 +193,20 @@ jobs:
               'meter_gpio': {'cf': 'PA1', 'cf1': 'PC2', 'sel': 'PB1'},
               'nvm_device_config_write_required': False,
               'overload_relay_actuation': False,
+              'candidate_normal': {
+                  'file_name': normal_path.name,
+                  'sha256': sha256(normal_path),
+                  'file_version': normal['header']['file_version'],
+                  'inner_file_version': normal['telink']['inner_file_version'],
+                  'payload_size': normal['telink']['payload_size'],
+              },
+              'candidate_forced': {
+                  'file_name': forced_path.name,
+                  'sha256': sha256(forced_path),
+                  'file_version': forced['header']['file_version'],
+                  'inner_file_version': forced['telink']['inner_file_version'],
+                  'payload_size': forced['telink']['payload_size'],
+              },
               'flash_authorized': False,
           }
           Path('artifacts/build-provenance.json').write_text(json.dumps(provenance, indent=2) + '\n')
@@ -183,7 +215,7 @@ jobs:
       - name: Upload canary build evidence
         uses: actions/upload-artifact@v4
         with:
-          name: bseed-b28wrpvx-metering-canary-${{ github.sha }}
+          name: bseed-b28wrpvx-metering-canary-${{ env.SUPERVISOR_COMMIT }}
           path: artifacts/
           if-no-files-found: error
           retention-days: 30
