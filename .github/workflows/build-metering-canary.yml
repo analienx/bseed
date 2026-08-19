@@ -17,6 +17,7 @@ jobs:
       BOARD: OUTLET_BSEED_PM_TS011F_b28wrpvx
       DEVICE_TYPE: router
       EXPECTED_CONFIG: b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;
+      CONVERTER_BLOB: 53b7c7bc66df95ca0316a98398f37bcee04a2a23
 
     steps:
       - name: Checkout supervisor project
@@ -64,6 +65,14 @@ jobs:
           python3 scripts/metering_overlay_guard.py \
             --source .work/tuya-zigbee-switch-metering \
             --json-out artifacts/source-guard.json
+
+          # Coordinator support is intentionally taken from the pinned downstream
+          # release, not regenerated from the canary's NVM-preserving config. The
+          # pinned converter already knows this model has Electrical Measurement
+          # and Smart Energy Metering support.
+          test "$(git -C .work/tuya-zigbee-switch-metering hash-object zigbee2mqtt/converters/switch_custom.js)" = "$CONVERTER_BLOB"
+          cp .work/tuya-zigbee-switch-metering/zigbee2mqtt/converters/switch_custom.js \
+             artifacts/switch_custom.js
 
       - name: Install downstream SDK/toolchain
         working-directory: .work/tuya-zigbee-switch-metering
@@ -138,8 +147,8 @@ jobs:
           print('OTA_IDENTITY_PASS manufacturer=4417 image_type=43556 normal+forced')
           PY
 
-          sha256sum artifacts/*.zigbee | sort | tee artifacts/SHA256SUMS
-          sha512sum artifacts/*.zigbee | sort | tee artifacts/SHA512SUMS
+          sha256sum artifacts/*.zigbee artifacts/switch_custom.js | sort | tee artifacts/SHA256SUMS
+          sha512sum artifacts/*.zigbee artifacts/switch_custom.js | sort | tee artifacts/SHA512SUMS
 
       - name: Record immutable build provenance
         run: |
@@ -157,6 +166,8 @@ jobs:
               'metering_source_commit': '8b8cc4924a353b35880666f7b48f0afbee89eb17',
               'overlay_script_sha256': sha256('scripts/apply-metering-overlay.py'),
               'overlay_guard_sha256': sha256('scripts/metering_overlay_guard.py'),
+              'z2m_converter_git_blob': '53b7c7bc66df95ca0316a98398f37bcee04a2a23',
+              'z2m_converter_sha256': sha256('artifacts/switch_custom.js'),
               'board': 'OUTLET_BSEED_PM_TS011F_b28wrpvx',
               'device_type': 'router',
               'preserved_device_config': 'b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;',
