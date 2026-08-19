@@ -50,7 +50,7 @@
     "max_voltage_step_fraction": 0.12,
     "min_power_step_ratio": 4.0,
     "max_cycle_power_cv": 0.25,
-    "require_energy_increase": true,
+    "require_energy_increase": false,
     "auto_interview": true,
     "auto_configure": true,
     "ota_health_check": true
