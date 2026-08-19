@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "observed_at": "2026-08-19",
+  "source": {
+    "repo": "HobboRobin/tuya-zigbee-switch-with-metering",
+    "branch": "main",
+    "commit": "8b8cc4924a353b35880666f7b48f0afbee89eb17",
+    "release": "1.2.5",
+    "version_source_commit": "273d58bd3f22eb5e66ab3fa1513d76d0105049c6",
+    "generated_artifacts_commit": "779610d2989dc6e65cb4f2d9f1e988dc8620b0cb"
+  },
+  "target": {
+    "device_key": "OUTLET_BSEED_PM_TS011F_b28wrpvx",
+    "stock_manufacturer": "_TZ3000_b28wrpvx",
+    "custom_manufacturer": "b28wrpvx",
+    "stock_model": "TS011F",
+    "custom_model": "TS011F-BS-PM",
+    "module": "ZTU",
+    "mcu": "TLSR8258",
+    "meter_ic_on_project_canary": "BL0937",
+    "reused_driver": "HLW8012/BL0937 pulse-compatible EP backend"
+  },
+  "hardware_mapping": {
+    "cf": "PA1",
+    "cf1": "PC2",
+    "sel": "PB1",
+    "downstream_hardware_verified_commit": "37de8385e5a661505ac9bc8d47b2e7791c7a5493",
+    "status": "SOURCE_CONFIRMED; exact project canary still requires DEVICE_CONFIRMED before OTA"
+  },
+  "calibration": {
+    "voltage_multiplier": 161460,
+    "current_multiplier": 144679,
+    "power_multiplier": 16989,
+    "status": "hardware-measured downstream default; verify/fine-tune on the project canary after safe assembled-device validation"
+  },
+  "known_good_downstream_artifact": {
+    "file_name": "tlc_switch-1.2.5-273d58bd3.zigbee",
+    "file_size": 201538,
+    "manufacturer_code": 4417,
+    "image_type": 43556,
+    "file_version": 302329857,
+    "sha512": "daebe99b57d18bc9eca1811c2ffc522a8b7f1b20e0e41c1597372efbd3bcba68d1669bf843d6554f79b855a6fa784158bddbf364801648d857069a35e47c91c8",
+    "note": "Reference artifact only. The project canary overlay intentionally changes the source and therefore must produce a different hash."
+  },
+  "canary_overlay": {
+    "preserved_control_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+    "candidate_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;EPA1C2B1;NOOL;M;",
+    "metering_token": "EPA1C2B1",
+    "disable_overload_token": "NOOL",
+    "reason": "Preserve existing relay/button/LED semantics for the first canary; add only pulse metering and explicitly prevent the downstream overload state machine from actuating the relay."
+  }
+}
