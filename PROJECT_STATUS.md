@@ -1,6 +1,6 @@
 # Project status
 
-Last Supervisor update: **2026-08-18**.
+Last Supervisor update: **2026-08-19**.
 
 ## Goal
 
@@ -26,92 +26,89 @@ OTA manufacturer: 4417 / 0x1141
 OTA image type: 43556 / 0xAA24
 ```
 
-## Hardware evidence
+## Class A closure state
 
-User PCB photographs identify Belling `BL0937`, `R001` current shunt and Tuya ZTU/Telink hardware. Exact target mappings remain unknown:
+Hard policy: `policy/CLASS_A_CLOSURE.md`.
+
+Class A means a fact whose wrong value could cause unsafe GPIO drive, wrong-target firmware, hardware damage or loss of OTA/recovery. Class A facts must be made exact before experimental firmware; calibration/timing/filtering remain Class B and are intentionally discovered later at runtime.
+
+### Already source-confirmed Class A invariants
+
+- target board/MCU/router profile;
+- frozen base config and existing GPIOs (`D2` relay, `B5` button, `C3` status LED, `B4` indicator);
+- OTA identity `4417/43556`;
+- Telink `0x40000` OTA slot limit;
+- protected early-boot/OTA/NVM/config source surfaces.
+
+### Hardware Class A — issue #3
+
+A-H01..A-H14 must all become `DEVICE_CONFIRMED` on one exact canary. Current status: **OPEN / BLOCKING** because no Executor result has yet closed the exact board-level facts.
+
+Required closure includes exact canary/PCB, runtime identity/config, BL0937 on that canary, BL0937 VDD/GND logic paths, complete CF/CF1/SEL ZTU-pin/TLSR-GPIO/resistance/topology, collision proof against existing GPIOs and SWS/RST/3V3/GND, exact recovery points, and an annotated board map.
+
+### Recovery Class A — issue #5
+
+A-R01..A-R07 must all become `RECOVERY_PROVEN`. Current status: **BLOCKED BY #3**.
+
+Required closure includes exact LKG FORCE artifact/hash, LKG self-reinstall, post-reinstall OTA liveness, actual unpowered SWS readback, reproducible full-flash backup, proven recovery wiring and final reassembled known-good health.
+
+### Machine enforcement
+
+- `templates/class-a-evidence.json` stores the exact canary evidence;
+- `scripts/class_a_gate.py` validates hardware/recovery closure and rejects runtime-identity drift, protected GPIO collisions, SWS/RST/3V3/GND pin collisions and incomplete evidence;
+- `scripts/preflash_gate.py` now requires a matching `class_a_gate.py --mode all` PASS report with `class_a_unknown_count=0`.
+
+No experimental OTA can therefore pass the preflash gate while a Class A fact remains unknown.
+
+## Hardware evidence already available
+
+Existing photographs identify Belling `BL0937`, `R001` current shunt and Tuya ZTU/Telink hardware. Because earlier photographs may contain more than one board marking/revision, those observations are not promoted to exact-canary Class A closure until issue #3 ties them to the chosen canary.
+
+Exact target mappings remain blocking:
 
 | Signal | BL0937 pin | State |
 |---|---:|---|
-| CF | 6 | exact ZTU/Telink GPIO UNKNOWN |
-| CF1 | 7 | exact ZTU/Telink GPIO UNKNOWN |
-| SEL | 8 | exact ZTU/Telink GPIO UNKNOWN |
+| CF | 6 | exact ZTU/Telink GPIO BLOCKING_UNKNOWN |
+| CF1 | 7 | exact ZTU/Telink GPIO BLOCKING_UNKNOWN |
+| SEL | 8 | exact ZTU/Telink GPIO BLOCKING_UNKNOWN |
 
-Phase 0 therefore remains active; no PM GPIO may be guessed.
-
-## Brick-prevention policy implemented
+## Brick-prevention policies
 
 Hard policies:
 
-- `policy/BRICK_THREAT_MODEL.md` — exhaustive known brick/soft-brick threat inventory and mandatory P0→P8 deployment ladder;
+- `policy/CLASS_A_CLOSURE.md` — dangerous facts must be exact before experiments;
+- `policy/BRICK_THREAT_MODEL.md` — known brick/soft-brick threat inventory and deployment ladder;
 - `policy/OTA_REVERSIBILITY.md` — OTA/recovery invariants and rollback proof;
 - `policy/EMPIRICAL_DEVELOPMENT.md` — empirical evidence ladder and one-variable-at-a-time experiments.
 
-Key rule: `UNKNOWN` recovery state means **DO NOT FLASH**.
+Key rule: `UNKNOWN` Class A/recovery state means **DO NOT FLASH**.
 
-### Threats explicitly covered
+## Machine-enforced gates
 
-The threat model includes wrong device/revision/MCU/role/config, runtime device-config mutation, OTA identity drift, malformed Zigbee/Telink artifacts, CRC/length/slot overflow, early-boot flash relocation changes, OTA/network path regression, crashes/watchdog loops/task starvation/timer conflicts, interrupt/report storms, unsafe GPIO drive/SWS-RST conflicts, NVM migration/persistence hazards, flash wear, wrong OTA target/index, bulk update, stale hashes, power/link failures and executor improvisation.
+### 1. Class A gate — `scripts/class_a_gate.py`
 
-## Machine-enforced gates implemented
+Closes dangerous hardware/recovery facts and validates canary identity plus GPIO/recovery-pin collisions.
 
-### 1. Artifact gate — `scripts/ota_guard.py`
+### 2. Artifact gate — `scripts/ota_guard.py`
 
-Validates:
+Validates Zigbee OTA structure, exact BSEED identity, Telink payload magic/size/CRC/startup flag/version and frozen base config.
 
-- Zigbee OTA header/length/optional fields;
-- exact BSEED OTA identity;
-- one valid firmware sub-element;
-- Telink inner magic;
-- embedded firmware size and `<= 0x40000` slot bound;
-- Telink CRC;
-- startup flag continuity;
-- inner/outer firmware version relationship;
-- exact frozen BSEED base config present once.
+### 3. Source-diff gate — `scripts/recovery_surface_guard.py`
 
-### 2. Source-diff gate — `scripts/recovery_surface_guard.py`
+Rejects changes to recovery-critical upstream source/config paths.
 
-Ordinary PM work is rejected if it changes recovery-critical upstream surfaces, including BSEED `device_db.yaml`, Telink `main.c`, OTA client/network path, NVM/config/reset code or `src/telink/ota_reformating/**`.
+### 4. Candidate gate — `scripts/candidate_gate.py`
 
-### 3. Candidate gate — `scripts/candidate_gate.py`
+Requires exact board/MCU/router/config identity, immutable source, verified candidate/rollback hashes, forced LKG rollback and offline checks.
 
-Requires schema-2 candidate manifest, exact board/MCU/router/config identity, exact candidate/rollback hashes, forced LKG rollback artifact, source-guard evidence, offline build/stub/policy PASS, PM disabled by default and zero recovery/base-config/base-GPIO/NVM-schema changes during current phases.
+### 5. Live device gate — `scripts/preflash_gate.py`
 
-### 4. Live device gate — `scripts/preflash_gate.py`
-
-Immediately before a flash proposal, requires fresh evidence for exact canary/PCB, current healthy OTA/network/converter state, isolated/manual OTA, relay/button/LED baseline, stable power/link, closed enclosure, no load/automation interference, rollback hash, LKG self-reinstall evidence, verified full-flash backup and unpowered SWS readback/recovery evidence.
-
-### Supporting tooling
-
-- `templates/candidate-manifest.json` — schema 2;
-- `templates/preflash-state.json`;
-- `scripts/new-candidate.ps1` — creates a local guarded candidate workspace and documents the entire gate chain;
-- `docs/RECOVERY_RUNBOOK.md` — prevention-first recovery procedure;
-- `templates/experiment.json` and `scripts/record-observation.py` — empirical raw observation workflow;
-- `.github/workflows/supervisor-policy.yml` — compile/self-test/unit-test enforcement.
-
-## Automated validation
-
-Expanded brick-prevention tests include malformed outer OTA, total-size mismatch, invalid sub-element, Telink magic/CRC failure, outer/inner version mismatch, oversized image, missing frozen config, OTA identity/startup-flag/hardware-range drift, PM-on-by-default, recovery-source changes, board-role drift, bad hashes, non-forced rollback and live preflash failures.
-
-GitHub Actions completed successfully for:
-
-- expanded prevention test commit `154173f74c27db6e950f44d959f27be810a0f3e6`;
-- CI wiring commit `aa82105e997e1ded3857635f1fc3f191e78b091c`, which also explicitly compiles/self-tests `ota_guard`, `candidate_gate`, `recovery_surface_guard` and `preflash_gate`.
-
-## New mandatory recovery proof before experimental code
-
-Before the first experimental candidate, the exact canary must pass:
-
-1. **LKG self-reinstall drill** — install the exact known-good forced/reinstall OTA onto the still-known-good device and re-verify version/rejoin/relay/button/LED/OTA;
-2. **full-flash backup** — read and SHA-256 verify a local backup using the unpowered wired path;
-3. **SWS recovery readback** — prove actual recovery access on this canary, not just theoretical pad availability.
-
-This does not make wired recovery the normal path; it proves the emergency path before risk is introduced.
+Requires a zero-unknown Class A report plus fresh healthy canary/OTA/recovery/operational state immediately before a flash proposal.
 
 ## Deployment ladder
 
-1. P0 exact target + recovery baseline;
-2. P1 LKG self-reinstall drill;
+1. P0 issue #3 closes hardware Class A;
+2. P1 issue #5 closes recovery Class A and LKG self-reinstall;
 3. P2 no-functional-change pipeline candidate + candidate→LKG→candidate round trip;
 4. P3 PM plumbing compiled but inactive;
 5. P4 volatile activation control only, touching no PM GPIO;
@@ -122,19 +119,13 @@ This does not make wired recovery the normal path; it proves the emergency path 
 
 During discovery every reboot returns PM to disabled.
 
-## Current blockers
+## Current blocker summary
 
-Before P2 experimental firmware:
-
-- [ ] issue #3: exact canary/PCB identified;
-- [ ] CF exact ZTU pin + Telink GPIO + resistance;
-- [ ] CF1 exact ZTU pin + Telink GPIO + resistance;
-- [ ] SEL exact ZTU pin + Telink GPIO + resistance;
-- [ ] annotated mapping photo;
-- [ ] sanitized Zigbee2MQTT metadata/current custom firmware identity;
-- [ ] exact known-good forced/reinstall OTA artifact obtained locally;
-- [ ] LKG self-reinstall drill PASS;
-- [ ] full-flash backup + SHA-256 PASS;
-- [ ] unpowered SWS readback/recovery PASS.
+```text
+CLASS_A_SOURCE   = CONFIRMED
+CLASS_A_HARDWARE = OPEN (issue #3)
+CLASS_A_RECOVERY = BLOCKED_BY_HARDWARE (issue #5)
+EXPERIMENTAL_OTA = NOT_AUTHORIZED
+```
 
 No experimental firmware flash is currently authorized.
