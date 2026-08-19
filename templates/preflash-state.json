@@ -12,6 +12,8 @@
   "ota_manufacturer_code": 4417,
   "ota_image_type": 43556,
   "current_sw_build_id": "",
+  "class_a_gate_report": "class_a_gate_all.json",
+  "class_a_closed": "PENDING",
   "network_joined": "PENDING",
   "converter_loaded": "PENDING",
   "candidate_index_isolated": "PENDING",
