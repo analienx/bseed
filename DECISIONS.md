@@ -76,10 +76,18 @@ For that exact identity, overload measurements remain available but the downstre
 
 ## D-013 — Build artifacts are evidence, not flash authorization
 
-**Decision:** the canary build workflow is `workflow_dispatch` only and uploads the candidate plus provenance/hashes as CI artifacts. Producing a valid image never authorizes OTA by itself. Issue #5 recovery proof and the project's pre-flash gates remain mandatory before a canary flash.
+**Decision:** the canary workflow runs for the implementation PR and can also be dispatched manually. It performs only offline source checks, downstream tests, firmware build and artifact validation. Producing a valid image never authorizes OTA by itself. Issue #5 recovery proof and the project's live pre-flash gates remain mandatory before a canary flash.
 
 ## D-014 — Coordinator metadata is pinned separately from firmware config
 
 **Decision:** package the downstream 1.2.5 `switch_custom.js` converter from Git blob `53b7c7bc66df95ca0316a98398f37bcee04a2a23` with the canary artifacts instead of regenerating it from the NVM-preserving candidate `device_db`.
 
 **Reason:** converter generation uses the device config to infer PM exposes. Our firmware intentionally removes the explicit `EP` token from that config, but the runtime firmware still exposes the standard metering clusters. The already-generated downstream converter correctly describes those clusters and is pinned/hash-checked independently.
+
+## D-015 — Bind every candidate to the actual reviewed head and CI provenance
+
+**Decision:** PR builds check out the real PR head SHA rather than GitHub's synthetic merge commit. `build-provenance.json` records that supervisor SHA, the pinned downstream commit, overlay/guard hashes, exact converter blob/hash, PA1/PC2/PB1 mapping, preserved config, and the normal/forced OTA hashes plus versions.
+
+`metering_candidate_gate.py` independently recomputes the local overlay-script hashes and cross-checks the candidate and converter against the CI provenance. This prevents a manually edited manifest from silently changing which source/artifact is being proposed.
+
+The canary workflow is serialized per PR/ref with stale runs cancelled on subsequent revisions.
