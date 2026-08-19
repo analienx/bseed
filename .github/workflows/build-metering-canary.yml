@@ -89,8 +89,7 @@ jobs:
 
       - name: Run downstream firmware tests
         working-directory: .work/tuya-zigbee-switch-metering
-        run: |
-          .venv/bin/python -m pytest tests/ -v
+        run: make tests PYTHON=.venv/bin/python
 
       - name: Recheck exact source overlay after setup/tests
         run: |
