@@ -13,10 +13,17 @@ on:
       - 'scripts/metering_overlay_guard.py'
       - 'scripts/metering_candidate_gate.py'
       - 'scripts/new-metering-candidate.ps1'
+      - 'scripts/class_a_gate.py'
+      - 'scripts/confirmation_preflash_gate.py'
+      - 'scripts/preflash_gate.py'
       - 'scripts/ota_guard.py'
       - 'metering-source.lock.json'
       - 'templates/metering-candidate-manifest.json'
+      - 'templates/class-a-functional-evidence.json'
+      - 'templates/confirmation-preflash.json'
+      - 'policy/CLASS_A_CLOSURE.md'
       - 'tests/test_metering_candidate_gate.py'
+      - 'tests/test_functional_class_a_path.py'
 
 permissions:
   contents: read
