@@ -8,6 +8,12 @@ $root = (& git rev-parse --show-toplevel).Trim()
 if ($LASTEXITCODE -ne 0) { throw 'Not inside a git repository.' }
 Set-Location $root
 
+function Get-LfTextSha256([string]$Path) {
+    $text = [System.Text.Encoding]::UTF8.GetString([System.IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $Path)))
+    $bytes = [System.Text.UTF8Encoding]::new($false).GetBytes($text.Replace("`r`n", "`n"))
+    return ([System.Security.Cryptography.SHA256]::HashData($bytes) | ForEach-Object ToString x2) -join ''
+}
+
 $supervisorCommit = (& git rev-parse HEAD).Trim()
 if ($supervisorCommit -notmatch '^[0-9a-fA-F]{40}$') {
     throw 'Could not resolve the supervisor commit.'
@@ -20,8 +26,8 @@ New-Item -ItemType Directory -Force -Path $dir | Out-Null
 $template = Get-Content '.\templates\metering-candidate-manifest.json' -Raw | ConvertFrom-Json
 $template.candidate_id = $CandidateId
 $template.supervisor_commit = $supervisorCommit
-$template.source.overlay_script_sha256 = (Get-FileHash -Algorithm SHA256 '.\scripts\apply-metering-overlay.py').Hash.ToLowerInvariant()
-$template.source.overlay_guard_sha256 = (Get-FileHash -Algorithm SHA256 '.\scripts\metering_overlay_guard.py').Hash.ToLowerInvariant()
+$template.source.overlay_script_sha256 = Get-LfTextSha256 '.\scripts\apply-metering-overlay.py'
+$template.source.overlay_guard_sha256 = Get-LfTextSha256 '.\scripts\metering_overlay_guard.py'
 $template | ConvertTo-Json -Depth 20 | Set-Content -Encoding utf8 (Join-Path $dir 'metering_candidate_manifest.json')
 Copy-Item '.\templates\preflash-state.json' (Join-Path $dir 'preflash-state.json')
 

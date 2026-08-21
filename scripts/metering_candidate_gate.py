@@ -72,6 +72,11 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def sha256_lf_text_file(path: Path) -> str:
+    """Hash reviewed text tooling as LF, matching the Linux CI provenance."""
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
 def git_blob_sha1(path: Path) -> str:
     data = path.read_bytes()
     h = hashlib.sha1()
@@ -159,12 +164,12 @@ def evaluate(path: Path) -> dict[str, Any]:
     local_overlay_script = Path(__file__).with_name("apply-metering-overlay.py")
     local_overlay_guard = Path(__file__).with_name("metering_overlay_guard.py")
     if local_overlay_script.is_file() and overlay_script_hash:
-        if sha256_file(local_overlay_script) != overlay_script_hash:
+        if sha256_lf_text_file(local_overlay_script) != overlay_script_hash:
             errors.append("source.overlay_script_sha256 does not match local reviewed overlay script")
     else:
         errors.append("local apply-metering-overlay.py is missing")
     if local_overlay_guard.is_file() and overlay_guard_hash:
-        if sha256_file(local_overlay_guard) != overlay_guard_hash:
+        if sha256_lf_text_file(local_overlay_guard) != overlay_guard_hash:
             errors.append("source.overlay_guard_sha256 does not match local reviewed overlay guard")
     else:
         errors.append("local metering_overlay_guard.py is missing")
