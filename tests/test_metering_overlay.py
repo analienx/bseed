@@ -89,6 +89,9 @@ class MeteringOverlayTests(unittest.TestCase):
             module.CANDIDATE_CONFIG,
             'b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;',
         )
+        self.assertFalse(module._config_has_pwm_led_flag(module.CANDIDATE_CONFIG))
+        self.assertTrue(module._config_has_pwm_led_flag(module.ORIGINAL_CONFIG))
+        self.assertIn('p', module.CANDIDATE_CONFIG)
         for token in ('LC3', 'SB5u', 'RD2', 'IB4', 'M'):
             self.assertIn(f';{token};', ';' + module.CANDIDATE_CONFIG)
         self.assertNotIn('EP', module.CANDIDATE_CONFIG)

@@ -39,6 +39,10 @@ ORIGINAL_CONFIG = (
 )
 CANDIDATE_CONFIG = "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;"
 
+
+def _config_has_pwm_led_flag(config: str) -> bool:
+    return any(token.endswith("p") for token in config.split(";") if token)
+
 GLOBAL_NEEDLE = (
     "static uint8_t            energy_monitoring_enabled  = 0;\n"
     "static uint8_t            energy_monitoring_endpoint = 1;"
@@ -237,7 +241,7 @@ def verify_post_state(root: Path) -> dict:
             raise RuntimeError(f"control config invariant failed for token {token}")
     if "EP" in CANDIDATE_CONFIG or "EB" in CANDIDATE_CONFIG:
         raise RuntimeError("candidate config must not require a meter token/NVM rewrite")
-    if "p" in CANDIDATE_CONFIG:
+    if _config_has_pwm_led_flag(CANDIDATE_CONFIG):
         raise RuntimeError("candidate config must not opt into downstream PWM LED behavior")
 
     return {
