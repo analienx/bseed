@@ -143,6 +143,25 @@ class FunctionalClassAPathTests(unittest.TestCase):
             self.assertEqual(result["status"], "FAIL")
             self.assertTrue(any("PA1/PC2/PB1" in e for e in result["errors"]))
 
+    def test_recovery_closes_from_ota_proof_without_pcb_or_sws_evidence(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            evidence = {
+                "schema_version": 2,
+                "device_id": "DEV-001",
+                "hardware": {},
+                "recovery": {
+                    "A-R01": {"status": "RECOVERY_PROVEN", "value": {"path": "lkg.zigbee", "sha256": "a" * 64}, "evidence": "parsed forced LKG"},
+                    "A-R02": {"status": "RECOVERY_PROVEN", "value": True, "evidence": "LKG self-reinstall"},
+                    "A-R03": {"status": "RECOVERY_PROVEN", "value": True, "evidence": "post-reinstall OTA liveness"},
+                },
+            }
+            p = root / "recovery.json"
+            p.write_text(json.dumps(evidence), encoding="utf-8")
+            result = class_a.evaluate(p, "recovery")
+            self.assertEqual(result["status"], "PASS")
+            self.assertEqual(result["class_a_unknown_count"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

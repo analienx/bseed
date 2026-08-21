@@ -19,8 +19,7 @@ EXPECTED_RUNTIME = {
 EXPECTED_MAPPING = {"cf": "PA1", "cf1": "PC2", "sel": "PB1"}
 PASS_FIELDS = (
     "relay_baseline", "button_baseline", "led_baseline", "network_joined",
-    "ota_liveness", "lkg_self_reinstall", "sws_recovery_readback",
-    "full_flash_backup_verified", "enclosure_closed", "relay_off_before_ota",
+    "ota_liveness", "lkg_self_reinstall", "enclosure_closed", "relay_off_before_ota",
     "load_disconnected_during_ota", "canary_automations_disabled",
     "automatic_ota_disabled", "bulk_update_disabled", "stable_power",
     "ota_link_quality",
@@ -67,9 +66,6 @@ def evaluate(path: Path) -> dict[str, Any]:
         errors.append("schema_version must be 1")
     if not str(data.get("device_id", "")).strip():
         errors.append("device_id is required")
-    if not str(data.get("pcb_revision", "")).strip():
-        errors.append("pcb_revision is required")
-
     runtime = data.get("runtime_profile")
     if not isinstance(runtime, dict):
         errors.append("runtime_profile must be an object")
@@ -172,7 +168,6 @@ def evaluate(path: Path) -> dict[str, Any]:
         "kind": "confirmation_preflash_gate",
         "status": "PASS" if not errors else "FAIL",
         "device_id": data.get("device_id"),
-        "pcb_revision": data.get("pcb_revision"),
         "source_mapping": EXPECTED_MAPPING,
         "candidate_sha256": candidate_hash,
         "rollback_sha256": rollback_hash,

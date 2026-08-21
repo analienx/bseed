@@ -1,7 +1,6 @@
 {
   "schema_version": 1,
   "device_id": "DEV-001",
-  "pcb_revision": "",
   "runtime_profile": {
     "manufacturer_name": "b28wrpvx",
     "model_id": "TS011F-BS-PM",
@@ -25,8 +24,6 @@
   "network_joined": "PENDING",
   "ota_liveness": "PENDING",
   "lkg_self_reinstall": "PENDING",
-  "sws_recovery_readback": "PENDING",
-  "full_flash_backup_verified": "PENDING",
   "enclosure_closed": "PENDING",
   "relay_off_before_ota": "PENDING",
   "load_disconnected_during_ota": "PENDING",

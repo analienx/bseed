@@ -24,10 +24,6 @@
       "evidence": "exact known-good FORCE/reinstall OTA manifest"
     },
     "A-R02": {"status": "RECOVERY_PROVEN", "value": true, "evidence": "LKG self-reinstall result"},
-    "A-R03": {"status": "RECOVERY_PROVEN", "value": true, "evidence": "post-reinstall OTA liveness"},
-    "A-R04": {"status": "RECOVERY_PROVEN", "value": true, "evidence": "unpowered SWS readback result"},
-    "A-R05": {"status": "RECOVERY_PROVEN", "value": true, "evidence": "full-flash backup + second stable hash"},
-    "A-R06": {"status": "RECOVERY_PROVEN", "value": true, "evidence": "verified unpowered recovery wiring/readback"},
-    "A-R07": {"status": "RECOVERY_PROVEN", "value": true, "evidence": "final reassembled known-good health check"}
+    "A-R03": {"status": "RECOVERY_PROVEN", "value": true, "evidence": "post-reinstall OTA liveness"}
   }
 }

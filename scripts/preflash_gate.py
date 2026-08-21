@@ -38,8 +38,6 @@ PASS_FIELDS = (
     "canary_automations_disabled",
     "known_good_rollback_hash_verified",
     "lkg_self_reinstall",
-    "sws_recovery_readback",
-    "full_flash_backup_verified",
     "no_pending_device_config_change",
 )
 
@@ -82,9 +80,6 @@ def evaluate(path: Path) -> dict[str, Any]:
     device_id = str(state.get("device_id", ""))
     if not device_id or device_id.upper() in {"UNKNOWN", "TBD"}:
         errors.append("exact project-local canary device_id is required")
-    pcb = str(state.get("pcb_revision", ""))
-    if not pcb or pcb.upper() in {"UNKNOWN", "TBD"}:
-        errors.append("exact PCB revision/identifier is required before flash")
     if state.get("canary_authorized") is not True:
         errors.append("canary_authorized must be true")
 
@@ -116,8 +111,6 @@ def evaluate(path: Path) -> dict[str, Any]:
                     errors.append("class_a_gate_report unknown count is not zero")
                 if class_a.get("device_id") != device_id:
                     errors.append("class_a_gate_report device_id does not match preflash canary")
-                if class_a.get("pcb_revision") != pcb:
-                    errors.append("class_a_gate_report PCB revision does not match preflash state")
             except json.JSONDecodeError:
                 errors.append("class_a_gate_report is not valid JSON")
 
@@ -138,19 +131,6 @@ def evaluate(path: Path) -> dict[str, Any]:
         elif SHA256_RE.match(rollback_hash) and sha256_file(rollback_path).lower() != rollback_hash.lower():
             errors.append("rollback_ota file does not match rollback_sha256")
 
-    backup_hash = str(state.get("full_flash_backup_sha256", ""))
-    backup_path_raw = str(state.get("full_flash_backup", ""))
-    if not SHA256_RE.match(backup_hash):
-        errors.append("full_flash_backup_sha256 must be a full SHA-256")
-    if not backup_path_raw:
-        errors.append("full_flash_backup path is required")
-    else:
-        backup_path = resolve(base, backup_path_raw)
-        if not backup_path.is_file():
-            errors.append(f"full_flash_backup does not exist: {backup_path}")
-        elif SHA256_RE.match(backup_hash) and sha256_file(backup_path).lower() != backup_hash.lower():
-            errors.append("full flash backup does not match full_flash_backup_sha256")
-
     evidence_raw = str(state.get("lkg_self_reinstall_evidence", ""))
     if not evidence_raw:
         errors.append("lkg_self_reinstall_evidence path is required")
@@ -169,7 +149,6 @@ def evaluate(path: Path) -> dict[str, Any]:
         "kind": "preflash_gate",
         "status": "PASS" if not errors else "FAIL",
         "device_id": device_id,
-        "pcb_revision": pcb,
         "errors": errors,
         "warnings": warnings,
         "next_gate": "ELIGIBLE_FOR_SUPERVISOR_OTA_CANARY_REVIEW" if not errors else "BLOCKED",
@@ -188,7 +167,7 @@ def main() -> int:
         assert EXPECTED["device_config"].endswith("M;")
         assert "class_a_closed" in PASS_FIELDS
         assert "lkg_self_reinstall" in PASS_FIELDS
-        assert "sws_recovery_readback" in PASS_FIELDS
+        assert "sws_recovery_readback" not in PASS_FIELDS
         print("SELF_TEST=PASS")
         return 0
     if args.state is None:

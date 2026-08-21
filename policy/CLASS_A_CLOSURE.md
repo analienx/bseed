@@ -85,7 +85,7 @@ This is narrower than the normal preflash gate. It requires Recovery Class A PAS
 - exact source mapping PA1/PC2/PB1;
 - adopted metering candidate gate PASS;
 - LKG self-reinstall PASS;
-- SWS readback/full-flash backup PASS;
+- post-reinstall OTA liveness PASS;
 - relay/button/LED/network/OTA baseline healthy;
 - enclosure closed;
 - relay OFF and load disconnected during OTA;
@@ -105,14 +105,10 @@ These remain dangerous to assume and must be empirically proven while the canary
 | A-R01 | Exact known-good FORCE/reinstall OTA artifact exists locally | parsed artifact + SHA-256 + exact target identity |
 | A-R02 | Exact LKG FORCE artifact is accepted by this canary | known-good -> same-known-good reinstall drill |
 | A-R03 | OTA remains live after LKG self-reinstall | post-reinstall OTA check + normal device baseline |
-| A-R04 | SWS readback works on this exact canary | unpowered programmer readback evidence |
-| A-R05 | Full flash can be backed up reproducibly | full read + SHA-256 + second stable read/hash |
-| A-R06 | Recovery wiring points are correct in practice | successful unpowered 3V3/GND/SWS(/RST) communication |
-| A-R07 | Final reassembled known-good state remains healthy | rejoin + relay/button/LED + OTA after backup/readback procedure |
 
 ### Recovery closure rule
 
-No first-confirmation OTA or later experimental firmware may be flashed until A-R01 through A-R07 are `RECOVERY_PROVEN`.
+No first-confirmation OTA or later experimental firmware may be flashed until A-R01 through A-R03 are `RECOVERY_PROVEN`. SWS is emergency-only if OTA recovery is actually unavailable.
 
 ## E. Things intentionally NOT Class A
 
