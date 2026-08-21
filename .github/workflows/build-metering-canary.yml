@@ -70,6 +70,19 @@ jobs:
             .work/tuya-zigbee-switch-metering/.venv
           key: bseed-metering-telink-${{ runner.os }}-${{ env.SOURCE_COMMIT }}-${{ hashFiles('metering-source.lock.json') }}
 
+      - name: Run unchanged downstream firmware tests
+        working-directory: .work/tuya-zigbee-switch-metering
+        run: |
+          # The upstream config/calibration tests describe the unmodified
+          # source. PR6 deliberately changes the compiled BSEED config to the
+          # NVM-preserving form without an EP/EB token, so run those tests
+          # before applying the reviewed overlay.
+          if [ ! -x .venv/bin/python ]; then
+            make setup_venv
+          fi
+          .venv/bin/python -m pip install -r requirements.txt
+          make tests PYTHON=.venv/bin/python
+
       - name: Apply minimal NVM-preserving BSEED overlay
         run: |
           mkdir -p artifacts
@@ -103,11 +116,7 @@ jobs:
           .venv/bin/python -m pip install -r requirements.txt
           make telink/tools/verify
 
-      - name: Run downstream firmware tests
-        working-directory: .work/tuya-zigbee-switch-metering
-        run: make tests PYTHON=.venv/bin/python
-
-      - name: Recheck exact source overlay after setup/tests
+      - name: Recheck exact source overlay after setup
         run: |
           python3 scripts/metering_overlay_guard.py \
             --source .work/tuya-zigbee-switch-metering \
