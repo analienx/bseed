@@ -11,8 +11,12 @@ on:
       - '.github/workflows/build-metering-canary.yml'
       - 'scripts/apply-metering-overlay.py'
       - 'scripts/metering_overlay_guard.py'
+      - 'scripts/metering_candidate_gate.py'
+      - 'scripts/new-metering-candidate.ps1'
       - 'scripts/ota_guard.py'
       - 'metering-source.lock.json'
+      - 'templates/metering-candidate-manifest.json'
+      - 'tests/test_metering_candidate_gate.py'
 
 permissions:
   contents: read
