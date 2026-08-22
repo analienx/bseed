@@ -61,7 +61,13 @@ REQUIRED_OFFLINE_CHECKS = {
 EXPECTED_OVERLAY_FILES = [
     "device_db.yaml",
     "src/device_config/config_parser.c",
+    "src/base_components/energy_measurement/hlw8012.c",
+    "src/base_components/energy_measurement/hlw8012.h",
 ]
+
+
+def exact_overlay_files(changed_files: list[str]) -> bool:
+    return sorted(changed_files) == sorted(EXPECTED_OVERLAY_FILES)
 
 
 def sha256_file(path: Path) -> str:
@@ -212,7 +218,7 @@ def evaluate(path: Path) -> dict[str, Any]:
                 errors.append("source guard status is not PASS")
             if guard.get("baseline") != SOURCE_COMMIT:
                 errors.append("source guard baseline is not the pinned downstream commit")
-            if guard.get("changed_files") != EXPECTED_OVERLAY_FILES:
+            if not exact_overlay_files(guard.get("changed_files", [])):
                 errors.append("source guard changed_files are not the exact reviewed overlay files")
             if guard.get("exact_overlay_match") is not True:
                 errors.append("source guard did not prove exact overlay equality")
