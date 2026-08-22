@@ -27,6 +27,8 @@ spec.loader.exec_module(overlay)
 EXPECTED_CHANGED = {
     "device_db.yaml",
     "src/device_config/config_parser.c",
+    "src/base_components/energy_measurement/hlw8012.c",
+    "src/base_components/energy_measurement/hlw8012.h",
 }
 
 
@@ -86,6 +88,14 @@ def evaluate(root: Path) -> dict[str, Any]:
         expected["src/device_config/config_parser.c"] = (
             overlay.overlay_config_parser(base_parser)[0]
         )
+        base_hlw_header = _base_text(root, "src/base_components/energy_measurement/hlw8012.h")
+        base_hlw_source = _base_text(root, "src/base_components/energy_measurement/hlw8012.c")
+        expected["src/base_components/energy_measurement/hlw8012.h"] = (
+            overlay.overlay_hlw8012_header(base_hlw_header)[0]
+        )
+        expected["src/base_components/energy_measurement/hlw8012.c"] = (
+            overlay.overlay_hlw8012_source(base_hlw_source)[0]
+        )
     except (RuntimeError, OSError) as exc:
         errors.append(f"could not regenerate expected overlay: {exc}")
 
@@ -137,6 +147,8 @@ def main() -> int:
         assert EXPECTED_CHANGED == {
             "device_db.yaml",
             "src/device_config/config_parser.c",
+            "src/base_components/energy_measurement/hlw8012.c",
+            "src/base_components/energy_measurement/hlw8012.h",
         }
         print("SELF_TEST=PASS")
         return 0

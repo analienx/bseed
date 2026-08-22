@@ -117,6 +117,34 @@ class MeteringOverlayTests(unittest.TestCase):
             module.PARSE_START_REPLACEMENT.index('device_config_read_from_nv();'),
         )
 
+    def test_no_load_overlay_requires_three_samples_and_preserves_voltage_path(self):
+        header = (
+            module.HLW8012_NO_LOAD_DEFINES_NEEDLE
+            + module.HLW8012_HEADER_NO_LOAD_NEEDLE
+        )
+        source = (
+            module.HLW8012_POWER_NEEDLE
+            + module.HLW8012_ENERGY_NEEDLE
+            + module.HLW8012_POST_CF1_NEEDLE
+            + module.HLW8012_INSTANT_POWER_NEEDLE
+        )
+        header_updated, header_changed = module.overlay_hlw8012_header(header)
+        source_updated, source_changed = module.overlay_hlw8012_source(source)
+        self.assertTrue(header_changed)
+        self.assertTrue(source_changed)
+        self.assertIn('HLW8012_NO_LOAD_POWER_W             2', header_updated)
+        self.assertIn('HLW8012_NO_LOAD_CURRENT_MA          50', header_updated)
+        self.assertIn('HLW8012_NO_LOAD_CONFIRM_SAMPLES     3', header_updated)
+        self.assertIn('dev->data.no_load_suppressed = 1;', source_updated)
+        self.assertIn('dev->data.current = 0;', source_updated)
+        self.assertIn('if (!dev->data.no_load_suppressed) {', source_updated)
+        self.assertIn(
+            'dev->data.no_load_suppressed && power <= HLW8012_NO_LOAD_POWER_W',
+            source_updated,
+        )
+        self.assertEqual(module.overlay_hlw8012_header(header_updated), (header_updated, False))
+        self.assertEqual(module.overlay_hlw8012_source(source_updated), (source_updated, False))
+
 
 if __name__ == '__main__':
     unittest.main()

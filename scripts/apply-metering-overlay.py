@@ -122,6 +122,90 @@ CALIBRATION_MARKERS = (
     "hlw8012_power_multiplier: 16989",
 )
 
+HLW8012_HEADER_NO_LOAD_NEEDLE = "    uint32_t energy_acc; // energy sub-unit remainder (pulses*MULT, < 1 Wh)\n"
+HLW8012_HEADER_NO_LOAD_REPLACEMENT = HLW8012_HEADER_NO_LOAD_NEEDLE + (
+    "    // Consecutive low samples prevent the calibrated no-load pulse floor from\n"
+    "    // becoming phantom power/energy or an overload input.\n"
+    "    uint8_t  no_load_samples;\n"
+    "    uint8_t  no_load_suppressed;\n"
+)
+
+HLW8012_NO_LOAD_DEFINES_NEEDLE = "#define HLW8012_MAX_SANE_PULSES              30000\n"
+HLW8012_NO_LOAD_DEFINES_REPLACEMENT = HLW8012_NO_LOAD_DEFINES_NEEDLE + (
+    "// Exact-canary calibrated no-load envelope: observed residual was 1 W / 37 mA.\n"
+    "#define HLW8012_NO_LOAD_POWER_W             2\n"
+    "#define HLW8012_NO_LOAD_CURRENT_MA          50\n"
+    "#define HLW8012_NO_LOAD_CONFIRM_SAMPLES     3\n"
+)
+
+HLW8012_POWER_NEEDLE = """    dev->data.power = (int16_t)(((uint32_t)cf_pulses * dev->cal.power_multiplier +
+                                 HLW8012_FIXED_POINT_SCALE / 2) /
+                                HLW8012_FIXED_POINT_SCALE);
+
+    // Energy: accumulate pulses*MULT sub-units and carry whole Wh out by
+"""
+HLW8012_POWER_REPLACEMENT = """    dev->data.power = (int16_t)(((uint32_t)cf_pulses * dev->cal.power_multiplier +
+                                 HLW8012_FIXED_POINT_SCALE / 2) /
+                                HLW8012_FIXED_POINT_SCALE);
+
+    // Energy: accumulate pulses*MULT sub-units and carry whole Wh out by
+"""
+
+HLW8012_ENERGY_NEEDLE = """    dev->data.energy_acc += (uint32_t)cf_pulses * dev->cal.power_multiplier;
+    while (dev->data.energy_acc >= HLW8012_ENERGY_WH_SUBUNIT) {
+        dev->data.energy_acc -= HLW8012_ENERGY_WH_SUBUNIT;
+        dev->data.energy++;
+    }
+"""
+HLW8012_ENERGY_REPLACEMENT = ""
+
+HLW8012_POST_CF1_NEEDLE = """        }
+    }
+
+    dev->data.valid            = 1;
+"""
+HLW8012_POST_CF1_REPLACEMENT = """        }
+    }
+
+    // Suppress only a confirmed calibrated no-load floor. A real load exits on
+    // its first sample; voltage and raw CF/CF1 diagnostics remain available.
+    if (dev->data.power <= HLW8012_NO_LOAD_POWER_W &&
+        dev->data.current <= HLW8012_NO_LOAD_CURRENT_MA) {
+        if (dev->data.no_load_samples < HLW8012_NO_LOAD_CONFIRM_SAMPLES)
+            dev->data.no_load_samples++;
+        if (dev->data.no_load_samples == HLW8012_NO_LOAD_CONFIRM_SAMPLES) {
+            dev->data.no_load_suppressed = 1;
+            dev->data.current = 0;
+            dev->data.power = 0;
+        }
+    } else {
+        dev->data.no_load_samples = 0;
+        dev->data.no_load_suppressed = 0;
+    }
+
+    if (!dev->data.no_load_suppressed) {
+        dev->data.energy_acc += (uint32_t)cf_pulses * dev->cal.power_multiplier;
+        while (dev->data.energy_acc >= HLW8012_ENERGY_WH_SUBUNIT) {
+            dev->data.energy_acc -= HLW8012_ENERGY_WH_SUBUNIT;
+            dev->data.energy++;
+        }
+    }
+
+    dev->data.valid            = 1;
+"""
+
+HLW8012_INSTANT_POWER_NEEDLE = """    return (int32_t)((pulses_full * dev->cal.power_multiplier +
+                      HLW8012_FIXED_POINT_SCALE / 2) /
+                     HLW8012_FIXED_POINT_SCALE);
+"""
+HLW8012_INSTANT_POWER_REPLACEMENT = """    int32_t power = (int32_t)((pulses_full * dev->cal.power_multiplier +
+                             HLW8012_FIXED_POINT_SCALE / 2) /
+                            HLW8012_FIXED_POINT_SCALE);
+    if (dev->data.no_load_suppressed && power <= HLW8012_NO_LOAD_POWER_W)
+        return 0;
+    return power;
+"""
+
 
 def _replace_once(text: str, old: str, new: str, label: str) -> str:
     count = text.count(old)
@@ -181,6 +265,46 @@ def overlay_config_parser(text: str) -> Tuple[str, bool]:
     return text, True
 
 
+def overlay_hlw8012_header(text: str) -> Tuple[str, bool]:
+    """Add exact-canary no-load state without changing calibration storage."""
+    markers = (
+        "HLW8012_NO_LOAD_POWER_W",
+        "no_load_samples;",
+        "no_load_suppressed;",
+    )
+    if all(marker in text for marker in markers):
+        return text, False
+    if any(marker in text for marker in markers):
+        raise RuntimeError("hlw8012.h has a partial/inconsistent no-load overlay")
+    text = _replace_once(text, HLW8012_NO_LOAD_DEFINES_NEEDLE,
+                         HLW8012_NO_LOAD_DEFINES_REPLACEMENT, "no-load constants")
+    return _replace_once(text, HLW8012_HEADER_NO_LOAD_NEEDLE,
+                         HLW8012_HEADER_NO_LOAD_REPLACEMENT, "no-load state"), True
+
+
+def overlay_hlw8012_source(text: str) -> Tuple[str, bool]:
+    """Suppress only the confirmed calibrated no-load pulse floor at its source."""
+    markers = (
+        "HLW8012_NO_LOAD_CONFIRM_SAMPLES",
+        "dev->data.no_load_suppressed = 1;",
+        "if (!dev->data.no_load_suppressed) {",
+        "dev->data.no_load_suppressed && power <= HLW8012_NO_LOAD_POWER_W",
+    )
+    if all(marker in text for marker in markers):
+        return text, False
+    if any(marker in text for marker in markers):
+        raise RuntimeError("hlw8012.c has a partial/inconsistent no-load overlay")
+    text = _replace_once(text, HLW8012_POWER_NEEDLE,
+                         HLW8012_POWER_REPLACEMENT, "no-load power filter")
+    text = _replace_once(text, HLW8012_ENERGY_NEEDLE,
+                         HLW8012_ENERGY_REPLACEMENT, "no-load energy filter")
+    text = _replace_once(text, HLW8012_POST_CF1_NEEDLE,
+                         HLW8012_POST_CF1_REPLACEMENT, "no-load confirmation")
+    return _replace_once(text, HLW8012_INSTANT_POWER_NEEDLE,
+                         HLW8012_INSTANT_POWER_REPLACEMENT,
+                         "no-load overload filter"), True
+
+
 def _git(root: Path, *args: str) -> str:
     proc = subprocess.run(
         ["git", "-C", str(root), *args],
@@ -214,6 +338,8 @@ def verify_checkout(root: Path, allow_dirty: bool) -> None:
 def verify_post_state(root: Path) -> dict:
     db = (root / "device_db.yaml").read_text(encoding="utf-8")
     parser = (root / "src/device_config/config_parser.c").read_text(encoding="utf-8")
+    hlw_header = (root / "src/base_components/energy_measurement/hlw8012.h").read_text(encoding="utf-8")
+    hlw_source = (root / "src/base_components/energy_measurement/hlw8012.c").read_text(encoding="utf-8")
 
     if CANDIDATE_CONFIG not in db or ORIGINAL_CONFIG in db:
         raise RuntimeError("candidate device config is not in the expected post-overlay state")
@@ -243,6 +369,16 @@ def verify_post_state(root: Path) -> dict:
         raise RuntimeError("candidate config must not require a meter token/NVM rewrite")
     if _config_has_pwm_led_flag(CANDIDATE_CONFIG):
         raise RuntimeError("candidate config must not opt into downstream PWM LED behavior")
+    for marker in ("HLW8012_NO_LOAD_POWER_W", "HLW8012_NO_LOAD_CURRENT_MA",
+                   "HLW8012_NO_LOAD_CONFIRM_SAMPLES", "no_load_samples;",
+                   "no_load_suppressed;"):
+        if marker not in hlw_header:
+            raise RuntimeError(f"post-overlay no-load header marker missing: {marker}")
+    for marker in ("dev->data.no_load_suppressed = 1;",
+                   "if (!dev->data.no_load_suppressed) {",
+                   "dev->data.no_load_suppressed && power <= HLW8012_NO_LOAD_POWER_W"):
+        if marker not in hlw_source:
+            raise RuntimeError(f"post-overlay no-load source marker missing: {marker}")
 
     return {
         "source_commit": PINNED_SOURCE_COMMIT,
@@ -258,6 +394,12 @@ def verify_post_state(root: Path) -> dict:
         "meter_gpio": {"cf": "PA1", "cf1": "PC2", "sel": "PB1"},
         "meter_activation": "identity_scoped_implicit_fallback",
         "overload_relay_actuation": False,
+        "no_load_floor": {
+            "power_w_max": 2,
+            "current_ma_max": 50,
+            "confirmation_samples": 3,
+            "suppresses_energy_and_overload_input": True,
+        },
         "calibration": {
             "voltage_multiplier": 161460,
             "current_multiplier": 144679,
@@ -271,21 +413,31 @@ def apply_overlay(root: Path) -> dict:
 
     db_path = root / "device_db.yaml"
     parser_path = root / "src/device_config/config_parser.c"
+    hlw_header_path = root / "src/base_components/energy_measurement/hlw8012.h"
+    hlw_source_path = root / "src/base_components/energy_measurement/hlw8012.c"
     db = db_path.read_text(encoding="utf-8")
     parser = parser_path.read_text(encoding="utf-8")
+    hlw_header = hlw_header_path.read_text(encoding="utf-8")
+    hlw_source = hlw_source_path.read_text(encoding="utf-8")
 
     db_new, db_changed = overlay_device_db(db)
     parser_new, parser_changed = overlay_config_parser(parser)
-    if not db_changed and not parser_changed:
+    hlw_header_new, hlw_header_changed = overlay_hlw8012_header(hlw_header)
+    hlw_source_new, hlw_source_changed = overlay_hlw8012_source(hlw_source)
+    if not any((db_changed, parser_changed, hlw_header_changed, hlw_source_changed)):
         raise RuntimeError("overlay already applied; use --verify for an existing overlay")
 
     db_path.write_text(db_new, encoding="utf-8", newline="")
     parser_path.write_text(parser_new, encoding="utf-8", newline="")
+    hlw_header_path.write_text(hlw_header_new, encoding="utf-8", newline="")
+    hlw_source_path.write_text(hlw_source_new, encoding="utf-8", newline="")
 
     manifest = verify_post_state(root)
     manifest["changed_files"] = [
         str(path.relative_to(root)).replace("\\", "/")
-        for path, changed in ((db_path, db_changed), (parser_path, parser_changed))
+        for path, changed in ((db_path, db_changed), (parser_path, parser_changed),
+                              (hlw_header_path, hlw_header_changed),
+                              (hlw_source_path, hlw_source_changed))
         if changed
     ]
     manifest_path = root / ".bseed-metering-overlay.json"
