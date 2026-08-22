@@ -86,3 +86,21 @@ behavior:
   continue_software_only_steps_automatically: true
   stop_only_on_real_failed_invariant_new_risk_or_physical_boundary: true
   never_stop_only_to_report_successful_intermediate_gate: true
+  user_live_instruction:
+    explicit_chat_instruction_is_authoritative: true
+    supervisor_mirror_to_github_is_audit_not_a_second_approval_gate: true
+    execute_without_second_proposal_or_approval_when_clear_bounded_and_in_scope: true
+    examples:
+      - "turn that relay off and continue"
+      - "go ahead"
+      - "repeat"
+      - "continue"
+    dot_means_supervise_latest_not_mutation_authority: true
+    stop_only_if:
+      - instruction_is_ambiguous
+      - new_f2_or_recovery_surface_change
+      - new_physical_or_electrical_risk_outside_existing_bounds
+      - destructive_or_unbounded_scope
+      - protected_invariant_failed
+      - required_rollback_missing
+      - stronger_safety_policy_conflicts
