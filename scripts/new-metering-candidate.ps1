@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory=$true)][string]$CandidateId
+    [Parameter(Mandatory=$true)][string]$CandidateId,
+    [switch]$ProtectionEnabled
 )
 
 $ErrorActionPreference = 'Stop'
@@ -11,7 +12,12 @@ Set-Location $root
 function Get-LfTextSha256([string]$Path) {
     $text = [System.Text.Encoding]::UTF8.GetString([System.IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $Path)))
     $bytes = [System.Text.UTF8Encoding]::new($false).GetBytes($text.Replace("`r`n", "`n"))
-    return ([System.Security.Cryptography.SHA256]::HashData($bytes) | ForEach-Object ToString x2) -join ''
+    $hasher = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        return (($hasher.ComputeHash($bytes) | ForEach-Object ToString x2) -join '')
+    } finally {
+        $hasher.Dispose()
+    }
 }
 
 $supervisorCommit = (& git rev-parse HEAD).Trim()
@@ -26,6 +32,13 @@ New-Item -ItemType Directory -Force -Path $dir | Out-Null
 $template = Get-Content '.\templates\metering-candidate-manifest.json' -Raw | ConvertFrom-Json
 $template.candidate_id = $CandidateId
 $template.supervisor_commit = $supervisorCommit
+$template.candidate_kind = if ($ProtectionEnabled) { 'adopted_bseed_protection' } else { 'adopted_bseed_metering' }
+$template.meter.overload_relay_actuation = [bool]$ProtectionEnabled
+$template.invariants.overload_relay_actuation = [bool]$ProtectionEnabled
+if ($ProtectionEnabled) {
+    $template.offline_checks | Add-Member -NotePropertyName protection_tests -NotePropertyValue 'PENDING'
+    $template | Add-Member -NotePropertyName protection_test_report -NotePropertyValue 'protection-tests.json'
+}
 $template.source.overlay_script_sha256 = Get-LfTextSha256 '.\scripts\apply-metering-overlay.py'
 $template.source.overlay_guard_sha256 = Get-LfTextSha256 '.\scripts\metering_overlay_guard.py'
 $template | ConvertTo-Json -Depth 20 | Set-Content -Encoding utf8 (Join-Path $dir 'metering_candidate_manifest.json')
@@ -62,6 +75,8 @@ requires Class A DEVICE_CONFIRMED evidence and issue #5 recovery proof before OT
    - rollback.ota + rollback.sha256 + baseline_manifest
    - source.source_guard_report
    - mark offline checks PASS only from actual evidence
+   - for a protection candidate, also copy protection-tests.json and require
+     protection_tests=PASS
 
 4. Run:
 

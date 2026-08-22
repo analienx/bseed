@@ -40,6 +40,7 @@ EXPECTED_METER = {
     "current_multiplier": 144679,
     "power_multiplier": 16989,
 }
+PROTECTION_CANDIDATE_KIND = "adopted_bseed_protection"
 EXPECTED_FALSE_INVARIANTS = {
     "device_config_changed",
     "device_config_write_required",
@@ -140,8 +141,18 @@ def evaluate(path: Path) -> dict[str, Any]:
 
     if m.get("schema_version") != 2:
         errors.append("schema_version must be 2")
-    if m.get("candidate_kind") != "adopted_bseed_metering":
-        errors.append("candidate_kind must be adopted_bseed_metering")
+    candidate_kind = m.get("candidate_kind")
+    if candidate_kind not in {"adopted_bseed_metering", PROTECTION_CANDIDATE_KIND}:
+        errors.append("candidate_kind must be adopted_bseed_metering or adopted_bseed_protection")
+    protection_enabled = candidate_kind == PROTECTION_CANDIDATE_KIND
+    expected_meter = dict(EXPECTED_METER)
+    expected_meter["overload_relay_actuation"] = protection_enabled
+    expected_false_invariants = EXPECTED_FALSE_INVARIANTS - {
+        "overload_relay_actuation"
+    } if protection_enabled else EXPECTED_FALSE_INVARIANTS
+    required_offline_checks = REQUIRED_OFFLINE_CHECKS | {
+        "protection_tests"
+    } if protection_enabled else REQUIRED_OFFLINE_CHECKS
 
     candidate_id = str(m.get("candidate_id", ""))
     if not candidate_id:
@@ -181,27 +192,29 @@ def evaluate(path: Path) -> dict[str, Any]:
         errors.append("local metering_overlay_guard.py is missing")
 
     _check_exact_dict(m.get("board_profile"), EXPECTED_PROFILE, "board_profile", errors)
-    _check_exact_dict(m.get("meter"), EXPECTED_METER, "meter", errors)
+    _check_exact_dict(m.get("meter"), expected_meter, "meter", errors)
 
     invariants = m.get("invariants")
     if not isinstance(invariants, dict):
         errors.append("invariants must be an object")
     else:
-        missing = EXPECTED_FALSE_INVARIANTS - set(invariants)
+        missing = expected_false_invariants - set(invariants)
         if missing:
             errors.append("invariants missing: " + ", ".join(sorted(missing)))
-        for key in EXPECTED_FALSE_INVARIANTS & set(invariants):
+        for key in expected_false_invariants & set(invariants):
             if invariants.get(key) is not False:
                 errors.append(f"invariants.{key} must be false")
+        if protection_enabled and invariants.get("overload_relay_actuation") is not True:
+            errors.append("invariants.overload_relay_actuation must be true for protection candidate")
 
     checks = m.get("offline_checks")
     if not isinstance(checks, dict):
         errors.append("offline_checks must be an object")
     else:
-        missing = REQUIRED_OFFLINE_CHECKS - set(checks)
+        missing = required_offline_checks - set(checks)
         if missing:
             errors.append("offline_checks missing: " + ", ".join(sorted(missing)))
-        for key in REQUIRED_OFFLINE_CHECKS & set(checks):
+        for key in required_offline_checks & set(checks):
             if checks.get(key) != "PASS":
                 errors.append(f"offline_checks.{key} must be PASS")
 
@@ -229,8 +242,10 @@ def evaluate(path: Path) -> dict[str, Any]:
                 errors.append("source guard overlay requires a forbidden device_config write")
             if ov.get("meter_gpio") != EXPECTED_METER_GPIO:
                 errors.append("source guard meter GPIO mapping mismatch")
-            if ov.get("overload_relay_actuation") is not False:
-                errors.append("source guard allows overload relay actuation")
+            if ov.get("overload_relay_actuation") is not protection_enabled:
+                errors.append(
+                    "source guard overload relay policy does not match candidate kind"
+                )
         except json.JSONDecodeError:
             errors.append("source guard report is not valid JSON")
 
@@ -298,8 +313,10 @@ def evaluate(path: Path) -> dict[str, Any]:
                 errors.append("build provenance meter GPIO mismatch")
             if provenance.get("nvm_device_config_write_required") is not False:
                 errors.append("build provenance requires device_config write")
-            if provenance.get("overload_relay_actuation") is not False:
-                errors.append("build provenance allows overload relay actuation")
+            if provenance.get("overload_relay_actuation") is not protection_enabled:
+                errors.append(
+                    "build provenance overload relay policy does not match candidate kind"
+                )
             if provenance.get("flash_authorized") is not False:
                 errors.append("build provenance must explicitly state flash_authorized=false")
 
@@ -314,6 +331,18 @@ def evaluate(path: Path) -> dict[str, Any]:
                     errors.append(f"build provenance {artifact_key} filename mismatch")
         except json.JSONDecodeError:
             errors.append("build provenance is not valid JSON")
+
+    if protection_enabled:
+        report_path = resolve(base, str(m.get("protection_test_report", "")))
+        if not report_path.is_file():
+            errors.append(f"protection test report does not exist: {report_path}")
+        else:
+            try:
+                report = load_json(report_path)
+                if report.get("status") != "PASS":
+                    errors.append("protection test report status is not PASS")
+            except json.JSONDecodeError:
+                errors.append("protection test report is not valid JSON")
 
     rollback = m.get("rollback")
     if not isinstance(rollback, dict):

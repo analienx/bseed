@@ -14,11 +14,11 @@ fallback in config_parser.c: when the exact b28wrpvx / TS011F-BS-PM identity is
 parsed without an explicit EP/EB meter token, firmware initializes the already
 proven pulse backend on CF=PA1, CF1=PC2, SEL=PB1.
 
-The fallback also suppresses downstream overload relay actuation for this BSEED
-identity.  Measurement remains active, but the first canary cannot switch the
-relay because of a new PM-derived protection policy.  Existing control GPIOs,
-NVM device_config, OTA identity and normal relay/button/LED semantics remain
-unchanged.
+The default overlay suppresses downstream overload relay actuation for this
+BSEED identity.  A separately gated protection descendant can opt into that
+already-reviewed coupling with ``--enable-overload-relay``; no other overlay
+surface changes.  Existing control GPIOs, NVM device_config, OTA identity and
+normal relay/button/LED semantics remain unchanged.
 
 The overlay is deliberately narrow and source-guarded.  It refuses an unexpected
 source revision, an already-dirty checkout on apply, or a partial overlay.
@@ -236,8 +236,11 @@ def overlay_device_db(text: str) -> Tuple[str, bool]:
     return _replace_once(text, ORIGINAL_CONFIG, CANDIDATE_CONFIG, "device config"), True
 
 
-def overlay_config_parser(text: str) -> Tuple[str, bool]:
-    """Add the identity-scoped implicit meter and overload relay gate."""
+def overlay_config_parser(
+    text: str, enable_overload_relay: bool = False
+) -> Tuple[str, bool]:
+    """Add the identity-scoped implicit meter and selected relay policy."""
+    policy_line = f"energy_monitoring_protect_relay = {int(enable_overload_relay)};"
     post_markers = (
         "static uint8_t            energy_monitoring_protect_relay = 1;",
         "void parse_config() {\n    // parse_config can be invoked again after a runtime config update.",
@@ -247,6 +250,7 @@ def overlay_config_parser(text: str) -> Tuple[str, bool]:
         'hal_gpio_parse_pin("C2")',
         'hal_gpio_parse_pin("B1")',
         "energy_monitoring_enabled && energy_monitoring_protect_relay &&",
+        policy_line,
     )
     if all(marker in text for marker in post_markers):
         return text, False
@@ -255,7 +259,10 @@ def overlay_config_parser(text: str) -> Tuple[str, bool]:
 
     text = _replace_once(text, GLOBAL_NEEDLE, GLOBAL_REPLACEMENT, "meter policy global")
     text = _replace_once(text, PARSE_START_NEEDLE, PARSE_START_REPLACEMENT, "policy reset")
-    text = _replace_once(text, POST_PARSE_NEEDLE, POST_PARSE_REPLACEMENT, "implicit meter hook")
+    post_replacement = POST_PARSE_REPLACEMENT.replace(
+        "energy_monitoring_protect_relay = 0;", policy_line
+    )
+    text = _replace_once(text, POST_PARSE_NEEDLE, post_replacement, "implicit meter hook")
     text = _replace_once(
         text,
         PROTECTED_RELAY_NEEDLE,
@@ -335,7 +342,7 @@ def verify_checkout(root: Path, allow_dirty: bool) -> None:
         )
 
 
-def verify_post_state(root: Path) -> dict:
+def verify_post_state(root: Path, enable_overload_relay: bool = False) -> dict:
     db = (root / "device_db.yaml").read_text(encoding="utf-8")
     parser = (root / "src/device_config/config_parser.c").read_text(encoding="utf-8")
     hlw_header = (root / "src/base_components/energy_measurement/hlw8012.h").read_text(encoding="utf-8")
@@ -346,6 +353,7 @@ def verify_post_state(root: Path) -> dict:
     for marker in CALIBRATION_MARKERS:
         if marker not in db:
             raise RuntimeError(f"post-overlay calibration marker missing: {marker}")
+    policy_line = f"energy_monitoring_protect_relay = {int(enable_overload_relay)};"
     for marker in (
         "static uint8_t            energy_monitoring_protect_relay = 1;",
         "void parse_config() {\n    // parse_config can be invoked again after a runtime config update.",
@@ -357,6 +365,7 @@ def verify_post_state(root: Path) -> dict:
         'hal_gpio_parse_pin("B1")',
         "hlw8012_set_sel_inverted(&hlw8012_device, 0);",
         "energy_monitoring_enabled && energy_monitoring_protect_relay &&",
+        policy_line,
     ):
         if marker not in parser:
             raise RuntimeError(f"post-overlay parser marker missing: {marker}")
@@ -393,7 +402,7 @@ def verify_post_state(root: Path) -> dict:
         },
         "meter_gpio": {"cf": "PA1", "cf1": "PC2", "sel": "PB1"},
         "meter_activation": "identity_scoped_implicit_fallback",
-        "overload_relay_actuation": False,
+        "overload_relay_actuation": enable_overload_relay,
         "no_load_floor": {
             "power_w_max": 2,
             "current_ma_max": 50,
@@ -408,7 +417,7 @@ def verify_post_state(root: Path) -> dict:
     }
 
 
-def apply_overlay(root: Path) -> dict:
+def apply_overlay(root: Path, enable_overload_relay: bool = False) -> dict:
     verify_checkout(root, allow_dirty=False)
 
     db_path = root / "device_db.yaml"
@@ -421,7 +430,7 @@ def apply_overlay(root: Path) -> dict:
     hlw_source = hlw_source_path.read_text(encoding="utf-8")
 
     db_new, db_changed = overlay_device_db(db)
-    parser_new, parser_changed = overlay_config_parser(parser)
+    parser_new, parser_changed = overlay_config_parser(parser, enable_overload_relay)
     hlw_header_new, hlw_header_changed = overlay_hlw8012_header(hlw_header)
     hlw_source_new, hlw_source_changed = overlay_hlw8012_source(hlw_source)
     if not any((db_changed, parser_changed, hlw_header_changed, hlw_source_changed)):
@@ -432,7 +441,7 @@ def apply_overlay(root: Path) -> dict:
     hlw_header_path.write_text(hlw_header_new, encoding="utf-8", newline="")
     hlw_source_path.write_text(hlw_source_new, encoding="utf-8", newline="")
 
-    manifest = verify_post_state(root)
+    manifest = verify_post_state(root, enable_overload_relay)
     manifest["changed_files"] = [
         str(path.relative_to(root)).replace("\\", "/")
         for path, changed in ((db_path, db_changed), (parser_path, parser_changed),
@@ -451,15 +460,20 @@ def main() -> int:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--apply", action="store_true")
     mode.add_argument("--verify", action="store_true")
+    parser.add_argument(
+        "--enable-overload-relay",
+        action="store_true",
+        help="enable the reviewed exact-target overload-to-relay coupling",
+    )
     parser.add_argument("--json-out", type=Path)
     args = parser.parse_args()
 
     root = args.source.resolve()
     if args.apply:
-        manifest = apply_overlay(root)
+        manifest = apply_overlay(root, args.enable_overload_relay)
     else:
         verify_checkout(root, allow_dirty=True)
-        manifest = verify_post_state(root)
+        manifest = verify_post_state(root, args.enable_overload_relay)
 
     if args.json_out:
         args.json_out.parent.mkdir(parents=True, exist_ok=True)

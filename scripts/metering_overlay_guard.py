@@ -51,7 +51,7 @@ def _base_text(root: Path, path: str) -> str:
     return _git(root, "show", f"{overlay.PINNED_SOURCE_COMMIT}:{path}")
 
 
-def evaluate(root: Path) -> dict[str, Any]:
+def evaluate(root: Path, enable_overload_relay: bool = False) -> dict[str, Any]:
     root = root.resolve()
     errors: list[str] = []
     warnings: list[str] = []
@@ -85,9 +85,9 @@ def evaluate(root: Path) -> dict[str, Any]:
         base_db = _base_text(root, "device_db.yaml")
         base_parser = _base_text(root, "src/device_config/config_parser.c")
         expected["device_db.yaml"] = overlay.overlay_device_db(base_db)[0]
-        expected["src/device_config/config_parser.c"] = (
-            overlay.overlay_config_parser(base_parser)[0]
-        )
+        expected["src/device_config/config_parser.c"] = overlay.overlay_config_parser(
+            base_parser, enable_overload_relay
+        )[0]
         base_hlw_header = _base_text(root, "src/base_components/energy_measurement/hlw8012.h")
         base_hlw_source = _base_text(root, "src/base_components/energy_measurement/hlw8012.c")
         expected["src/base_components/energy_measurement/hlw8012.h"] = (
@@ -105,7 +105,7 @@ def evaluate(root: Path) -> dict[str, Any]:
             errors.append(f"{path} is not byte-for-byte the reviewed overlay")
 
     try:
-        post = overlay.verify_post_state(root)
+        post = overlay.verify_post_state(root, enable_overload_relay)
     except (RuntimeError, OSError) as exc:
         errors.append(f"overlay semantic verification failed: {exc}")
         post = None
@@ -138,6 +138,7 @@ def main() -> int:
     )
     ap.add_argument("--source", type=Path)
     ap.add_argument("--json-out", type=Path)
+    ap.add_argument("--enable-overload-relay", action="store_true")
     ap.add_argument("--self-test", action="store_true")
     args = ap.parse_args()
 
@@ -157,7 +158,7 @@ def main() -> int:
         ap.error("--source is required unless --self-test is used")
 
     try:
-        result = evaluate(args.source)
+        result = evaluate(args.source, args.enable_overload_relay)
     except (RuntimeError, OSError) as exc:
         print(f"METERING_OVERLAY_GUARD=FAIL\nERROR: {exc}", file=sys.stderr)
         return 2

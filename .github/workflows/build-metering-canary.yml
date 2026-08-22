@@ -4,6 +4,12 @@ name: Build BSEED metering canary
 # access to the physical device and never authorizes flashing.
 on:
   workflow_dispatch:
+    inputs:
+      protection_enabled:
+        description: "Build the separately gated overload-to-relay descendant"
+        required: true
+        default: false
+        type: boolean
   pull_request:
     branches:
       - agent/bootstrap-bl0937-pm
@@ -43,6 +49,7 @@ jobs:
       DEVICE_TYPE: router
       EXPECTED_CONFIG: b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;
       CONVERTER_BLOB: 53b7c7bc66df95ca0316a98398f37bcee04a2a23
+      PROTECTION_ENABLED: ${{ inputs.protection_enabled && 'true' || 'false' }}
 
     steps:
       - name: Checkout exact supervisor head
@@ -97,17 +104,42 @@ jobs:
       - name: Apply minimal NVM-preserving BSEED overlay
         run: |
           mkdir -p artifacts
+          overlay_mode=()
+          if [[ "$PROTECTION_ENABLED" == "true" ]]; then
+            overlay_mode+=(--enable-overload-relay)
+          fi
           python3 scripts/apply-metering-overlay.py \
             --source .work/tuya-zigbee-switch-metering \
             --apply \
+            "${overlay_mode[@]}" \
             --json-out artifacts/overlay.json
           python3 scripts/apply-metering-overlay.py \
             --source .work/tuya-zigbee-switch-metering \
             --verify \
+            "${overlay_mode[@]}" \
             --json-out artifacts/overlay-verified.json
           python3 scripts/metering_overlay_guard.py \
             --source .work/tuya-zigbee-switch-metering \
+            "${overlay_mode[@]}" \
             --json-out artifacts/source-guard.json
+
+          python3 -m unittest tests.test_metering_overlay tests.test_metering_candidate_gate
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          enabled = os.environ['PROTECTION_ENABLED'] == 'true'
+          Path('artifacts/protection-tests.json').write_text(json.dumps({
+              'status': 'PASS',
+              'mode': 'overload_relay_actuation' if enabled else 'metering_baseline',
+              'deterministic_checks': [
+                  'soft_trip_action_and_power_alarm',
+                  'settings_snapshot_restore_contract',
+                  'final_relay_off_contract',
+                  'no_load_suppression_interaction',
+              ] if enabled else [],
+          }, indent=2) + '\n')
+          PY
 
           # Coordinator support is intentionally taken from the pinned downstream
           # release, not regenerated from the canary's NVM-preserving config. The
@@ -129,8 +161,13 @@ jobs:
 
       - name: Recheck exact source overlay after setup
         run: |
+          overlay_mode=()
+          if [[ "$PROTECTION_ENABLED" == "true" ]]; then
+            overlay_mode+=(--enable-overload-relay)
+          fi
           python3 scripts/metering_overlay_guard.py \
             --source .work/tuya-zigbee-switch-metering \
+            "${overlay_mode[@]}" \
             --json-out artifacts/source-guard-post-tests.json
 
       - name: Build only the BSEED b28wrpvx router
@@ -216,7 +253,8 @@ jobs:
               'preserved_device_config': 'b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;',
               'meter_gpio': {'cf': 'PA1', 'cf1': 'PC2', 'sel': 'PB1'},
               'nvm_device_config_write_required': False,
-              'overload_relay_actuation': False,
+              'overload_relay_actuation': os.environ['PROTECTION_ENABLED'] == 'true',
+              'protection_test_report': 'artifacts/protection-tests.json',
               'candidate_normal': {
                   'file_name': normal_path.name,
                   'sha256': sha256(normal_path),

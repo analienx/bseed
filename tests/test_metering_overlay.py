@@ -10,6 +10,31 @@ assert spec.loader is not None
 spec.loader.exec_module(module)
 
 
+def parser_source():
+    return "\n".join(
+        [
+            '#include <string.h>',
+            module.GLOBAL_NEEDLE,
+            '',
+            module.PARSE_START_NEEDLE,
+            '    const char *zb_manufacturer = "b28wrpvx";',
+            '    const char *zb_model = "TS011F-BS-PM";',
+            '    for (;;) {',
+            '        if (0) {',
+            '        }',
+            '    }',
+            '',
+            '    peripherals_init();',
+            '',
+            '    // later endpoint construction',
+            module.PROTECTED_RELAY_NEEDLE,
+            '        electrical_measurement_cluster_set_protected_relay(0, 0);',
+            '    }',
+            '}',
+        ]
+    )
+
+
 class MeteringOverlayTests(unittest.TestCase):
     def test_device_db_restores_established_config_and_keeps_calibration(self):
         source = f"""
@@ -41,28 +66,7 @@ class MeteringOverlayTests(unittest.TestCase):
             module.overlay_device_db(source)
 
     def test_parser_overlay_adds_identity_scoped_implicit_meter(self):
-        source = "\n".join(
-            [
-                '#include <string.h>',
-                module.GLOBAL_NEEDLE,
-                '',
-                module.PARSE_START_NEEDLE,
-                '    const char *zb_manufacturer = "b28wrpvx";',
-                '    const char *zb_model = "TS011F-BS-PM";',
-                '    for (;;) {',
-                '        if (0) {',
-                '        }',
-                '    }',
-                '',
-                '    peripherals_init();',
-                '',
-                '    // later endpoint construction',
-                module.PROTECTED_RELAY_NEEDLE,
-                '        electrical_measurement_cluster_set_protected_relay(0, 0);',
-                '    }',
-                '}',
-            ]
-        )
+        source = parser_source()
         updated, changed = module.overlay_config_parser(source)
         self.assertTrue(changed)
         self.assertIn('strcmp(zb_manufacturer, "b28wrpvx") == 0', updated)
@@ -116,6 +120,28 @@ class MeteringOverlayTests(unittest.TestCase):
             module.PARSE_START_REPLACEMENT.index('energy_monitoring_protect_relay = 1;'),
             module.PARSE_START_REPLACEMENT.index('device_config_read_from_nv();'),
         )
+
+    def test_protection_descendant_only_enables_exact_target_relay_coupling(self):
+        source = parser_source()
+        updated, changed = module.overlay_config_parser(
+            source, enable_overload_relay=True
+        )
+        self.assertTrue(changed)
+        self.assertIn('energy_monitoring_protect_relay = 1;', updated)
+        self.assertNotIn('energy_monitoring_protect_relay = 0;', updated)
+        self.assertIn(
+            'energy_monitoring_enabled && energy_monitoring_protect_relay &&',
+            updated,
+        )
+
+        second, changed_again = module.overlay_config_parser(
+            updated, enable_overload_relay=True
+        )
+        self.assertFalse(changed_again)
+        self.assertEqual(updated, second)
+
+        with self.assertRaises(RuntimeError):
+            module.overlay_config_parser(updated, enable_overload_relay=False)
 
     def test_no_load_overlay_requires_three_samples_and_preserves_voltage_path(self):
         header = (
