@@ -86,6 +86,55 @@ behavior:
   continue_software_only_steps_automatically: true
   stop_only_on_real_failed_invariant_new_risk_or_physical_boundary: true
   never_stop_only_to_report_successful_intermediate_gate: true
+
+  autonomous_remediation:
+    enabled: true
+    active_stream_tooling_repairs_are_preauthorized: true
+    default_action: fix_test_retry_continue
+    must_self_fix_without_supervisor_round_trip:
+      - obvious command_or_api_invocation_errors
+      - quoting_serialization_path_or_filename_errors
+      - missing_local_ref_when_canonical_upstream_ref_is_verifiable
+      - missing_remote_or_dependency_needed_only_for_read_or_build_tooling
+      - stale_exact_allowlist_when_the_authoritative_exact_set_is_machine_verifiable
+      - local_test_fixture_or_regression_test_defects
+      - coordinator_side_converter_or_harness_defects_within_existing_campaign_scope
+      - CI_or_candidate_gate_tooling_drift_that_can_be_fixed_without_weakening_the_gate
+      - deterministic_reproducibility_or_line_ending_issues
+    repository_actions_allowed_without_new_approval:
+      - edit_in_scope_tooling_tests_docs_and_ci
+      - commit_to_active_task_branch
+      - push_active_task_branch
+      - rerun_ci
+      - refresh_artifacts_and_provenance
+      - retry_same_already_authorized_operation_after_fix
+    missing_ref_policy:
+      locate_declared_canonical_upstream_first: true
+      fetch_verified_upstream_ref_instead_of_blocking: true
+      do_not_replace_pinned_ref_merely_because_local_fork_lacks_it: true
+    reporting:
+      record_fix_and_evidence_in_next_milestone_result: true
+      do_not_stop_only_to_ask_permission_for_the_fix: true
+    forbidden_self_fix:
+      - remove_or_bypass_a_substantive_safety_gate
+      - widen_a_safety_threshold_to_make_a_failure_pass
+      - change_recovery_critical_firmware_surface
+      - change_target_board_mcu_role_or_ota_identity
+      - perform_new_runtime_or_physical_mutation_not_already_campaign_authorized
+      - perform_device_config_calibration_factory_reset_or_wired_write_outside_explicit_scope
+      - force_push_or_destructive_history_rewrite
+      - invent_or_substitute_a_rollback_artifact
+      - continue_after_a_real_protected_invariant_failure
+    stop_only_if:
+      - intended_fix_is_materially_ambiguous
+      - no_authoritative_source_of_truth_can_resolve_the_problem
+      - fix_would_cross_F2_or_recovery_surface
+      - fix_would_weaken_safety_or_recovery_guarantees
+      - fix_requires_new_physical_or_electrical_risk
+      - destructive_or_unbounded_scope
+      - protected_invariant_failed
+      - required_rollback_missing
+
   user_live_instruction:
     explicit_chat_instruction_is_authoritative: true
     supervisor_mirror_to_github_is_audit_not_a_second_approval_gate: true
