@@ -20,6 +20,14 @@ function Get-LfTextSha256([string]$Path) {
     }
 }
 
+function Write-Utf8NoBom([string]$Path, [string]$Text) {
+    [System.IO.File]::WriteAllText(
+        (Join-Path (Get-Location) $Path),
+        $Text,
+        [System.Text.UTF8Encoding]::new($false)
+    )
+}
+
 $supervisorCommit = (& git rev-parse HEAD).Trim()
 if ($supervisorCommit -notmatch '^[0-9a-fA-F]{40}$') {
     throw 'Could not resolve the supervisor commit.'
@@ -41,7 +49,7 @@ if ($ProtectionEnabled) {
 }
 $template.source.overlay_script_sha256 = Get-LfTextSha256 '.\scripts\apply-metering-overlay.py'
 $template.source.overlay_guard_sha256 = Get-LfTextSha256 '.\scripts\metering_overlay_guard.py'
-$template | ConvertTo-Json -Depth 20 | Set-Content -Encoding utf8 (Join-Path $dir 'metering_candidate_manifest.json')
+Write-Utf8NoBom (Join-Path $dir 'metering_candidate_manifest.json') ($template | ConvertTo-Json -Depth 20)
 Copy-Item '.\templates\preflash-state.json' (Join-Path $dir 'preflash-state.json')
 
 @"
@@ -92,7 +100,7 @@ requires Class A DEVICE_CONFIRMED evidence and issue #5 recovery proof before OT
 
 6. Only after all gates PASS, post an OTA-CANARY PROPOSAL to control issue #1 and
    STOP for Supervisor approval. Never bulk-update and never write device_config.
-"@ | Set-Content -Encoding utf8 (Join-Path $dir 'README.txt')
+"@ | ForEach-Object { Write-Utf8NoBom (Join-Path $dir 'README.txt') $_ }
 
 Write-Host "CANDIDATE_DIR=$dir"
 Write-Host "SUPERVISOR_COMMIT=$supervisorCommit"
