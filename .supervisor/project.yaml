@@ -1,0 +1,88 @@
+schema_version: 1
+project_id: bseed
+repo: analienx/bseed
+lifecycle: active
+
+canonical:
+  supervisor_skill:
+    repo: analienx/config
+    ref: main
+    path: skills/supervisor-executor/SKILL.md
+  firmware_fast_path:
+    repo: analienx/config
+    ref: main
+    path: skills/supervisor-executor/FIRMWARE_FAST_PATH.md
+
+control:
+  issue: 1
+  active_task_issue: 7
+  dot_stream: firmware-metering
+
+executor:
+  environment: windows_notebook
+  management_paths:
+    - local_shell
+    - zigbee2mqtt_mqtt
+    - home_assistant_api
+
+firmware:
+  campaign_fast_path:
+    enabled: true
+    approval_prefix: "APPROVED / OTA-CAMPAIGN"
+    allowed_risk_classes:
+      - F0
+      - F1
+    stop_on_risk_class: F2
+    one_canary_default: true
+    preauthorized_exact_lkg_rollback: true
+    fresh_preflight_is_executor_responsibility: true
+    intermediate_pass_does_not_stop: true
+    user_live_instruction_may_be_mirrored_to_ledger: true
+
+  ota_transport:
+    mode: per_request_zigbee2mqtt
+    profile_id: bseed-fast-v1
+    image_block_response_delay_ms: 50
+    default_maximum_data_size: 100
+    image_block_request_timeout_ms: 150000
+    fallback_response_delays_ms:
+      - 100
+      - 150
+      - 250
+    no_global_z2m_config_change: true
+    device_advertised_maximum_data_size_is_hard_cap: true
+    measure_each_run:
+      - effective_block_size
+      - payload_bytes
+      - elapsed_seconds
+      - effective_bytes_per_second
+      - retries
+      - transport_errors
+    promote_profile_after_success: true
+
+  invariants:
+    target:
+      manufacturer: b28wrpvx
+      model: TS011F-BS-PM
+      role: router
+      mcu: TLSR8258
+    ota:
+      manufacturer_code: 4417
+      image_type: 43556
+    base_config: "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;"
+    protected_gpio:
+      network_led: PC3
+      button: PB5
+      relay: PD2
+      relay_indicator: PB4
+    no_device_config_write_without_explicit_campaign_scope: true
+    no_calibration_write_without_explicit_campaign_scope: true
+    no_factory_reset_without_explicit_campaign_scope: true
+    no_wired_write_without_explicit_campaign_scope: true
+    no_energized_open_pcb: true
+
+behavior:
+  prefer_bounded_batches: true
+  continue_software_only_steps_automatically: true
+  stop_only_on_real_failed_invariant_new_risk_or_physical_boundary: true
+  never_stop_only_to_report_successful_intermediate_gate: true
