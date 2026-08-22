@@ -146,5 +146,84 @@ class MeteringOverlayTests(unittest.TestCase):
         self.assertEqual(module.overlay_hlw8012_source(source_updated), (source_updated, False))
 
 
+class NoLoadFilterModel:
+    """Executable contract oracle for the ordered HLW8012 floor decision."""
+
+    def __init__(self):
+        self.samples = 0
+        self.suppressed = False
+        self.energy_units = 0
+        self.calibration = (161460, 144679, 16989)
+
+    def sample(self, voltage_cv, current_ma, power_w, energy_units=1):
+        if power_w <= 2 and current_ma <= 50:
+            self.samples = min(self.samples + 1, 3)
+            if self.samples == 3:
+                self.suppressed = True
+                current_ma = 0
+                power_w = 0
+        else:
+            self.samples = 0
+            self.suppressed = False
+
+        if not self.suppressed:
+            self.energy_units += energy_units
+        return {
+            'voltage_cv': voltage_cv,
+            'current_ma': current_ma,
+            'power_w': power_w,
+            'energy_units': self.energy_units,
+            'overload_input_w': 0 if self.suppressed else power_w,
+        }
+
+
+class NoLoadBehaviorTests(unittest.TestCase):
+    def test_residual_enters_floor_without_energy_or_overload_input(self):
+        meter = NoLoadFilterModel()
+        first = meter.sample(23950, 37, 1)
+        second = meter.sample(23950, 37, 1)
+        confirmed = meter.sample(23950, 37, 1)
+        held = meter.sample(23950, 37, 1)
+
+        self.assertEqual((first['current_ma'], first['power_w']), (37, 1))
+        self.assertEqual((second['current_ma'], second['power_w']), (37, 1))
+        self.assertEqual(confirmed['voltage_cv'], 23950)
+        self.assertEqual(confirmed['current_ma'], 0)
+        self.assertEqual(confirmed['power_w'], 0)
+        self.assertEqual(confirmed['energy_units'], 2)
+        self.assertEqual(confirmed['overload_input_w'], 0)
+        self.assertEqual(held['energy_units'], 2)
+
+    def test_real_load_exits_floor_on_first_sample(self):
+        meter = NoLoadFilterModel()
+        for _ in range(3):
+            meter.sample(23950, 37, 1)
+
+        load = meter.sample(23950, 126, 30, energy_units=30)
+        self.assertEqual((load['current_ma'], load['power_w']), (126, 30))
+        self.assertEqual(load['overload_input_w'], 30)
+        self.assertEqual(load['energy_units'], 32)
+
+    def test_return_to_no_load_requires_three_samples_again(self):
+        meter = NoLoadFilterModel()
+        load = meter.sample(23950, 126, 30, energy_units=30)
+        first = meter.sample(23950, 37, 1)
+        second = meter.sample(23950, 37, 1)
+        confirmed = meter.sample(23950, 37, 1)
+
+        self.assertEqual(load['power_w'], 30)
+        self.assertEqual(first['power_w'], 1)
+        self.assertEqual(second['power_w'], 1)
+        self.assertEqual(confirmed['power_w'], 0)
+        self.assertEqual(confirmed['energy_units'], 32)
+
+    def test_floor_does_not_change_calibration(self):
+        meter = NoLoadFilterModel()
+        before = meter.calibration
+        for _ in range(3):
+            meter.sample(23950, 37, 1)
+        self.assertEqual(meter.calibration, before)
+
+
 if __name__ == '__main__':
     unittest.main()
