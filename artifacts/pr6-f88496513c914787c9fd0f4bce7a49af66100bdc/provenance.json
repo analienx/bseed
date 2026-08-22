@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "kind": "bseed_pr6_metering_canary_artifact",
+  "pr6_head": "f88496513c914787c9fd0f4bce7a49af66100bdc",
+  "build_run": 32524763535,
+  "source": {
+    "repository": "HobboRobin/tuya-zigbee-switch-with-metering",
+    "commit": "8b8cc4924a353b35880666f7b48f0afbee89eb17"
+  },
+  "artifact": {
+    "path": "bseed-b28wrpvx-metering-canary.zigbee",
+    "bytes": 201906,
+    "sha256": "de504aea5ae19d073e216e9c2a211c3884a8a4b6e78af038ef76e7ece9f28ea8",
+    "sha512": "618d5b8d05d308c5e9161a5e78f31f84d44ad628bb200e53c7d28621ab2124305879e0b6ef748a461b35c881a553df51d83c81d5e72ed165913955bb7af36057",
+    "ota_manufacturer_code": 4417,
+    "ota_image_type": 43556,
+    "outer_file_version": 302329856,
+    "inner_file_version": 302329856
+  },
+  "publication": {
+    "purpose": "immutable raw direct-URL transport binding for the approved first PR6 metering canary",
+    "firmware_bytes_transformed": false,
+    "implementation_branch_modified": false
+  }
+}
