@@ -24,22 +24,84 @@
 
 ## D-005 — Do not blindly merge upstream PR #314
 
-**Decision:** treat PR #314 as source material. Rebase/review the useful Telink counter implementation against the pinned upstream before integration.
+**Decision:** treat PR #314 as historical/source material rather than blindly merging it.
 
-**Reason:** the PR is open, based on an older main commit, and explicitly does not implement PM end to end.
+**Reason:** a later downstream fork now contains the complete Telink pulse-counter + metering implementation and has been hardware-tested on the exact `_TZ3000_b28wrpvx` family. PR #314 remains useful provenance, but it is no longer the shortest implementation path.
 
-## D-006 — Diagnostic-first firmware
+## D-006 — Diagnostic-first firmware (superseded for implementation, retained for validation)
 
-**Decision:** first device build exposes raw pulse observations only. It must not report apparently calibrated voltage/current/power until calibration evidence exists.
+**Original decision:** first device build would expose raw pulse observations only and would not report calibrated V/A/W.
+
+**Superseding decision:** source discovery found a hardware-tested downstream implementation with raw pulse diagnostics, standard clusters and measured calibration for `_TZ3000_b28wrpvx`. We will reuse that implementation rather than deliberately removing working measurement code. The first **project canary** still treats downstream calibration as provisional until confirmed on the exact project socket, and raw `CF`/`CF1`/`SEL` diagnostics remain part of acceptance.
 
 ## D-007 — Standard Zigbee clusters
 
-**Decision:** final PM should use standard Electrical Measurement and Smart Energy Metering server clusters rather than a BSEED-only proprietary reporting path where upstream architecture allows it.
+**Decision:** PM uses standard Electrical Measurement and Smart Energy Metering server clusters. The downstream implementation already follows this architecture and is therefore preferred over a new proprietary path.
 
 ## D-008 — Energy persistence
 
-**Decision:** cumulative energy uses a 64-bit RAM accumulator plus wear-bounded persistent checkpoints. Never write flash per pulse.
+**Decision:** cumulative energy must remain wear-conscious. The adopted downstream code currently checkpoints accumulated Wh every five minutes using the Telink NVM layer. This is acceptable for the first functional canary but is explicitly marked for endurance review before broad deployment; no design may write flash per pulse.
 
 ## D-009 — Evidence hygiene
 
 **Decision:** raw firmware dumps and unsanitized device metadata are local-only. Git contains sanitized, reproducible evidence only.
+
+## D-010 — Reuse the hardware-proven downstream implementation
+
+**Decision:** pin `HobboRobin/tuya-zigbee-switch-with-metering@8b8cc4924a353b35880666f7b48f0afbee89eb17` as the implementation source for the first BSEED PM candidate.
+
+**Evidence:** downstream commit `37de8385e5a661505ac9bc8d47b2e7791c7a5493` records the `_TZ3000_b28wrpvx` metering GPIOs as hardware-verified: `CF=PA1`, `CF1=PC2`, `SEL=PB1`. Later hardware calibration established V/A/W multipliers `161460 / 144679 / 16989`.
+
+**Boundary:** this closes the **source-discovery** unknowns and unblocks coding/builds. It does not substitute for exact-canary `DEVICE_CONFIRMED` evidence required by the project's pre-flash Class A gate.
+
+## D-011 — Preserve runtime `device_config`; activate metering by exact identity
+
+**Decision:** the first project canary keeps the existing BSEED config **byte-for-byte**:
+
+```text
+b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;
+```
+
+Do **not** require an `EP...` token, a runtime `device_config` write, or a factory reset. Instead, after parsing the config, the candidate checks the exact custom identity `b28wrpvx` + `TS011F-BS-PM`. If no meter was explicitly configured, it initializes the already-proven pulse backend on `CF=PA1`, `CF1=PC2`, `SEL=PB1`.
+
+For that exact identity, overload measurements remain available but the downstream overload state machine is not connected to the relay in the first canary.
+
+**Reason:** already-converted devices persist `device_config` in NVM. Merely changing the compiled default to add `EPA1C2B1` would not reliably affect an existing socket after OTA and would create pressure to rewrite/reset NVM. The identity-scoped fallback adds PM while preserving current relay/button/LED semantics and recovery assumptions.
+
+## D-012 — Calibration is reusable evidence, not immutable truth
+
+**Decision:** compile the downstream hardware-measured multipliers into the candidate because they are better than guessed/default constants, but validate them against an external reference meter on the exact assembled project canary before declaring calibration accepted.
+
+**Acceptance:** voltage/current/power accuracy and low-load behavior are Class B runtime validation items. If the exact canary requires fine-tuning, use the downstream runtime calibration mechanism rather than changing GPIO identity or OTA identity.
+
+## D-013 — Build artifacts are evidence, not flash authorization
+
+**Decision:** the canary workflow runs for the implementation PR and can also be dispatched manually. It performs only offline source checks, downstream tests, firmware build and artifact validation. Producing a valid image never authorizes OTA by itself. Issue #5 recovery proof and the project's live pre-flash gates remain mandatory before a canary flash.
+
+## D-014 — Coordinator metadata is pinned separately from firmware config
+
+**Decision:** start from the downstream 1.2.5 `switch_custom.js` source Git blob `53b7c7bc66df95ca0316a98398f37bcee04a2a23`, apply the deterministic BSEED converter patch, and package/gate the derived blob `c8d03d1fa2d5ef125e720a7878908a4f5a63992e` instead of regenerating it from the NVM-preserving candidate `device_db`.
+
+**Reason:** converter generation uses the device config to infer PM exposes. Our firmware intentionally removes the explicit `EP` token from that config, but the runtime firmware still exposes the standard metering clusters. The already-generated downstream converter correctly describes those clusters and is pinned/hash-checked independently.
+
+## D-015 — Bind every candidate to the actual reviewed head and CI provenance
+
+**Decision:** PR builds check out the real PR head SHA rather than GitHub's synthetic merge commit. `build-provenance.json` records that supervisor SHA, the pinned downstream commit, overlay/guard hashes, exact converter blob/hash, PA1/PC2/PB1 mapping, preserved config, and the normal/forced OTA hashes plus versions.
+
+`metering_candidate_gate.py` independently recomputes the local overlay-script hashes and cross-checks the candidate and converter against the CI provenance. This prevents a manually edited manifest from silently changing which source/artifact is being proposed.
+
+The canary workflow is serialized per PR/ref with stale runs cancelled on subsequent revisions.
+
+## D-016 — Accept the exact-canary protection/metrology result; keep calibration evidence out of generic firmware
+
+**Decision:** accept the repeated protection-enabled and metrology campaign on `LivingRoomSocketWifiLeft` as the exact-canary result. The accepted runtime calibration is evidence for this canary, not a device-specific constant to bake into generic firmware. The no-load voltage offset remains a bounded follow-up because the Shelly reference is panel-side and does not establish the socket-local voltage channel under every load condition.
+
+## D-017 — Close minimum two-unit validation and gate stock migration wrappers
+
+**Decision:** accept the asymmetric two-unit evidence package. `LivingRoomSocketWifiLeft` carries the deep calibration/recovery evidence; `WorkroomSocketCabinet` independently proves direct stock-Tuya migration, native PM/no-load behavior, distinct calibration state, and autonomous protection trip/settings restoration. Dedicated second-unit power-cycle persistence, a second Shelly calibration window, and separate button/LED observation remain non-blocking and are not repeated merely for symmetry.
+
+The CI production path must emit normal, forced, and `from_tuya` OTA wrappers from the same Telink payload and gate identities `4417/43556`, `4417/43556/0xffffffff`, and `4417/54179/0xffffffff` respectively, including byte-identical payload proof.
+
+**Converter boundary:** protection-setting writes continue to use firmware wire units (W, mA and cV where applicable), while Zigbee2MQTT readback is canonical user-unit W/A/V. The repair is deterministic and target-scoped for the BSEED metering exposes; it must not require the evidence harness to interpret raw wire units.
+
+**Next state:** PR #6 remains DRAFT until repository cleanup and Supervisor merge review. Reboot persistence, optional 325 W linearity, exact identity/recovery checks on any additional socket and Romasku upstream coordination remain separate follow-ups.

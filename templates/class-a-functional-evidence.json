@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "device_id": "DEV-001",
+  "pcb_revision": "",
+  "hardware_verification_method": "AUTOMATED_FUNCTIONAL",
+  "functional_confirmation_report": "functional-gate.json",
+  "hardware": {
+    "A-H02": {
+      "status": "DEVICE_FUNCTIONALLY_CONFIRMED",
+      "value": {
+        "manufacturer_name": "b28wrpvx",
+        "model_id": "TS011F-BS-PM",
+        "device_type": "router",
+        "mcu": "TLSR8258",
+        "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;"
+      },
+      "evidence": "sanitized live Zigbee2MQTT/runtime identity export"
+    }
+  },
+  "recovery": {
+    "A-R01": {
+      "status": "RECOVERY_PROVEN",
+      "value": {"path": "", "sha256": ""},
+      "evidence": "exact known-good FORCE/reinstall OTA manifest"
+    },
+    "A-R02": {"status": "RECOVERY_PROVEN", "value": true, "evidence": "LKG self-reinstall result"},
+    "A-R03": {"status": "RECOVERY_PROVEN", "value": true, "evidence": "post-reinstall OTA liveness"}
+  }
+}
