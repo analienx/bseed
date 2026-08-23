@@ -41,7 +41,7 @@
   "converter": {
     "path": "switch_custom.js",
     "sha256": "",
-    "git_blob": "53b7c7bc66df95ca0316a98398f37bcee04a2a23"
+    "git_blob": "c8d03d1fa2d5ef125e720a7878908a4f5a63992e"
   },
   "rollback": {
     "ota": "rollback-forced.zigbee",

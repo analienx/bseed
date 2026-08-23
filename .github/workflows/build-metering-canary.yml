@@ -23,6 +23,7 @@ on:
       - 'scripts/confirmation_preflash_gate.py'
       - 'scripts/preflash_gate.py'
       - 'scripts/ota_guard.py'
+      - 'scripts/patch-calibration-converter.py'
       - 'metering-source.lock.json'
       - 'templates/metering-candidate-manifest.json'
       - 'templates/class-a-functional-evidence.json'
@@ -30,6 +31,10 @@ on:
       - 'policy/CLASS_A_CLOSURE.md'
       - 'tests/test_metering_candidate_gate.py'
       - 'tests/test_functional_class_a_path.py'
+      - 'tests/test_calibration_converter.py'
+      - 'README.md'
+      - 'PROJECT_STATUS.md'
+      - 'DECISIONS.md'
 
 permissions:
   contents: read
@@ -48,7 +53,8 @@ jobs:
       BOARD: OUTLET_BSEED_PM_TS011F_b28wrpvx
       DEVICE_TYPE: router
       EXPECTED_CONFIG: b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;
-      CONVERTER_BLOB: 53b7c7bc66df95ca0316a98398f37bcee04a2a23
+      CONVERTER_SOURCE_BLOB: 53b7c7bc66df95ca0316a98398f37bcee04a2a23
+      CONVERTER_BLOB: c8d03d1fa2d5ef125e720a7878908a4f5a63992e
       PROTECTION_ENABLED: ${{ inputs.protection_enabled && 'true' || 'false' }}
 
     steps:
@@ -145,9 +151,13 @@ jobs:
           # release, not regenerated from the canary's NVM-preserving config. The
           # pinned converter already knows this model has Electrical Measurement
           # and Smart Energy Metering support.
-          test "$(git -C .work/tuya-zigbee-switch-metering hash-object zigbee2mqtt/converters/switch_custom.js)" = "$CONVERTER_BLOB"
           cp .work/tuya-zigbee-switch-metering/zigbee2mqtt/converters/switch_custom.js \
              artifacts/switch_custom.js
+          test "$(git -C .work/tuya-zigbee-switch-metering hash-object zigbee2mqtt/converters/switch_custom.js)" = "$CONVERTER_SOURCE_BLOB"
+          python3 scripts/patch-calibration-converter.py artifacts/switch_custom.js \
+            --in-place --enable-power-get
+          python3 -m unittest tests.test_calibration_converter
+          test "$(git hash-object artifacts/switch_custom.js)" = "$CONVERTER_BLOB"
 
       - name: Install only Telink toolchain and Python environment
         working-directory: .work/tuya-zigbee-switch-metering
@@ -246,7 +256,8 @@ jobs:
               'overlay_guard_sha256': sha256('scripts/metering_overlay_guard.py'),
               'source_guard_sha256': sha256('artifacts/source-guard.json'),
               'source_guard_post_tests_sha256': sha256('artifacts/source-guard-post-tests.json'),
-              'z2m_converter_git_blob': '53b7c7bc66df95ca0316a98398f37bcee04a2a23',
+              'z2m_converter_source_git_blob': '53b7c7bc66df95ca0316a98398f37bcee04a2a23',
+              'z2m_converter_git_blob': 'c8d03d1fa2d5ef125e720a7878908a4f5a63992e',
               'z2m_converter_sha256': sha256('artifacts/switch_custom.js'),
               'board': 'OUTLET_BSEED_PM_TS011F_b28wrpvx',
               'device_type': 'router',

@@ -1,6 +1,6 @@
 # Project status
 
-Last Supervisor update: **2026-08-19**.
+Last Supervisor update: **2026-08-23**.
 
 ## Goal
 
@@ -58,7 +58,20 @@ current multiplier = 144679
 power multiplier   = 16989
 ```
 
-These are reused as defaults but remain Class B runtime values until checked against an external reference meter on our exact socket.
+These remain generic firmware defaults. The exact-canary runtime campaign later accepted active-power/current calibration against the Shelly reference; those device-specific values are evidence, not new generic firmware constants.
+
+## Accepted exact-canary campaign
+
+`LivingRoomSocketWifiLeft` is the exact `b28wrpvx / TS011F-BS-PM` canary. The assembled-device campaign was accepted in the control ledger ([issue #1 comment](https://github.com/analienx/bseed/issues/1#issuecomment-5385101150)):
+
+- protection-enabled descendant: repeated soft and hard/peak over-power trips, alarm publication, autonomous relay-off and settings restoration;
+- active power/current calibration: accepted against the Shelly phase-B differential, with post-calibration power error approximately +0.21% at the kettle load;
+- no-load suppression: zero current and zero power when the relay is off;
+- power factor, apparent power and reactive-power derivation: observed and reconciled for the accepted load;
+- voltage: do not bake the no-load Shelly offset into generic firmware; loaded local/reference values are close, while no-load voltage remains a follow-up;
+- optional reboot-persistence and 325 W linearity checks are non-blocking follow-ups.
+
+The repository task is now productionization only: finish the exact-target Zigbee2MQTT canonical-unit/readback fix, pin this evidence, and leave PR #6 **DRAFT** until Supervisor merge review. No further physical or OTA action is authorized by this state.
 
 ## Exact-canary Class A — issue #3
 
@@ -99,7 +112,7 @@ The candidate does **not** add `EPA1C2B1` to the persisted/compiled BSEED config
 1. restore the BSEED default config to the current project value:
    `b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;`
 2. in `config_parser.c`, if the parsed identity is exactly `b28wrpvx` + `TS011F-BS-PM` and no meter token was supplied, initialize the proven pulse backend on `PA1/PC2/PB1`;
-3. reset the relay-protection policy on every config reparse, then disable PM-derived overload relay actuation only for the exact BSEED canary identity.
+3. reset the relay-protection policy on every config reparse; the baseline overlay disables PM-derived overload relay actuation for the exact BSEED identity, while the separately gated protection-enabled descendant opts into the already-reviewed policy.
 
 The first canary also omits downstream PWM LED flags, preserving existing PC3/PB4 on/off behavior.
 
@@ -115,7 +128,7 @@ The first canary also omits downstream PWM LED flags, preserving existing PC3/PB
 - normal + forced custom-to-custom OTA files are validated with `ota_guard.py` for CRC, Telink payload, exact base config and OTA identity `4417/43556`.
 - `build-provenance.json` binds supervisor head SHA, downstream commit, overlay/guard hashes, converter hash/blob, PA1/PC2/PB1, preserved config and normal/forced OTA hashes/versions.
 - builds are serialized per PR/ref with stale runs cancelled.
-- the pinned downstream `switch_custom.js` Git blob is `53b7c7bc66df95ca0316a98398f37bcee04a2a23`; it is packaged rather than regenerated from the NVM-preserving config.
+- the pinned downstream `switch_custom.js` source Git blob is `53b7c7bc66df95ca0316a98398f37bcee04a2a23`; CI applies the deterministic converter patch and gates the derived blob `c8d03d1fa2d5ef125e720a7878908a4f5a63992e`. The patch preserves write scaling, repairs older raw-wire overload readback, and keeps the additional `STATE_GET` exposes scoped to `TS011F-BS-PM`.
 - producing an artifact is **not** flash authorization.
 
 ## Metering implementation audit notes
@@ -156,7 +169,7 @@ Known follow-up before fleet deployment: downstream energy persistence checkpoin
 - legacy staged candidates: `scripts/candidate_gate.py`;
 - adopted metering: `scripts/metering_candidate_gate.py` + `templates/metering-candidate-manifest.json`.
 
-The adopted gate now binds the local reviewed overlay scripts, CI `build-provenance.json`, exact source-guard report, candidate hash, pinned converter Git blob/hash and the proven rollback/baseline. All offline checks must be `PASS`.
+The adopted gate now binds the local reviewed overlay scripts, CI `build-provenance.json`, exact source-guard report, candidate hash, source converter blob, derived converter blob/hash and the proven rollback/baseline. All offline checks must be `PASS`.
 
 `scripts/new-metering-candidate.ps1` prepares the local evidence workspace only; it never performs OTA.
 
@@ -170,22 +183,25 @@ The adopted gate now binds the local reviewed overlay scripts, CI `build-provena
 2. **Exact-canary confirmation** — issue #3 confirms the chosen BL0937/ZTU socket and PA1/PC2/PB1 routes.
 3. **Recovery proof** — issue #5 proves LKG self-reinstall + unpowered SWS/full-flash recovery on the same canary.
 4. **Source/artifact/candidate gates** — exact provenance, identity/config/hash, converter and rollback all PASS.
-5. **One assembled-device canary OTA** — only after explicit control-issue approval; no exposed PCB and no fleet action.
-6. **Functional validation** — relay/button/LED/rejoin/OTA first, then raw meter diagnostics and V/A/W.
-7. **Calibration/energy validation** — resistive reference points, low-load behavior, accumulated Wh and reboot persistence.
-8. **Post-canary only** — consider PWM LEDs, overload relay protection, NVM endurance improvements and broader rollout as separate changes.
+5. **One assembled-device canary OTA** — completed on the exact canary under the control ledger; no exposed PCB and no fleet action.
+6. **Functional/protection validation** — completed and accepted for the exact canary, including repeated relay-off protection behavior.
+7. **Calibration/metrology validation** — active power/current/PF/Q and no-load zero behavior accepted; voltage offset, reboot persistence and optional 325 W linearity remain bounded follow-ups.
+8. **Repository productionization** — converter canonical-unit/readback fix, evidence pinning and PR #6 review; only then consider one hardware-equivalent additional canary and broader rollout.
 
 ## Current state
 
 ```text
 SOURCE_MAPPING          = CONFIRMED (PA1 / PC2 / PB1)
 PM_IMPLEMENTATION       = REUSED + AUDITED DOWNSTREAM
-SUPERVISOR_CODING       = IMPLEMENTED IN DRAFT PR #6
+SUPERVISOR_CODING       = IMPLEMENTED; REPO PRODUCTIONIZATION IN PROGRESS (PR #6)
 POLICY_CI               = PASSING ON CURRENT ITERATIONS
 EXACT_CANARY_CLASS_A    = OPEN (#3; confirmation, not discovery)
 RECOVERY_CLASS_A        = OPEN (#5; may proceed in parallel)
 CANARY_BUILD_PIPELINE   = IMPLEMENTED; PR + MANUAL OFFLINE CI
 METERING_CANDIDATE_GATE= IMPLEMENTED + PROVENANCE-BOUND
+CANARY_RUNTIME          = ACCEPTED (protection + metrology; issue #1 ledger)
+Z2M_CONVERTER            = CANONICAL-UNIT READBACK FIX + DETERMINISTIC TESTS
+PR6                     = DRAFT; READY FOR SUPERVISOR MERGE REVIEW AFTER CLEANUP
 EXPERIMENTAL_OTA        = NOT AUTHORIZED
 ```
 

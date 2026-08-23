@@ -80,7 +80,7 @@ For that exact identity, overload measurements remain available but the downstre
 
 ## D-014 — Coordinator metadata is pinned separately from firmware config
 
-**Decision:** package the downstream 1.2.5 `switch_custom.js` converter from Git blob `53b7c7bc66df95ca0316a98398f37bcee04a2a23` with the canary artifacts instead of regenerating it from the NVM-preserving candidate `device_db`.
+**Decision:** start from the downstream 1.2.5 `switch_custom.js` source Git blob `53b7c7bc66df95ca0316a98398f37bcee04a2a23`, apply the deterministic BSEED converter patch, and package/gate the derived blob `c8d03d1fa2d5ef125e720a7878908a4f5a63992e` instead of regenerating it from the NVM-preserving candidate `device_db`.
 
 **Reason:** converter generation uses the device config to infer PM exposes. Our firmware intentionally removes the explicit `EP` token from that config, but the runtime firmware still exposes the standard metering clusters. The already-generated downstream converter correctly describes those clusters and is pinned/hash-checked independently.
 
@@ -91,3 +91,11 @@ For that exact identity, overload measurements remain available but the downstre
 `metering_candidate_gate.py` independently recomputes the local overlay-script hashes and cross-checks the candidate and converter against the CI provenance. This prevents a manually edited manifest from silently changing which source/artifact is being proposed.
 
 The canary workflow is serialized per PR/ref with stale runs cancelled on subsequent revisions.
+
+## D-016 — Accept the exact-canary protection/metrology result; keep calibration evidence out of generic firmware
+
+**Decision:** accept the repeated protection-enabled and metrology campaign on `LivingRoomSocketWifiLeft` as the exact-canary result. The accepted runtime calibration is evidence for this canary, not a device-specific constant to bake into generic firmware. The no-load voltage offset remains a bounded follow-up because the Shelly reference is panel-side and does not establish the socket-local voltage channel under every load condition.
+
+**Converter boundary:** protection-setting writes continue to use firmware wire units (W, mA and cV where applicable), while Zigbee2MQTT readback is canonical user-unit W/A/V. The repair is deterministic and target-scoped for the BSEED metering exposes; it must not require the evidence harness to interpret raw wire units.
+
+**Next state:** PR #6 remains DRAFT until repository cleanup and Supervisor merge review. Reboot persistence, optional 325 W linearity, exact identity/recovery checks on any additional socket and Romasku upstream coordination remain separate follow-ups.

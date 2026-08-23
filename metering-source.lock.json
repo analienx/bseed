@@ -33,6 +33,14 @@
     "power_multiplier": 16989,
     "status": "hardware-measured downstream default; verify/fine-tune on the project canary after safe assembled-device validation"
   },
+  "converter": {
+    "source_path": "zigbee2mqtt/converters/switch_custom.js",
+    "source_git_blob": "53b7c7bc66df95ca0316a98398f37bcee04a2a23",
+    "patch_script": "scripts/patch-calibration-converter.py",
+    "derived_git_blob": "c8d03d1fa2d5ef125e720a7878908a4f5a63992e",
+    "derived_sha256": "ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe",
+    "scope": "TS011F-BS-PM measurement exposes; protection readback keeps canonical W/A/V units"
+  },
   "known_good_downstream_artifact": {
     "file_name": "tlc_switch-1.2.5-273d58bd3.zigbee",
     "file_size": 201538,

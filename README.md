@@ -65,6 +65,8 @@ b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;
 
 Because converted devices persist this config in NVM, the project does **not** require an `EP` config write or factory reset. The reviewed overlay activates the proven meter pins from the exact `b28wrpvx` + `TS011F-BS-PM` identity while leaving the config unchanged.
 
+The exact canary `LivingRoomSocketWifiLeft` has now completed and passed the assembled-device protection/metrology campaign. Repeated overload trips turned the relay off and published the expected alarm; active power/current calibration, power factor, reactive power and no-load zero behavior were accepted against the Shelly reference. The no-load voltage offset is deliberately not baked into generic firmware. Evidence and remaining bounded follow-ups are recorded in the [control ledger](https://github.com/analienx/bseed/issues/1#issuecomment-5385101150).
+
 ## Implementation files
 
 - `metering-source.lock.json` — pinned downstream implementation/mapping/calibration/converter provenance.
@@ -77,20 +79,20 @@ Because converted devices persist this config in NVM, the project does **not** r
 
 The firmware build checks out the actual reviewed supervisor head SHA, runs the downstream test prerequisites, builds only the BSEED Telink router, validates normal + forced custom OTA images, and emits `build-provenance.json` binding source/overlay/converter/artifact hashes to that exact supervisor commit. Stale PR builds are serialized/cancelled per PR.
 
-The build packages the pinned downstream Zigbee2MQTT `switch_custom.js` separately because the firmware deliberately preserves the old config while still exposing Electrical Measurement and Smart Energy Metering clusters at runtime.
+The build packages the pinned downstream Zigbee2MQTT `switch_custom.js` separately because the firmware deliberately preserves the old config while still exposing Electrical Measurement and Smart Energy Metering clusters at runtime. `scripts/patch-calibration-converter.py` keeps protection writes in firmware wire units while normalizing W/A/V reads to user units and adds read access only for the exact BSEED metering exposes.
 
-## What is still required from hardware
+## Current handoff
 
-Coding/building is not blocked. Flashing is.
+PR #6 remains **DRAFT** while the converter fix, evidence pinning and status cleanup receive Supervisor merge review. No additional physical or OTA action is part of this handoff.
 
-Before an experimental OTA on one canary:
+Remaining follow-ups are bounded and non-blocking for the accepted canary:
 
-1. tie one exact physical socket/PCB revision to the source-confirmed BL0937/ZTU design;
-2. confirm the source-known `PA1/PC2/PB1` routes on that exact canary (issue #3 / Class A);
-3. prove the known-good custom OTA reinstall + unpowered SWS/full-flash recovery path on that same canary (issue #5);
-4. pass the source/artifact/candidate/live preflash gates.
+- reboot persistence of the calibration/settings;
+- optional 325 W linearity point;
+- separate identity/recovery evidence before deploying to another PM BSEED socket;
+- upstreaming the sanitized converter/metrology findings to Romasku.
 
-No fleet update or experimental flash is authorized by this README.
+No fleet update is authorized by this README.
 
 ## Local checkout
 

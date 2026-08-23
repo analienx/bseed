@@ -13,7 +13,10 @@ from typing import Any
 SOURCE_REPO = "HobboRobin/tuya-zigbee-switch-with-metering"
 SOURCE_COMMIT = "8b8cc4924a353b35880666f7b48f0afbee89eb17"
 EXPECTED_CONFIG = "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;"
-EXPECTED_CONVERTER_BLOB = "53b7c7bc66df95ca0316a98398f37bcee04a2a23"
+EXPECTED_CONVERTER_SOURCE_BLOB = "53b7c7bc66df95ca0316a98398f37bcee04a2a23"
+# Git-blob identity of the pinned source after the deterministic BSEED
+# converter patch. The source blob remains separately provenance-bound.
+EXPECTED_CONVERTER_BLOB = "c8d03d1fa2d5ef125e720a7878908a4f5a63992e"
 EXPECTED_METER_GPIO = {"cf": "PA1", "cf1": "PC2", "sel": "PB1"}
 FORCED_FILE_VERSION = 0xFFFFFFFF
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$", re.I)
@@ -270,7 +273,7 @@ def evaluate(path: Path) -> dict[str, Any]:
     converter_path = resolve(base, str(converter.get("path", "")))
     converter_hash = _require_sha256(converter.get("sha256"), "converter.sha256", errors)
     if converter.get("git_blob") != EXPECTED_CONVERTER_BLOB:
-        errors.append("converter.git_blob does not match pinned downstream converter")
+        errors.append("converter.git_blob does not match patched BSEED converter")
     if not converter_path.is_file():
         errors.append(f"converter does not exist: {converter_path}")
     else:
@@ -300,7 +303,9 @@ def evaluate(path: Path) -> dict[str, Any]:
             if provenance.get("overlay_guard_sha256") != overlay_guard_hash:
                 errors.append("build provenance overlay guard hash mismatch")
             if provenance.get("z2m_converter_git_blob") != EXPECTED_CONVERTER_BLOB:
-                errors.append("build provenance converter Git blob mismatch")
+                errors.append("build provenance patched converter Git blob mismatch")
+            if provenance.get("z2m_converter_source_git_blob") != EXPECTED_CONVERTER_SOURCE_BLOB:
+                errors.append("build provenance source converter Git blob mismatch")
             if converter_hash and provenance.get("z2m_converter_sha256") != converter_hash:
                 errors.append("build provenance converter SHA-256 mismatch")
             if provenance.get("board") != "OUTLET_BSEED_PM_TS011F_b28wrpvx":
@@ -446,7 +451,8 @@ def main() -> int:
         assert EXPECTED_PROFILE["device_config"] == EXPECTED_CONFIG
         assert EXPECTED_METER_GPIO == {"cf": "PA1", "cf1": "PC2", "sel": "PB1"}
         assert EXPECTED_METER["overload_relay_actuation"] is False
-        assert EXPECTED_CONVERTER_BLOB == "53b7c7bc66df95ca0316a98398f37bcee04a2a23"
+        assert EXPECTED_CONVERTER_SOURCE_BLOB == "53b7c7bc66df95ca0316a98398f37bcee04a2a23"
+        assert EXPECTED_CONVERTER_BLOB == "c8d03d1fa2d5ef125e720a7878908a4f5a63992e"
         assert "build_provenance" in REQUIRED_OFFLINE_CHECKS
         print("SELF_TEST=PASS")
         return 0
