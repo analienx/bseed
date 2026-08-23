@@ -96,6 +96,12 @@ The canary workflow is serialized per PR/ref with stale runs cancelled on subseq
 
 **Decision:** accept the repeated protection-enabled and metrology campaign on `LivingRoomSocketWifiLeft` as the exact-canary result. The accepted runtime calibration is evidence for this canary, not a device-specific constant to bake into generic firmware. The no-load voltage offset remains a bounded follow-up because the Shelly reference is panel-side and does not establish the socket-local voltage channel under every load condition.
 
+## D-017 — Close minimum two-unit validation and gate stock migration wrappers
+
+**Decision:** accept the asymmetric two-unit evidence package. `LivingRoomSocketWifiLeft` carries the deep calibration/recovery evidence; `WorkroomSocketCabinet` independently proves direct stock-Tuya migration, native PM/no-load behavior, distinct calibration state, and autonomous protection trip/settings restoration. Dedicated second-unit power-cycle persistence, a second Shelly calibration window, and separate button/LED observation remain non-blocking and are not repeated merely for symmetry.
+
+The CI production path must emit normal, forced, and `from_tuya` OTA wrappers from the same Telink payload and gate identities `4417/43556`, `4417/43556/0xffffffff`, and `4417/54179/0xffffffff` respectively, including byte-identical payload proof.
+
 **Converter boundary:** protection-setting writes continue to use firmware wire units (W, mA and cV where applicable), while Zigbee2MQTT readback is canonical user-unit W/A/V. The repair is deterministic and target-scoped for the BSEED metering exposes; it must not require the evidence harness to interpret raw wire units.
 
 **Next state:** PR #6 remains DRAFT until repository cleanup and Supervisor merge review. Reboot persistence, optional 325 W linearity, exact identity/recovery checks on any additional socket and Romasku upstream coordination remain separate follow-ups.

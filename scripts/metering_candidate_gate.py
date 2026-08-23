@@ -61,6 +61,7 @@ REQUIRED_OFFLINE_CHECKS = {
     "ota_guard",
     "converter_pin",
     "build_provenance",
+    "from_tuya_ota_guard",
 }
 EXPECTED_OVERLAY_FILES = [
     "device_db.yaml",
@@ -93,6 +94,18 @@ def git_blob_sha1(path: Path) -> str:
     h.update(f"blob {len(data)}\0".encode("ascii"))
     h.update(data)
     return h.hexdigest()
+
+
+def telink_payload(path: Path) -> bytes:
+    """Return the exact Telink sub-element bytes from a guarded OTA image."""
+    try:
+        from scripts.ota_guard import parse_image
+    except ModuleNotFoundError:
+        from ota_guard import parse_image
+
+    header, telink = parse_image(path, EXPECTED_CONFIG)
+    start = header.header_length + 6
+    return path.read_bytes()[start : start + telink.payload_size]
 
 
 def resolve(base: Path, raw: str) -> Path:
@@ -266,6 +279,34 @@ def evaluate(path: Path) -> dict[str, Any]:
     elif candidate_hash and sha256_file(candidate_path) != candidate_hash:
         errors.append("candidate OTA hash mismatch")
 
+    from_tuya = m.get("from_tuya")
+    if not isinstance(from_tuya, dict):
+        errors.append("from_tuya must be an object")
+        from_tuya = {}
+    from_tuya_path = resolve(base, str(from_tuya.get("ota", "")))
+    from_tuya_hash = _require_sha256(from_tuya.get("sha256"), "from_tuya.sha256", errors)
+    if not from_tuya_path.is_file():
+        errors.append(f"from_tuya OTA does not exist: {from_tuya_path}")
+    elif from_tuya_hash and sha256_file(from_tuya_path) != from_tuya_hash:
+        errors.append("from_tuya OTA hash mismatch")
+    elif candidate_path.is_file():
+        try:
+            try:
+                from scripts.ota_guard import parse_image
+            except ModuleNotFoundError:
+                from ota_guard import parse_image
+            from_tuya_header, from_tuya_telink = parse_image(from_tuya_path, EXPECTED_CONFIG)
+            if from_tuya_header.manufacturer_code != 4417:
+                errors.append("from_tuya manufacturer_code must be 4417")
+            if from_tuya_header.image_type != 54179:
+                errors.append("from_tuya image_type must be 54179")
+            if from_tuya_header.file_version != FORCED_FILE_VERSION:
+                errors.append("from_tuya file_version must be 0xFFFFFFFF")
+            if telink_payload(candidate_path) != telink_payload(from_tuya_path):
+                errors.append("from_tuya Telink payload is not byte-identical to candidate payload")
+        except (OSError, ValueError) as exc:
+            errors.append(f"from_tuya OTA inspection failed: {exc}")
+
     converter = m.get("converter")
     if not isinstance(converter, dict):
         errors.append("converter must be an object")
@@ -334,6 +375,20 @@ def evaluate(path: Path) -> dict[str, Any]:
                     errors.append(f"build provenance {artifact_key} hash mismatch")
                 if candidate_path.name and built.get("file_name") != candidate_path.name:
                     errors.append(f"build provenance {artifact_key} filename mismatch")
+
+            built_from_tuya = provenance.get("candidate_from_tuya")
+            if not isinstance(built_from_tuya, dict):
+                errors.append("build provenance missing candidate_from_tuya")
+            else:
+                if from_tuya_hash and built_from_tuya.get("sha256") != from_tuya_hash:
+                    errors.append("build provenance candidate_from_tuya hash mismatch")
+                if from_tuya_path.name and built_from_tuya.get("file_name") != from_tuya_path.name:
+                    errors.append("build provenance candidate_from_tuya filename mismatch")
+                if built_from_tuya.get("image_type") != 54179:
+                    errors.append("build provenance candidate_from_tuya image_type mismatch")
+                payload_identity = provenance.get("ota_payload_identity")
+                if not isinstance(payload_identity, dict) or payload_identity.get("status") != "PASS":
+                    errors.append("build provenance OTA payload identity is not PASS")
         except json.JSONDecodeError:
             errors.append("build provenance is not valid JSON")
 
@@ -454,6 +509,7 @@ def main() -> int:
         assert EXPECTED_CONVERTER_SOURCE_BLOB == "53b7c7bc66df95ca0316a98398f37bcee04a2a23"
         assert EXPECTED_CONVERTER_BLOB == "c8d03d1fa2d5ef125e720a7878908a4f5a63992e"
         assert "build_provenance" in REQUIRED_OFFLINE_CHECKS
+        assert "from_tuya_ota_guard" in REQUIRED_OFFLINE_CHECKS
         print("SELF_TEST=PASS")
         return 0
 

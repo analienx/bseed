@@ -71,6 +71,8 @@ These remain generic firmware defaults. The exact-canary runtime campaign later 
 - voltage: do not bake the no-load Shelly offset into generic firmware; loaded local/reference values are close, while no-load voltage remains a follow-up;
 - optional reboot-persistence and 325 W linearity checks are non-blocking follow-ups.
 
+The physical campaign is now closed at the two-unit level. The accepted asymmetry is intentional: `LivingRoomSocketWifiLeft` carries the deep Shelly calibration/recovery evidence, while `WorkroomSocketCabinet` independently proves direct stock-Tuya migration through the `from_tuya` wrapper, native PM/no-load behavior, distinct per-device calibration state, and autonomous protection trip/settings restoration. Dedicated second-unit power-cycle persistence, a second simultaneous Shelly window and separate human button/LED observation are non-blocking and are not repeated merely for symmetry. See `evidence/two-unit-validation-20260823.json`.
+
 The repository task is now productionization only: finish the exact-target Zigbee2MQTT canonical-unit/readback fix, pin this evidence, and leave PR #6 **DRAFT** until Supervisor merge review. No further physical or OTA action is authorized by this state.
 
 ## Exact-canary Class A — issue #3
@@ -125,8 +127,8 @@ The first canary also omits downstream PWM LED flags, preserving existing PC3/PB
 - `.github/workflows/build-metering-canary.yml` runs as safe offline PR CI and via manual dispatch; it builds only `OUTLET_BSEED_PM_TS011F_b28wrpvx` as a Telink router.
 - PR builds check out the **actual supervisor head SHA**, not GitHub's synthetic merge ref.
 - the workflow installs only the Telink toolchain, runs the downstream Makefile test prerequisites, rechecks the exact source overlay, then builds the target.
-- normal + forced custom-to-custom OTA files are validated with `ota_guard.py` for CRC, Telink payload, exact base config and OTA identity `4417/43556`.
-- `build-provenance.json` binds supervisor head SHA, downstream commit, overlay/guard hashes, converter hash/blob, PA1/PC2/PB1, preserved config and normal/forced OTA hashes/versions.
+- normal + forced custom-to-custom and `from_tuya` stock-migration OTA files are validated with `ota_guard.py` for CRC, Telink payload, exact base config and the expected identities `4417/43556` and `4417/54179`.
+- CI derives all three wrappers from one built Telink payload and asserts byte-identical inner payloads; `build-provenance.json` records all wrapper hashes, identities and the shared payload hash.
 - builds are serialized per PR/ref with stale runs cancelled.
 - the pinned downstream `switch_custom.js` source Git blob is `53b7c7bc66df95ca0316a98398f37bcee04a2a23`; CI applies the deterministic converter patch and gates the derived blob `c8d03d1fa2d5ef125e720a7878908a4f5a63992e`. The patch preserves write scaling, repairs older raw-wire overload readback, and keeps the additional `STATE_GET` exposes scoped to `TS011F-BS-PM`.
 - producing an artifact is **not** flash authorization.

@@ -186,7 +186,7 @@ jobs:
           BOARD="$BOARD" DEVICE_TYPE="$DEVICE_TYPE" make board/build
           ls -lah "bin/router/$BOARD"
 
-      - name: Select and validate custom-to-custom OTA artifacts
+      - name: Select and validate all OTA artifacts
         shell: bash
         run: |
           set -euo pipefail
@@ -195,15 +195,19 @@ jobs:
             -maxdepth 1 -type f -name '*.zigbee' ! -name '*from_tuya*' ! -name '*forced*' | sort)
           mapfile -t forced < <(find ".work/tuya-zigbee-switch-metering/bin/router/$BOARD" \
             -maxdepth 1 -type f -name '*forced.zigbee' | sort)
-          if [ "${#normal[@]}" -ne 1 ] || [ "${#forced[@]}" -ne 1 ]; then
-            echo "Expected exactly one normal and one forced custom-to-custom image." >&2
+          mapfile -t from_tuya < <(find ".work/tuya-zigbee-switch-metering/bin/router/$BOARD" \
+            -maxdepth 1 -type f -name '*from_tuya.zigbee' | sort)
+          if [ "${#normal[@]}" -ne 1 ] || [ "${#forced[@]}" -ne 1 ] || [ "${#from_tuya[@]}" -ne 1 ]; then
+            echo "Expected exactly one normal, forced, and from_tuya image." >&2
             printf 'normal(%s): %s\n' "${#normal[@]}" "${normal[*]-}" >&2
             printf 'forced(%s): %s\n' "${#forced[@]}" "${forced[*]-}" >&2
+            printf 'from_tuya(%s): %s\n' "${#from_tuya[@]}" "${from_tuya[*]-}" >&2
             exit 1
           fi
 
           cp "${normal[0]}" artifacts/bseed-b28wrpvx-metering-canary.zigbee
           cp "${forced[0]}" artifacts/bseed-b28wrpvx-metering-canary-forced.zigbee
+          cp "${from_tuya[0]}" artifacts/bseed-b28wrpvx-metering-canary-from_tuya.zigbee
 
           python3 scripts/ota_guard.py inspect \
             artifacts/bseed-b28wrpvx-metering-canary.zigbee \
@@ -213,22 +217,57 @@ jobs:
             artifacts/bseed-b28wrpvx-metering-canary-forced.zigbee \
             --required-ascii "$EXPECTED_CONFIG" \
             --json-out artifacts/ota-inspect-forced.json
+          python3 scripts/ota_guard.py inspect \
+            artifacts/bseed-b28wrpvx-metering-canary-from_tuya.zigbee \
+            --required-ascii "$EXPECTED_CONFIG" \
+            --json-out artifacts/ota-inspect-from_tuya.json
 
           python3 - <<'PY'
+          import hashlib
           import json
           from pathlib import Path
           normal = json.loads(Path('artifacts/ota-inspect.json').read_text())
           forced = json.loads(Path('artifacts/ota-inspect-forced.json').read_text())
-          for label, p in [('normal', normal), ('forced', forced)]:
+          from_tuya = json.loads(Path('artifacts/ota-inspect-from_tuya.json').read_text())
+          for label, p in [('normal', normal), ('forced', forced), ('from_tuya', from_tuya)]:
               h, t = p['header'], p['telink']
               assert h['manufacturer_code'] == 4417, (label, h)
-              assert h['image_type'] == 43556, (label, h)
+              expected_image_type = 54179 if label == 'from_tuya' else 43556
+              assert h['image_type'] == expected_image_type, (label, h)
               assert t['required_ascii_occurrences'] == 1, (label, t)
               assert t['payload_size'] <= 0x40000, (label, t)
           assert normal['header']['file_version'] != 0xFFFFFFFF, normal['header']
           assert forced['header']['file_version'] == 0xFFFFFFFF, forced['header']
+          assert from_tuya['header']['file_version'] == 0xFFFFFFFF, from_tuya['header']
           assert normal['telink']['inner_file_version'] == forced['telink']['inner_file_version']
-          print('OTA_IDENTITY_PASS manufacturer=4417 image_type=43556 normal+forced')
+          assert normal['telink']['inner_file_version'] == from_tuya['telink']['inner_file_version']
+
+          def payload(path, inspected):
+              data = Path(path).read_bytes()
+              start = inspected['header']['header_length'] + 6
+              end = start + inspected['telink']['payload_size']
+              return data[start:end]
+
+          payloads = {
+              'normal': payload('artifacts/bseed-b28wrpvx-metering-canary.zigbee', normal),
+              'forced': payload('artifacts/bseed-b28wrpvx-metering-canary-forced.zigbee', forced),
+              'from_tuya': payload('artifacts/bseed-b28wrpvx-metering-canary-from_tuya.zigbee', from_tuya),
+          }
+          hashes = {label: hashlib.sha256(data).hexdigest() for label, data in payloads.items()}
+          assert len(set(payloads.values())) == 1, hashes
+          Path('artifacts/ota-payload-identity.json').write_text(json.dumps({
+              'status': 'PASS',
+              'payload_sha256': hashes['normal'],
+              'payload_size': len(payloads['normal']),
+              'wrappers': hashes,
+              'identities': {
+                  'normal': [4417, 43556, normal['header']['file_version']],
+                  'forced': [4417, 43556, forced['header']['file_version']],
+                  'from_tuya': [4417, 54179, from_tuya['header']['file_version']],
+              },
+          }, indent=2) + '\n')
+          print('OTA_IDENTITY_PASS normal=4417/43556 forced=4417/43556 from_tuya=4417/54179')
+          print('OTA_PAYLOAD_IDENTITY_PASS sha256=' + hashes['normal'])
           PY
 
           sha256sum artifacts/*.zigbee artifacts/switch_custom.js | sort | tee artifacts/SHA256SUMS
@@ -245,8 +284,11 @@ jobs:
 
           normal_path = Path('artifacts/bseed-b28wrpvx-metering-canary.zigbee')
           forced_path = Path('artifacts/bseed-b28wrpvx-metering-canary-forced.zigbee')
+          from_tuya_path = Path('artifacts/bseed-b28wrpvx-metering-canary-from_tuya.zigbee')
           normal = json.loads(Path('artifacts/ota-inspect.json').read_text())
           forced = json.loads(Path('artifacts/ota-inspect-forced.json').read_text())
+          from_tuya = json.loads(Path('artifacts/ota-inspect-from_tuya.json').read_text())
+          payload_identity = json.loads(Path('artifacts/ota-payload-identity.json').read_text())
           provenance = {
               'schema': 3,
               'supervisor_commit': os.environ['SUPERVISOR_COMMIT'],
@@ -280,6 +322,16 @@ jobs:
                   'inner_file_version': forced['telink']['inner_file_version'],
                   'payload_size': forced['telink']['payload_size'],
               },
+              'candidate_from_tuya': {
+                  'file_name': from_tuya_path.name,
+                  'sha256': sha256(from_tuya_path),
+                  'file_version': from_tuya['header']['file_version'],
+                  'inner_file_version': from_tuya['telink']['inner_file_version'],
+                  'image_type': from_tuya['header']['image_type'],
+                  'payload_size': from_tuya['telink']['payload_size'],
+                  'payload_sha256': payload_identity['payload_sha256'],
+              },
+              'ota_payload_identity': payload_identity,
               'flash_authorized': False,
           }
           Path('artifacts/build-provenance.json').write_text(json.dumps(provenance, indent=2) + '\n')

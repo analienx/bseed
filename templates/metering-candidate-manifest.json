@@ -38,6 +38,10 @@
     "ota": "bseed-b28wrpvx-metering-canary.zigbee",
     "sha256": ""
   },
+  "from_tuya": {
+    "ota": "bseed-b28wrpvx-metering-canary-from_tuya.zigbee",
+    "sha256": ""
+  },
   "converter": {
     "path": "switch_custom.js",
     "sha256": "",
@@ -64,7 +68,8 @@
     "source_guard": "PENDING",
     "ota_guard": "PENDING",
     "converter_pin": "PENDING",
-    "build_provenance": "PENDING"
+    "build_provenance": "PENDING",
+    "from_tuya_ota_guard": "PENDING"
   },
   "notes": ""
 }

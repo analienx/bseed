@@ -67,6 +67,8 @@ Because converted devices persist this config in NVM, the project does **not** r
 
 The exact canary `LivingRoomSocketWifiLeft` has now completed and passed the assembled-device protection/metrology campaign. Repeated overload trips turned the relay off and published the expected alarm; active power/current calibration, power factor, reactive power and no-load zero behavior were accepted against the Shelly reference. The no-load voltage offset is deliberately not baked into generic firmware. Evidence and remaining bounded follow-ups are recorded in the [control ledger](https://github.com/analienx/bseed/issues/1#issuecomment-5385101150).
 
+The physical campaign is closed at two units: `WorkroomSocketCabinet` independently completed direct stock-Tuya migration through the `from_tuya` wrapper, native PM/no-load validation, distinct calibration readback and autonomous protection-trip/settings-restoration validation. The intentionally asymmetric evidence package is recorded in `evidence/two-unit-validation-20260823.json`; dedicated second-unit power-cycle persistence, a second Shelly calibration window and separate button/LED observation remain non-blocking.
+
 ## Implementation files
 
 - `metering-source.lock.json` — pinned downstream implementation/mapping/calibration/converter provenance.
@@ -77,7 +79,7 @@ The exact canary `LivingRoomSocketWifiLeft` has now completed and passed the ass
 - `scripts/new-metering-candidate.ps1` — prepares a local candidate evidence workspace; does not flash.
 - `.github/workflows/build-metering-canary.yml` — offline canary build/package workflow run by the implementation PR and available for manual dispatch.
 
-The firmware build checks out the actual reviewed supervisor head SHA, runs the downstream test prerequisites, builds only the BSEED Telink router, validates normal + forced custom OTA images, and emits `build-provenance.json` binding source/overlay/converter/artifact hashes to that exact supervisor commit. Stale PR builds are serialized/cancelled per PR.
+The firmware build checks out the actual reviewed supervisor head SHA, runs the downstream test prerequisites, builds only the BSEED Telink router, validates normal + forced + `from_tuya` OTA images from one identical Telink payload, and emits `build-provenance.json` binding source/overlay/converter/artifact hashes to that exact supervisor commit. Stale PR builds are serialized/cancelled per PR.
 
 The build packages the pinned downstream Zigbee2MQTT `switch_custom.js` separately because the firmware deliberately preserves the old config while still exposing Electrical Measurement and Smart Energy Metering clusters at runtime. `scripts/patch-calibration-converter.py` keeps protection writes in firmware wire units while normalizing W/A/V reads to user units and adds read access only for the exact BSEED metering exposes.
 
