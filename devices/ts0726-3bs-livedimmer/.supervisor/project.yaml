@@ -174,13 +174,34 @@ firmware:
       status: open
     - id: stale_bind_capacity
       requirement: >
-        Preserve the full raw bind table, then reclaim only entries proven to target the dead
-        coordinator 0x00124b002d12b1fd, one at a time, re-reading after each. The device has
-        already been at 32/32 once.
-      status: open
+        Preserve the full raw bind table, then reclaim only entries proven to target a node
+        that is actually gone, one at a time, re-reading after each. The device has already
+        been at 32/32 once. "Proven" means proven against the coordinator's real on-air
+        IEEE, not against the textual spelling of a stored bind destination.
+      status: blocked_pending_eui64
+      block_reason: >
+        The two coordinator spellings used throughout this campaign are octet-reversals of
+        one another. 0x00124b002d12b1fd (labelled the removed SLZB-06p7) reversed by octet is
+        0xfdb1122d004b1200 (labelled the current SONOFF Dongle Max MG24 / ember coordinator).
+        Only the former carries the Silicon Labs OUI. They may therefore be a single 64-bit
+        IEEE rendered in two byte orders rather than two distinct nodes. As recorded, the 7
+        bind entries counted as dead are separated from the 14 counted as live coordinator
+        binds purely by which of the two spellings the store happens to hold, and the capture
+        labels BOTH forms UNKNOWN-OR-DEAD while its own resolution table calls one of them
+        current. Neither address may be treated as proven-dead, and NO bind may be removed
+        from this device, until the coordinator's actual on-air IEEE is identified from a
+        live read. If the two spellings are one node, the 7 entries are live reporting binds
+        and deleting them silently breaks reporting for this device; the same byte-order
+        assumption also propagates into the network-wide stale-bind figure this precondition
+        is sized against.
+      blocked_by: >
+        Read-only evidence pass: identify the coordinator's on-air EUI-64 and re-derive the
+        dead set from it. Do not resolve this by editing the stored addresses.
 
   forbidden_without_new_ruling:
     - flash or OTA before all five preconditions above are green
+    - remove, unbind or rewrite any binding on this device while stale_bind_capacity is
+      blocked_pending_eui64; neither coordinator spelling is proven dead
     - device_config write by any transport
     - factory reset or re-pair
     - wired write; TlsrPgm NV-sector behaviour is unverified

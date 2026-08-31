@@ -57,3 +57,10 @@ deployed with `relay_*_physical_mode` proven reachable, firmware-side one-shot c
 migration, a purpose-built revert recovery image, and bind-table capacity recovery — **must all
 be green before any flash**. Firmware campaign fast path is disabled for this subproject until
 then.
+
+**Current gate state: 4 open, 1 blocked.** `stale_bind_capacity` is `blocked_pending_eui64`,
+not merely open — it cannot be executed safely from the evidence in this repo at all. The two
+coordinator IEEE spellings the campaign distinguishes as "dead" and "current" are
+octet-reversals of one another, so no bind destination here is proven stale and **no binding on
+this device may be removed** until a live read identifies the coordinator's actual on-air IEEE.
+See `STATUS.md` and `stale_bind_capacity.block_reason` in the manifest.

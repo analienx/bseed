@@ -7,7 +7,7 @@ Safety invariants: [`docs/LR_MAINDIMMER_SWAPPED_PINS.md`](./docs/LR_MAINDIMMER_S
 **Nothing has been flashed. No OTA, no reset, no re-pair, no bind or group change by this
 stream.**
 
-## Gate — all five preconditions OPEN
+## Gate — 4 open, 1 BLOCKED
 
 | # | Precondition | Status |
 |---|---|---|
@@ -15,7 +15,20 @@ stream.**
 | 2 | `converter_regenerated_and_deployed` — prove `relay_*_physical_mode` read+write in Z2M | **open** |
 | 3 | `firmware_side_migration` — one-shot, pre-parse, marker + pre-seed `detached_on` | **open** |
 | 4 | `rollback_artifact` — purpose-built migration-revert recovery image | **open** |
-| 5 | `stale_bind_capacity` — preserve raw table, reclaim dead entries one at a time | **open** |
+| 5 | `stale_bind_capacity` — reclaim stale entries one at a time | **BLOCKED `blocked_pending_eui64`** |
+
+> **STOP — precondition 5 is not executable from this evidence.** The "dead" coordinator
+> spelling `0x00124b002d12b1fd` and the "current" coordinator spelling `0xfdb1122d004b1200`
+> are octet-reversals of each other, and only the former carries the Silicon Labs OUI. They
+> may be **one** IEEE in two byte orders, not two nodes. The 7 entries below labelled `DEAD`
+> are separated from the 14 labelled `coord` purely by which spelling the store holds, and
+> the capture itself labels **both** forms `UNKNOWN-OR-DEAD`. **Neither address is proven
+> dead and no bind on this device may be removed** until the coordinator's actual on-air
+> IEEE is identified by a live read. If they are one node, those 7 are live reporting binds
+> and deleting them silently breaks this device's reporting — and the same byte-order
+> assumption undersizes the network-wide figure `home-assistant-stack#41` is built on.
+> Full statement in [`.supervisor/project.yaml`](./.supervisor/project.yaml)
+> (`stale_bind_capacity.block_reason`). Nothing has been reclaimed.
 
 ## Identity
 
@@ -27,8 +40,10 @@ board           SWITCH_BSEED_TS0726_3GANG   role router   mcu TLSR8258 (Telink)
 installed       1.1.2-8542fc05   dateCode 20260612   fileVersion 285356032
 ota identity    manufacturerCode 4417   imageType 45577
 canary build    b82774b7   fileVersion 285356043   flashed: NO
-coordinator     0xfdb1122d004b1200  (SONOFF Dongle Max MG24, ember)
-dead previous   0x00124b002d12b1fd  (SLZB-06p7)
+coordinator     0xfdb1122d004b1200  labelled SONOFF Dongle Max MG24 (ember) -- UNPROVEN, see gate
+dead previous   0x00124b002d12b1fd  labelled SLZB-06p7 -- UNPROVEN; octet-reversal of the line above
+              neither spelling is evidenced: the capture's coordinator block carries only
+              adapter/channel/transmit_power and no IEEE at all (2026-08-31T18:13:00Z blob)
 z2m             2.13.0-1
 ```
 
@@ -77,10 +92,14 @@ EP5 (4)  genOnOff>DEAD  genLevelCtrl>DEAD  genOnOff>coord  genLevelCtrl>coord
 EP6 (2)  genOnOff>DEAD  genOnOff>coord
 ```
 
-`DEAD` = targets the removed SLZB coordinator `0x00124b002d12b1fd`: **7 entries**, and all
-are `genOnOff`/`genLevelCtrl`/`genMultistateInput` reporting binds that can never be
-delivered. Precondition 5 reclaims them one at a time after preserving the raw table.
-The device reached 32/32 once already during this investigation.
+`DEAD` in the table above is a **label carried over from the store's own resolution, not a
+proven fact**.
+It marks the 7 entries naming `0x00124b002d12b1fd`, described as the removed SLZB-06p7. That
+spelling is the octet-reversal of `0xfdb1122d004b1200`, which the same capture calls the
+*current* coordinator and which holds 14 of these 28 entries — so the claim that all 7 "can
+never be delivered" is **not supported by the artifact printed above it** and is gated by
+precondition 5. Treat none of them as removable. The device reached 32/32 once already during
+this investigation, which is the only established capacity fact here.
 
 History of the count: `27` at `2026-08-30T20:44Z` → `21` at `21:09Z` → `28` at `2026-08-31T07:13Z`
 → `28` now. `configure()` re-adds the coordinator binds on every restart and re-interview, so

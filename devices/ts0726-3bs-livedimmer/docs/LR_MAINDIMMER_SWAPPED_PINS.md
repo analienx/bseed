@@ -145,7 +145,14 @@ swapped scheme without its own evidence.
    has been captured closing that loop. Treat the second transition as **structural
    hygiene, not part of the established mechanism**, and do not let a repair depend on it.
 
-   The hygiene actions are still correct:
+   **All four actions below are bind-table writes and are DEFERRED.** Precondition 5
+   (`stale_bind_capacity`) is `blocked_pending_eui64`: the "dead" and "current" coordinator
+   spellings in this campaign are octet-reversals of one another, so no destination in this
+   device's bind table is proven stale, and removing a live reporting bind would break
+   reporting silently. None of them has been performed. Do not perform any of them until the
+   coordinator's on-air IEEE is identified — see `.supervisor/project.yaml`.
+
+   The hygiene actions, once unblocked, are:
 
    - do not bind `EP1` to a group that contains `EP4`;
    - do not keep an `EP2 -> EP5` self-binding without a demonstrated need;
