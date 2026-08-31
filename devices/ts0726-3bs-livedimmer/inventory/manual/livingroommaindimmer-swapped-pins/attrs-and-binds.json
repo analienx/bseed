@@ -1,0 +1,623 @@
+{
+ "_meta": {
+  "captured_utc": "20260831T181300+0000",
+  "caveat": "Point-in-time capture of an actively-changing bind table. attrs below are the values Z2M last READ from the device; state_cache is Z2M's cached view including successful writes that were never read back. They disagree on purpose - see the doc's 'Last verified live state' section.",
+  "excluded": [
+   "zigbee network key",
+   "MQTT credentials",
+   "coordinator backup",
+   "raw .storage",
+   "recorder/history data",
+   "full network device roster",
+   "linkquality and lastSeen churn"
+  ],
+  "ledger": "https://github.com/analienx/bseed/issues/8",
+  "related_docs": [
+   "docs/LR_MAINDIMMER_SWAPPED_PINS.md"
+  ],
+  "related_issue": "migrated from analienx/home-assistant-stack#39 to analienx/bseed/issues/8",
+  "sanitized": true,
+  "source": "live Zigbee2MQTT database.db + state.json + configuration.yaml, read-only"
+ },
+ "attribute_id_legend": {
+  "genOnOff": {
+   "0x0000/onOff": "virtual relay state; on LEFT/MIDDLE this slot is the PANEL LED GPIO",
+   "0x4003/startUpOnOff": "255 = previous",
+   "0xff01/65281": "indicator mode (0=same,1=opposite,2=manual)",
+   "0xff02/65282": "indicator state; on LEFT/MIDDLE this slot is the MAINS RELAY GPIO"
+  },
+  "genOnOffSwitchCfg": {
+   "0xff00/65280": "switch type (1=momentary)",
+   "0xff01/65281": "relay mode (0=detached,1=press_start,2=long_press,3=short_press)",
+   "0xff02/65282": "relay index (1=relay_1,2=relay_2,3=relay_3)",
+   "0xff03/65283": "long press duration ms",
+   "0xff04/65284": "level move rate",
+   "0xff05/65285": "bound-device activation (3=short_press)",
+   "switchActions": "2=toggle_simple"
+  }
+ },
+ "attrs_last_read_from_device": {
+  "EP1": {
+   "genBasic": {
+    "65280": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC0;IC2;SB7u;RD7;IC3;SB4u;RD2;IB5;M;",
+    "65281": 1,
+    "65282": 10,
+    "appVersion": 3,
+    "dateCode": "20260612",
+    "hwVersion": 0,
+    "manufacturerName": "iedhxgyi",
+    "modelId": "TS0726-3-BS",
+    "stackVersion": 2,
+    "swBuildId": "1.1.2-8542fc05",
+    "zclVersion": 3
+   },
+   "genMultistateInput": {
+    "presentValue": 0
+   },
+   "genOnOff": {},
+   "genOnOffSwitchCfg": {
+    "65280": 1,
+    "65281": 3,
+    "65282": 1,
+    "65283": 921,
+    "65284": 39,
+    "65285": 3,
+    "switchActions": 2
+   }
+  },
+  "EP2": {
+   "genMultistateInput": {
+    "presentValue": 0
+   },
+   "genOnOffSwitchCfg": {
+    "65280": 1,
+    "65281": 3,
+    "65282": 2,
+    "65283": 974,
+    "65284": 44,
+    "65285": 3,
+    "switchActions": 2
+   }
+  },
+  "EP3": {
+   "genMultistateInput": {
+    "presentValue": 0
+   },
+   "genOnOffSwitchCfg": {
+    "65280": 1,
+    "65281": 3,
+    "65282": 3,
+    "65283": 829,
+    "65284": 50,
+    "65285": 3,
+    "switchActions": 2
+   }
+  },
+  "EP4": {
+   "genLevelCtrl": {},
+   "genOnOff": {
+    "65281": 2,
+    "65282": 1,
+    "onOff": 0,
+    "startUpOnOff": 255
+   }
+  },
+  "EP5": {
+   "genLevelCtrl": {},
+   "genOnOff": {
+    "65281": 2,
+    "65282": 1,
+    "onOff": 1,
+    "startUpOnOff": 255
+   }
+  },
+  "EP6": {
+   "genLevelCtrl": {},
+   "genOnOff": {
+    "65281": 0,
+    "65282": 0,
+    "onOff": 0,
+    "startUpOnOff": 255
+   }
+  }
+ },
+ "binds_stored_by_z2m": {
+  "EP1": [
+   {
+    "cluster": 18,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 8,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 8,
+    "deviceIeeeAddress": "0xa4c1388b709b209c",
+    "endpointID": 11,
+    "resolved_name": "LivingRoomLinearDimmer",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0xa4c1388b709b209c",
+    "endpointID": 11,
+    "resolved_name": "LivingRoomLinearDimmer",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0xa4c13843a9d40f85",
+    "endpointID": 4,
+    "resolved_name": "LivingRoomMainDimmer",
+    "type": "endpoint"
+   }
+  ],
+  "EP2": [
+   {
+    "cluster": 8,
+    "groupID": 25,
+    "type": "group"
+   },
+   {
+    "cluster": 6,
+    "groupID": 25,
+    "type": "group"
+   },
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0xa4c13843a9d40f85",
+    "endpointID": 5,
+    "resolved_name": "LivingRoomMainDimmer",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 18,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 8,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   }
+  ],
+  "EP3": [
+   {
+    "cluster": 18,
+    "deviceIeeeAddress": "0x00124b002d12b1fd",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 6,
+    "groupID": 3,
+    "type": "group"
+   },
+   {
+    "cluster": 8,
+    "deviceIeeeAddress": "0x00124b002d12b1fd",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 18,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 8,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   }
+  ],
+  "EP4": [
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0x00124b002d12b1fd",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 8,
+    "deviceIeeeAddress": "0x00124b002d12b1fd",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 8,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   }
+  ],
+  "EP5": [
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0x00124b002d12b1fd",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 8,
+    "deviceIeeeAddress": "0x00124b002d12b1fd",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 8,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   }
+  ],
+  "EP6": [
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0x00124b002d12b1fd",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   },
+   {
+    "cluster": 6,
+    "deviceIeeeAddress": "0xfdb1122d004b1200",
+    "endpointID": 1,
+    "resolved_name": "UNKNOWN-OR-DEAD",
+    "type": "endpoint"
+   }
+  ]
+ },
+ "configured_reportings": {
+  "EP1": [
+   {
+    "attrId": 85,
+    "cluster": 18,
+    "maxRepIntval": 65000,
+    "minRepIntval": 0,
+    "repChange": 1
+   }
+  ],
+  "EP2": [
+   {
+    "attrId": 85,
+    "cluster": 18,
+    "maxRepIntval": 65000,
+    "minRepIntval": 0,
+    "repChange": 1
+   }
+  ],
+  "EP3": [
+   {
+    "attrId": 85,
+    "cluster": 18,
+    "maxRepIntval": 65000,
+    "minRepIntval": 0,
+    "repChange": 1
+   }
+  ],
+  "EP4": [
+   {
+    "attrId": 65282,
+    "cluster": 6,
+    "maxRepIntval": 65000,
+    "minRepIntval": 0,
+    "repChange": 1
+   },
+   {
+    "attrId": 0,
+    "cluster": 6,
+    "maxRepIntval": 65000,
+    "minRepIntval": 0,
+    "repChange": 1
+   }
+  ],
+  "EP5": [
+   {
+    "attrId": 65282,
+    "cluster": 6,
+    "maxRepIntval": 65000,
+    "minRepIntval": 0,
+    "repChange": 1
+   },
+   {
+    "attrId": 0,
+    "cluster": 6,
+    "maxRepIntval": 65000,
+    "minRepIntval": 0,
+    "repChange": 1
+   }
+  ],
+  "EP6": [
+   {
+    "attrId": 65282,
+    "cluster": 6,
+    "maxRepIntval": 65000,
+    "minRepIntval": 0,
+    "repChange": 1
+   },
+   {
+    "attrId": 0,
+    "cluster": 6,
+    "maxRepIntval": 65000,
+    "minRepIntval": 0,
+    "repChange": 1
+   }
+  ]
+ },
+ "coordinator": {
+  "adapter": "ember",
+  "channel": "11",
+  "transmit_power": "7"
+ },
+ "device_config_string": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC0;IC2;SB7u;RD7;IC3;SB4u;RD2;IB5;M;",
+ "device_record": {
+  "appVersion": 3,
+  "dateCode": "20260612",
+  "epList": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "hwVersion": 0,
+  "ieeeAddr": "0xa4c13843a9d40f85",
+  "interviewState": "SUCCESSFUL",
+  "manufId": 4417,
+  "manufName": "iedhxgyi",
+  "modelId": "TS0726-3-BS",
+  "nwkAddr": 24677,
+  "powerSource": "Mains (single phase)",
+  "stackVersion": 2,
+  "type": "Router",
+  "zclVersion": 3
+ },
+ "endpoint_map": {
+  "relay_left": 4,
+  "relay_middle": 5,
+  "relay_right": 6,
+  "switch_left": 1,
+  "switch_middle": 2,
+  "switch_right": 3
+ },
+ "groups_containing_this_device": [
+  {
+   "groupID": 8,
+   "members": [
+    {
+     "deviceIeeeAddr": "0xa4c13861dd842a03",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c13805fc0dacfb",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c138b9bda6dbcf",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c1385c11d46ae5",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c138d6a7100473",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c138105a8e4207",
+     "endpointID": 11
+    },
+    {
+     "deviceIeeeAddr": "0xa4c13843a9d40f85",
+     "endpointID": 6
+    },
+    {
+     "deviceIeeeAddr": "0xa4c138f6936a1788",
+     "endpointID": 2
+    },
+    {
+     "deviceIeeeAddr": "0xa4c138cec3e04283",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0x8c8b48fffe685a39",
+     "endpointID": 1
+    }
+   ]
+  },
+  {
+   "groupID": 23,
+   "members": [
+    {
+     "deviceIeeeAddr": "0xa4c1388b709b209c",
+     "endpointID": 11
+    },
+    {
+     "deviceIeeeAddr": "0xa4c13843a9d40f85",
+     "endpointID": 4
+    }
+   ]
+  },
+  {
+   "groupID": 24,
+   "members": [
+    {
+     "deviceIeeeAddr": "0xa4c138b9bda6dbcf",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c1385c11d46ae5",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c138d6a7100473",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c13843a9d40f85",
+     "endpointID": 5
+    }
+   ]
+  },
+  {
+   "groupID": 30,
+   "members": [
+    {
+     "deviceIeeeAddr": "0xa4c138b9bda6dbcf",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c1385c11d46ae5",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c138d6a7100473",
+     "endpointID": 1
+    },
+    {
+     "deviceIeeeAddr": "0xa4c1388b709b209c",
+     "endpointID": 11
+    },
+    {
+     "deviceIeeeAddr": "0xa4c13843a9d40f85",
+     "endpointID": 4
+    },
+    {
+     "deviceIeeeAddr": "0xa4c13843a9d40f85",
+     "endpointID": 5
+    }
+   ]
+  },
+  {
+   "groupID": 110,
+   "members": [
+    {
+     "deviceIeeeAddr": "0xa4c13843a9d40f85",
+     "endpointID": 6
+    },
+    {
+     "deviceIeeeAddr": "0xa4c13850cfcdb3a4",
+     "endpointID": 11
+    }
+   ]
+  }
+ ],
+ "referenced_ieee_resolution": {
+  "0x00124b002d12b1fd": "coordinator-previous-slzb06p7-DEAD",
+  "0x8c8b48fffe685a39": "WorkroomSwitchLedsTable",
+  "0xa4c13805fc0dacfb": "HallBulb2",
+  "0xa4c138105a8e4207": "HallShoesLed",
+  "0xa4c13843a9d40f85": "LivingRoomMainDimmer",
+  "0xa4c13850cfcdb3a4": "LivingRoomCircleLightDimmer",
+  "0xa4c1385c11d46ae5": "LivingRoomBulbTableMiddle",
+  "0xa4c13861dd842a03": "HallBulb1",
+  "0xa4c1388b709b209c": "LivingRoomLinearDimmer",
+  "0xa4c138b9bda6dbcf": "LivingRoomBulbTableLeft",
+  "0xa4c138cec3e04283": "HallBulb3",
+  "0xa4c138d6a7100473": "LivingRoomBulbTableRight",
+  "0xa4c138f6936a1788": "BedroomDimmer",
+  "0xfdb1122d004b1200": "coordinator-current-ember-dongle-max"
+ },
+ "source_workspace_capture_sha256": "7688953cf1b842b372ac50850e301c8447e9d00e02b4642169969f12b2f6a9ca",
+ "z2m_state_cache_includes_unread_back_writes": {
+  "device_config_switch_left": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC0;IC2;SB7u;RD7;IC3;SB4u;RD2;IB5;M;",
+  "multi_press_reset_count_switch_left": 10,
+  "network_led_switch_left": "ON",
+  "power_on_behavior_relay_left": "previous",
+  "power_on_behavior_relay_middle": "previous",
+  "power_on_behavior_relay_right": "previous",
+  "relay_left_indicator_mode_relay_left": "manual",
+  "relay_left_indicator_relay_left": "ON",
+  "relay_middle_indicator_mode_relay_middle": "manual",
+  "relay_middle_indicator_relay_middle": "ON",
+  "relay_right_indicator_mode_relay_right": "same",
+  "relay_right_indicator_relay_right": "OFF",
+  "state_relay_left": "OFF",
+  "state_relay_middle": "ON",
+  "state_relay_right": "OFF",
+  "switch_left_action_mode_switch_left": "toggle_simple",
+  "switch_left_binded_mode_switch_left": "short_press",
+  "switch_left_level_move_rate_switch_left": 42,
+  "switch_left_long_press_duration_switch_left": 783,
+  "switch_left_mode_switch_left": "momentary",
+  "switch_left_press_action_switch_left": "released",
+  "switch_left_relay_index_switch_left": "relay_1",
+  "switch_left_relay_mode_switch_left": "short_press",
+  "switch_middle_action_mode_switch_middle": "toggle_simple",
+  "switch_middle_binded_mode_switch_middle": "short_press",
+  "switch_middle_level_move_rate_switch_middle": 44,
+  "switch_middle_long_press_duration_switch_middle": 974,
+  "switch_middle_mode_switch_middle": "momentary",
+  "switch_middle_press_action_switch_middle": "released",
+  "switch_middle_relay_index_switch_middle": "relay_2",
+  "switch_middle_relay_mode_switch_middle": "short_press",
+  "switch_right_action_mode_switch_right": "toggle_simple",
+  "switch_right_binded_mode_switch_right": "short_press",
+  "switch_right_level_move_rate_switch_right": 50,
+  "switch_right_long_press_duration_switch_right": 829,
+  "switch_right_mode_switch_right": "momentary",
+  "switch_right_press_action_switch_right": "released",
+  "switch_right_relay_index_switch_right": "relay_3",
+  "switch_right_relay_mode_switch_right": "short_press"
+ }
+}
