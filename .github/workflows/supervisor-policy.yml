@@ -1,0 +1,40 @@
+name: Supervisor safety policy gates
+
+on:
+  push:
+    branches:
+      - main
+      - "agent/**"
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile supervisor tooling
+        run: |
+          python -m py_compile scripts/ota_guard.py
+          python -m py_compile scripts/candidate_gate.py
+          python -m py_compile scripts/recovery_surface_guard.py
+          python -m py_compile scripts/preflash_gate.py
+          python -m py_compile scripts/class_a_gate.py
+          python -m py_compile scripts/record-observation.py
+          python -m py_compile scripts/validate-evidence.py
+          python -m py_compile scripts/sanitize-z2m-json.py
+      - name: Tool self-tests
+        run: |
+          python scripts/ota_guard.py self-test
+          python scripts/candidate_gate.py --self-test
+          python scripts/recovery_surface_guard.py --self-test
+          python scripts/preflash_gate.py --self-test
+          python scripts/class_a_gate.py --self-test
+          python scripts/validate-evidence.py --self-test
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v

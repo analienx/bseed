@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "candidate_id": "",
+  "candidate_stage": "PIPELINE_NOOP",
+  "source_commit": "",
+  "board_profile": {
+    "board": "WALL_OUTLET_BSEED_TS011F_PM",
+    "manufacturer_name": "b28wrpvx",
+    "model_id": "TS011F-BS-PM",
+    "device_type": "router",
+    "mcu_family": "Telink",
+    "mcu": "TLSR8258",
+    "config_str": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+    "ota_manufacturer_code": 4417,
+    "ota_image_type": 43556
+  },
+  "ota_mode": "normal",
+  "candidate_ota": "candidate.zigbee",
+  "candidate_sha256": "",
+  "baseline_manifest": "baseline.json",
+  "rollback_ota": "rollback-forced.zigbee",
+  "rollback_sha256": "",
+  "source_guard_report": "source_guard.json",
+  "pm_default_enabled": false,
+  "device_config_changed": false,
+  "base_gpio_changed": false,
+  "nvm_schema_changed": false,
+  "recovery_critical_changes": [],
+  "offline_checks": {
+    "build": "PENDING",
+    "upstream_stub_tests": "PENDING",
+    "project_policy_tests": "PENDING",
+    "source_guard": "PENDING"
+  },
+  "empirical_gates": {
+    "lkg_self_reinstall": "PENDING",
+    "ota_canary": "PENDING",
+    "post_boot_health": "PENDING",
+    "rollback_round_trip": "PENDING",
+    "pm_activation": "PENDING"
+  },
+  "notes": ""
+}
