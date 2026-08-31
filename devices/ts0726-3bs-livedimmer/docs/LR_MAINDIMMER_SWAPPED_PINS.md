@@ -2,8 +2,10 @@
 
 Device: `LivingRoomMainDimmer`, IEEE `0xa4c13843a9d40f85`, model `TS0726-3-BS`,
 manufacturer name `iedhxgyi`, romasku firmware `1.1.2-8542fc05` (dateCode `20260612`),
-external converter `switch_custom.js`, Zigbee2MQTT `2.13.0` on a SONOFF Dongle Max MG24
-(Ember adapter).
+external converter `switch_custom.js`, Zigbee2MQTT on a SONOFF Dongle Max MG24 (Ember
+adapter). **Z2M version not evidenced by any artifact in this repository** — the capture
+carries no version field; this file previously said `2.13.0` and `STATUS.md` says `2.13.0-1`,
+and neither is supported here, so no single value is asserted.
 
 Current control ledger:
 [analienx/bseed#8](https://github.com/analienx/bseed/issues/8). Migrated from
@@ -26,8 +28,10 @@ Deployed (swapped):
 iedhxgyi;TS0726-3-BS;LC4;SB1u;RC0;IC2;SB7u;RD7;IC3;SB4u;RD2;IB5;M;
 ```
 
-Upstream canonical for `_TZ3002_iedhxgyi` / `TS0726` (as of `bf1059e`,
-`device_db.yaml:4604`):
+Upstream canonical for `_TZ3002_iedhxgyi` / `TS0726` (as of `bf1059ee`,
+`device_db.yaml:4604`; `bf1059ee` is the verified `origin/main` head of
+`analienx/tuya-zigbee-switch` at the time of writing — the full 40-char SHA is not recorded
+in this repository, so treat `bf1059ee` as the citation):
 
 ```text
 iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;
@@ -84,10 +88,20 @@ swapped scheme without its own evidence.
    Keep `switch_*_relay_mode = short_press` (raw `0xff01 = 3`).
 
 2. **LEFT/MIDDLE `indicator_mode` must stay `manual`.**
-   `EP4`/`EP5` are members of Zigbee groups (`23`, `24`, `30`) that also contain the
-   real lights. In `same`/`opposite` mode, every inbound group On/Off command
-   re-syncs the indicator GPIO — i.e. a bulb state change would switch mains for the
-   whole living-room feed. Source, installed commit:
+   The exposure is **per endpoint**, so the group membership is stated that way rather than
+   as a union. In the capture (`attrs-and-binds.json`, blob sha256
+   `741cdea19fbfb6ae041476752f057a8f35dc577ce65e943143a0606a05efaae5`, captured
+   `2026-08-31T18:13:00Z`):
+
+   | Relay EP | Member of these groups | Other members |
+   |---|---|---|
+   | `EP4` LEFT | `23`, `30` | 23: LivingRoomLinearDimmer/11 — 30: 3x LivingRoomBulbTable, LivingRoomLinearDimmer/11, `EP5` |
+   | `EP5` MIDDLE | `24`, `30` | 24: 3x LivingRoomBulbTable — 30: as above plus `EP4` |
+
+   `EP4` is **not** in 24 and `EP5` is **not** in 23; group 30 is the only one that reaches
+   both. Every one of those groups also contains real lights, so in `same`/`opposite` mode an
+   inbound group On/Off command re-syncs the indicator GPIO — i.e. a bulb state change would
+   switch mains for the whole living-room feed. Source, installed commit:
 
    ```c
    // src/zigbee/relay_cluster.c @ 8542fc05
@@ -156,8 +170,12 @@ swapped scheme without its own evidence.
 
    - do not bind `EP1` to a group that contains `EP4`;
    - do not keep an `EP2 -> EP5` self-binding without a demonstrated need;
-   - remove `genLevelCtrl` binds/reporting from relay endpoints `EP4`/`EP5`/`EP6` — they
-     have no useful `currentLevel` and only generate poll failures and consume APS slots;
+   - unbind `genLevelCtrl` from relay endpoints `EP4` and `EP5`. The capture shows exactly 4
+     such binds — 2 on `EP4` and 2 on `EP5`, one per coordinator spelling — and **`EP6`
+     carries none** (its 2 entries are both `genOnOff`). There is **no reporting half to
+     remove**: `configured_reportings` on `EP4`/`EP5`/`EP6` is cluster 6 only, attrId 0 and
+     65282, with no `genLevelCtrl` entry on any of them. The stated reason stands on the
+     binds alone: no useful `currentLevel`, and they consume APS slots;
    - **keep** `genOnOff` + `genLevelCtrl` on the switch endpoints `EP1`/`EP2`/`EP3`.
 
    `detached` is **not** an available workaround here, because invariant 1 makes the
@@ -240,8 +258,16 @@ inbound light state -> mirrored onto the panel LED by the HA "Swapped Output Syn
 
 `EP4`/`EP5` should not be members of a group that `EP1`/`EP2` bind to, and `EP2` should
 not carry a direct `genOnOff -> EP5` self-binding, while `relay_mode` is non-detached —
-see invariant 5. As of `2026-08-30T21:09:34Z` the live bind table had both (`EP1 -> group
-23` where group 23 contains `MainDimmer/4`, and an `EP2 -> MainDimmer/5` self-bind).
+see invariant 5. **What the capture beside this section actually shows**
+(`attrs-and-binds.json`, blob sha256
+`741cdea19fbfb6ae041476752f057a8f35dc577ce65e943143a0606a05efaae5`, captured
+`2026-08-31T18:13:00Z`): the second case is present as written — an `EP2 -> MainDimmer/5`
+`genOnOff` self-bind — while the first is present in a **different form**: `EP1` carries a
+direct **unicast** `genOnOff -> MainDimmer/4` self-bind, not an `EP1 -> group 23` bind. An
+earlier snapshot at `2026-08-30T21:09:34Z` is recorded in the ledger as having had
+`EP1 -> group 23` (group 23 does contain `MainDimmer/4`); this document does not adjudicate
+which of the two states was live when, only that the artifact in this repository shows
+unicast and must not be described as a group bind.
 Whether those commands actually loop back into the device's own relay endpoints is
 **not yet demonstrated**, so this is redundancy removal and clean state ownership, not a
 claimed fix for the brownout. The established cause is invariant 2: with
@@ -270,6 +296,11 @@ and EP3 — never `detached`, as invariant 1 requires.
 [#39 comment 5471205004](https://github.com/analienx/home-assistant-stack/issues/39#issuecomment-5471205004),
 executed under the Supervisor's "Execute now" instruction in
 [comment 5471363277](https://github.com/analienx/home-assistant-stack/issues/39#issuecomment-5471363277).
+
+> `P001` here is a mutation-proposal id as defined in the **closed
+> `home-assistant-stack#39` ledger** — it is not a proposal in this repository's own `P00x`
+> v2 scheme, and the two number spaces are unrelated. The definition and approval of this
+> one live at the linked comment, not in `analienx/bseed`.
 
 **Invariant 2 verified by test, not just by reading code.** Four `OnOff/Toggle` commands
 were sent unicast to `EP4` and `EP5` — byte-for-byte the same firmware call the button's
@@ -314,6 +345,13 @@ sha256  ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe
 size    967427 bytes, 19036 lines
 mtime   2026-08-22 17:34:31 +0200
 ```
+
+That is the sha256 of a **host file, not a git blob** — the converter is committed to no
+repository, so this hash can only be reproduced by reading the host again. It is not
+verifiable from this clone. By contrast, `attrs-and-binds.json` in this directory *is* a git
+object: cite it by its **blob** hash (`git show HEAD:<path> | sha256sum`), never by the hash
+of a checked-out copy, because `core.autocrlf=true` with no `.gitattributes` rewrites its
+line endings on checkout and gives a different digest.
 
 It is a generated file (header: regenerate from `device_db.yaml` +
 `switch_custom.js.jinja` via `make tools/update_converters`), so it is deliberately **not**

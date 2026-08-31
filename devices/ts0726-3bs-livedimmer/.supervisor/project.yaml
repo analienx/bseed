@@ -115,15 +115,34 @@ firmware:
 
   safety_invariants:
     file: docs/LR_MAINDIMMER_SWAPPED_PINS.md
-    count: 7
+    # The doc is authoritative for invariant NUMBERS. Items 1-7 under its
+    # "## Hard invariants" heading are what "invariant N" means everywhere in this
+    # subproject. Each rule below carries the doc_invariant it corresponds to; the
+    # ORDER of this list is not a numbering and must never be cited as one. The doc's
+    # unnumbered "## Warning" section is carried here as doc_invariant: warning.
+    # count is the number of binding rules (8); doc_numbered_invariants is the doc's
+    # numbered set (7). They differ because the doc leaves the do-not-normalize rule
+    # unnumbered and this list has always carried it.
+    numbering_authority: "docs/LR_MAINDIMMER_SWAPPED_PINS.md ## Hard invariants items 1-7"
+    doc_numbered_invariants: 7
+    count: 8
     binding:
-      - never set LEFT or MIDDLE switch relay_mode to detached while mains sits in the indicator slot
-      - keep LEFT and MIDDLE relay indicator_mode at manual
-      - keep LEFT and MIDDLE relay indicator_state at ON
-      - one actuation source per relay endpoint
-      - indicator_mode and indicator_state default to the dangerous value when the relay NVM record is absent
-      - indicator_state does not prove physical contact state
-      - never normalize the pin swap to upstream without the four-part proof in the doc
+      - doc_invariant: 1
+        rule: never set LEFT or MIDDLE switch relay_mode to detached while mains sits in the indicator slot
+      - doc_invariant: 2
+        rule: keep LEFT and MIDDLE relay indicator_mode at manual
+      - doc_invariant: 3
+        rule: keep LEFT and MIDDLE relay indicator_state at ON
+      - doc_invariant: 4
+        rule: these relay and indicator GPIOs are active-high, there is no hidden inversion behind the swap
+      - doc_invariant: 5
+        rule: one actuation source per relay endpoint
+      - doc_invariant: 6
+        rule: indicator_mode and indicator_state default to the dangerous value when the relay NVM record is absent
+      - doc_invariant: 7
+        rule: indicator_state does not prove physical contact state
+      - doc_invariant: warning
+        rule: never normalize the pin swap to upstream without the four-part proof in the doc
     evidence_standard:
       zcl_attribute_readback: proves configuration only
       downstream_reachability: does not prove absence of a power interruption

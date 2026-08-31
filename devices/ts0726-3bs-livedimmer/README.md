@@ -21,8 +21,12 @@ README.md                  this file
 STATUS.md                  live device state, bind-table usage, open items
 docs/
   LR_MAINDIMMER_SWAPPED_PINS.md
-                           the intentional relay/indicator pin swap and seven binding
-                           safety invariants, each cited to installed-firmware source
+                           the intentional relay/indicator pin swap, and the safety
+                           invariants this subproject is numbered by: items 1-7 under
+                           "Hard invariants" are authoritative for what "invariant N"
+                           means, each cited to installed-firmware source. The manifest
+                           carries those 7 plus its unnumbered do-not-normalize rule as
+                           8 binding rules, keyed back to these numbers.
 inventory/manual/
   livingroommaindimmer-swapped-pins/
     README.md              provenance and sanitisation of the capture

@@ -44,13 +44,24 @@ coordinator     0xfdb1122d004b1200  labelled SONOFF Dongle Max MG24 (ember) -- U
 dead previous   0x00124b002d12b1fd  labelled SLZB-06p7 -- UNPROVEN; octet-reversal of the line above
               neither spelling is evidenced: the capture's coordinator block carries only
               adapter/channel/transmit_power and no IEEE at all (2026-08-31T18:13:00Z blob)
-z2m             2.13.0-1
+z2m             version NOT EVIDENCED by the capture (no version field in any artifact here);
+                this file said 2.13.0-1 and the doc said 2.13.0 -- neither is supported
 ```
 
 ## Device state — captured `2026-08-31T18:13:00Z`
 
 Z2M's stored records now **agree with** the five authoritative raw `readResponse` captures
 taken `06:44Z`–`07:04Z`, which is the first time in this investigation both sources match.
+
+Every number in this section comes from
+`inventory/manual/livingroommaindimmer-swapped-pins/attrs-and-binds.json` — **blob** sha256
+`741cdea19fbfb6ae041476752f057a8f35dc577ce65e943143a0606a05efaae5` (15827 B). Verify it with
+`git show HEAD:<path>` piped to a hasher, **not** by hashing the checked-out copy:
+`core.autocrlf=true` with no `.gitattributes` rewrites LF→CRLF on checkout and yields a
+different digest for identical content. This hash supersedes
+`b94d1c61580c9f76e260a6c368b9505235c9c55970954d65a300127f898115aa`, which is the same capture
+before three metadata-only additions (a `genBasic` legend entry, a provenance note, and a
+hash-citation rule); no measured value in it changed.
 
 Relay endpoints (raw ZCL attribute ids):
 
@@ -69,7 +80,19 @@ Switch endpoints — `0xff01` is `relay_mode`, and **3 = `short_press`, never `d
 | EP3 RIGHT | 1 momentary | **3** | 3 | 829 | 50 | 3 | 2 |
 
 Accepted interim state per the ruling: EP4 and EP5 `manual` + `ON`; EP1/EP2 `short_press`;
-EP6/RIGHT canonical and untouched. `P001` **stays as executed**.
+EP6/RIGHT canonical and untouched. `P001` **stays as executed** — that id is a mutation
+proposal defined in the closed `home-assistant-stack#39` ledger, not in this repo's `P00x` v2
+scheme; the two number spaces are unrelated.
+
+The tables above are the **values Z2M last read from the device**. The same capture's state
+cache holds *different* numbers for two `EP1` switch attributes:
+`switch_left_level_move_rate = 42` and `switch_left_long_press_duration = 783`, against the
+read values `39` and `921` shown above. **That divergence is expected cache-vs-read behaviour
+(writes never read back), not a transcription error** — do not "correct" either pair. The
+cache agrees with the read on every other comparable switch attribute and on all `EP4`/`EP5`/
+`EP6` indicator, `onOff` and `startUpOnOff` values. A further set of cache keys
+(`network_led_switch_left`, `multi_press_reset_count_switch_left`, the three `*_press_action_*`)
+has no device-read counterpart in the capture at all, so it is neither agreement nor conflict.
 
 Config string is still the deployed swapped one, unchanged:
 
@@ -121,6 +144,8 @@ GROUP 3   empty, but EP3 still binds genOnOff to it
 ```text
 /config/zigbee2mqtt/external_converters/switch_custom.js
 sha256 ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe
+         ^ HOST-FILE hash, not a git blob: this file is committed to no repository, so the
+           value is reproducible only by reading the host again. Unverifiable from this clone.
 967427 bytes, 19036 lines, mtime 2026-08-22 17:34 +0200
 
 TS0726-3-BS declared twice, no manufacturerName / filters on either:
