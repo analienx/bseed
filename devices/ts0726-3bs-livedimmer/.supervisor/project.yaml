@@ -1,0 +1,225 @@
+schema_version: 1
+project_id: bseed-ts0726-dimmer
+parent_project: bseed
+repo: analienx/bseed
+project_path: devices/ts0726-3bs-livedimmer
+lifecycle: active
+
+# Isolated device subproject. The root ../../../.supervisor/project.yaml remains the
+# TS011F-BS-PM BL0937 metering campaign and is NOT widened by this file. The two firmware
+# campaigns must not share a target, an OTA identity or a control ledger.
+
+canonical:
+  supervisor_skill:
+    repo: analienx/config
+    ref: main
+    path: skills/supervisor-executor/SKILL.md
+  firmware_fast_path:
+    repo: analienx/config
+    ref: main
+    path: skills/supervisor-executor/FIRMWARE_FAST_PATH.md
+
+control:
+  issue: 8
+  active_task_issue: 8
+  ledger_repo: analienx/bseed
+  ledger_url: https://github.com/analienx/bseed/issues/8
+  dot_stream: livingroom-main-dimmer
+  previous_ledger: analienx/home-assistant-stack#39
+  previous_ledger_url: https://github.com/analienx/home-assistant-stack/issues/39
+  migrated_from_comment: 5482294430
+  transfer_attempted: >
+    POST repos/analienx/home-assistant-stack/issues/39/transfer returned 404 with admin
+    permission on both repositories, so the documented fallback was used: new ledger issue
+    with a full migration index, prior ledger closed with a single MOVED TO link.
+
+source_of_truth:
+  declarative_behavior: analienx/home-assistant-stack
+  firmware_source: analienx/tuya-zigbee-switch
+  firmware_source_pr: 1
+  firmware_source_branch: experiment/detached-physical-relay-canary
+  vendored_in_this_repo: false
+  note: >
+    This subproject owns requirements, safety rules, evidence, artifacts and campaign
+    state. Firmware source code stays in the fork; it is never copied here.
+
+executor:
+  environment: windows_notebook
+  management_paths:
+    - local_shell
+    - zigbee2mqtt_mqtt
+    - home_assistant_api
+
+device:
+  friendly_name: LivingRoomMainDimmer
+  ieee: "0xa4c13843a9d40f85"
+  role_in_home: three-gang wall switch, LEFT/MIDDLE smart-light controllers, RIGHT canonical
+
+firmware:
+  target:
+    manufacturer_name: iedhxgyi
+    manufacturer: _TZ3000_iedhxgyi
+    model: TS0726-3-BS
+    board: SWITCH_BSEED_TS0726_3GANG
+    role: router
+    mcu: TLSR8258
+    mcu_family: Telink
+  ota:
+    manufacturer_code: 4417
+    image_type: 45577
+  installed_identity:
+    sw_build_id: 1.1.2-8542fc05
+    source_commit: 8542fc059f3b3e6930627778bcf321c77ed3d212
+    date_code: "20260612"
+    file_version: 285356032
+  canary_identity:
+    source_commit: b82774b7a07986c1c1b1311b8a0f7f734ce9f46d
+    file_version: 285356043
+    flashed: false
+
+  config_strings:
+    deployed_swapped: "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC0;IC2;SB7u;RD7;IC3;SB4u;RD2;IB5;M;"
+    upstream_canonical: "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;"
+    canonical_source: "analienx/tuya-zigbee-switch device_db.yaml line 4604 at bf1059ee"
+    swap_scope: LEFT and MIDDLE only; RIGHT is already canonical
+    write_transport_blocker: >
+      A single genBasic 0xff00 write of the 66-byte string is rejected by the Ember/EZSP
+      send path with MESSAGE_TOO_LONG before reaching the device. Not a parser rejection.
+      Do not retry it and do not shorten identity strings to fit.
+
+  gpio_map:
+    convention: "token letter is the port letter, digits are the pin (LC3 -> PC3), shared with the root metering manifest"
+    network_led: PC4
+    buttons:
+      left: PB1
+      middle: PB7
+      right: PB4
+    relay_slot_R_token:
+      meaning_left_and_middle: panel LED, not mains
+      meaning_right: genuine mains relay
+      left: PC0
+      middle: PD7
+      right: PD2
+    indicator_slot_I_token:
+      meaning_left_and_middle: REAL mains relay GPIO
+      meaning_right: panel LED
+      left: PC2
+      middle: PC3
+      right: PB5
+    polarity: active-high on every one of these pins; no inversion suffix is present
+    polarity_source: "config_parser.c at 8542fc05, 'I' branch and 'R' branch"
+    note: >
+      Derived from the pin-token convention and verified for polarity against the installed
+      firmware source. Not verified against a physical board pin table; do not use for any
+      wired work without confirming.
+
+  safety_invariants:
+    file: docs/LR_MAINDIMMER_SWAPPED_PINS.md
+    count: 7
+    binding:
+      - never set LEFT or MIDDLE switch relay_mode to detached while mains sits in the indicator slot
+      - keep LEFT and MIDDLE relay indicator_mode at manual
+      - keep LEFT and MIDDLE relay indicator_state at ON
+      - one actuation source per relay endpoint
+      - indicator_mode and indicator_state default to the dangerous value when the relay NVM record is absent
+      - indicator_state does not prove physical contact state
+      - never normalize the pin swap to upstream without the four-part proof in the doc
+    evidence_standard:
+      zcl_attribute_readback: proves configuration only
+      downstream_reachability: does not prove absence of a power interruption
+      claimed_zero_transient: requires physical electrical measurement
+      never_phrase: a ZCL attribute as proof of contact voltage
+
+  campaign:
+    campaign_fast_path:
+      enabled: false
+      reason: >
+        Disabled until the converter determinism, migration mechanism and rollback artifact
+        gates below are all green. The metering campaign's fast-path profile is not reused:
+        different image_type and different recovery surface.
+    one_canary_device_only: true
+    canary_device: LivingRoomMainDimmer
+
+  preconditions_before_any_flash:
+    - id: converter_determinism
+      requirement: >
+        Enumerate the effective loaded definition for this device. TS0726-3-BS is declared
+        twice in the deployed converter with different models and neither is filtered; an
+        unexplained source contributes switch_custom_firmware. Duplicate model ids must be
+        disambiguated by manufacturer fingerprint.
+      status: open
+    - id: converter_regenerated_and_deployed
+      requirement: >
+        Regenerate the converter from canary source, deploy the exact generated file, and
+        verify relay_*_physical_mode is readable and writable in Zigbee2MQTT. Preserve the
+        converter hash and source commit. Flashing before this is prohibited because the
+        new attribute would be unreachable.
+      status: open
+    - id: firmware_side_migration
+      requirement: >
+        The canary must carry a tightly scoped one-shot migration that runs before config
+        parsing and relay-cluster startup and only when every predicate matches exactly:
+        manufacturer/model identity, the exact known swapped config string, migration marker
+        absent, and canary target identity. It writes the canonical config to NVM, pre-seeds
+        LEFT and MIDDLE physical mode to detached_on, persists a marker, then allows normal
+        initialization. DEFAULT_CONFIG must not be relied on: a valid stored config outranks it.
+      status: open
+    - id: rollback_artifact
+      requirement: >
+        A prebuilt immutable migration-revert recovery image that recognises the exact
+        canonical canary state, restores the previous swapped config plus the safe interim
+        attributes, proves the old-safe state, and only then permits downgrade to the exact
+        last-known-good image. A plain forced downgrade is explicitly not accepted rollback
+        proof. Preserve hashes and OTA identity before any canary flash.
+      status: open
+    - id: stale_bind_capacity
+      requirement: >
+        Preserve the full raw bind table, then reclaim only entries proven to target the dead
+        coordinator 0x00124b002d12b1fd, one at a time, re-reading after each. The device has
+        already been at 32/32 once.
+      status: open
+
+  forbidden_without_new_ruling:
+    - flash or OTA before all five preconditions above are green
+    - device_config write by any transport
+    - factory reset or re-pair
+    - wired write; TlsrPgm NV-sector behaviour is unverified
+    - change to RIGHT or Zigbee group 3
+    - global bind clear or binds/clear (ZDO Clear All Bindings is NOT_SUPPORTED here)
+    - open the coordinator serial port from a second process while Zigbee2MQTT owns it
+    - touch home-assistant/zigbee2mqtt/configuration.yaml transmit_power
+    - widen the root metering project manifest
+    - force push or destructive history rewrite
+
+behavior:
+  prefer_bounded_batches: true
+  continue_software_only_steps_automatically: true
+  stop_only_on_real_failed_invariant_new_risk_or_physical_boundary: true
+  never_stop_only_to_report_successful_intermediate_gate: true
+  physical_boundary_is_the_only_operator_stop: >
+    Complete all software and preflight work, then leave one concise
+    WAITING_OPERATOR_PHYSICAL_PRESS instruction with the capture already armed.
+
+  autonomous_remediation:
+    enabled: true
+    active_stream_tooling_repairs_are_preauthorized: true
+    default_action: fix_test_retry_continue
+    authorized_without_new_approval:
+      - edit_in_scope_tooling_tests_docs_and_ci
+      - commit_to_active_task_branch
+      - push_active_task_branch
+      - registry_and_ledger_migration_actions
+      - converter_generation_and_deploy
+      - read_only_binding_table_helper_within_existing_campaign_scope
+      - bounded_debug_capture_with_immediate_restore_and_config_reconciliation
+      - rerun_ci
+      - retry_same_already_authorized_operation_after_fix
+    forbidden_self_fix:
+      - remove_or_bypass_a_substantive_safety_gate
+      - widen_a_safety_threshold_to_make_a_failure_pass
+      - change_recovery_critical_firmware_surface
+      - change_target_board_mcu_role_or_ota_identity
+      - invent_or_substitute_a_rollback_artifact
+      - perform_device_config_calibration_factory_reset_or_wired_write_outside_explicit_scope
+      - force_push_or_destructive_history_rewrite
+      - continue_after_a_real_protected_invariant_failure
