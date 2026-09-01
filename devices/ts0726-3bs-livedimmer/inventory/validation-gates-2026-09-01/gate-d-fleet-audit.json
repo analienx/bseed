@@ -1,0 +1,449 @@
+{
+  "status": "FAIL",
+  "groups_equal": true,
+  "failures": [
+    "non-target API changed: WorkRoomMainSwitchDimmer removed=['action'] added=['relay_left_physical_mode', 'relay_right_physical_mode']",
+    "non-target API changed: WorkRoomSwitchLedMain removed=['action'] added=['relay_physical_mode']",
+    "non-target API changed: BedroomSocketCabinetRight removed=['action'] added=['relay_physical_mode']",
+    "target legacy action property removed; compatibility proof/restore required",
+    "non-target API changed: WRSocketEntrance removed=['action'] added=['relay_physical_mode']",
+    "non-target API changed: BedroomSocketBalcony removed=['action'] added=['relay_physical_mode']",
+    "non-target API changed: LivingRoomSocketWifiLeft removed=['action', 'apparent_power', 'calibrate_current', 'calibrate_power', 'calibrate_voltage', 'calibration_values_switch', 'current', 'energy', 'network_led_brightness_switch', 'network_led_transition_switch', 'overload_alarm_switch', 'overload_current_limit', 'overload_power_limit', 'overload_reconnect_delay', 'overload_trip_delay', 'overvoltage_warn', 'power', 'power_factor', 'reactive_power', 'relay_led_brightness_relay', 'relay_led_transition_relay', 'reset_energy_switch', 'undervoltage_warn', 'voltage'] added=['relay_physical_mode']",
+    "non-target API changed: WorkroomSocketCabinet removed=['action', 'apparent_power', 'calibrate_current', 'calibrate_power', 'calibrate_voltage', 'calibration_values_switch', 'current', 'energy', 'network_led_brightness_switch', 'network_led_transition_switch', 'overload_alarm_switch', 'overload_current_limit', 'overload_power_limit', 'overload_reconnect_delay', 'overload_trip_delay', 'overvoltage_warn', 'power', 'power_factor', 'reactive_power', 'relay_led_brightness_relay', 'relay_led_transition_relay', 'reset_energy_switch', 'undervoltage_warn', 'voltage'] added=['relay_physical_mode']",
+    "non-target API changed: HallMainSwitchAvatto removed=['action'] added=['relay_physical_mode']",
+    "non-target API changed: BedroomDimmer removed=['action'] added=['relay_physical_mode']",
+    "UX: state_relay_left: stock label 'State' is ambiguous with Always on; must identify logical/virtual relay state",
+    "UX: state_relay_middle: stock label 'State' is ambiguous with Always on; must identify logical/virtual relay state",
+    "UX: power_on_behavior_relay_left: description does not explain interaction with Physical relay behavior",
+    "UX: power_on_behavior_relay_middle: description does not explain interaction with Physical relay behavior",
+    "UX: switch_left_relay_index_switch_left: description does not map relay_1/2/3 to Left/Middle/Right",
+    "UX: switch_middle_relay_index_switch_middle: description does not map relay_1/2/3 to Left/Middle/Right",
+    "UX: switch_right_relay_index_switch_right: description does not map relay_1/2/3 to Left/Middle/Right",
+    "UX: Advanced hardware configuration is the first expose; move it to the advanced/end section"
+  ],
+  "summary": {
+    "device_count_before": 105,
+    "device_count_after": 105,
+    "definition_rematches": 1,
+    "behavior_api_changed_devices": 10,
+    "ux_changed_devices": 10,
+    "device_state_drift": 0
+  },
+  "definition_rematches": [
+    {
+      "ieee": "0xa4c13843a9d40f85",
+      "friendly_name": "LivingRoomMainDimmer",
+      "before": {
+        "model": "EC-SL-FK86ZPCS31",
+        "vendor": "Tuya-custom",
+        "source": "external",
+        "supports_ota": true
+      },
+      "after": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "source": "external",
+        "supports_ota": true
+      }
+    }
+  ],
+  "behavior_api_changes": [
+    {
+      "ieee": "0xa4c13803d7475156",
+      "friendly_name": "WorkRoomMainSwitchDimmer",
+      "model_before": "ZWSM16-2-Zigbee",
+      "model_after": "ZWSM16-2-Zigbee",
+      "removed_properties": [
+        "action"
+      ],
+      "added_properties": [
+        "relay_left_physical_mode",
+        "relay_right_physical_mode"
+      ],
+      "changed_properties": [
+        {
+          "property": "switch_left_relay_index_switch_left",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "relay_2",
+                "all"
+              ],
+              [
+                "relay_1",
+                "relay_2"
+              ]
+            ]
+          }
+        },
+        {
+          "property": "switch_right_relay_index_switch_right",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "relay_2",
+                "all"
+              ],
+              [
+                "relay_1",
+                "relay_2"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ieee": "0xa4c1381daa061e97",
+      "friendly_name": "WorkRoomSwitchLedMain",
+      "model_before": "ZWSM16-1-Zigbee",
+      "model_after": "ZWSM16-1-Zigbee",
+      "removed_properties": [
+        "action"
+      ],
+      "added_properties": [
+        "relay_physical_mode"
+      ],
+      "changed_properties": [
+        {
+          "property": "switch_relay_index_switch",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "all"
+              ],
+              [
+                "relay_1"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ieee": "0xa4c13824a7005afb",
+      "friendly_name": "BedroomSocketCabinetRight",
+      "model_before": "_TZ3000_o1jzcxou",
+      "model_after": "_TZ3000_o1jzcxou",
+      "removed_properties": [
+        "action"
+      ],
+      "added_properties": [
+        "relay_physical_mode"
+      ],
+      "changed_properties": [
+        {
+          "property": "switch_relay_index_switch",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "all"
+              ],
+              [
+                "relay_1"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ieee": "0xa4c13843a9d40f85",
+      "friendly_name": "LivingRoomMainDimmer",
+      "model_before": "EC-SL-FK86ZPCS31",
+      "model_after": "EC-GL86ZPCS31",
+      "removed_properties": [
+        "action"
+      ],
+      "added_properties": [
+        "relay_left_physical_mode",
+        "relay_middle_physical_mode",
+        "relay_right_physical_mode"
+      ],
+      "changed_properties": [
+        {
+          "property": "switch_left_relay_index_switch_left",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "relay_2",
+                "relay_3",
+                "all"
+              ],
+              [
+                "relay_1",
+                "relay_2",
+                "relay_3"
+              ]
+            ]
+          }
+        },
+        {
+          "property": "switch_middle_relay_index_switch_middle",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "relay_2",
+                "relay_3",
+                "all"
+              ],
+              [
+                "relay_1",
+                "relay_2",
+                "relay_3"
+              ]
+            ]
+          }
+        },
+        {
+          "property": "switch_right_relay_index_switch_right",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "relay_2",
+                "relay_3",
+                "all"
+              ],
+              [
+                "relay_1",
+                "relay_2",
+                "relay_3"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ieee": "0xa4c1387b13e9436d",
+      "friendly_name": "WRSocketEntrance",
+      "model_before": "_TZ3000_o1jzcxou",
+      "model_after": "_TZ3000_o1jzcxou",
+      "removed_properties": [
+        "action"
+      ],
+      "added_properties": [
+        "relay_physical_mode"
+      ],
+      "changed_properties": [
+        {
+          "property": "switch_relay_index_switch",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "all"
+              ],
+              [
+                "relay_1"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ieee": "0xa4c138ac993cc245",
+      "friendly_name": "BedroomSocketBalcony",
+      "model_before": "_TZ3000_o1jzcxou",
+      "model_after": "_TZ3000_o1jzcxou",
+      "removed_properties": [
+        "action"
+      ],
+      "added_properties": [
+        "relay_physical_mode"
+      ],
+      "changed_properties": [
+        {
+          "property": "switch_relay_index_switch",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "all"
+              ],
+              [
+                "relay_1"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ieee": "0xa4c138ba60b92c5f",
+      "friendly_name": "LivingRoomSocketWifiLeft",
+      "model_before": "TS011F_plug_1_2",
+      "model_after": "TS011F_plug_1_2",
+      "removed_properties": [
+        "action",
+        "apparent_power",
+        "calibrate_current",
+        "calibrate_power",
+        "calibrate_voltage",
+        "calibration_values_switch",
+        "current",
+        "energy",
+        "network_led_brightness_switch",
+        "network_led_transition_switch",
+        "overload_alarm_switch",
+        "overload_current_limit",
+        "overload_power_limit",
+        "overload_reconnect_delay",
+        "overload_trip_delay",
+        "overvoltage_warn",
+        "power",
+        "power_factor",
+        "reactive_power",
+        "relay_led_brightness_relay",
+        "relay_led_transition_relay",
+        "reset_energy_switch",
+        "undervoltage_warn",
+        "voltage"
+      ],
+      "added_properties": [
+        "relay_physical_mode"
+      ],
+      "changed_properties": [
+        {
+          "property": "switch_relay_index_switch",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "all"
+              ],
+              [
+                "relay_1"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ieee": "0xa4c138c5f07ee732",
+      "friendly_name": "WorkroomSocketCabinet",
+      "model_before": "TS011F_plug_1_2",
+      "model_after": "TS011F_plug_1_2",
+      "removed_properties": [
+        "action",
+        "apparent_power",
+        "calibrate_current",
+        "calibrate_power",
+        "calibrate_voltage",
+        "calibration_values_switch",
+        "current",
+        "energy",
+        "network_led_brightness_switch",
+        "network_led_transition_switch",
+        "overload_alarm_switch",
+        "overload_current_limit",
+        "overload_power_limit",
+        "overload_reconnect_delay",
+        "overload_trip_delay",
+        "overvoltage_warn",
+        "power",
+        "power_factor",
+        "reactive_power",
+        "relay_led_brightness_relay",
+        "relay_led_transition_relay",
+        "reset_energy_switch",
+        "undervoltage_warn",
+        "voltage"
+      ],
+      "added_properties": [
+        "relay_physical_mode"
+      ],
+      "changed_properties": [
+        {
+          "property": "switch_relay_index_switch",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "all"
+              ],
+              [
+                "relay_1"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ieee": "0xa4c138f29eba8f49",
+      "friendly_name": "HallMainSwitchAvatto",
+      "model_before": "ZWSM16-1-Zigbee",
+      "model_after": "ZWSM16-1-Zigbee",
+      "removed_properties": [
+        "action"
+      ],
+      "added_properties": [
+        "relay_physical_mode"
+      ],
+      "changed_properties": [
+        {
+          "property": "switch_relay_index_switch",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "all"
+              ],
+              [
+                "relay_1"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ieee": "0xa4c138f6936a1788",
+      "friendly_name": "BedroomDimmer",
+      "model_before": "EC-GL86ZPCS11",
+      "model_after": "EC-GL86ZPCS11",
+      "removed_properties": [
+        "action"
+      ],
+      "added_properties": [
+        "relay_physical_mode"
+      ],
+      "changed_properties": [
+        {
+          "property": "switch_relay_index_switch",
+          "changes": {
+            "values": [
+              [
+                "relay_1",
+                "all"
+              ],
+              [
+                "relay_1"
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "target_ux_findings": [
+    "state_relay_left: stock label 'State' is ambiguous with Always on; must identify logical/virtual relay state",
+    "state_relay_middle: stock label 'State' is ambiguous with Always on; must identify logical/virtual relay state",
+    "power_on_behavior_relay_left: description does not explain interaction with Physical relay behavior",
+    "power_on_behavior_relay_middle: description does not explain interaction with Physical relay behavior",
+    "switch_left_relay_index_switch_left: description does not map relay_1/2/3 to Left/Middle/Right",
+    "switch_middle_relay_index_switch_middle: description does not map relay_1/2/3 to Left/Middle/Right",
+    "switch_right_relay_index_switch_right: description does not map relay_1/2/3 to Left/Middle/Right",
+    "Advanced hardware configuration is the first expose; move it to the advanced/end section"
+  ]
+}
