@@ -1,0 +1,36 @@
+{
+  "responses": {
+    "check_canary": {
+      "topic": "zigbee2mqtt/bridge/response/device/ota_update/check",
+      "data": {
+        "data": {
+          "downgrade": false,
+          "id": "0xa4c13843a9d40f85",
+          "source": "http://127.0.0.1:8899/canary.ota",
+          "update_available": true
+        },
+        "status": "ok",
+        "transaction": "gate-g-canary"
+      }
+    },
+    "check_recovery": {
+      "topic": "zigbee2mqtt/bridge/response/device/ota_update/check",
+      "data": {
+        "data": {
+          "downgrade": false,
+          "id": "0xa4c13843a9d40f85",
+          "source": "http://127.0.0.1:8899/recovery.ota",
+          "update_available": true
+        },
+        "status": "ok",
+        "transaction": "gate-g-recovery"
+      }
+    }
+  },
+  "errors": [
+    "timeout waiting before_devices on zigbee2mqtt/bridge/response/devices",
+    "timeout waiting before_groups on zigbee2mqtt/bridge/response/groups",
+    "timeout waiting after_devices on zigbee2mqtt/bridge/response/devices",
+    "timeout waiting after_groups on zigbee2mqtt/bridge/response/groups"
+  ]
+}

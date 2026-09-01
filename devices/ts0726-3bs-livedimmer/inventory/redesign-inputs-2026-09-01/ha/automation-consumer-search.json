@@ -1,0 +1,122 @@
+{
+  "LivingRoomMainDimmer": [
+    {
+      "file": "automations.yaml",
+      "line": 2173,
+      "text": "alias: LR - LivingRoomMainDimmer Swapped Output Sync ON"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 2190,
+      "text": "topic: zigbee2mqtt/LivingRoomMainDimmer/set"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 2199,
+      "text": "topic: zigbee2mqtt/LivingRoomMainDimmer/set"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 2204,
+      "text": "alias: LR - LivingRoomMainDimmer Swapped Output Sync OFF"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 2221,
+      "text": "topic: zigbee2mqtt/LivingRoomMainDimmer/set"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 2230,
+      "text": "topic: zigbee2mqtt/LivingRoomMainDimmer/set"
+    },
+    {
+      "file": "scripts.yaml",
+      "line": 705,
+      "text": "- if: \"{{ is_state('switch.livingroommaindimmer_relay_right', 'off') }}\""
+    },
+    {
+      "file": "scripts.yaml",
+      "line": 708,
+      "text": "target: {entity_id: switch.livingroommaindimmer_relay_right}"
+    }
+  ],
+  "a4c13843a9d40f85": [],
+  "LivingRoomSocketWifiLeft": [
+    {
+      "file": "automations.yaml",
+      "line": 122,
+      "text": "- wait_template: '{{ states(''switch.livingroomsocketwifileft_relay'') not in [''unknown'', ''unavailable''] }}'"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 125,
+      "text": "- if: '{{ states(''switch.livingroomsocketwifileft_relay'') not in [''unknown'', ''unavailable''] }}'"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 129,
+      "text": "entity_id: switch.livingroomsocketwifileft_relay"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 130,
+      "text": "- wait_template: '{{ is_state(''switch.livingroomsocketwifileft_relay'', ''on'') }}'"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 133,
+      "text": "- if: '{{ not is_state(''switch.livingroomsocketwifileft_relay'', ''on'') }}'"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 138,
+      "text": "entity_id: switch.livingroomsocketwifileft_relay"
+    },
+    {
+      "file": "scripts.yaml",
+      "line": 185,
+      "text": "- switch.livingroomsocketwifileft_relay"
+    },
+    {
+      "file": "solar_phase_b.yaml",
+      "line": 313,
+      "text": "('sensor.livingroomsocketentrance_power', 3680), ('sensor.livingroomsocketwifileft_power', 3680),"
+    }
+  ],
+  "a4c138ba60b92c5f": [],
+  "WorkroomSocketCabinet": [],
+  "a4c138c5f07ee732": [],
+  "state_relay_left": [
+    {
+      "file": "automations.yaml",
+      "line": 2191,
+      "text": "payload: '{\"state_relay_left\":\"ON\"}'"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 2222,
+      "text": "payload: '{\"state_relay_left\":\"OFF\"}'"
+    }
+  ],
+  "state_relay_middle": [
+    {
+      "file": "automations.yaml",
+      "line": 2200,
+      "text": "payload: '{\"state_relay_middle\":\"ON\"}'"
+    },
+    {
+      "file": "automations.yaml",
+      "line": 2231,
+      "text": "payload: '{\"state_relay_middle\":\"OFF\"}'"
+    }
+  ],
+  "state_relay_right": [],
+  "relay_left_physical_mode": [],
+  "relay_left_indicator": [],
+  "overload_power_limit": [],
+  "overload_alarm_switch": [],
+  "reset_energy_switch": [],
+  "network_led_brightness": [],
+  "calibrate_voltage": []
+}
