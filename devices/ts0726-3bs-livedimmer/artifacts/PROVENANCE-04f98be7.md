@@ -2,10 +2,7 @@
 
 Source: `analienx/tuya-zigbee-switch` commit **`04f98be7`**
 (`experiment/detached-physical-relay-canary`, includes PR #1 + the migration
-transaction through CRITICAL 10/11). Durable copy: **draft release
-`bseed-ts0726-canary-1a50801e`** on that repository (private/draft until the
-Supervisor publishes it after gate close; release title/notes name the source
-commit). Second protected local copy: the OTA executor workspace,
+transaction through CRITICAL 10/11). Durable copy: **draft release `bseed-ts0726-canary-04f98be7`** on that repository (tag pinned to the exact source SHA; this is the ARCHIVED pre-boot-fix baseline, kept per ruling 5490809468 section 13 - the canary now uses the v2 container, see PROVENANCE-4ad7dee0.md). Second protected local copy: the OTA executor workspace,
 `build/artifacts/`.
 
 **Status: validation-stage artifacts. NOT APPROVED FOR FLASHING until
@@ -82,4 +79,5 @@ proven until the recovery OTA is demonstrated target-only deliverable.
   fix before generic/upstream readiness).
 - Precondition 3/4 closure remains with the Supervisor; precondition 5 stays
   `BLOCKED_PENDING_EUI64`.
+
 
