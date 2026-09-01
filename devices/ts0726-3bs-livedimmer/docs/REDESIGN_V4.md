@@ -148,13 +148,24 @@ Local relay trigger already updates logical EP5 once.
 
 ### RIGHT
 
-Add:
-- EP3 genOnOff -> group 110
-- EP3 genLevelCtrl -> group 110
+Keep the same one-local-toggle + one-external-toggle topology as LEFT.
 
-Group 110 already contains CircleDimmer EP11 and MainDimmer EP6.
+Add direct external bindings:
+- EP3 genOnOff -> CircleDimmer EP11
+- EP3 genLevelCtrl -> CircleDimmer EP11
 
-Because EP6 is Always on physically, an inbound group command changes only logical EP6 state and indicator state; it cannot cut mains.
+Do **not** bind EP3 to group 110.
+
+Group 110 already contains both CircleDimmer EP11 and MainDimmer EP6. With the
+current `toggle_simple` + local `short_press` configuration, one button release
+first toggles logical EP6 locally and then sends a Zigbee Toggle to its bound
+destination. If that destination were group 110, EP6 would receive the group
+Toggle too and immediately toggle a second time back to its original logical
+state. The Circle light would change while MainDimmer's logical state/indicator
+would be wrong.
+
+Group 110 membership may remain untouched for compatibility; it is simply not
+used as the RIGHT button's bound target.
 
 ### Coordinator compatibility bindings
 
@@ -175,18 +186,26 @@ Raw ZDO table cleanup remains a separate later operation once authoritative pagi
 
 ## Indicator strategy
 
-Final desired state after canonical migration:
+Firmware-complete migration state:
+
+- LEFT indicator behavior = MANUAL, state = ON
+- MIDDLE indicator behavior = MANUAL, state = ON
+- RIGHT indicator behavior = existing valid setting (currently SAME)
+
+The migration image must **not** change LEFT/MIDDLE to SAME. Firmware can prove
+NVM/config invariants, but it cannot prove the real downstream smart-light feeds
+remained continuously powered through the reboot.
+
+Final desired post-proof state:
 
 - LEFT indicator behavior = SAME
 - MIDDLE indicator behavior = SAME
 - RIGHT indicator behavior = SAME
 
-This is safe only after:
+The separate LEFT/MIDDLE transition is authorized only after:
 1. exact canonical config is read back;
 2. all three physical modes read back as Always on;
 3. operator confirms physical power continuity.
-
-Before that point LEFT/MIDDLE remain MANUAL+ON.
 
 Recovery always restores LEFT/MIDDLE MANUAL+ON before reintroducing the swapped map.
 
