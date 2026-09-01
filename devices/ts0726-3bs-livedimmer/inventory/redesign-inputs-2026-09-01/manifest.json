@@ -1,0 +1,60 @@
+{
+  "created_at": "2026-09-01T18:50:28Z",
+  "purpose": "Authoritative P0/P1 evidence for supervisor redesign input",
+  "evidence_branch": "executor/ts0726-redesign-inputs-2026-09-01",
+  "target_ieee": "0xa4c13843a9d40f85",
+  "files": {
+    "ha/automation-consumer-search.json": {
+      "sha256": "aa0aff037047135f1d8dc35cd9d7acd1141f6e1bf790a33758219b516d0fdd5b",
+      "size": 3326
+    },
+    "ha/ha-entity-registry.json": {
+      "sha256": "85826fcc90f7a9377275589afbb20c2c5fe78aae4ffe704e0f01ea36a3a0b78a",
+      "size": 58236
+    },
+    "historical_external_converters/switch_custom.ef79acfd.js": {
+      "sha256": "ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe",
+      "size": 967427
+    },
+    "ota/gate-g-result.json": {
+      "sha256": "db52be2f28b15e623aaf689b75b7dd30bba751891c0687dfe4cce540a7f11ad2",
+      "size": 1097
+    },
+    "ota/index_canary.json": {
+      "sha256": "574fc834afa2e90bb3fe71b521019d34f73bc5d9710eaff774a033de6c39cea2",
+      "size": 119
+    },
+    "ota/index_recovery.json": {
+      "sha256": "5602133a245fa441413981f09a5e0659c25cc730976874a7401039975fba54f9",
+      "size": 121
+    },
+    "runtime/external-converters-current.json": {
+      "sha256": "612731b039ff8200dd00837dfddb8766ab909e384d22fe41b630711dfd92da32",
+      "size": 539
+    },
+    "runtime/z2m-runtime-info.json": {
+      "sha256": "a61eb157ea9503564ab408cf23df22ddbe97846889b425f492e7b36940fade8f",
+      "size": 750
+    },
+    "runtime/z2m-startup-external-converter-lines.txt": {
+      "sha256": "62d5d7ffe6603a3d86c615eddcd71537def222f75a16eae0de4d2ffc431f7682",
+      "size": 2208
+    },
+    "target-live/bridge-devices-after-f-full.json": {
+      "sha256": "144f8b0a42c3e2c756e449a4d2617c3e465a82964e5d8129276ee58499c0f158",
+      "size": 962858
+    },
+    "target-live/bridge-devices-before-f-full.json": {
+      "sha256": "439dac63c4b956f18c17c6cbc7fb3897e9efc2f06cca72a3e490ce3fdd0621f5",
+      "size": 1035542
+    },
+    "target-live/direct-zcl-read-corrected.json": {
+      "sha256": "315decbf30ed48622282d4ae355c24a660c5e563531dfc0a7b95ede4f1c17935",
+      "size": 91787
+    },
+    "target-live/direct-zcl-read.json": {
+      "sha256": "6bb62c2427380597d4bd10a1ac049cd1aef03f93fcfb3d641f003ff394ca17da",
+      "size": 91329
+    }
+  }
+}
