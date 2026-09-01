@@ -16,19 +16,18 @@ stream.**
 | C1 | `software_first_drive_continuity` — first enable already at policy level | **PASS** |
 | C2 | `electrical_reboot_continuity` — zero interruption across MCU reset | **PHYSICAL_PROOF_PENDING** (canary observation) |
 | D | `migration_to_plain_generic` — migrated NVM boots under plain generic image | **PASS** |
-| E1 | `target_converter_identity` — `iedhxgyi/TS0726-3-BS -> EC-GL86ZPCS31` exactly once | **PASS** |
-| E2 | `global_generator_hardening` — RESOLVABLE/UNRESOLVED classification + tests | **PASS** (legacy-unresolved groups reported, not claimed deterministic) |
-| F | `composite_converter_deploy` — composite converter deployed at runtime, read back | **BLOCKED on composite proof acceptance / live deploy decision** |
-| G | `target_only_rollback_transport` — exact-IEEE custom-index OTA CHECK | **OPEN** (read-only CHECK authorized) |
-| H | `stale_bind_capacity` | **BLOCKED `blocked_pending_eui64`** |
-| I | `configure_rebind_capacity` | **BLOCKED_PENDING_PROOF** |
+| E1 | `target_converter_identity` — `iedhxgyi/TS0726-3-BS -> EC-GL86ZPCS31` exactly once | **PASS** — and proven LIVE: the target previously matched the wrong definition (`EC-SL-FK86ZPCS31`, first bare `TS0726-3-BS` in the old deployed converter) and now matches `EC-GL86ZPCS31` |
+| E2 | `global_generator_hardening` — RESOLVABLE/UNRESOLVED classification + tests | **PASS after v2 retest** (12/12 focused, 248/248 full suite, audit PASS on both files) |
+| F | `composite_converter_deploy` — composite converter deployed at runtime, read back | **PASS** — runtime-saved (loaded == generated, sha256 `50d135be7ea0b24545b194214f0f90a1381470a4f7062919c3b27e8c0c8a14cc`), controlled Z2M restart, live read-back: physical-mode exposes present, bind delta 0 (20→20), reporting delta 0, group delta 0 (21→21), device count 105→105, device actively reporting |
+| G | `target_only_rollback_transport` — exact-IEEE custom-index OTA CHECK | **PASS** — canary CHECK (`update_available: true`, source `…/canary.ota`, fv 285356033) and recovery CHECK (`update_available: true`, source `…/recovery.ota`, fv 285356034) for exact IEEE `0xa4c13843a9d40f85`; no transfer, no UPDATE published, no bind/group mutation |
+| H | `stale_bind_capacity` | **BLOCKED `blocked_pending_eui64`** (noncritical) |
+| I | `configure_rebind_capacity` | **PASS_BY_DESIGN** — installed-ZHC probe (`26.90.0` in the real Z2M add-on container) against the staged candidate: bind/configureReporting/write/command/deviceSave counts all 0, 36 reads enumerated, no EUI64 normalization required for the canary |
+| J | `device_page_ux` | **PASS (live exposes)** — `Physical relay behavior` (follow_state/always_on/always_off) on relay_left/middle/right with the full smart-bulb description; all required labels live (`Button type`, `Button command behavior`, `Local relay trigger`, `Assigned local relay`, `Bound-device trigger`, `Long-press threshold`, `Hold dimming speed`, `Indicator LED behavior`, `Indicator LED state`, `Advanced hardware configuration`). Browser screenshot pending an authenticated frontend session (optional per ruling). |
 
-Software head: `bseed/integration-canary-v3` @ `3392f5de2cefbd1e374ec22f96ea08d0710652d9`
-(generic physical-relay-policy incl. the latching-init fix + BSEED migration overlay).
-Artifact containers: draft releases `bseed-ts0726-canary-v3-3392f5de` (current),
-`bseed-ts0726-canary-v2-4ad7dee0` (v2-pre-latching-fix evidence, archived),
-`bseed-ts0726-canary-04f98be7` (v1 archived baseline). Provenance:
-[`artifacts/PROVENANCE-3392f5de.md`](./artifacts/PROVENANCE-3392f5de.md) (+ archived sets).
+Software head: `bseed/integration-canary-v3` @ `3392f5de2cefbd1e374ec22f96ea08d0710652d9` (firmware) and `bseed/integration-converter-v2` @ `9d736969` (composite converter lineage; supervisor-reviewed point `83d5778fae2dd9d6a17c165661fa2cf076fa6584`, plus the v2 patch cherry-picks, regenerated files and probe fix).
+Artifact containers: draft releases `bseed-ts0726-canary-v3-3392f5de` (current), `bseed-ts0726-canary-v2-4ad7dee0` (v2-pre-latching-fix evidence, archived), `bseed-ts0726-canary-04f98be7` (v1 archived baseline). Provenance: [`artifacts/PROVENANCE-3392f5de.md`](./artifacts/PROVENANCE-3392f5de.md) (+ archived sets).
+
+**Next boundary: the real forward firmware OTA UPDATE to `0xa4c13843a9d40f85` — explicitly NOT authorized until the Supervisor says so; C2 physical observation happens at that canary window.**
 
 > **STOP — gate H is not executable from this evidence.** The "dead" coordinator
 > spelling `0x00124b002d12b1fd` and the "current" coordinator spelling `0xfdb1122d004b1200`
