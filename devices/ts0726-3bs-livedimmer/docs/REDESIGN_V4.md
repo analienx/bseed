@@ -82,10 +82,18 @@ Use:
 
 1. exact historical fleet converter:
    SHA256 `ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe`
-2. one target-only BSEED overlay:
-   exact fingerprint `iedhxgyi / TS0726-3-BS`
+2. one target-only BSEED v4 overlay:
+   exact fingerprint `iedhxgyi / TS0726-3-BS / 1.1.4-bseedv4`, priority 100.
 
-Installed ZHC 26.90.0 searches matching fingerprints before zigbeeModel fallback, so the overlay wins only for the target while the historical file preserves:
+The authoritative canary overlay source is:
+`zigbee2mqtt/converters/bseed_ts0726_v4.js` on
+`supervisor/target-overlay-regression-v1`.
+
+The firmware branch must not carry a second converter copy. Generic generator
+hardening may continue independently, but the canary deployment bundle copies
+this one dedicated audited overlay.
+
+Installed ZHC 26.90.0 searches matching fingerprints before zigbeeModel fallback, so the overlay wins only for the successful forward canary build while old firmware and `1.1.4-bseedv4r` recovery fall back to the historical converter. The historical file preserves:
 - B28WRPVX PM metering/protection;
 - historical action APIs;
 - unrelated custom device contracts.
@@ -224,6 +232,12 @@ Mapping:
 
 This makes the logical relay/indicator reflect actual smart-light state when a light changes through HA, voice, another controller, or external automation.
 
+The staged automation is fail-closed: it performs no sync unless all three
+`select.livingroommaindimmer_relay_*_physical_mode` entities report
+`always_on`. It retriggers when those policy entities become ready, preventing
+an accidental pre-migration deployment from turning the legacy attached RIGHT
+mains relay off.
+
 Direct button operation does not depend on HA:
 - local relay trigger updates logical state immediately;
 - direct Zigbee binding controls the light;
@@ -264,8 +278,9 @@ Physical relay behavior is capability-gated in the generator and must never appe
 
 Converter / target overlay:
 `analienx/tuya-zigbee-switch:supervisor/target-overlay-regression-v1`
+(authoritative release file: `zigbee2mqtt/converters/bseed_ts0726_v4.js`)
 
-Firmware migration:
+Firmware migration/build only:
 `analienx/tuya-zigbee-switch:supervisor/ts0726-redesign-v4`
 
 Staged HA reconciliation:
