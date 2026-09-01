@@ -1,0 +1,707 @@
+{
+  "source": "helper_scripts/probe_bseed_ts0726_installed_zhc.js executed inside the real Z2M add-on container (app_45df7312_zigbee2mqtt)",
+  "command": "node /config/zigbee2mqtt/bseed_probe/probe.js /config/zigbee2mqtt/bseed_probe/candidate.js",
+  "candidate_sha256": "50d135be7ea0b24545b194214f0f90a1381470a4f7062919c3b27e8c0c8a14cc",
+  "result": {
+    "status": "PASS",
+    "converterPath": "/config/zigbee2mqtt/bseed_probe/candidate.js",
+    "converterBytes": 803404,
+    "installedZhc": {
+      "version": "26.90.0",
+      "packageRoot": "/app/node_modules/.pnpm/zigbee-herdsman-converters@26.90.0/node_modules/zigbee-herdsman-converters",
+      "packageJsonPath": "/app/node_modules/.pnpm/zigbee-herdsman-converters@26.90.0/node_modules/zigbee-herdsman-converters/package.json",
+      "modernExtend": "/app/node_modules/.pnpm/zigbee-herdsman-converters@26.90.0/node_modules/zigbee-herdsman-converters/dist/lib/modernExtend.js",
+      "nodeModulesRoot": "/app/node_modules/.pnpm/zigbee-herdsman-converters@26.90.0/node_modules"
+    },
+    "target": {
+      "model": "EC-GL86ZPCS31",
+      "vendor": "Tuya-custom",
+      "description": "BSEED Echo Click / Scale 3-gang \u2014 Romasku custom firmware",
+      "fingerprint": [
+        {
+          "manufacturerName": "iedhxgyi",
+          "modelID": "TS0726-3-BS"
+        }
+      ],
+      "zigbeeModel": []
+    },
+    "configure": {
+      "callbacks": [
+        "definition.configure",
+        "extend[1].configure[0]",
+        "extend[2].configure[0]",
+        "extend[3].configure[0]",
+        "extend[5].configure[0]",
+        "extend[6].configure[0]",
+        "extend[7].configure[0]",
+        "extend[8].configure[0]",
+        "extend[9].configure[0]",
+        "extend[10].configure[0]",
+        "extend[11].configure[0]",
+        "extend[12].configure[0]",
+        "extend[13].configure[0]",
+        "extend[14].configure[0]",
+        "extend[15].configure[0]",
+        "extend[16].configure[0]",
+        "extend[17].configure[0]",
+        "extend[18].configure[0]",
+        "extend[19].configure[0]",
+        "extend[20].configure[0]",
+        "extend[21].configure[0]",
+        "extend[22].configure[0]",
+        "extend[23].configure[0]",
+        "extend[24].configure[0]",
+        "extend[25].configure[0]",
+        "extend[26].configure[0]",
+        "extend[27].configure[0]",
+        "extend[28].configure[0]",
+        "extend[29].configure[0]",
+        "extend[30].configure[0]",
+        "extend[31].configure[0]",
+        "extend[32].configure[0]",
+        "extend[33].configure[0]",
+        "extend[34].configure[0]",
+        "extend[35].configure[0]",
+        "extend[36].configure[0]",
+        "extend[37].configure[0]"
+      ],
+      "mutationCount": 0,
+      "bindCount": 0,
+      "configureReportingCount": 0,
+      "writeCount": 0,
+      "commandCount": 0,
+      "readCount": 36,
+      "reads": [
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genBasic",
+            [
+              65280
+            ]
+          ],
+          "source": "extend[1].configure[0]"
+        },
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genBasic",
+            [
+              65282
+            ]
+          ],
+          "source": "extend[2].configure[0]"
+        },
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genBasic",
+            [
+              65281
+            ]
+          ],
+          "source": "extend[3].configure[0]"
+        },
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genMultistateInput",
+            [
+              "presentValue"
+            ]
+          ],
+          "source": "extend[5].configure[0]"
+        },
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65280
+            ]
+          ],
+          "source": "extend[6].configure[0]"
+        },
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              16
+            ]
+          ],
+          "source": "extend[7].configure[0]"
+        },
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65281
+            ]
+          ],
+          "source": "extend[8].configure[0]"
+        },
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65282
+            ]
+          ],
+          "source": "extend[9].configure[0]"
+        },
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65285
+            ]
+          ],
+          "source": "extend[10].configure[0]"
+        },
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65283
+            ]
+          ],
+          "source": "extend[11].configure[0]"
+        },
+        {
+          "endpoint": 1,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65284
+            ]
+          ],
+          "source": "extend[12].configure[0]"
+        },
+        {
+          "endpoint": 2,
+          "op": "read",
+          "args": [
+            "genMultistateInput",
+            [
+              "presentValue"
+            ]
+          ],
+          "source": "extend[13].configure[0]"
+        },
+        {
+          "endpoint": 2,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65280
+            ]
+          ],
+          "source": "extend[14].configure[0]"
+        },
+        {
+          "endpoint": 2,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              16
+            ]
+          ],
+          "source": "extend[15].configure[0]"
+        },
+        {
+          "endpoint": 2,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65281
+            ]
+          ],
+          "source": "extend[16].configure[0]"
+        },
+        {
+          "endpoint": 2,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65282
+            ]
+          ],
+          "source": "extend[17].configure[0]"
+        },
+        {
+          "endpoint": 2,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65285
+            ]
+          ],
+          "source": "extend[18].configure[0]"
+        },
+        {
+          "endpoint": 2,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65283
+            ]
+          ],
+          "source": "extend[19].configure[0]"
+        },
+        {
+          "endpoint": 2,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65284
+            ]
+          ],
+          "source": "extend[20].configure[0]"
+        },
+        {
+          "endpoint": 3,
+          "op": "read",
+          "args": [
+            "genMultistateInput",
+            [
+              "presentValue"
+            ]
+          ],
+          "source": "extend[21].configure[0]"
+        },
+        {
+          "endpoint": 3,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65280
+            ]
+          ],
+          "source": "extend[22].configure[0]"
+        },
+        {
+          "endpoint": 3,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              16
+            ]
+          ],
+          "source": "extend[23].configure[0]"
+        },
+        {
+          "endpoint": 3,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65281
+            ]
+          ],
+          "source": "extend[24].configure[0]"
+        },
+        {
+          "endpoint": 3,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65282
+            ]
+          ],
+          "source": "extend[25].configure[0]"
+        },
+        {
+          "endpoint": 3,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65285
+            ]
+          ],
+          "source": "extend[26].configure[0]"
+        },
+        {
+          "endpoint": 3,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65283
+            ]
+          ],
+          "source": "extend[27].configure[0]"
+        },
+        {
+          "endpoint": 3,
+          "op": "read",
+          "args": [
+            "genOnOffSwitchCfg",
+            [
+              65284
+            ]
+          ],
+          "source": "extend[28].configure[0]"
+        },
+        {
+          "endpoint": 4,
+          "op": "read",
+          "args": [
+            "genOnOff",
+            [
+              65281
+            ]
+          ],
+          "source": "extend[29].configure[0]"
+        },
+        {
+          "endpoint": 4,
+          "op": "read",
+          "args": [
+            "genOnOff",
+            [
+              65282
+            ]
+          ],
+          "source": "extend[30].configure[0]"
+        },
+        {
+          "endpoint": 5,
+          "op": "read",
+          "args": [
+            "genOnOff",
+            [
+              65281
+            ]
+          ],
+          "source": "extend[31].configure[0]"
+        },
+        {
+          "endpoint": 5,
+          "op": "read",
+          "args": [
+            "genOnOff",
+            [
+              65282
+            ]
+          ],
+          "source": "extend[32].configure[0]"
+        },
+        {
+          "endpoint": 6,
+          "op": "read",
+          "args": [
+            "genOnOff",
+            [
+              65281
+            ]
+          ],
+          "source": "extend[33].configure[0]"
+        },
+        {
+          "endpoint": 6,
+          "op": "read",
+          "args": [
+            "genOnOff",
+            [
+              65282
+            ]
+          ],
+          "source": "extend[34].configure[0]"
+        },
+        {
+          "endpoint": 4,
+          "op": "read",
+          "args": [
+            "genOnOff",
+            [
+              65283
+            ]
+          ],
+          "source": "extend[35].configure[0]"
+        },
+        {
+          "endpoint": 5,
+          "op": "read",
+          "args": [
+            "genOnOff",
+            [
+              65283
+            ]
+          ],
+          "source": "extend[36].configure[0]"
+        },
+        {
+          "endpoint": 6,
+          "op": "read",
+          "args": [
+            "genOnOff",
+            [
+              65283
+            ]
+          ],
+          "source": "extend[37].configure[0]"
+        }
+      ],
+      "deviceSaveCount": 0
+    },
+    "exposes": [
+      {
+        "name": "device_config",
+        "property": "device_config_switch_left",
+        "label": "Advanced hardware configuration",
+        "endpoint": "switch_left",
+        "category": "config",
+        "access": 7,
+        "values": null,
+        "description": "Advanced Romasku hardware pin mapping. This describes which MCU pins are connected to buttons, relays, indicators and other peripherals; it is NOT a normal behavior setting. An incorrect value can make buttons, relays or indicators stop working and may require recovery firmware. Do not edit unless you are porting or repairing a device."
+      },
+      {
+        "name": "switch_left_mode",
+        "property": "switch_left_mode_switch_left",
+        "label": "Button type",
+        "endpoint": "switch_left",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "toggle",
+          "momentary",
+          "momentary_nc"
+        ],
+        "description": "Electrical type of the wall control: toggle/rocker, momentary push button, or normally-closed momentary input."
+      },
+      {
+        "name": "switch_left_action_mode",
+        "property": "switch_left_action_mode_switch_left",
+        "label": "Button command behavior",
+        "endpoint": "switch_left",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "on_off",
+          "off_on",
+          "toggle_simple",
+          "toggle_smart_sync",
+          "toggle_smart_opposite"
+        ],
+        "description": "Controls which On/Off command the wall control produces:\n            - on_off: When switch physically moved to position 1 it always generates ON command, and when moved to position 2 it generates OFF command\n            - off_on: Same as on_off, but positions are swapped\n            - toggle_simple: Any press of physical switch will TOGGLE the relay and send TOGGLE command to binds\n            - toggle_smart_sync: Any press of physical switch will TOGGLE the relay and send corresponding ON/OFF command to keep binds in sync with relay\n            - toggle_smart_opposite: Any press of physical switch: TOGGLE the relay and send corresponding ON/OFF command to keep binds in the state opposite to the relay"
+      },
+      {
+        "name": "switch_left_relay_mode",
+        "property": "switch_left_relay_mode_switch_left",
+        "label": "Local relay trigger",
+        "endpoint": "switch_left",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "detached",
+          "press_start",
+          "short_press",
+          "long_press"
+        ],
+        "description": "Controls when this physical button changes its assigned local Zigbee relay state. This is independent of Physical relay behavior: the Zigbee relay state can change even when the electrical output is forced Always on or Always off."
+      },
+      {
+        "name": "switch_left_binded_mode",
+        "property": "switch_left_binded_mode_switch_left",
+        "label": "Bound-device trigger",
+        "endpoint": "switch_left",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "press_start",
+          "short_press",
+          "long_press"
+        ],
+        "description": "Controls when this button sends commands directly to Zigbee-bound devices or groups."
+      },
+      {
+        "name": "switch_middle_mode",
+        "property": "switch_middle_mode_switch_middle",
+        "label": "Button type",
+        "endpoint": "switch_middle",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "toggle",
+          "momentary",
+          "momentary_nc"
+        ],
+        "description": "Electrical type of the wall control: toggle/rocker, momentary push button, or normally-closed momentary input."
+      },
+      {
+        "name": "switch_middle_action_mode",
+        "property": "switch_middle_action_mode_switch_middle",
+        "label": "Button command behavior",
+        "endpoint": "switch_middle",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "on_off",
+          "off_on",
+          "toggle_simple",
+          "toggle_smart_sync",
+          "toggle_smart_opposite"
+        ],
+        "description": "Controls which On/Off command the wall control produces:\n            - on_off: When switch physically moved to position 1 it always generates ON command, and when moved to position 2 it generates OFF command\n            - off_on: Same as on_off, but positions are swapped\n            - toggle_simple: Any press of physical switch will TOGGLE the relay and send TOGGLE command to binds\n            - toggle_smart_sync: Any press of physical switch will TOGGLE the relay and send corresponding ON/OFF command to keep binds in sync with relay\n            - toggle_smart_opposite: Any press of physical switch: TOGGLE the relay and send corresponding ON/OFF command to keep binds in the state opposite to the relay"
+      },
+      {
+        "name": "switch_middle_relay_mode",
+        "property": "switch_middle_relay_mode_switch_middle",
+        "label": "Local relay trigger",
+        "endpoint": "switch_middle",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "detached",
+          "press_start",
+          "short_press",
+          "long_press"
+        ],
+        "description": "Controls when this physical button changes its assigned local Zigbee relay state. This is independent of Physical relay behavior: the Zigbee relay state can change even when the electrical output is forced Always on or Always off."
+      },
+      {
+        "name": "switch_middle_binded_mode",
+        "property": "switch_middle_binded_mode_switch_middle",
+        "label": "Bound-device trigger",
+        "endpoint": "switch_middle",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "press_start",
+          "short_press",
+          "long_press"
+        ],
+        "description": "Controls when this button sends commands directly to Zigbee-bound devices or groups."
+      },
+      {
+        "name": "switch_right_mode",
+        "property": "switch_right_mode_switch_right",
+        "label": "Button type",
+        "endpoint": "switch_right",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "toggle",
+          "momentary",
+          "momentary_nc"
+        ],
+        "description": "Electrical type of the wall control: toggle/rocker, momentary push button, or normally-closed momentary input."
+      },
+      {
+        "name": "switch_right_action_mode",
+        "property": "switch_right_action_mode_switch_right",
+        "label": "Button command behavior",
+        "endpoint": "switch_right",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "on_off",
+          "off_on",
+          "toggle_simple",
+          "toggle_smart_sync",
+          "toggle_smart_opposite"
+        ],
+        "description": "Controls which On/Off command the wall control produces:\n            - on_off: When switch physically moved to position 1 it always generates ON command, and when moved to position 2 it generates OFF command\n            - off_on: Same as on_off, but positions are swapped\n            - toggle_simple: Any press of physical switch will TOGGLE the relay and send TOGGLE command to binds\n            - toggle_smart_sync: Any press of physical switch will TOGGLE the relay and send corresponding ON/OFF command to keep binds in sync with relay\n            - toggle_smart_opposite: Any press of physical switch: TOGGLE the relay and send corresponding ON/OFF command to keep binds in the state opposite to the relay"
+      },
+      {
+        "name": "switch_right_relay_mode",
+        "property": "switch_right_relay_mode_switch_right",
+        "label": "Local relay trigger",
+        "endpoint": "switch_right",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "detached",
+          "press_start",
+          "short_press",
+          "long_press"
+        ],
+        "description": "Controls when this physical button changes its assigned local Zigbee relay state. This is independent of Physical relay behavior: the Zigbee relay state can change even when the electrical output is forced Always on or Always off."
+      },
+      {
+        "name": "switch_right_binded_mode",
+        "property": "switch_right_binded_mode_switch_right",
+        "label": "Bound-device trigger",
+        "endpoint": "switch_right",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "press_start",
+          "short_press",
+          "long_press"
+        ],
+        "description": "Controls when this button sends commands directly to Zigbee-bound devices or groups."
+      },
+      {
+        "name": "relay_left_physical_mode",
+        "property": "relay_left_physical_mode",
+        "label": "Physical relay behavior",
+        "endpoint": "relay_left",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "follow_state",
+          "always_on",
+          "always_off"
+        ],
+        "description": "Controls the electrical relay independently of the Zigbee On/Off state.\nFollow state: the physical relay follows the Zigbee On/Off state; selecting it immediately synchronizes the electrical output to the current Zigbee state.\nAlways on: keeps the physical output energized. Recommended for smart bulbs or other loads that must remain powered; Zigbee state, button actions and bindings can continue independently.\nAlways off: keeps the physical output de-energized while the Zigbee state can continue to change independently.\nChanging this setting can immediately switch mains power. The setting is stored and restored after restart."
+      },
+      {
+        "name": "relay_middle_physical_mode",
+        "property": "relay_middle_physical_mode",
+        "label": "Physical relay behavior",
+        "endpoint": "relay_middle",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "follow_state",
+          "always_on",
+          "always_off"
+        ],
+        "description": "Controls the electrical relay independently of the Zigbee On/Off state.\nFollow state: the physical relay follows the Zigbee On/Off state; selecting it immediately synchronizes the electrical output to the current Zigbee state.\nAlways on: keeps the physical output energized. Recommended for smart bulbs or other loads that must remain powered; Zigbee state, button actions and bindings can continue independently.\nAlways off: keeps the physical output de-energized while the Zigbee state can continue to change independently.\nChanging this setting can immediately switch mains power. The setting is stored and restored after restart."
+      },
+      {
+        "name": "relay_right_physical_mode",
+        "property": "relay_right_physical_mode",
+        "label": "Physical relay behavior",
+        "endpoint": "relay_right",
+        "category": "config",
+        "access": 7,
+        "values": [
+          "follow_state",
+          "always_on",
+          "always_off"
+        ],
+        "description": "Controls the electrical relay independently of the Zigbee On/Off state.\nFollow state: the physical relay follows the Zigbee On/Off state; selecting it immediately synchronizes the electrical output to the current Zigbee state.\nAlways on: keeps the physical output energized. Recommended for smart bulbs or other loads that must remain powered; Zigbee state, button actions and bindings can continue independently.\nAlways off: keeps the physical output de-energized while the Zigbee state can continue to change independently.\nChanging this setting can immediately switch mains power. The setting is stored and restored after restart."
+      }
+    ]
+  },
+  "captured_at": "2026-09-01T16:13:02Z"
+}

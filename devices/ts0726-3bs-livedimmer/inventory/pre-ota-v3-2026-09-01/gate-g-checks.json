@@ -1,0 +1,48 @@
+{
+  "source": "zigbee2mqtt/bridge/request/device/ota_update/check with per-request custom index URL (one-entry indexes served in-container on 127.0.0.1:8899)",
+  "target_ieee": "0xa4c13843a9d40f85",
+  "canary_request": {
+    "topic": "zigbee2mqtt/bridge/request/device/ota_update/check",
+    "payload": {
+      "id": "0xa4c13843a9d40f85",
+      "url": "http://127.0.0.1:8899/index_canary.json",
+      "transaction": "gate-g-canary"
+    }
+  },
+  "canary_response": {
+    "topic": "zigbee2mqtt/bridge/response/device/ota_update/check",
+    "data": {
+      "data": {
+        "downgrade": false,
+        "id": "0xa4c13843a9d40f85",
+        "source": "http://127.0.0.1:8899/canary.ota",
+        "update_available": true
+      },
+      "status": "ok",
+      "transaction": "gate-g-canary"
+    }
+  },
+  "recovery_request": {
+    "topic": "zigbee2mqtt/bridge/request/device/ota_update/check",
+    "payload": {
+      "id": "0xa4c13843a9d40f85",
+      "url": "http://127.0.0.1:8899/index_recovery.json",
+      "transaction": "gate-g-recovery"
+    }
+  },
+  "recovery_response": {
+    "topic": "zigbee2mqtt/bridge/response/device/ota_update/check",
+    "data": {
+      "data": {
+        "downgrade": false,
+        "id": "0xa4c13843a9d40f85",
+        "source": "http://127.0.0.1:8899/recovery.ota",
+        "update_available": true
+      },
+      "status": "ok",
+      "transaction": "gate-g-recovery"
+    }
+  },
+  "note": "No UPDATE published. One-entry index entries: canary fv 285356033 / recovery fv 285356034, manufacturerCode 4417, imageType 45577.",
+  "captured_at": "2026-09-01T16:13:02Z"
+}

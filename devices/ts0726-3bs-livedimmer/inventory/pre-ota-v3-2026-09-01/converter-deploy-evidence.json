@@ -1,0 +1,17 @@
+{
+  "deployment_method": "file replacement of /config/zigbee2mqtt/external_converters/switch_custom.js + controlled Z2M restart (ha apps restart 45df7312_zigbee2mqtt) + live read-back. NOT the bridge/request/converter/save MQTT API.",
+  "old_live_sha256": "ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe",
+  "new_live_sha256": "50d135be7ea0b24545b194214f0f90a1381470a4f7062919c3b27e8c0c8a14cc",
+  "candidate_source": "bseed/integration-converter-v2 @ 9d736969b3d3b8873f3f93ff076a8570375e9fc0 (generated zigbee2mqtt/converters/switch_custom.js)",
+  "target_ieee": "0xa4c13843a9d40f85",
+  "target_model_before": "EC-SL-FK86ZPCS31",
+  "target_model_after": "EC-GL86ZPCS31",
+  "device_count": "105 -> 105",
+  "bridge_binding_projection": "20 -> 20 (identical per-endpoint signatures; delta 0)",
+  "raw_zdo_binding_table_note": "last authoritative raw ZDO evidence = 28/32 (manual inventory capture 2026-08-31); the bridge/devices projection is a DIFFERENT counting surface and can normalize/omit entries (unresolved coordinator-EUI byte-order issue); 28/32 was NOT re-measured here and must not be replaced by the 20-entry projection",
+  "reporting_delta": "0 (identical configured_reportings per endpoint)",
+  "groups_projection": "21 -> 21 (identical member sets; delta 0)",
+  "installed_zhc_observed_by_probe": "26.90.0",
+  "note_z2m_app_version": "installed ZHC package version is NOT the Zigbee2MQTT app version; do not infer one from the other",
+  "captured_at": "2026-09-01T16:13:02Z"
+}

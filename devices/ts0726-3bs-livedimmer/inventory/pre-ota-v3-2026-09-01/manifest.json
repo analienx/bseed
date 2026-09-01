@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-09-01T16:29:34Z",
+  "purpose": "Sanitized live pre-OTA (canary v3) evidence per supervisor final pre-OTA review 2026-09-01T16:24:48Z",
+  "firmware_source": "bseed/integration-canary-v3 @ 3392f5de2cefbd1e374ec22f96ea08d0710652d9",
+  "converter_source": "bseed/integration-converter-v2 @ 9d736969b3d3b8873f3f93ff076a8570375e9fc0",
+  "target_ieee": "0xa4c13843a9d40f85",
+  "files": {
+    "bridge-devices-after-f.json": "147b7664a990620e904601ad635370f7785afa952b1a1c01ef947c879e01cbff",
+    "bridge-devices-before-f.json": "d07157f7db1d59e569b48cb06bfca1c5f087b1427c01ddfa0770f8d2c8f46565",
+    "bridge-groups-after-f.json": "ea7be59a6b6c622a7534c535275646b14d7767ded0f499df0b32e325ae677486",
+    "bridge-groups-before-f.json": "ea7be59a6b6c622a7534c535275646b14d7767ded0f499df0b32e325ae677486",
+    "converter-deploy-evidence.json": "0bdf559ac2bc942eb3de30a1d088bdb0d6c42e72253b65893272f7512e1ac4f6",
+    "gate-g-checks.json": "c955af9948c5597f2121f6bf80b2c6a0f12024c1a6c3402ed580a556f927e671",
+    "installed-zhc-probe.json": "37087f730e56ec9070eada912eae6dfa3b634ae75bb9c4e1ea47138f2d175a10",
+    "target-exposes-after-f.json": "791c19e1988555036823c1a965180f275ef797fad1a0879ceaa6f93e632976ec"
+  }
+}
