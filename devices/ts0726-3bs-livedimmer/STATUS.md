@@ -7,17 +7,30 @@ Safety invariants: [`docs/LR_MAINDIMMER_SWAPPED_PINS.md`](./docs/LR_MAINDIMMER_S
 **Nothing has been flashed. No OTA, no reset, no re-pair, no bind or group change by this
 stream.**
 
-## Gate — 4 open, 1 BLOCKED
+## Gate board — per re-review `5492467354` (supersedes the numbered 1–5 board)
 
-| # | Precondition | Status |
+| gate | item | status |
 |---|---|---|
-| 1 | `converter_determinism` — resolve which definition governs the device | **open** |
-| 2 | `converter_regenerated_and_deployed` — prove `relay_*_physical_mode` read+write in Z2M | **open** |
-| 3 | `firmware_side_migration` — one-shot, pre-parse, marker + pre-seed `detached_on` | **open** |
-| 4 | `rollback_artifact` — purpose-built migration-revert recovery image | **open** |
-| 5 | `stale_bind_capacity` — reclaim stale entries one at a time | **BLOCKED `blocked_pending_eui64`** |
+| A | `canonical_upstream_config` — migration target byte-identical to Romasku config | **PASS** |
+| B | `generic_physical_relay_policy` — clean branch, no BSEED dependency | **PASS** |
+| C1 | `software_first_drive_continuity` — first enable already at policy level | **PASS** |
+| C2 | `electrical_reboot_continuity` — zero interruption across MCU reset | **PHYSICAL_PROOF_PENDING** (canary observation) |
+| D | `migration_to_plain_generic` — migrated NVM boots under plain generic image | **PASS** |
+| E1 | `target_converter_identity` — `iedhxgyi/TS0726-3-BS -> EC-GL86ZPCS31` exactly once | **PASS** |
+| E2 | `global_generator_hardening` — RESOLVABLE/UNRESOLVED classification + tests | **PASS** (legacy-unresolved groups reported, not claimed deterministic) |
+| F | `composite_converter_deploy` — composite converter deployed at runtime, read back | **BLOCKED on composite proof acceptance / live deploy decision** |
+| G | `target_only_rollback_transport` — exact-IEEE custom-index OTA CHECK | **OPEN** (read-only CHECK authorized) |
+| H | `stale_bind_capacity` | **BLOCKED `blocked_pending_eui64`** |
+| I | `configure_rebind_capacity` | **BLOCKED_PENDING_PROOF** |
 
-> **STOP — precondition 5 is not executable from this evidence.** The "dead" coordinator
+Software head: `bseed/integration-canary-v3` @ `3392f5de2cefbd1e374ec22f96ea08d0710652d9`
+(generic physical-relay-policy incl. the latching-init fix + BSEED migration overlay).
+Artifact containers: draft releases `bseed-ts0726-canary-v3-3392f5de` (current),
+`bseed-ts0726-canary-v2-4ad7dee0` (v2-pre-latching-fix evidence, archived),
+`bseed-ts0726-canary-04f98be7` (v1 archived baseline). Provenance:
+[`artifacts/PROVENANCE-3392f5de.md`](./artifacts/PROVENANCE-3392f5de.md) (+ archived sets).
+
+> **STOP — gate H is not executable from this evidence.** The "dead" coordinator
 > spelling `0x00124b002d12b1fd` and the "current" coordinator spelling `0xfdb1122d004b1200`
 > are octet-reversals of each other, and only the former carries the Silicon Labs OUI. They
 > may be **one** IEEE in two byte orders, not two nodes. The 7 entries below labelled `DEAD`
@@ -33,19 +46,23 @@ stream.**
 ## Identity
 
 ```text
-friendly_name   LivingRoomMainDimmer
-ieee            0xa4c13843a9d40f85
-manufacturer    _TZ3000_iedhxgyi        model  TS0726-3-BS
-board           SWITCH_BSEED_TS0726_3GANG   role router   mcu TLSR8258 (Telink)
-installed       1.1.2-8542fc05   dateCode 20260612   fileVersion 285356032
-ota identity    manufacturerCode 4417   imageType 45577
-canary build    b82774b7   fileVersion 285356043   flashed: NO
-coordinator     0xfdb1122d004b1200  labelled SONOFF Dongle Max MG24 (ember) -- UNPROVEN, see gate
-dead previous   0x00124b002d12b1fd  labelled SLZB-06p7 -- UNPROVEN; octet-reversal of the line above
-              neither spelling is evidenced: the capture's coordinator block carries only
-              adapter/channel/transmit_power and no IEEE at all (2026-08-31T18:13:00Z blob)
-z2m             version NOT EVIDENCED by the capture (no version field in any artifact here);
-                this file said 2.13.0-1 and the doc said 2.13.0 -- neither is supported
+friendly_name        LivingRoomMainDimmer
+ieee                 0xa4c13843a9d40f85
+board                SWITCH_BSEED_TS0726_3GANG   role router   mcu TLSR8258 (Telink)
+installed            1.1.2-8542fc05   dateCode 20260612   fileVersion 285356032
+ota identity         manufacturerCode 4417   imageType 45577
+-- live / custom identity (raw EP1 genBasic + stored Z2M agree; evidenced) --
+live manufacturer    iedhxgyi
+live model           TS0726-3-BS
+-- stock DB identity (device_db.yaml; separate field, do not conflate) --
+stock manufacturer   _TZ3002_iedhxgyi
+stock model          TS0726
+coordinator          0xfdb1122d004b1200  labelled SONOFF Dongle Max MG24 (ember) -- UNPROVEN, see gate H
+dead previous        0x00124b002d12b1fd  labelled SLZB-06p7 -- UNPROVEN; octet-reversal of the line above
+                     neither spelling is evidenced: the capture's coordinator block carries only
+                     adapter/channel/transmit_power and no IEEE at all (2026-08-31T18:13:00Z blob)
+z2m                  version NOT EVIDENCED by the capture (no version field in any artifact here);
+                     this file said 2.13.0-1 and the doc said 2.13.0 -- neither is supported
 ```
 
 ## Device state — captured `2026-08-31T18:13:00Z`
