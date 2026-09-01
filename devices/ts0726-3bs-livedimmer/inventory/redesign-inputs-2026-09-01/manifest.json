@@ -55,6 +55,14 @@
     "target-live/direct-zcl-read.json": {
       "sha256": "6bb62c2427380597d4bd10a1ac049cd1aef03f93fcfb3d641f003ff394ca17da",
       "size": 91329
+    },
+    "runtime/runtime-capture-full.txt": {
+      "sha256": "d7fb44a2c0a625825e0b5efb380cd0e4c30c82fa58a87227a13ccf48b0178ad1",
+      "size": 3608
     }
-  }
+  },
+  "observations": [
+    "2026-09-01T22:04Z: live external_converters/switch_custom.js changed externally to sha256 e178e68a8b5cbb102686272a8dfee083088fee21356b22d0801840f0ef3fbbdb (912912 bytes, mtime 2026-09-01 19:07) - not deployed by executor; recorded as observed fact",
+    "runtime files re-captured 2026-09-01T22:04Z from live container (read-only); ZHC 26.90.0 authoritative via installed-zhc-probe.json (pre-ota-v3)"
+  ]
 }

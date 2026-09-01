@@ -1,0 +1,13 @@
+{
+  "z2m_app_version": "2.13.0",
+  "z2m_app_source": "/app/package.json inside the Z2M add-on container (app_45df7312_zigbee2mqtt)",
+  "zhc_version": "26.90.0",
+  "zhc_source": "helper_scripts/probe_bseed_ts0726_installed_zhc.js resolved require(\"zigbee-herdsman-converters/lib/modernExtend\") to /app/node_modules/.pnpm/zigbee-herdsman-converters@26.90.0/",
+  "zh_version": "not independently resolved (inside pnpm store; require would need NODE_PATH)",
+  "node_version": "v24.18.1",
+  "node_source": "docker exec node --version inside the same container",
+  "addon_container": "app_45df7312_zigbee2mqtt",
+  "addon_slug": "45df7312_zigbee2mqtt",
+  "frontend_port": 8099,
+  "frontend_source": "docker logs: \"z2m: Started frontend on port 8099\""
+}
