@@ -87,7 +87,7 @@ Use:
 
 The authoritative canary overlay source is:
 `zigbee2mqtt/converters/bseed_ts0726_v4.js` on
-`supervisor/target-overlay-regression-v1`.
+`supervisor/target-overlay-v4-release`.
 
 The firmware branch must not carry a second converter copy. Generic generator
 hardening may continue independently, but the canary deployment bundle copies
@@ -272,13 +272,13 @@ Conceptual expose order:
 7. Advanced hardware configuration
 8. linkquality
 
-Physical relay behavior is capability-gated in the generator and must never appear on older firmware merely because a definition has relays.
+Physical relay behavior is exposed only by the standalone overlay fingerprinted to softwareBuildID `1.1.4-bseedv4`; legacy `1.1.2-8542fc05` and recovery `1.1.4-bseedv4r` continue to use the historical fleet converter and therefore never see unsupported physical-policy controls.
 
 ## Current supervisor code branches
 
 Converter / target overlay:
-`analienx/tuya-zigbee-switch:supervisor/target-overlay-regression-v1`
-(authoritative release file: `zigbee2mqtt/converters/bseed_ts0726_v4.js`)
+`analienx/tuya-zigbee-switch:supervisor/target-overlay-v4-release`
+(authoritative release file: `zigbee2mqtt/converters/bseed_ts0726_v4.js`; clean branch based on upstream `main`, with no global canary-generator modifications)
 
 Firmware migration/build only:
 `analienx/tuya-zigbee-switch:supervisor/ts0726-redesign-v4`
@@ -293,7 +293,7 @@ Fleet regression tooling / evidence contract:
 
 No live mutation is implied by this document.
 
-1. Validate supervisor converter branch.
+1. Validate the clean standalone overlay release branch; generic fleet-generator canary experiments are explicitly out of the release path.
 2. Build isolated historical+overlay bundle.
 3. Validate matcher precedence against installed ZHC.
 4. Validate action decoder contract.
