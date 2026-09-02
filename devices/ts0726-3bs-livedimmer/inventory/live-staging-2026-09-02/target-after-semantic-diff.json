@@ -1,0 +1,10 @@
+{
+ "device_count_before": 104,
+ "device_count_after": 104,
+ "device_semantic_delta_count": 0,
+ "device_deltas": [],
+ "target_software_build_id_after": "1.1.2-8542fc05",
+ "target_definition_identical": true,
+ "target_endpoints_identical": true,
+ "groups_identical": true
+}

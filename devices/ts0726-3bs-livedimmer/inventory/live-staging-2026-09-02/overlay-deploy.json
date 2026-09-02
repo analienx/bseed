@@ -1,0 +1,31 @@
+{
+ "captured_utc": "2026-09-02T08:45:00Z",
+ "method": "docker cp from canonical e933e352 checkout (LF); hash verified at scp, host copy, and in-container before and after restart",
+ "restart_issued_utc": "2026-09-02T08:43:19Z",
+ "restart_count": 1,
+ "container_status_after": "Up (healthy)",
+ "converters_after": [
+  {
+   "file": "bseed_ts0726_v4.js",
+   "size": 15678,
+   "sha256": "d5b276dd967541e261e51606fdbf1e5412d55b7b660b8559d930e000eda04fa2",
+   "deployed_utc": "2026-09-02T08:42:5xZ",
+   "load_line_verified": true
+  },
+  {
+   "file": "stb3l_125_zj_phase_fix.js",
+   "size": 1675,
+   "sha256": "b0aa0de4710d3db9426ccd001d931765d171ffc2dd58f0c1bd28682094df0e81"
+  },
+  {
+   "file": "switch_custom.js",
+   "size": 912912,
+   "sha256": "e178e68a8b5cbb102686272a8dfee083088fee21356b22d0801840f0ef3fbbdb"
+  },
+  {
+   "file": "tuya_with_ota.js",
+   "size": 3569,
+   "sha256": "60ee3ddd55d89e4bec1e211e54573e26ae35d7e3dfda587b77e1e721958586a9"
+  }
+ ]
+}

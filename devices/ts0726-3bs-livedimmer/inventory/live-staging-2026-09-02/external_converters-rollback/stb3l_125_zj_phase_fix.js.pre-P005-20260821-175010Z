@@ -1,0 +1,27 @@
+const tuya = require("zigbee-herdsman-converters/lib/tuya");
+
+let definitions = require("zigbee-herdsman-converters/devices/tuya");
+definitions = definitions.definitions ?? definitions;
+
+const base = definitions.find((definition) => definition.model === "STB3L-125-ZJ");
+if (!base) throw new Error("Built-in STB3L-125-ZJ definition not found");
+
+const tuyaDatapoints = base.meta.tuyaDatapoints.map(([dp, property, converter]) => {
+    if (dp === 6 && property === null) return [dp, property, tuya.valueConverter.phaseVariant2WithPhase("c")];
+    if (dp === 8 && property === null) return [dp, property, tuya.valueConverter.phaseVariant2WithPhase("a")];
+    return [dp, property, converter];
+});
+
+module.exports = [{
+    ...base,
+    fingerprint: [{
+        modelID: "TS0601",
+        manufacturerName: "_TZE204_wbhaespm",
+        applicationVersion: 74,
+        priority: 100,
+    }],
+    // Keep the built-in model name so Zigbee2MQTT frontend resolves its original icon.
+    model: "STB3L-125-ZJ",
+    description: `${base.description} (corrected A/C phase mapping)`,
+    meta: {...base.meta, tuyaDatapoints},
+}];

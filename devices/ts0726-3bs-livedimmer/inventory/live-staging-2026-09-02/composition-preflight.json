@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "captured_utc": "2026-09-02T08:42:06.995Z",
+  "installedZhcVersion": "26.90.0",
+  "method": "installed ZHC 26.90.0 addExternalDefinition + findByDevice (same API as Z2M externalConverters extension)",
+  "externalCounts": {
+    "stb3l_125_zj_phase_fix": 1,
+    "switch_custom": 199,
+    "tuya_with_ota": 43
+  },
+  "overlay": {
+    "file": "bseed_ts0726_v4.js",
+    "definitions": 1,
+    "model": "EC-GL86ZPCS31",
+    "description": "BSEED Echo Click / Scale 3-gang — Romasku v4 canary"
+  },
+  "deviceCount": 103,
+  "deltaCount": 0,
+  "deltas": [],
+  "cases": {
+    "current_target_1_1_2": {
+      "resolved": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 3-gang — Romasku custom firmware"
+      },
+      "overlayMatched": false,
+      "expected": false,
+      "ok": true
+    },
+    "forward_1_1_4_bseedv4": {
+      "resolved": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 3-gang — Romasku v4 canary"
+      },
+      "overlayMatched": true,
+      "expected": true,
+      "ok": true
+    },
+    "recovery_1_1_4_bseedv4r": {
+      "resolved": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 3-gang — Romasku custom firmware"
+      },
+      "overlayMatched": false,
+      "expected": false,
+      "ok": true
+    }
+  }
+}

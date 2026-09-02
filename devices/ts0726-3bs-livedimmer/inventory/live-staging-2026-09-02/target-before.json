@@ -1,0 +1,1069 @@
+{
+ "date_code": "20260612",
+ "definition": {
+  "description": "BSEED Echo Click / Scale 3-gang \u2014 Romasku custom firmware",
+  "exposes": [
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Advanced Romasku hardware pin mapping. This describes which MCU pins are connected to buttons, relays, indicators and other peripherals; it is NOT a normal behavior setting. An incorrect value can make buttons, relays or indicators stop working and may require recovery firmware. Do not edit unless you are porting or repairing a device.",
+    "endpoint": "switch_left",
+    "label": "Advanced hardware configuration",
+    "name": "device_config",
+    "property": "device_config_switch_left",
+    "type": "text"
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Number of consecutive button presses required to trigger factory reset. Set to 0 to disable multi-press reset.",
+    "endpoint": "switch_left",
+    "label": "Factory-reset press count",
+    "name": "multi_press_reset_count",
+    "property": "multi_press_reset_count_switch_left",
+    "type": "numeric",
+    "value_max": 255,
+    "value_min": 0
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls the dedicated network-status indicator LED.",
+    "endpoint": "switch_left",
+    "label": "Network indicator",
+    "name": "network_led",
+    "property": "network_led_switch_left",
+    "type": "binary",
+    "value_off": "OFF",
+    "value_on": "ON"
+   },
+   {
+    "endpoint": "relay_left",
+    "features": [
+     {
+      "access": 7,
+      "description": "On/off state of the switch",
+      "endpoint": "relay_left",
+      "label": "State",
+      "name": "state",
+      "property": "state_relay_left",
+      "type": "binary",
+      "value_off": "OFF",
+      "value_on": "ON",
+      "value_toggle": "TOGGLE"
+     }
+    ],
+    "type": "switch"
+   },
+   {
+    "endpoint": "relay_middle",
+    "features": [
+     {
+      "access": 7,
+      "description": "On/off state of the switch",
+      "endpoint": "relay_middle",
+      "label": "State",
+      "name": "state",
+      "property": "state_relay_middle",
+      "type": "binary",
+      "value_off": "OFF",
+      "value_on": "ON",
+      "value_toggle": "TOGGLE"
+     }
+    ],
+    "type": "switch"
+   },
+   {
+    "endpoint": "relay_right",
+    "features": [
+     {
+      "access": 7,
+      "description": "On/off state of the switch",
+      "endpoint": "relay_right",
+      "label": "State",
+      "name": "state",
+      "property": "state_relay_right",
+      "type": "binary",
+      "value_off": "OFF",
+      "value_on": "ON",
+      "value_toggle": "TOGGLE"
+     }
+    ],
+    "type": "switch"
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls the behavior when the device is powered on after power loss",
+    "endpoint": "relay_left",
+    "label": "Power-on behavior",
+    "name": "power_on_behavior",
+    "property": "power_on_behavior_relay_left",
+    "type": "enum",
+    "values": [
+     "off",
+     "on",
+     "toggle",
+     "previous"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls the behavior when the device is powered on after power loss",
+    "endpoint": "relay_middle",
+    "label": "Power-on behavior",
+    "name": "power_on_behavior",
+    "property": "power_on_behavior_relay_middle",
+    "type": "enum",
+    "values": [
+     "off",
+     "on",
+     "toggle",
+     "previous"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls the behavior when the device is powered on after power loss",
+    "endpoint": "relay_right",
+    "label": "Power-on behavior",
+    "name": "power_on_behavior",
+    "property": "power_on_behavior_relay_right",
+    "type": "enum",
+    "values": [
+     "off",
+     "on",
+     "toggle",
+     "previous"
+    ]
+   },
+   {
+    "access": 5,
+    "category": "diagnostic",
+    "description": "Most recently reported physical button action.",
+    "endpoint": "switch_left",
+    "label": "Last button action",
+    "name": "switch_left_press_action",
+    "property": "switch_left_press_action_switch_left",
+    "type": "enum",
+    "values": [
+     "released",
+     "press",
+     "long_press",
+     "position_on",
+     "position_off"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Electrical type of the wall control: toggle/rocker, momentary push button, or normally-closed momentary input.",
+    "endpoint": "switch_left",
+    "label": "Button type",
+    "name": "switch_left_mode",
+    "property": "switch_left_mode_switch_left",
+    "type": "enum",
+    "values": [
+     "toggle",
+     "momentary",
+     "momentary_nc"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls which On/Off command the wall control produces:\n            - on_off: When switch physically moved to position 1 it always generates ON command, and when moved to position 2 it generates OFF command\n            - off_on: Same as on_off, but positions are swapped\n            - toggle_simple: Any press of physical switch will TOGGLE the relay and send TOGGLE command to binds\n            - toggle_smart_sync: Any press of physical switch will TOGGLE the relay and send corresponding ON/OFF command to keep binds in sync with relay\n            - toggle_smart_opposite: Any press of physical switch: TOGGLE the relay and send corresponding ON/OFF command to keep binds in the state opposite to the relay",
+    "endpoint": "switch_left",
+    "label": "Button command behavior",
+    "name": "switch_left_action_mode",
+    "property": "switch_left_action_mode_switch_left",
+    "type": "enum",
+    "values": [
+     "on_off",
+     "off_on",
+     "toggle_simple",
+     "toggle_smart_sync",
+     "toggle_smart_opposite"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls when this physical button changes its assigned local Zigbee relay state. This is independent of Physical relay behavior: the Zigbee relay state can change even when the electrical output is forced Always on or Always off.",
+    "endpoint": "switch_left",
+    "label": "Local relay trigger",
+    "name": "switch_left_relay_mode",
+    "property": "switch_left_relay_mode_switch_left",
+    "type": "enum",
+    "values": [
+     "detached",
+     "press_start",
+     "short_press",
+     "long_press"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Selects which local relay endpoint this wall control changes.",
+    "endpoint": "switch_left",
+    "label": "Assigned local relay",
+    "name": "switch_left_relay_index",
+    "property": "switch_left_relay_index_switch_left",
+    "type": "enum",
+    "values": [
+     "relay_1",
+     "relay_2",
+     "relay_3"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls when this button sends commands directly to Zigbee-bound devices or groups.",
+    "endpoint": "switch_left",
+    "label": "Bound-device trigger",
+    "name": "switch_left_binded_mode",
+    "property": "switch_left_binded_mode_switch_left",
+    "type": "enum",
+    "values": [
+     "press_start",
+     "short_press",
+     "long_press"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "How long the button must be held before it is treated as a long press.",
+    "endpoint": "switch_left",
+    "label": "Long-press threshold",
+    "name": "switch_left_long_press_duration",
+    "property": "switch_left_long_press_duration_switch_left",
+    "type": "numeric",
+    "unit": "ms",
+    "value_max": 5000,
+    "value_min": 0
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Brightness-change rate sent in Zigbee Level Control Move commands while the button is held.",
+    "endpoint": "switch_left",
+    "label": "Hold dimming speed",
+    "name": "switch_left_level_move_rate",
+    "property": "switch_left_level_move_rate_switch_left",
+    "type": "numeric",
+    "unit": "level/s",
+    "value_max": 255,
+    "value_min": 1
+   },
+   {
+    "access": 5,
+    "category": "diagnostic",
+    "description": "Most recently reported physical button action.",
+    "endpoint": "switch_middle",
+    "label": "Last button action",
+    "name": "switch_middle_press_action",
+    "property": "switch_middle_press_action_switch_middle",
+    "type": "enum",
+    "values": [
+     "released",
+     "press",
+     "long_press",
+     "position_on",
+     "position_off"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Electrical type of the wall control: toggle/rocker, momentary push button, or normally-closed momentary input.",
+    "endpoint": "switch_middle",
+    "label": "Button type",
+    "name": "switch_middle_mode",
+    "property": "switch_middle_mode_switch_middle",
+    "type": "enum",
+    "values": [
+     "toggle",
+     "momentary",
+     "momentary_nc"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls which On/Off command the wall control produces:\n            - on_off: When switch physically moved to position 1 it always generates ON command, and when moved to position 2 it generates OFF command\n            - off_on: Same as on_off, but positions are swapped\n            - toggle_simple: Any press of physical switch will TOGGLE the relay and send TOGGLE command to binds\n            - toggle_smart_sync: Any press of physical switch will TOGGLE the relay and send corresponding ON/OFF command to keep binds in sync with relay\n            - toggle_smart_opposite: Any press of physical switch: TOGGLE the relay and send corresponding ON/OFF command to keep binds in the state opposite to the relay",
+    "endpoint": "switch_middle",
+    "label": "Button command behavior",
+    "name": "switch_middle_action_mode",
+    "property": "switch_middle_action_mode_switch_middle",
+    "type": "enum",
+    "values": [
+     "on_off",
+     "off_on",
+     "toggle_simple",
+     "toggle_smart_sync",
+     "toggle_smart_opposite"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls when this physical button changes its assigned local Zigbee relay state. This is independent of Physical relay behavior: the Zigbee relay state can change even when the electrical output is forced Always on or Always off.",
+    "endpoint": "switch_middle",
+    "label": "Local relay trigger",
+    "name": "switch_middle_relay_mode",
+    "property": "switch_middle_relay_mode_switch_middle",
+    "type": "enum",
+    "values": [
+     "detached",
+     "press_start",
+     "short_press",
+     "long_press"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Selects which local relay endpoint this wall control changes.",
+    "endpoint": "switch_middle",
+    "label": "Assigned local relay",
+    "name": "switch_middle_relay_index",
+    "property": "switch_middle_relay_index_switch_middle",
+    "type": "enum",
+    "values": [
+     "relay_1",
+     "relay_2",
+     "relay_3"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls when this button sends commands directly to Zigbee-bound devices or groups.",
+    "endpoint": "switch_middle",
+    "label": "Bound-device trigger",
+    "name": "switch_middle_binded_mode",
+    "property": "switch_middle_binded_mode_switch_middle",
+    "type": "enum",
+    "values": [
+     "press_start",
+     "short_press",
+     "long_press"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "How long the button must be held before it is treated as a long press.",
+    "endpoint": "switch_middle",
+    "label": "Long-press threshold",
+    "name": "switch_middle_long_press_duration",
+    "property": "switch_middle_long_press_duration_switch_middle",
+    "type": "numeric",
+    "unit": "ms",
+    "value_max": 5000,
+    "value_min": 0
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Brightness-change rate sent in Zigbee Level Control Move commands while the button is held.",
+    "endpoint": "switch_middle",
+    "label": "Hold dimming speed",
+    "name": "switch_middle_level_move_rate",
+    "property": "switch_middle_level_move_rate_switch_middle",
+    "type": "numeric",
+    "unit": "level/s",
+    "value_max": 255,
+    "value_min": 1
+   },
+   {
+    "access": 5,
+    "category": "diagnostic",
+    "description": "Most recently reported physical button action.",
+    "endpoint": "switch_right",
+    "label": "Last button action",
+    "name": "switch_right_press_action",
+    "property": "switch_right_press_action_switch_right",
+    "type": "enum",
+    "values": [
+     "released",
+     "press",
+     "long_press",
+     "position_on",
+     "position_off"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Electrical type of the wall control: toggle/rocker, momentary push button, or normally-closed momentary input.",
+    "endpoint": "switch_right",
+    "label": "Button type",
+    "name": "switch_right_mode",
+    "property": "switch_right_mode_switch_right",
+    "type": "enum",
+    "values": [
+     "toggle",
+     "momentary",
+     "momentary_nc"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls which On/Off command the wall control produces:\n            - on_off: When switch physically moved to position 1 it always generates ON command, and when moved to position 2 it generates OFF command\n            - off_on: Same as on_off, but positions are swapped\n            - toggle_simple: Any press of physical switch will TOGGLE the relay and send TOGGLE command to binds\n            - toggle_smart_sync: Any press of physical switch will TOGGLE the relay and send corresponding ON/OFF command to keep binds in sync with relay\n            - toggle_smart_opposite: Any press of physical switch: TOGGLE the relay and send corresponding ON/OFF command to keep binds in the state opposite to the relay",
+    "endpoint": "switch_right",
+    "label": "Button command behavior",
+    "name": "switch_right_action_mode",
+    "property": "switch_right_action_mode_switch_right",
+    "type": "enum",
+    "values": [
+     "on_off",
+     "off_on",
+     "toggle_simple",
+     "toggle_smart_sync",
+     "toggle_smart_opposite"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls when this physical button changes its assigned local Zigbee relay state. This is independent of Physical relay behavior: the Zigbee relay state can change even when the electrical output is forced Always on or Always off.",
+    "endpoint": "switch_right",
+    "label": "Local relay trigger",
+    "name": "switch_right_relay_mode",
+    "property": "switch_right_relay_mode_switch_right",
+    "type": "enum",
+    "values": [
+     "detached",
+     "press_start",
+     "short_press",
+     "long_press"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Selects which local relay endpoint this wall control changes.",
+    "endpoint": "switch_right",
+    "label": "Assigned local relay",
+    "name": "switch_right_relay_index",
+    "property": "switch_right_relay_index_switch_right",
+    "type": "enum",
+    "values": [
+     "relay_1",
+     "relay_2",
+     "relay_3"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls when this button sends commands directly to Zigbee-bound devices or groups.",
+    "endpoint": "switch_right",
+    "label": "Bound-device trigger",
+    "name": "switch_right_binded_mode",
+    "property": "switch_right_binded_mode_switch_right",
+    "type": "enum",
+    "values": [
+     "press_start",
+     "short_press",
+     "long_press"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "How long the button must be held before it is treated as a long press.",
+    "endpoint": "switch_right",
+    "label": "Long-press threshold",
+    "name": "switch_right_long_press_duration",
+    "property": "switch_right_long_press_duration_switch_right",
+    "type": "numeric",
+    "unit": "ms",
+    "value_max": 5000,
+    "value_min": 0
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Brightness-change rate sent in Zigbee Level Control Move commands while the button is held.",
+    "endpoint": "switch_right",
+    "label": "Hold dimming speed",
+    "name": "switch_right_level_move_rate",
+    "property": "switch_right_level_move_rate_switch_right",
+    "type": "numeric",
+    "unit": "level/s",
+    "value_max": 255,
+    "value_min": 1
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "same: LED follows the relay's virtual On/Off state; opposite: LED shows the inverse state; manual: LED state is controlled separately with Indicator LED state.",
+    "endpoint": "relay_left",
+    "label": "Indicator LED behavior",
+    "name": "relay_left_indicator_mode",
+    "property": "relay_left_indicator_mode_relay_left",
+    "type": "enum",
+    "values": [
+     "same",
+     "opposite",
+     "manual"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Manual state of the panel indicator LED. Used when Indicator LED behavior is set to manual.",
+    "endpoint": "relay_left",
+    "label": "Indicator LED state",
+    "name": "relay_left_indicator",
+    "property": "relay_left_indicator_relay_left",
+    "type": "binary",
+    "value_off": "OFF",
+    "value_on": "ON"
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "same: LED follows the relay's virtual On/Off state; opposite: LED shows the inverse state; manual: LED state is controlled separately with Indicator LED state.",
+    "endpoint": "relay_middle",
+    "label": "Indicator LED behavior",
+    "name": "relay_middle_indicator_mode",
+    "property": "relay_middle_indicator_mode_relay_middle",
+    "type": "enum",
+    "values": [
+     "same",
+     "opposite",
+     "manual"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Manual state of the panel indicator LED. Used when Indicator LED behavior is set to manual.",
+    "endpoint": "relay_middle",
+    "label": "Indicator LED state",
+    "name": "relay_middle_indicator",
+    "property": "relay_middle_indicator_relay_middle",
+    "type": "binary",
+    "value_off": "OFF",
+    "value_on": "ON"
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "same: LED follows the relay's virtual On/Off state; opposite: LED shows the inverse state; manual: LED state is controlled separately with Indicator LED state.",
+    "endpoint": "relay_right",
+    "label": "Indicator LED behavior",
+    "name": "relay_right_indicator_mode",
+    "property": "relay_right_indicator_mode_relay_right",
+    "type": "enum",
+    "values": [
+     "same",
+     "opposite",
+     "manual"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Manual state of the panel indicator LED. Used when Indicator LED behavior is set to manual.",
+    "endpoint": "relay_right",
+    "label": "Indicator LED state",
+    "name": "relay_right_indicator",
+    "property": "relay_right_indicator_relay_right",
+    "type": "binary",
+    "value_off": "OFF",
+    "value_on": "ON"
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls the electrical relay independently of the Zigbee On/Off state.\nFollow state: the physical relay follows the Zigbee On/Off state; selecting it immediately synchronizes the electrical output to the current Zigbee state.\nAlways on: keeps the physical output energized. Recommended for smart bulbs or other loads that must remain powered; Zigbee state, button actions and bindings can continue independently.\nAlways off: keeps the physical output de-energized while the Zigbee state can continue to change independently.\nChanging this setting can immediately switch mains power. The setting is stored and restored after restart.",
+    "endpoint": "relay_left",
+    "label": "Physical relay behavior",
+    "name": "relay_left_physical_mode",
+    "property": "relay_left_physical_mode",
+    "type": "enum",
+    "values": [
+     "follow_state",
+     "always_on",
+     "always_off"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls the electrical relay independently of the Zigbee On/Off state.\nFollow state: the physical relay follows the Zigbee On/Off state; selecting it immediately synchronizes the electrical output to the current Zigbee state.\nAlways on: keeps the physical output energized. Recommended for smart bulbs or other loads that must remain powered; Zigbee state, button actions and bindings can continue independently.\nAlways off: keeps the physical output de-energized while the Zigbee state can continue to change independently.\nChanging this setting can immediately switch mains power. The setting is stored and restored after restart.",
+    "endpoint": "relay_middle",
+    "label": "Physical relay behavior",
+    "name": "relay_middle_physical_mode",
+    "property": "relay_middle_physical_mode",
+    "type": "enum",
+    "values": [
+     "follow_state",
+     "always_on",
+     "always_off"
+    ]
+   },
+   {
+    "access": 7,
+    "category": "config",
+    "description": "Controls the electrical relay independently of the Zigbee On/Off state.\nFollow state: the physical relay follows the Zigbee On/Off state; selecting it immediately synchronizes the electrical output to the current Zigbee state.\nAlways on: keeps the physical output energized. Recommended for smart bulbs or other loads that must remain powered; Zigbee state, button actions and bindings can continue independently.\nAlways off: keeps the physical output de-energized while the Zigbee state can continue to change independently.\nChanging this setting can immediately switch mains power. The setting is stored and restored after restart.",
+    "endpoint": "relay_right",
+    "label": "Physical relay behavior",
+    "name": "relay_right_physical_mode",
+    "property": "relay_right_physical_mode",
+    "type": "enum",
+    "values": [
+     "follow_state",
+     "always_on",
+     "always_off"
+    ]
+   },
+   {
+    "access": 1,
+    "category": "diagnostic",
+    "description": "Triggered action (e.g. a button click)",
+    "label": "Action",
+    "name": "action",
+    "property": "action",
+    "type": "enum",
+    "values": [
+     "on_switch_left",
+     "on_switch_middle",
+     "on_switch_right",
+     "off_switch_left",
+     "off_switch_middle",
+     "off_switch_right",
+     "toggle_switch_left",
+     "toggle_switch_middle",
+     "toggle_switch_right",
+     "brightness_move_to_level_switch_left",
+     "brightness_move_to_level_switch_middle",
+     "brightness_move_to_level_switch_right",
+     "brightness_move_up_switch_left",
+     "brightness_move_up_switch_middle",
+     "brightness_move_up_switch_right",
+     "brightness_move_down_switch_left",
+     "brightness_move_down_switch_middle",
+     "brightness_move_down_switch_right",
+     "brightness_step_up_switch_left",
+     "brightness_step_up_switch_middle",
+     "brightness_step_up_switch_right",
+     "brightness_step_down_switch_left",
+     "brightness_step_down_switch_middle",
+     "brightness_step_down_switch_right",
+     "brightness_stop_switch_left",
+     "brightness_stop_switch_middle",
+     "brightness_stop_switch_right"
+    ]
+   },
+   {
+    "access": 1,
+    "category": "diagnostic",
+    "description": "Link quality (signal strength)",
+    "label": "Linkquality",
+    "name": "linkquality",
+    "property": "linkquality",
+    "type": "numeric",
+    "unit": "lqi",
+    "value_max": 255,
+    "value_min": 0
+   }
+  ],
+  "model": "EC-GL86ZPCS31",
+  "options": [
+   {
+    "access": 2,
+    "description": "State actions will also be published as 'action' when true (default false).",
+    "label": "State action",
+    "name": "state_action",
+    "property": "state_action",
+    "type": "binary",
+    "value_off": false,
+    "value_on": true
+   },
+   {
+    "access": 2,
+    "description": "Simulate a brightness value. If this device provides a brightness_move_up or brightness_move_down action it is possible to specify the update interval and delta. The action_brightness_delta indicates the delta for each interval.",
+    "features": [
+     {
+      "access": 2,
+      "description": "Delta per interval, 20 by default",
+      "label": "Delta",
+      "name": "delta",
+      "property": "delta",
+      "type": "numeric",
+      "value_min": 0
+     },
+     {
+      "access": 2,
+      "description": "Interval duration",
+      "label": "Interval",
+      "name": "interval",
+      "property": "interval",
+      "type": "numeric",
+      "unit": "ms",
+      "value_min": 0
+     }
+    ],
+    "label": "Simulated brightness",
+    "name": "simulated_brightness",
+    "property": "simulated_brightness",
+    "type": "composite"
+   }
+  ],
+  "source": "external",
+  "supports_ota": true,
+  "vendor": "Tuya-custom",
+  "version": "0.0.0"
+ },
+ "disabled": false,
+ "endpoints": {
+  "1": {
+   "bindings": [
+    {
+     "cluster": "genMultistateInput",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genOnOff",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genLevelCtrl",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genLevelCtrl",
+     "target": {
+      "endpoint": 11,
+      "ieee_address": "0xa4c1388b709b209c",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genOnOff",
+     "target": {
+      "endpoint": 11,
+      "ieee_address": "0xa4c1388b709b209c",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genOnOff",
+     "target": {
+      "endpoint": 4,
+      "ieee_address": "0xa4c13843a9d40f85",
+      "type": "endpoint"
+     }
+    }
+   ],
+   "clusters": {
+    "input": [
+     "genBasic",
+     "genOnOffSwitchCfg",
+     "genMultistateInput"
+    ],
+    "output": [
+     "genOta",
+     "genOnOff",
+     "genLevelCtrl"
+    ]
+   },
+   "configured_reportings": [
+    {
+     "attribute": "presentValue",
+     "cluster": "genMultistateInput",
+     "maximum_report_interval": 65000,
+     "minimum_report_interval": 0,
+     "reportable_change": 1
+    }
+   ],
+   "name": "switch_left",
+   "scenes": []
+  },
+  "2": {
+   "bindings": [
+    {
+     "cluster": "genLevelCtrl",
+     "target": {
+      "id": 25,
+      "type": "group"
+     }
+    },
+    {
+     "cluster": "genOnOff",
+     "target": {
+      "id": 25,
+      "type": "group"
+     }
+    },
+    {
+     "cluster": "genOnOff",
+     "target": {
+      "endpoint": 5,
+      "ieee_address": "0xa4c13843a9d40f85",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genMultistateInput",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genOnOff",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genLevelCtrl",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    }
+   ],
+   "clusters": {
+    "input": [
+     "genOnOffSwitchCfg",
+     "genMultistateInput"
+    ],
+    "output": [
+     "genOnOff",
+     "genLevelCtrl"
+    ]
+   },
+   "configured_reportings": [
+    {
+     "attribute": "presentValue",
+     "cluster": "genMultistateInput",
+     "maximum_report_interval": 65000,
+     "minimum_report_interval": 0,
+     "reportable_change": 1
+    }
+   ],
+   "name": "switch_middle",
+   "scenes": []
+  },
+  "3": {
+   "bindings": [
+    {
+     "cluster": "genMultistateInput",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genOnOff",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genLevelCtrl",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    }
+   ],
+   "clusters": {
+    "input": [
+     "genOnOffSwitchCfg",
+     "genMultistateInput"
+    ],
+    "output": [
+     "genOnOff",
+     "genLevelCtrl"
+    ]
+   },
+   "configured_reportings": [
+    {
+     "attribute": "presentValue",
+     "cluster": "genMultistateInput",
+     "maximum_report_interval": 65000,
+     "minimum_report_interval": 0,
+     "reportable_change": 1
+    }
+   ],
+   "name": "switch_right",
+   "scenes": []
+  },
+  "4": {
+   "bindings": [
+    {
+     "cluster": "genOnOff",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genLevelCtrl",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    }
+   ],
+   "clusters": {
+    "input": [
+     "genOnOff",
+     "genLevelCtrl",
+     "genGroups"
+    ],
+    "output": []
+   },
+   "configured_reportings": [
+    {
+     "attribute": "attr0",
+     "cluster": "genOnOff",
+     "maximum_report_interval": 65000,
+     "minimum_report_interval": 0,
+     "reportable_change": 1
+    },
+    {
+     "attribute": "onOff",
+     "cluster": "genOnOff",
+     "maximum_report_interval": 300,
+     "minimum_report_interval": 0,
+     "reportable_change": 0
+    }
+   ],
+   "name": "relay_left",
+   "scenes": []
+  },
+  "5": {
+   "bindings": [
+    {
+     "cluster": "genOnOff",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    },
+    {
+     "cluster": "genLevelCtrl",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    }
+   ],
+   "clusters": {
+    "input": [
+     "genOnOff",
+     "genLevelCtrl",
+     "genGroups"
+    ],
+    "output": []
+   },
+   "configured_reportings": [
+    {
+     "attribute": "attr0",
+     "cluster": "genOnOff",
+     "maximum_report_interval": 65000,
+     "minimum_report_interval": 0,
+     "reportable_change": 1
+    },
+    {
+     "attribute": "onOff",
+     "cluster": "genOnOff",
+     "maximum_report_interval": 300,
+     "minimum_report_interval": 0,
+     "reportable_change": 0
+    }
+   ],
+   "name": "relay_middle",
+   "scenes": []
+  },
+  "6": {
+   "bindings": [
+    {
+     "cluster": "genOnOff",
+     "target": {
+      "endpoint": 1,
+      "ieee_address": "0xfdb1122d004b1200",
+      "type": "endpoint"
+     }
+    }
+   ],
+   "clusters": {
+    "input": [
+     "genOnOff",
+     "genLevelCtrl",
+     "genGroups"
+    ],
+    "output": []
+   },
+   "configured_reportings": [
+    {
+     "attribute": "attr0",
+     "cluster": "genOnOff",
+     "maximum_report_interval": 65000,
+     "minimum_report_interval": 0,
+     "reportable_change": 1
+    },
+    {
+     "attribute": "onOff",
+     "cluster": "genOnOff",
+     "maximum_report_interval": 65000,
+     "minimum_report_interval": 0,
+     "reportable_change": 1
+    }
+   ],
+   "name": "relay_right",
+   "scenes": []
+  }
+ },
+ "friendly_name": "LivingRoomMainDimmer",
+ "ieee_address": "0xa4c13843a9d40f85",
+ "interview_completed": true,
+ "interview_state": "SUCCESSFUL",
+ "interviewing": false,
+ "manufacturer": "iedhxgyi",
+ "model_id": "TS0726-3-BS",
+ "network_address": 24677,
+ "power_source": "Mains (single phase)",
+ "software_build_id": "1.1.2-8542fc05",
+ "supported": true,
+ "type": "Router"
+}

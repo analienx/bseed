@@ -1,0 +1,631 @@
+{
+ "captured_utc": "2026-09-02T08:45Z",
+ "topic": "zigbee2mqtt/bridge/devices",
+ "device_count": 104,
+ "devices": [
+  {
+   "ieee_address": "0xfdb1122d004b1200",
+   "friendly_name": "Coordinator",
+   "model": null,
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138b5e090e7c0",
+   "friendly_name": "LivingRoomSocketWifiRight",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138ba60b92c5f",
+   "friendly_name": "LivingRoomSocketWifiLeft",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": "1.2.5-8b8cc492"
+  },
+  {
+   "ieee_address": "0xa4c13812088a54ac",
+   "friendly_name": "LivingRoomSocketHA",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138cdf963eac3",
+   "friendly_name": "LivingRoomSocketTableLeft",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138241e3de538",
+   "friendly_name": "KitchenSocketLeft",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138075cd16ed4",
+   "friendly_name": "KitchenSocketRight",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c13889b20f010e",
+   "friendly_name": "LivingRoomSocketEntrance",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138da1333dc70",
+   "friendly_name": "LivingRoomSocketHifiLeft",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138eb22efaa91",
+   "friendly_name": "LivingRoomSocketHifiRight",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c1382292dbe653",
+   "friendly_name": "KitchenSocketDishwasher",
+   "model": "TS011F_plug_3",
+   "software_build_id": "1.0.5\u0000"
+  },
+  {
+   "ieee_address": "0xa4c138460c83974f",
+   "friendly_name": "KitchenSocketFridge",
+   "model": "TS011F_plug_3",
+   "software_build_id": "1.0.5\u0000"
+  },
+  {
+   "ieee_address": "0xa4c1381647fb6fe1",
+   "friendly_name": "HallBreakerMain",
+   "model": "ZXB3-125",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0x94b216fffe75de0a",
+   "friendly_name": "HallBreakerFAFI2",
+   "model": "TO-Q-SY2-163JZT",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0x94b216fffe776a41",
+   "friendly_name": "HallBreakerFAFI3",
+   "model": "TO-Q-SY2-163JZT",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c13861dd842a03",
+   "friendly_name": "HallBulb1",
+   "model": "TS0505B_1_1",
+   "software_build_id": "z.1.0"
+  },
+  {
+   "ieee_address": "0xa4c13805fc0dacfb",
+   "friendly_name": "HallBulb2",
+   "model": "TS0505B_1_1",
+   "software_build_id": "z.1.0"
+  },
+  {
+   "ieee_address": "0xa4c13850cfcdb3a4",
+   "friendly_name": "LivingRoomCircleLightDimmer",
+   "model": "GL-SD-301P",
+   "software_build_id": "20651203"
+  },
+  {
+   "ieee_address": "0xa4c138cec3e04283",
+   "friendly_name": "HallBulb3",
+   "model": "TS0505B_1_1",
+   "software_build_id": "z.1.0"
+  },
+  {
+   "ieee_address": "0xa4c1383043612ca4",
+   "friendly_name": "DoorSensor",
+   "model": "TS0203",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138adb5fa215f",
+   "friendly_name": "HallPIRSensorEntrance",
+   "model": "ZG-204ZL",
+   "software_build_id": "0122052017"
+  },
+  {
+   "ieee_address": "0xa4c138186a69b78c",
+   "friendly_name": "HALLSocketMain",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c13873701cd36c",
+   "friendly_name": "HallSocketBedroom",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138ef578c9f75",
+   "friendly_name": "WRSocketWindowLeft",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138793505c5cc",
+   "friendly_name": "WRSocketWindowRightL",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138278260973a",
+   "friendly_name": "WRSocketWindowRightR",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c1386e4892f726",
+   "friendly_name": "BedroomSocketDoorR",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138054d265da2",
+   "friendly_name": "BedroomSocketDoorL",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c13837b0bc5952",
+   "friendly_name": "BedroomSocketCabinetL",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138e4befcb1d8",
+   "friendly_name": "BedroomSocketWindowL",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138aed67ea773",
+   "friendly_name": "BedroomSocketWindowR",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0x94a081fffef44a55",
+   "friendly_name": "buttHallHAPower",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0x94b216fffe505df2",
+   "friendly_name": "BedroomLightColors",
+   "model": "TS0044",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0x08b95ffffed12cba",
+   "friendly_name": "buttWorkRoomTableLightsDimmer",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0xb4e3f9fffeec4e36",
+   "friendly_name": "HallSmartDimmer",
+   "model": "VES-ZB-WAL-012",
+   "software_build_id": "2.7.6_r27"
+  },
+  {
+   "ieee_address": "0x0c2a6ffffe08159a",
+   "friendly_name": "BedroomBulb2",
+   "model": "LED2004G8",
+   "software_build_id": "1.0.012"
+  },
+  {
+   "ieee_address": "0x6cfd22fffee99de5",
+   "friendly_name": "BedroomBulb1",
+   "model": "LED2004G8",
+   "software_build_id": "1.0.012"
+  },
+  {
+   "ieee_address": "0x70c59cfffe6c80c3",
+   "friendly_name": "BedroomBulb3",
+   "model": "LED2004G8",
+   "software_build_id": "1.0.012"
+  },
+  {
+   "ieee_address": "0xa4c138ac993cc245",
+   "friendly_name": "BedroomSocketBalcony",
+   "model": "_TZ3000_o1jzcxou",
+   "software_build_id": "1.1.2-8542fc05"
+  },
+  {
+   "ieee_address": "0xa4c1387b13e9436d",
+   "friendly_name": "WRSocketEntrance",
+   "model": "_TZ3000_o1jzcxou",
+   "software_build_id": "1.1.2-8542fc05"
+  },
+  {
+   "ieee_address": "0xa4c13824a7005afb",
+   "friendly_name": "BedroomSocketCabinetRight",
+   "model": "_TZ3000_o1jzcxou",
+   "software_build_id": "1.1.2-2289bf4d"
+  },
+  {
+   "ieee_address": "0xfc4d6afffe6e6b53",
+   "friendly_name": "HallBedroomSwitchRouter",
+   "model": "ZBMINIR2",
+   "software_build_id": "1.0.8"
+  },
+  {
+   "ieee_address": "0xd44867fffefeab39",
+   "friendly_name": "ButtHallLightsDimmer",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0x8c8b48fffe67c120",
+   "friendly_name": "LivingRoomLinearSwitchPower",
+   "model": "ZBMINIR2",
+   "software_build_id": "1.0.8"
+  },
+  {
+   "ieee_address": "0x94b216fffe7734c9",
+   "friendly_name": "HallBreakerFA11",
+   "model": "TO-Q-SY2-163JZT",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c13843a9d40f85",
+   "friendly_name": "LivingRoomMainDimmer",
+   "model": "EC-GL86ZPCS31",
+   "software_build_id": "1.1.2-8542fc05"
+  },
+  {
+   "ieee_address": "0xa4c138f29eba8f49",
+   "friendly_name": "HallMainSwitchAvatto",
+   "model": "ZWSM16-1-Zigbee",
+   "software_build_id": "1.1.2-8542fc05"
+  },
+  {
+   "ieee_address": "0xa4c1380db190ca8b",
+   "friendly_name": "LivingRoomPIRSensorVertical",
+   "model": "ZG-204ZV",
+   "software_build_id": "01-1541120"
+  },
+  {
+   "ieee_address": "0xa4c138f6936a1788",
+   "friendly_name": "BedroomDimmer",
+   "model": "EC-GL86ZPCS11",
+   "software_build_id": "1.1.2-2289bf4d"
+  },
+  {
+   "ieee_address": "0x001788010ed4427c",
+   "friendly_name": "ButtHallDoor",
+   "model": "929002398602",
+   "software_build_id": "2.77.39"
+  },
+  {
+   "ieee_address": "0xa4c138b9bda6dbcf",
+   "friendly_name": "LivingRoomBulbTableLeft",
+   "model": "RB 287 C",
+   "software_build_id": "1.9.33"
+  },
+  {
+   "ieee_address": "0xa4c1385c11d46ae5",
+   "friendly_name": "LivingRoomBulbTableMiddle",
+   "model": "RB 287 C",
+   "software_build_id": "1.9.33"
+  },
+  {
+   "ieee_address": "0xa4c138d6a7100473",
+   "friendly_name": "LivingRoomBulbTableRight",
+   "model": "RB 287 C",
+   "software_build_id": "1.9.33"
+  },
+  {
+   "ieee_address": "0xa4c138105a8e4207",
+   "friendly_name": "HallShoesLed",
+   "model": "GL-C-006P",
+   "software_build_id": "20551203"
+  },
+  {
+   "ieee_address": "0xa4c13803d7475156",
+   "friendly_name": "WorkRoomMainSwitchDimmer",
+   "model": "ZWSM16-2-Zigbee",
+   "software_build_id": "1.1.2-8542fc05"
+  },
+  {
+   "ieee_address": "0xa4c138c160b4890d",
+   "friendly_name": "BathroomPIR",
+   "model": "ZG-204ZL",
+   "software_build_id": "0122052017"
+  },
+  {
+   "ieee_address": "0xa4c1381daa061e97",
+   "friendly_name": "WorkRoomSwitchLedMain",
+   "model": "ZWSM16-1-Zigbee",
+   "software_build_id": "1.1.2-8542fc05"
+  },
+  {
+   "ieee_address": "0x8c8b48fffe685a39",
+   "friendly_name": "WorkroomSwitchLedsTable",
+   "model": "ZBMINIR2",
+   "software_build_id": "1.0.8"
+  },
+  {
+   "ieee_address": "0xa4c1381b8b4eff23",
+   "friendly_name": "LivingRoomPIREntrance",
+   "model": "ZG-204ZL",
+   "software_build_id": "0122052017"
+  },
+  {
+   "ieee_address": "0xa4c1388b709b209c",
+   "friendly_name": "LivingRoomLinearDimmer",
+   "model": "GL-C-009P",
+   "software_build_id": "20551203"
+  },
+  {
+   "ieee_address": "0x70ac08fffe48994a",
+   "friendly_name": "WorkroomTableRightDimmer",
+   "model": "50208702",
+   "software_build_id": "2.9.2_r66"
+  },
+  {
+   "ieee_address": "0x70ac08fffe489643",
+   "friendly_name": "WorkroomTableLeftDimmer",
+   "model": "50208702",
+   "software_build_id": "2.9.2_r66"
+  },
+  {
+   "ieee_address": "0xa4c13812aebbdaa0",
+   "friendly_name": "HallPIRSensorMain",
+   "model": "ZP01",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c1385bc54e54bf",
+   "friendly_name": "HallCabinetPIR",
+   "model": "ZG-204ZV",
+   "software_build_id": "0129122025"
+  },
+  {
+   "ieee_address": "0xf0fd45fffe3847f7",
+   "friendly_name": "ButtBedroomCabinet",
+   "model": "E2001/E2002/E2313",
+   "software_build_id": "2.4.17"
+  },
+  {
+   "ieee_address": "0xa4c138ff9d303f05",
+   "friendly_name": "OutdoorTerasaTemp",
+   "model": "SNZB-02",
+   "software_build_id": "0122052017"
+  },
+  {
+   "ieee_address": "0xa4c1384f030f8edb",
+   "friendly_name": "BathroomTemp",
+   "model": "ZTH05Z",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c1382ca6f1bdde",
+   "friendly_name": "OutdoorBalconyTemp",
+   "model": "TS0201",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c13830b44b8775",
+   "friendly_name": "BathroomPIREntrance",
+   "model": "ZG-204ZV",
+   "software_build_id": "0129122025"
+  },
+  {
+   "ieee_address": "0xa4c138b7eca277e9",
+   "friendly_name": "HallPIRAdvanced",
+   "model": "ZP01",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138da26407e17",
+   "friendly_name": "HallPIRSensorBedroomAdvanced",
+   "model": "ZG-204ZM",
+   "software_build_id": "0105012026"
+  },
+  {
+   "ieee_address": "0x94b216fffe9260f5",
+   "friendly_name": "HallBreakerFA5",
+   "model": "TO-Q-SY2-163JZT",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c1386c6faff53b",
+   "friendly_name": "HallEntranceIlluminance",
+   "model": "ZG-106Z",
+   "software_build_id": "0126022026"
+  },
+  {
+   "ieee_address": "0xa4c138626fd5eda7",
+   "friendly_name": "RestroomPIR",
+   "model": "ZG-204Z",
+   "software_build_id": "0102012026"
+  },
+  {
+   "ieee_address": "0xc02cedfffec48f9d",
+   "friendly_name": "RestroomSwitch",
+   "model": "ZBMINIR2",
+   "software_build_id": "1.0.4"
+  },
+  {
+   "ieee_address": "0x04e3e5fffed39c39",
+   "friendly_name": "BathroomSwitchRouter",
+   "model": "ZBMINIR2",
+   "software_build_id": "1.0.8"
+  },
+  {
+   "ieee_address": "0x8c8b48fffec9b5aa",
+   "friendly_name": "buttBedroomEntranceUSB",
+   "model": "E2213",
+   "software_build_id": "1.0.21"
+  },
+  {
+   "ieee_address": "0x08fd52fffe2a01f4",
+   "friendly_name": "buttBedroomCabinetUSB",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0x8c8b48fffed271c7",
+   "friendly_name": "ButtHallShoesDimmer",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0xa4c13852d7bbc587",
+   "friendly_name": "LivingRoomSocketTableRight",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c1380e94d2ff82",
+   "friendly_name": "WorkRoomPIREntrance",
+   "model": "ZG-204ZL",
+   "software_build_id": "0122052017"
+  },
+  {
+   "ieee_address": "0xa4c138267bfd0080",
+   "friendly_name": "WorkroomTemp",
+   "model": "TH05Z",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c138d47dc9e412",
+   "friendly_name": "BedroomTemp",
+   "model": "TS0201",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0x08fd52fffe0aa5a6",
+   "friendly_name": "buttLivingRoomTableSocketLeft",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0x94b216fffe928d4a",
+   "friendly_name": "HallBreakerFA3",
+   "model": "TO-Q-SY2-163JZT",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xa4c1383a4b55557a",
+   "friendly_name": "BedroomCabinetHumidityTempL1",
+   "model": "TH01",
+   "software_build_id": "0122052017"
+  },
+  {
+   "ieee_address": "0xa4c13878175921dc",
+   "friendly_name": "BedroomCabinetHumidityTempL2",
+   "model": "TH01",
+   "software_build_id": "0122052017"
+  },
+  {
+   "ieee_address": "0xa4c138bb0d75444c",
+   "friendly_name": "BedroomCabinetHumidityTempL3",
+   "model": "TH01",
+   "software_build_id": "0122052017"
+  },
+  {
+   "ieee_address": "0xa4c138c8a9f237a5",
+   "friendly_name": "BedroomCabinetHumidityTempL4",
+   "model": "TH01",
+   "software_build_id": "0122052017"
+  },
+  {
+   "ieee_address": "0xa4c138a67b88f8ac",
+   "friendly_name": "BedroomCabinetHumidityTempL0",
+   "model": "TH01Z",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0x348d13fffefffa53",
+   "friendly_name": "ButtLivingRoomCicleDimmer",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0x08fd52fffe0b0ce1",
+   "friendly_name": "buttWorkRoomMainDimmer",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0x08fd52fffe0aa5ae",
+   "friendly_name": "buttBedroomLightsHall",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0xa4c138c5f07ee732",
+   "friendly_name": "WorkroomSocketCabinet",
+   "model": "TS011F_plug_1_2",
+   "software_build_id": "1.2.5-8b8cc492"
+  },
+  {
+   "ieee_address": "0xa4c138278695ef31",
+   "friendly_name": "HallBreakerKitchenInduction",
+   "model": "ZXB3-125",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0x94b216fffe774cc4",
+   "friendly_name": "HallBereakerFA8",
+   "model": "TO-Q-SY2-163JZT",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0x94b216fffe897bfb",
+   "friendly_name": "HallBreakerFA12",
+   "model": "TO-Q-SY2-163JZT",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0x94b216fffe943151",
+   "friendly_name": "HallBreakerFAFI1",
+   "model": "TO-Q-SY2-163JZT",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xecf64cfffead3b8c",
+   "friendly_name": "ButtLivingRoomLinearDimmer",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0xf0fd45fffeef553b",
+   "friendly_name": "buttLivingRoomTableSocketLeftPrinter",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0x385b44fffefc81c0",
+   "friendly_name": "WorkRoomLedMainDimmer",
+   "model": "50208702",
+   "software_build_id": "2.9.2_r76"
+  },
+  {
+   "ieee_address": "0xdc8e95fffe8aea30",
+   "friendly_name": "HallBreakerFA7",
+   "model": "TO-Q-SY2-163JZT",
+   "software_build_id": null
+  },
+  {
+   "ieee_address": "0xd44867fffe16b355",
+   "friendly_name": "buttLivingRoomKitchenTableBulbs",
+   "model": "E2201",
+   "software_build_id": "1.0.57"
+  },
+  {
+   "ieee_address": "0xa4c13810ae3bffff",
+   "friendly_name": "buttLivingRoomLights",
+   "model": "SNZB-01M",
+   "software_build_id": "1.1.0"
+  }
+ ]
+}

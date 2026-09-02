@@ -1,0 +1,9 @@
+{
+ "z2m": "2.13.0",
+ "zhc": "26.90.0",
+ "zigbee_herdsman": "10.8.0",
+ "node": "v24.18.1",
+ "coordinator": "EmberZNet 9.1.1 (EZSP 19) \u2014 post-P006 upgrade",
+ "host": "homeassistant (HAOS)",
+ "container": "app_45df7312_zigbee2mqtt"
+}

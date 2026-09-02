@@ -1,0 +1,1032 @@
+[
+ {
+  "ieee": "0xa4c138b5e090e7c0",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 192,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138ba60b92c5f",
+  "type": "Router",
+  "model_id": "TS011F-BS-PM",
+  "manufacturer": "b28wrpvx",
+  "software_build_id": null,
+  "application_version": 3,
+  "hardware_version": 0,
+  "date_code": "20260822"
+ },
+ {
+  "ieee": "0xa4c13812088a54ac",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 192,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138cdf963eac3",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 192,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138241e3de538",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 192,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138075cd16ed4",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 192,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c13889b20f010e",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 192,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138da1333dc70",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 192,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138eb22efaa91",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 192,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c1382292dbe653",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cehuw1lw",
+  "software_build_id": null,
+  "application_version": 112,
+  "hardware_version": 0,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c138460c83974f",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cehuw1lw",
+  "software_build_id": null,
+  "application_version": 112,
+  "hardware_version": 0,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c1381647fb6fe1",
+  "type": "Router",
+  "model_id": "TS0601",
+  "manufacturer": "_TZE204_wbhaespm",
+  "software_build_id": null,
+  "application_version": 74,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0x94b216fffe75de0a",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cayepv1a",
+  "software_build_id": null,
+  "application_version": 69,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0x94b216fffe776a41",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cayepv1a",
+  "software_build_id": null,
+  "application_version": 69,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c13861dd842a03",
+  "type": "Router",
+  "model_id": "TS0505B",
+  "manufacturer": "_TZ3210_mja6r5ix",
+  "software_build_id": null,
+  "application_version": 112,
+  "hardware_version": 0,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c13805fc0dacfb",
+  "type": "Router",
+  "model_id": "TS0505B",
+  "manufacturer": "_TZ3210_mja6r5ix",
+  "software_build_id": null,
+  "application_version": 112,
+  "hardware_version": 0,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c13850cfcdb3a4",
+  "type": "Router",
+  "model_id": "GL-SD-301P",
+  "manufacturer": "GLEDOPTO",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 2,
+  "date_code": "20240704"
+ },
+ {
+  "ieee": "0xa4c138cec3e04283",
+  "type": "Router",
+  "model_id": "TS0505B",
+  "manufacturer": "_TZ3210_mja6r5ix",
+  "software_build_id": null,
+  "application_version": 112,
+  "hardware_version": 0,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c1383043612ca4",
+  "type": "EndDevice",
+  "model_id": "TS0203",
+  "manufacturer": "_TZ3000_6zvw8ham",
+  "software_build_id": null,
+  "application_version": 69,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138adb5fa215f",
+  "type": "EndDevice",
+  "model_id": "TS0601",
+  "manufacturer": "_TZE200_3towulqd",
+  "software_build_id": null,
+  "application_version": 145,
+  "hardware_version": 1,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c138186a69b78c",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c13873701cd36c",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138ef578c9f75",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138793505c5cc",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138278260973a",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c1386e4892f726",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138054d265da2",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c13837b0bc5952",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138e4befcb1d8",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138aed67ea773",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0x94a081fffef44a55",
+  "type": "EndDevice",
+  "model_id": "RODRET wireless dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0x94b216fffe505df2",
+  "type": "EndDevice",
+  "model_id": "TS0044",
+  "manufacturer": "_TZ3000_wkai4ga5",
+  "software_build_id": null,
+  "application_version": 66,
+  "hardware_version": null,
+  "date_code": null
+ },
+ {
+  "ieee": "0x08b95ffffed12cba",
+  "type": "EndDevice",
+  "model_id": "RODRET Dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0xb4e3f9fffeec4e36",
+  "type": "EndDevice",
+  "model_id": "ZG2833K8_EU05",
+  "manufacturer": "Sunricher",
+  "software_build_id": null,
+  "application_version": 0,
+  "hardware_version": 0,
+  "date_code": "NULL"
+ },
+ {
+  "ieee": "0x0c2a6ffffe08159a",
+  "type": "Router",
+  "model_id": "TRADFRIbulbE27WSglobeclear806lm",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 16,
+  "hardware_version": 1,
+  "date_code": "20201111"
+ },
+ {
+  "ieee": "0x6cfd22fffee99de5",
+  "type": "Router",
+  "model_id": "TRADFRIbulbE27WSglobeclear806lm",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 16,
+  "hardware_version": 1,
+  "date_code": "20201111"
+ },
+ {
+  "ieee": "0x70c59cfffe6c80c3",
+  "type": "Router",
+  "model_id": "TRADFRIbulbE27WSglobeclear806lm",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 16,
+  "hardware_version": 1,
+  "date_code": "20201111"
+ },
+ {
+  "ieee": "0xa4c138ac993cc245",
+  "type": "Router",
+  "model_id": "TS011F-BS",
+  "manufacturer": "o1jzcxou",
+  "software_build_id": null,
+  "application_version": 3,
+  "hardware_version": 0,
+  "date_code": "20260612"
+ },
+ {
+  "ieee": "0xa4c1387b13e9436d",
+  "type": "Router",
+  "model_id": "TS011F-BS",
+  "manufacturer": "o1jzcxou",
+  "software_build_id": null,
+  "application_version": 3,
+  "hardware_version": 0,
+  "date_code": "20260612"
+ },
+ {
+  "ieee": "0xa4c13824a7005afb",
+  "type": "Router",
+  "model_id": "TS011F-BS",
+  "manufacturer": "o1jzcxou",
+  "software_build_id": null,
+  "application_version": 3,
+  "hardware_version": 0,
+  "date_code": "20260309"
+ },
+ {
+  "ieee": "0xfc4d6afffe6e6b53",
+  "type": "Router",
+  "model_id": "ZBMINIR2",
+  "manufacturer": "SONOFF",
+  "software_build_id": null,
+  "application_version": 16,
+  "hardware_version": 16,
+  "date_code": "20251127"
+ },
+ {
+  "ieee": "0xd44867fffefeab39",
+  "type": "EndDevice",
+  "model_id": "RODRET Dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0x8c8b48fffe67c120",
+  "type": "Router",
+  "model_id": "ZBMINIR2",
+  "manufacturer": "SONOFF",
+  "software_build_id": null,
+  "application_version": 16,
+  "hardware_version": 16,
+  "date_code": "20251127"
+ },
+ {
+  "ieee": "0x94b216fffe7734c9",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cayepv1a",
+  "software_build_id": null,
+  "application_version": 69,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c13843a9d40f85",
+  "type": "Router",
+  "model_id": "TS0726-3-BS",
+  "manufacturer": "iedhxgyi",
+  "software_build_id": null,
+  "application_version": 3,
+  "hardware_version": 0,
+  "date_code": "20260612"
+ },
+ {
+  "ieee": "0xa4c138f29eba8f49",
+  "type": "Router",
+  "model_id": "TS0001-AVB",
+  "manufacturer": "4rbqgcuv",
+  "software_build_id": null,
+  "application_version": 3,
+  "hardware_version": 0,
+  "date_code": "20260612"
+ },
+ {
+  "ieee": "0xa4c1380db190ca8b",
+  "type": "EndDevice",
+  "model_id": "ZG-204ZV",
+  "manufacturer": "HOBEIAN",
+  "software_build_id": null,
+  "application_version": 147,
+  "hardware_version": 1,
+  "date_code": "-1541120"
+ },
+ {
+  "ieee": "0xa4c138f6936a1788",
+  "type": "Router",
+  "model_id": "TS0726-1-BS",
+  "manufacturer": "jn2x20tg",
+  "software_build_id": null,
+  "application_version": 3,
+  "hardware_version": 0,
+  "date_code": "20260309"
+ },
+ {
+  "ieee": "0x001788010ed4427c",
+  "type": "EndDevice",
+  "model_id": "RWL022",
+  "manufacturer": "Signify Netherlands B.V.",
+  "software_build_id": null,
+  "application_version": 2,
+  "hardware_version": 1,
+  "date_code": "20241001"
+ },
+ {
+  "ieee": "0xa4c138b9bda6dbcf",
+  "type": "Router",
+  "model_id": "RB 287 C",
+  "manufacturer": "innr",
+  "software_build_id": null,
+  "application_version": 25,
+  "hardware_version": 1,
+  "date_code": "20250323"
+ },
+ {
+  "ieee": "0xa4c1385c11d46ae5",
+  "type": "Router",
+  "model_id": "RB 287 C",
+  "manufacturer": "innr",
+  "software_build_id": null,
+  "application_version": 25,
+  "hardware_version": 1,
+  "date_code": "20250323"
+ },
+ {
+  "ieee": "0xa4c138d6a7100473",
+  "type": "Router",
+  "model_id": "RB 287 C",
+  "manufacturer": "innr",
+  "software_build_id": null,
+  "application_version": 25,
+  "hardware_version": 1,
+  "date_code": "20250323"
+ },
+ {
+  "ieee": "0xa4c138105a8e4207",
+  "type": "Router",
+  "model_id": "GL-C-006P",
+  "manufacturer": "GLEDOPTO",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 2,
+  "date_code": "20240624"
+ },
+ {
+  "ieee": "0xa4c13803d7475156",
+  "type": "Router",
+  "model_id": "TS0002-AVB",
+  "manufacturer": "mtnpt6ws",
+  "software_build_id": null,
+  "application_version": 3,
+  "hardware_version": 0,
+  "date_code": "20260612"
+ },
+ {
+  "ieee": "0xa4c138c160b4890d",
+  "type": "EndDevice",
+  "model_id": "TS0601",
+  "manufacturer": "_TZE200_bh3n6gk8",
+  "software_build_id": null,
+  "application_version": 145,
+  "hardware_version": 1,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c1381daa061e97",
+  "type": "Router",
+  "model_id": "TS0001-AVB",
+  "manufacturer": "4rbqgcuv",
+  "software_build_id": null,
+  "application_version": 3,
+  "hardware_version": 0,
+  "date_code": "20260612"
+ },
+ {
+  "ieee": "0x8c8b48fffe685a39",
+  "type": "Router",
+  "model_id": "ZBMINIR2",
+  "manufacturer": "SONOFF",
+  "software_build_id": null,
+  "application_version": 16,
+  "hardware_version": 16,
+  "date_code": "20251127"
+ },
+ {
+  "ieee": "0xa4c1381b8b4eff23",
+  "type": "EndDevice",
+  "model_id": "TS0601",
+  "manufacturer": "_TZE200_3towulqd",
+  "software_build_id": null,
+  "application_version": 145,
+  "hardware_version": 1,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c1388b709b209c",
+  "type": "Router",
+  "model_id": "GL-C-009P",
+  "manufacturer": "GLEDOPTO",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 2,
+  "date_code": "20250305"
+ },
+ {
+  "ieee": "0x70ac08fffe48994a",
+  "type": "Router",
+  "model_id": "HK-DIM",
+  "manufacturer": "Sunricher",
+  "software_build_id": null,
+  "application_version": 0,
+  "hardware_version": 1,
+  "date_code": "NULL"
+ },
+ {
+  "ieee": "0x70ac08fffe489643",
+  "type": "Router",
+  "model_id": "HK-DIM",
+  "manufacturer": "Sunricher",
+  "software_build_id": null,
+  "application_version": 0,
+  "hardware_version": 1,
+  "date_code": "NULL"
+ },
+ {
+  "ieee": "0xa4c13812aebbdaa0",
+  "type": "EndDevice",
+  "model_id": "TS0202",
+  "manufacturer": "_TZ3040_o4mkahkc",
+  "software_build_id": null,
+  "application_version": 75,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c1385bc54e54bf",
+  "type": "EndDevice",
+  "model_id": "ZG-204ZV",
+  "manufacturer": "HOBEIAN",
+  "software_build_id": null,
+  "application_version": 151,
+  "hardware_version": 1,
+  "date_code": "29122025"
+ },
+ {
+  "ieee": "0xf0fd45fffe3847f7",
+  "type": "EndDevice",
+  "model_id": "Remote Control N2",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240725"
+ },
+ {
+  "ieee": "0xa4c138ff9d303f05",
+  "type": "EndDevice",
+  "model_id": "SNZB-02",
+  "manufacturer": "_TZ3000_fllyghyj",
+  "software_build_id": null,
+  "application_version": 113,
+  "hardware_version": 0,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c1384f030f8edb",
+  "type": "EndDevice",
+  "model_id": "TS0601",
+  "manufacturer": "_TZE284_vvmbj46n",
+  "software_build_id": null,
+  "application_version": 77,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c1382ca6f1bdde",
+  "type": "EndDevice",
+  "model_id": "TY0201",
+  "manufacturer": "_TZ3000_bjawzodf",
+  "software_build_id": null,
+  "application_version": 211,
+  "hardware_version": 1,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c13830b44b8775",
+  "type": "EndDevice",
+  "model_id": "ZG-204ZV",
+  "manufacturer": "HOBEIAN",
+  "software_build_id": null,
+  "application_version": 151,
+  "hardware_version": 1,
+  "date_code": "29122025"
+ },
+ {
+  "ieee": "0xa4c138b7eca277e9",
+  "type": "EndDevice",
+  "model_id": "TS0202",
+  "manufacturer": "_TZ3040_o4mkahkc",
+  "software_build_id": null,
+  "application_version": null,
+  "hardware_version": null,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c138da26407e17",
+  "type": "EndDevice",
+  "model_id": "ZG-204ZM",
+  "manufacturer": "HOBEIAN",
+  "software_build_id": null,
+  "application_version": 151,
+  "hardware_version": 1,
+  "date_code": "05012026"
+ },
+ {
+  "ieee": "0x94b216fffe9260f5",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cayepv1a",
+  "software_build_id": null,
+  "application_version": 69,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c1386c6faff53b",
+  "type": "EndDevice",
+  "model_id": "ZG-106Z",
+  "manufacturer": "HOBEIAN",
+  "software_build_id": null,
+  "application_version": 151,
+  "hardware_version": 1,
+  "date_code": "26022026"
+ },
+ {
+  "ieee": "0xa4c138626fd5eda7",
+  "type": "EndDevice",
+  "model_id": "ZG-204Z",
+  "manufacturer": "HOBEIAN",
+  "software_build_id": null,
+  "application_version": 151,
+  "hardware_version": 1,
+  "date_code": "02012026"
+ },
+ {
+  "ieee": "0xc02cedfffec48f9d",
+  "type": "Router",
+  "model_id": "ZBMINIR2",
+  "manufacturer": "SONOFF",
+  "software_build_id": null,
+  "application_version": 16,
+  "hardware_version": 16,
+  "date_code": "20241202"
+ },
+ {
+  "ieee": "0x04e3e5fffed39c39",
+  "type": "Router",
+  "model_id": "ZBMINIR2",
+  "manufacturer": "SONOFF",
+  "software_build_id": null,
+  "application_version": 16,
+  "hardware_version": 16,
+  "date_code": "20251127"
+ },
+ {
+  "ieee": "0x8c8b48fffec9b5aa",
+  "type": "EndDevice",
+  "model_id": "SOMRIG shortcut button",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20230310"
+ },
+ {
+  "ieee": "0x08fd52fffe2a01f4",
+  "type": "EndDevice",
+  "model_id": "RODRET wireless dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0x8c8b48fffed271c7",
+  "type": "EndDevice",
+  "model_id": "RODRET Dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0xa4c13852d7bbc587",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_b28wrpvx",
+  "software_build_id": null,
+  "application_version": 192,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c1380e94d2ff82",
+  "type": "EndDevice",
+  "model_id": "TS0601",
+  "manufacturer": "_TZE200_3towulqd",
+  "software_build_id": null,
+  "application_version": 145,
+  "hardware_version": 1,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c138267bfd0080",
+  "type": "EndDevice",
+  "model_id": "TS0601",
+  "manufacturer": "_TZE200_vvmbj46n",
+  "software_build_id": null,
+  "application_version": 72,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c138d47dc9e412",
+  "type": "EndDevice",
+  "model_id": "TY0201",
+  "manufacturer": "_TZ3000_bjawzodf",
+  "software_build_id": null,
+  "application_version": 211,
+  "hardware_version": 1,
+  "date_code": null
+ },
+ {
+  "ieee": "0x08fd52fffe0aa5a6",
+  "type": "EndDevice",
+  "model_id": "RODRET wireless dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0x94b216fffe928d4a",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cayepv1a",
+  "software_build_id": null,
+  "application_version": 75,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xa4c1383a4b55557a",
+  "type": "EndDevice",
+  "model_id": "TH01",
+  "manufacturer": "Zbeacon",
+  "software_build_id": null,
+  "application_version": 147,
+  "hardware_version": 0,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c13878175921dc",
+  "type": "EndDevice",
+  "model_id": "TH01",
+  "manufacturer": "Zbeacon",
+  "software_build_id": null,
+  "application_version": 147,
+  "hardware_version": 0,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c138bb0d75444c",
+  "type": "EndDevice",
+  "model_id": "TH01",
+  "manufacturer": "Zbeacon",
+  "software_build_id": null,
+  "application_version": 147,
+  "hardware_version": 0,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c138c8a9f237a5",
+  "type": "EndDevice",
+  "model_id": "TH01",
+  "manufacturer": "Zbeacon",
+  "software_build_id": null,
+  "application_version": 147,
+  "hardware_version": 0,
+  "date_code": null
+ },
+ {
+  "ieee": "0xa4c138a67b88f8ac",
+  "type": "EndDevice",
+  "model_id": "TS0601",
+  "manufacturer": "_TZE200_locansqn",
+  "software_build_id": null,
+  "application_version": 72,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0x348d13fffefffa53",
+  "type": "EndDevice",
+  "model_id": "RODRET wireless dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0x08fd52fffe0b0ce1",
+  "type": "EndDevice",
+  "model_id": "RODRET wireless dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0x08fd52fffe0aa5ae",
+  "type": "EndDevice",
+  "model_id": "RODRET wireless dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0xa4c138c5f07ee732",
+  "type": "Router",
+  "model_id": "TS011F-BS-PM",
+  "manufacturer": "b28wrpvx",
+  "software_build_id": null,
+  "application_version": 3,
+  "hardware_version": 1,
+  "date_code": "20260822"
+ },
+ {
+  "ieee": "0xa4c138278695ef31",
+  "type": "Router",
+  "model_id": "TS0601",
+  "manufacturer": "_TZE204_wbhaespm",
+  "software_build_id": null,
+  "application_version": 74,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0x94b216fffe774cc4",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cayepv1a",
+  "software_build_id": null,
+  "application_version": 75,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0x94b216fffe897bfb",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cayepv1a",
+  "software_build_id": null,
+  "application_version": 75,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0x94b216fffe943151",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cayepv1a",
+  "software_build_id": null,
+  "application_version": 69,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xecf64cfffead3b8c",
+  "type": "EndDevice",
+  "model_id": "RODRET Dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0xf0fd45fffeef553b",
+  "type": "EndDevice",
+  "model_id": "RODRET wireless dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0x385b44fffefc81c0",
+  "type": "Router",
+  "model_id": "HK-DIM",
+  "manufacturer": "Sunricher",
+  "software_build_id": null,
+  "application_version": 0,
+  "hardware_version": 1,
+  "date_code": "NULL"
+ },
+ {
+  "ieee": "0xdc8e95fffe8aea30",
+  "type": "Router",
+  "model_id": "TS011F",
+  "manufacturer": "_TZ3000_cayepv1a",
+  "software_build_id": null,
+  "application_version": 75,
+  "hardware_version": 1,
+  "date_code": ""
+ },
+ {
+  "ieee": "0xd44867fffe16b355",
+  "type": "EndDevice",
+  "model_id": "RODRET Dimmer",
+  "manufacturer": "IKEA of Sweden",
+  "software_build_id": null,
+  "application_version": 1,
+  "hardware_version": 1,
+  "date_code": "20240220"
+ },
+ {
+  "ieee": "0xa4c13810ae3bffff",
+  "type": "EndDevice",
+  "model_id": "SNZB-01M",
+  "manufacturer": "SONOFF",
+  "software_build_id": null,
+  "application_version": 16,
+  "hardware_version": 16,
+  "date_code": "20260209"
+ }
+]
