@@ -1,0 +1,19 @@
+{
+  "role": "recovery",
+  "swBuildId": "1.1.4-bseedv4r",
+  "fileVersion": 285356036,
+  "manufacturerCode": 4417,
+  "imageType": 45577,
+  "bin": {
+    "bytes": 183117,
+    "fileName": "recovery.bin",
+    "sha256": "6ebd25f473e5d98f8be2f145313b0c8c2d3d3582c2b337d5b044bd2d8047ebf8",
+    "sha512": "043071953e891218bc82e9894f7f7faa7f62c1c68df10fe56c68e7c83bb2ff0fa6d348a336ca87c24319d8fc36d7de66cfe976ec53cc88fa7540670dcbd71d52"
+  },
+  "ota": {
+    "bytes": 183186,
+    "fileName": "recovery.ota",
+    "sha256": "bac0b9ba1b5ac3b8ad8862d994619bf3bc8eb771fb217dbf9c4ecdcd834231a2",
+    "sha512": "35b334aa96f8b2c8e6dc4e6159e315894304d1b8b160d2febb0627ea7d6b3aa9e32e0ffce2132b302b9616f9a77b7c951b7815669d749be2831a3f94d32abd6d"
+  }
+}

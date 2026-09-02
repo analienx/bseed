@@ -1,0 +1,19 @@
+{
+  "role": "forward",
+  "swBuildId": "1.1.4-bseedv4",
+  "fileVersion": 285356035,
+  "manufacturerCode": 4417,
+  "imageType": 45577,
+  "bin": {
+    "bytes": 183753,
+    "fileName": "forward.bin",
+    "sha256": "4a2e444ee11e0393bfd5310ec71e5e49e3cd0eddafbbe565bf19aae3ad2f68ba",
+    "sha512": "9aaab57e2464f143937b239b58e46aeec0a13c88ba29581bd0d9af84954e922ef368d737a4c59bfb6fd8115e80d10c077bdd1dc69d7abb7653e7de6d0f013276"
+  },
+  "ota": {
+    "bytes": 183826,
+    "fileName": "forward.ota",
+    "sha256": "db2328b1e86f58ff66c5863c2b969b9ffb90e5fbbca5e5be263fb9d246060aa8",
+    "sha512": "97440ddf42241d6dd4962dac69515cbf820e9d9bfd25d773b9ee19c145de36e3c2585c118828752a2e5745d5272123f0eb008bfd1e0b4f6fd4d662d24cbc33d8"
+  }
+}

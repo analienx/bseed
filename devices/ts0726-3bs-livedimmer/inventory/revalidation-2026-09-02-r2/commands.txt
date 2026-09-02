@@ -1,0 +1,37 @@
+# commands.txt — r2 revalidation (2026-09-02)
+
+All runs on fresh Linux/WSL (Ubuntu) checkouts of the pinned commits
+(git 2.53, core.autocrlf=false -> LF), node v24.x, python3 3.14.4 + pytest.
+
+## V1 @ e933e3528332bf0a20e58b1cef023b024704257b (repo analienx/tuya-zigbee-switch)
+
+git clone <local fork> ~/reval/tuya-v4-r2 && git checkout e933e352...
+make stub/build
+make stub/build_end_device
+node --check zigbee2mqtt/converters/bseed_ts0726_v4.js
+python3 -m pytest tests/test_bseed_ts0726_v4_overlay.py -q
+python3 -m pytest -q
+python3 helper_scripts/audit_bseed_ts0726_v4_overlay.py zigbee2mqtt/converters/bseed_ts0726_v4.js
+node helper_scripts/probe_bseed_ts0726_action_contract.js zigbee2mqtt/converters/bseed_ts0726_v4.js
+node helper_scripts/probe_bseed_ts0726_overlay_match.js <ef79acfd canonical file> zigbee2mqtt/converters/bseed_ts0726_v4.js
+python3 helper_scripts/build_bseed_ts0726_deployment_bundle.py <ef79acfd canonical file> <fresh-output-dir>
+# UX (live Z2M container app_45df7312_zigbee2mqtt; ZHC 26.90.0; /tmp staging only):
+node /tmp/bseed-v4-probe-r2/probe_bseed_ts0726_installed_zhc.js /tmp/bseed-v4-probe-r2/bseed_ts0726_v4.js
+node /tmp/bseed-v4-probe-r2/exposes_full_wrapper.js /tmp/bseed-v4-probe-r2/bseed_ts0726_v4.js
+
+## V2 @ 4281c6465bbcea31801088b36317e186b97f8ee5 (repo analienx/tuya-zigbee-switch)
+
+git clone <local fork> ~/reval/tuya-fw-v4-r2 && git checkout 4281c646...
+cp -r telink_tools .   # SDK + tc32 toolchain (4.5.1.tc32-elf-1.5), verified
+python3 make_scripts/validate_bseed_ts0726_v4.py
+python3 -m pytest tests/test_device_migration.py tests/test_cross_image_migration.py -q
+python3 -m pytest -q
+uncrustify -c uncrustify.cfg --check src/device_config/device_migration.c src/device_config/device_migration.h src/app.c
+grep -rlnE 'DEVICE_MIGRATION|MIG_FORWARD|MIG_REVERT|swapped|bseed|BSEED|LivingRoom|TS0726' src/ --include='*.c' --include='*.h'
+bash -n make_scripts/build_bseed_ts0726_v4.sh
+bash make_scripts/build_bseed_ts0726_v4.sh <out-dir>   # BUILD ONLY
+
+## V3 @ 8efc5696debdf80b394bd65ff947118f33ac3215 (repo analienx/home-assistant-stack)
+
+git ls-remote origin supervisor/ts0726-post-migration-ha-v1   # == 8efc5696...
+python tools/validate_ts0726_ha_finalizer.py (HA worktree at pinned commit)

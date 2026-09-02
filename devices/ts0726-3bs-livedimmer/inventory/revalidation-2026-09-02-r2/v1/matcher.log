@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "historical": {
+    "path": "/mnt/c/Users/jakub/OneDrive/Projects/bseed-dimmer/devices/ts0726-3bs-livedimmer/inventory/redesign-inputs-2026-09-01/historical_external_converters/switch_custom.ef79acfd.js",
+    "rawSha256": "ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe",
+    "canonicalSha256": "ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe",
+    "bytes": 967427,
+    "normalization": "none"
+  },
+  "overlay": {
+    "path": "zigbee2mqtt/converters/bseed_ts0726_v4.js",
+    "sha256": "d5b276dd967541e261e51606fdbf1e5412d55b7b660b8559d930e000eda04fa2",
+    "forwardSoftwareBuildID": "1.1.4-bseedv4",
+    "exactFingerprint": true,
+    "bareZigbeeModel": false
+  },
+  "selection": {
+    "1.1.2-8542fc05": "historical_fallback",
+    "1.1.4-bseedv4": "v4_overlay_exact_fingerprint",
+    "1.1.4-bseedv4r": "historical_fallback"
+  },
+  "runtimeMatcherProbeStillRequired": true
+}

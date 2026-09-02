@@ -1,0 +1,27 @@
+{
+  "collected_at": "2026-09-02T06:05:02Z",
+  "host_os": "Windows 11 (win32), PowerShell 7.6.5",
+  "wsl": {
+    "distro": "Ubuntu (WSL2)",
+    "git": "2.53.0",
+    "gcc": "15.2.0",
+    "make": "4.4.1",
+    "python": "3.14.4",
+    "pytest": "9.1.1",
+    "node": "v24.x",
+    "uncrustify": "0.78.1_f"
+  },
+  "toolchain": {
+    "telink_tc32": "4.5.1.tc32-elf-1.5 (Telink TC32 version 2.0 build)",
+    "sdk": "telink_tools (SDK + tlsrpgm) copied from local fork working copy"
+  },
+  "live_environment": {
+    "z2m_addon_container": "app_45df7312_zigbee2mqtt",
+    "z2m_version": "2.13.0",
+    "installed_zhc": "26.90.0",
+    "status_at_ux_capture": "Up (healthy); Dongle-M coordinator present on USB; EZSP/EZSP18-era adapter online"
+  },
+  "evidence_repo": "analienx/bseed",
+  "evidence_branch": "executor/ts0726-redesign-inputs-2026-09-01",
+  "evidence_dir": "devices/ts0726-3bs-livedimmer/inventory/revalidation-2026-09-02-r2/"
+}

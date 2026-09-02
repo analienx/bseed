@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "failures": [],
+  "softwareBuildID": "1.1.4-bseedv4",
+  "targetModelCount": 1,
+  "physicalModeCalls": {
+    "relay_left_physical_mode": 1,
+    "relay_middle_physical_mode": 1,
+    "relay_right_physical_mode": 1
+  },
+  "rawHardwareConfigReadOnly": true,
+  "zeroConfigureMutationSurface": true
+}

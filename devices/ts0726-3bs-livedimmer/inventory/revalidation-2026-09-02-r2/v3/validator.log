@@ -1,0 +1,11 @@
+PASS  all home-assistant yaml parses
+PASS  script.main_dimmer_finalize_v4_indicators exists
+PASS  requires operator_continuity_confirmed (field + condition)  -- field_required=True condition_present=True
+PASS  requires all 3 physical modes = always_on
+PASS  changes only indicator-mode selects to same  -- [{"action": "select.select_option", "entities": ["select.livingroommaindimmer_relay_left_indicator_mode_relay_left", "select.livingroommaindimmer_relay_middle_indicator_mode_relay_middle", "select.livingroommaindimmer_relay_right_indicator_mode_relay_right"], "option": "same"}]
+PASS  does not change physical mode
+PASS  does not write switch.livingroommaindimmer_relay_right
+PASS  never referenced outside scripts.yaml (not automatic)
+PASS  no reference in non-yaml files
+
+RESULT: PASS

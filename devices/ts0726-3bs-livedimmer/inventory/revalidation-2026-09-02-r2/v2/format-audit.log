@@ -1,0 +1,7 @@
+FAIL: src/device_config/device_migration.c (File size changed from 18689 to 18691)
+do_source_file: Parsing: src/device_config/device_migration.c as language C
+do_source_file: Parsing: src/device_config/device_migration.h as language C-Header
+PASS: src/device_config/device_migration.h (1200 bytes)
+do_source_file: Parsing: src/app.c as language C
+PASS: src/app.c (3127 bytes)
+format_exit=True

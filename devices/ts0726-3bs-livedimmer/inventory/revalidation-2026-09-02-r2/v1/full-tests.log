@@ -1,0 +1,1909 @@
+[GPIO] Set pin 32 = 1
+[NVM] Item 21 not found
+[NVM] Item 03 not found
+[GPIO] Set pin 32 = 1
+[NVM] Item 04 not found
+[NVM] Item 05 not found
+[NVM] Item 06 not found
+[NVM] Item 07 not found
+[NVM] Item 09 not found
+[NVM] Item 09 not found
+[NVM] Item 0a not found
+[NVM] Item 0a not found
+[NVM] Item 0b not found
+[NVM] Item 0b not found
+[NVM] Item 0c not found
+[NVM] Item 0c not found
+[TASKS] Initialized task at 0x613c948063c8
+[NVM] Item 11 not found
+[TASKS] Initialized task at 0x613c94806468
+[NVM] Item 12 not found
+[ZIGBEE] Initialized Zigbee with 10 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=6
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=14, is_server=1
+[TASKS] Executing task 0x613c948051e0 from slot 0
+[GPIO] Set pin 16 = 1
+[ZIGBEE] Attribute changed: ep=5, cluster=0x0006, attr=0x0000
+[ZIGBEE] Sending command: ep=1, cluster=0x0006, cmd=0x02, len=0
+[ZIGBEE] No matching bindings found
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[TASKS] Scheduled task 0x613c948051e0 in slot 1, delay=740 ms, execute_at=1000
+[TASKS] Task completed and removed from slot 0
+..[ZIGBEE] Endpoint 10: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+.[GPIO] Set callback for pin 2
+[GPIO] Read pin 3 = 1
+[TASKS] Initialized task at 0x5c0774eaf318
+[GPIO] Set callback for pin 3
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x5c0774eaf648
+[GPIO] Clear pin 16 = 0
+[TASKS] Initialized task at 0x5c0774eaf678
+[GPIO] Clear pin 17 = 0
+[TASKS] Initialized task at 0x5c0774eaf6a8
+[GPIO] Clear pin 18 = 0
+[TASKS] Initialized task at 0x5c0774eaf6d8
+[GPIO] Clear pin 19 = 0
+[TASKS] Initialized task at 0x5c0774eaf708
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x5c0774eaf738
+[GPIO] Clear pin 33 = 0
+[TASKS] Initialized task at 0x5c0774eaf768
+[GPIO] Clear pin 34 = 0
+[TASKS] Initialized task at 0x5c0774eaf798
+[GPIO] Clear pin 35 = 0
+[GPIO] Set pin 32 = 1
+[NVM] Item 21 not found
+[NVM] Item 03 not found
+[GPIO] Set pin 32 = 1
+[NVM] Item 04 not found
+[NVM] Item 05 not found
+[NVM] Item 06 not found
+[NVM] Item 07 not found
+[NVM] Item 09 not found
+[NVM] Item 09 not found
+[NVM] Item 0a not found
+[NVM] Item 0a not found
+[NVM] Item 0b not found
+[NVM] Item 0b not found
+[NVM] Item 0c not found
+[NVM] Item 0c not found
+[TASKS] Initialized task at 0x5c0774eb03c8
+[NVM] Item 11 not found
+[TASKS] Initialized task at 0x5c0774eb0468
+[NVM] Item 12 not found
+[ZIGBEE] Initialized Zigbee with 10 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=6
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 5: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+.[ZIGBEE]   Cluster 3: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 3: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+..[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+.[ZIGBEE]     Attr 0: id=0x0000, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0002, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0x0003, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 4: id=0x0004, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 5: id=0x0005, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 6: id=0x0007, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 7: id=0x0012, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 13: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 3: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 3: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 5: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 6: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 7: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 8: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 9: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Endpoint 10: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+.[ZIGBEE] Endpoint 7: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 8: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 9: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Endpoint 10: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+..[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 5: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 6: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 7: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 8: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 9: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Endpoint 10: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+.[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+.....[TASKS] Scheduled task 0x5df2aa91c908 in slot 0, delay=300000 ms, execute_at=300000
+[NVM] Item 04 not found
+[ZIGBEE] Initialized Zigbee with 1 endpoints
+.[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 0: id=0x0020, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0021, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]   Cluster 3: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+.[ZIGBEE]   Cluster 5: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 6: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+.[ZIGBEE] Network status set to 1
+.[ZIGBEE]   Cluster 3: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+.[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+..[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0001, attrs=3, is_server=1
+[ZIGBEE]     Attr 0: id=0x0020, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0021, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]   Cluster 3: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 4: id=0x0006, attrs=0, is_server=0
+.[NVM] Item 21 not found
+[NVM] Item 03 not found
+[TASKS] Initialized task at 0x639f2e1c8908
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0001, attr=0x0020
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0001, attr=0x0021
+[TASKS] Scheduled task 0x639f2e1c8908 in slot 0, delay=300000 ms, execute_at=300000
+[NVM] Item 04 not found
+[ZIGBEE] Initialized Zigbee with 1 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=7
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=13, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0002, type=0x20, size=1, flags=0
+........................[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0x0002, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0x0003, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0x0004, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0x0005, type=0x21, size=2, flags=1
+[ZIGBEE]   Cluster 3: id=0x0102, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=3
+.[NVM] Read 130 bytes from item 02
+[GPIO] Parsed GPIO pin 'A0A1u' as 0
+[GPIO] Parsed GPIO pin 'A1u' as 1
+[GPIO] Init pin 0 as input, pull=1
+[GPIO] Init pin 1 as input, pull=1
+[GPIO] Parsed GPIO pin 'B0B1' as 16
+[GPIO] Parsed GPIO pin 'B1' as 17
+[GPIO] Init pin 16 as output, pull=0
+[GPIO] Init pin 17 as output, pull=0
+[GPIO] Parsed GPIO pin 'C0C1u' as 32
+[GPIO] Parsed GPIO pin 'C1u' as 33
+[GPIO] Init pin 32 as input, pull=1
+[GPIO] Init pin 33 as input, pull=1
+[GPIO] Parsed GPIO pin 'D0D1' as 48
+[GPIO] Parsed GPIO pin 'D1' as 49
+[GPIO] Init pin 48 as output, pull=0
+[GPIO] Init pin 49 as output, pull=0
+[GPIO] Read pin 0 = 1
+[TASKS] Initialized task at 0x5b7b0231a1e0
+[GPIO] Set callback for pin 0
+[GPIO] Read pin 1 = 1
+[TASKS] Initialized task at 0x5b7b0231a248
+[GPIO] Set callback for pin 1
+[GPIO] Read pin 32 = 1
+[TASKS] Initialized task at 0x5b7b0231a2b0
+[GPIO] Set callback for pin 32
+[GPIO] Read pin 33 = 1
+[TASKS] Initialized task at 0x5b7b0231a318
+...[TASKS] Executing task 0x5db3425421e0 from slot 0
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[GPIO] Clear pin 16 = 0
+[GPIO] Clear pin 17 = 0
+[ZIGBEE] Attribute changed: ep=3, cluster=0x0102, attr=0xff00
+[TASKS] Scheduled task 0x5db3425421e0 in slot 1, delay=740 ms, execute_at=1320
+[TASKS] Task completed and removed from slot 0
+.[ZIGBEE] Endpoint 3: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+.[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+........[ZIGBEE] Attribute changed: ep=2, cluster=0x0012, attr=0x0055
+[NVM] Wrote 5 bytes to item 0f
+.[ZIGBEE] Attribute changed: ep=2, cluster=0x0012, attr=0x0055
+[NVM] Wrote 5 bytes to item 0f
+.[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0xfc01, attrs=6, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0x0002, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0x0003, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0x0004, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0x0005, type=0x21, size=2, flags=1
+[ZIGBEE]   Cluster 3: id=0x0102, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=3
+[TASKS] Executing task 0x5e07158cc1e0 from slot 0
+.[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0x0002, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0x0003, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0x0004, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0x0005, type=0x21, size=2, flags=1
+.[GPIO] Parsed GPIO pin 'B2' as 18
+[GPIO] Init pin 18 as output, pull=0
+..[ZIGBEE]     Attr 6: id=0x0007, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 7: id=0x0012, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 13: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+.[ZIGBEE]     Attr 2: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff02, type=0x10, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+..relay_off
+EVT gpio pin=16 value=0
+EVT zcl_attr_change ep=2 cluster=0x0006 attr=0x0000
+EVT gpio pin=1 value=0
+EVT zcl_attr_change ep=2 cluster=0x0006 attr=0xFF02
+EVT zcl_cmd_send ep=1 cluster=0x0006 cmd=0x02 len=0 data_hex=
+EVT zcl_attr_change ep=1 cluster=0x0012 attr=0x0055
+. [ 33%]
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=13, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0002, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0x0003, type=0x20, size=1, flags=0
+[TASKS] Initialized task at 0x592029e160f0
+EVT gpio pin=1 value=1
+EVT zcl_cmd_send ep=1 cluster=0x0006 cmd=0x02 len=0 data_hex=
+EVT zcl_attr_change ep=1 cluster=0x0012 attr=0x0055
+.[GPIO] Init pin 32 as output, pull=0
+[GPIO] Parsed GPIO pin 'B1C1' as 17
+[GPIO] Init pin 17 as output, pull=0
+[GPIO] Parsed GPIO pin 'C1' as 33
+[GPIO] Init pin 33 as output, pull=0
+[GPIO] Parsed GPIO pin 'B2C2' as 18
+[GPIO] Init pin 18 as output, pull=0
+[GPIO] Parsed GPIO pin 'C2' as 34
+[GPIO] Init pin 34 as output, pull=0
+[GPIO] Parsed GPIO pin 'B3A3' as 19
+[GPIO] Init pin 19 as output, pull=0
+[GPIO] Parsed GPIO pin 'A3' as 3
+[GPIO] Init pin 3 as output, pull=0
+[TASKS] Initialized task at 0x604789fa2648
+[GPIO] Clear pin 16 = 0
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x604789fa2678
+[GPIO] Clear pin 17 = 0
+[GPIO] Clear pin 33 = 0
+[TASKS] Executing task 0x604789fa2648 from slot 0
+[GPIO] Clear pin 16 = 0
+[GPIO] Clear pin 32 = 0
+[TASKS] Task completed and removed from slot 0
+.[GPIO] Parsed GPIO pin 'B0C0' as 16
+[GPIO] Init pin 16 as output, pull=0
+[GPIO] Parsed GPIO pin 'C0' as 32
+[GPIO] Init pin 32 as output, pull=0
+[GPIO] Parsed GPIO pin 'B1C1' as 17
+[GPIO] Init pin 17 as output, pull=0
+[GPIO] Parsed GPIO pin 'C1' as 33
+[GPIO] Init pin 33 as output, pull=0
+[GPIO] Parsed GPIO pin 'B2C2' as 18
+[GPIO] Init pin 18 as output, pull=0
+[GPIO] Parsed GPIO pin 'C2' as 34
+[GPIO] Init pin 34 as output, pull=0
+[GPIO] Parsed GPIO pin 'B3A3' as 19
+[GPIO] Init pin 19 as output, pull=0
+[GPIO] Parsed GPIO pin 'A3' as 3
+[GPIO] Init pin 3 as output, pull=0
+[TASKS] Initialized task at 0x6046029a5648
+[GPIO] Clear pin 16 = 0
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x6046029a5678
+[GPIO] Clear pin 17 = 0
+[GPIO] Clear pin 33 = 0
+[TASKS] Initialized task at 0x6046029a56a8
+[GPIO] Clear pin 18 = 0
+[GPIO] Clear pin 34 = 0
+[TASKS] Initialized task at 0x6046029a56d8
+[GPIO] Clear pin 19 = 0
+[GPIO] Clear pin 3 = 0
+[NVM] Item 21 not found
+.[TASKS] Executing task 0x5e233895e6d8 from slot 0
+[GPIO] Clear pin 19 = 0
+[GPIO] Clear pin 3 = 0
+[TASKS] Task completed and removed from slot 0
+[ZIGBEE] Simulating command: ep=4, cluster=0x0006, cmd=0x00
+[GPIO] Clear pin 19 = 0
+[GPIO] Clear pin 3 = 0
+[GPIO] Set pin 3 = 1
+[TASKS] Scheduled task 0x5e233895e6d8 in slot 0, delay=100 ms, execute_at=1500
+[ZIGBEE] Attribute changed: ep=4, cluster=0x0006, attr=0x0000
+[TASKS] Executing task 0x5e233895e6d8 from slot 0
+[GPIO] Clear pin 19 = 0
+[GPIO] Clear pin 3 = 0
+[TASKS] Task completed and removed from slot 0
+.[NVM] Item 09 not found
+[NVM] Item 0a not found
+[NVM] Item 0a not found
+[NVM] Item 0b not found
+[NVM] Item 0b not found
+[NVM] Item 0c not found
+[NVM] Item 0c not found
+[ZIGBEE] Initialized Zigbee with 4 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=5
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=13, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0002, type=0x20, size=1, flags=0
+.[GPIO] Init pin 33 as output, pull=0
+[GPIO] Parsed GPIO pin 'B2C2' as 18
+[GPIO] Init pin 18 as output, pull=0
+[GPIO] Parsed GPIO pin 'C2' as 34
+[GPIO] Init pin 34 as output, pull=0
+[ZIGBEE]     Attr 5: id=0x0005, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 6: id=0x0007, type=0x30, size=1, flags=0
+.....[ZIGBEE]     Attr 2: id=0x0002, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0x0003, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 4: id=0x0004, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 5: id=0x0005, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 6: id=0x0007, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 7: id=0x0012, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 3: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Starting network steering (joining)
+[ZIGBEE] Network status set to 1
+[GPIO] Clear pin 1 = 0
+[ZIGBEE] Sending Zigbee announce
+[ZIGBEE] Cleared all bindings
+..........[ZIGBEE]   Cluster 5: id=0x0012, attrs=4, is_server=1
+.[ZIGBEE] Set poll rate to 500 ms
+.[GPIO] Simulated input pin 2 = 1
+[GPIO] Parsed GPIO pin 'A3' as 3
+[GPIO] Simulated input pin 3 = 1
+[ZIGBEE] Network status set to 1
+.[GPIO] Read pin 0 = 1
+[TASKS] Initialized task at 0x5c5f82ed5200
+[GPIO] Set callback for pin 0
+[TASKS] Initialized task at 0x5c5f82ed5668
+[GPIO] Clear pin 16 = 0
+[NVM] Item 21 not found
+[NVM] Item 03 not found
+[TASKS] Initialized task at 0x5c5f82ed6928
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0001, attr=0x0020
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0001, attr=0x0021
+[TASKS] Scheduled task 0x5c5f82ed6928 in slot 0, delay=300000 ms, execute_at=300000
+[NVM] Item 22 not found
+[ZIGBEE] Registered ZCL activity callback
+[ZIGBEE] Set poll rate to 500 ms
+[ZIGBEE] Set poll rate to 500 ms
+[TASKS] Initialized task at 0x5c5f82ed69b8
+[TASKS] Scheduled task 0x5c5f82ed69b8 in slot 1, delay=3600000 ms, execute_at=3600000
+[NVM] Item 04 not found
+[NVM] Item 09 not found
+[NVM] Item 09 not found
+[ZIGBEE] Initialized Zigbee with 2 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=8
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=13, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0002, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0x0003, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 4: id=0x0004, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 5: id=0x0005, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 6: id=0x0007, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 7: id=0x0012, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0001, attrs=3, is_server=1
+[ZIGBEE]     Attr 0: id=0x0020, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0021, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]   Cluster 3: id=0x0020, attrs=5, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=0
+[ZIGBEE]     Attr 2: id=0x0002, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x0003, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 4: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]   Cluster 4: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 5: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 6: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 7: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+..[ZIGBEE]     Attr 7: id=0x0012, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+.[NVM] Item 09 not found
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 7: id=0x0008, attrs=0, is_server=0
+.[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+.[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=8
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=13, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0002, type=0x20, size=1, flags=0
+.[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+.[GPIO] Clear pin 16 = 0
+[NVM] Item 21 not found
+[NVM] Item 03 not found
+[ZIGBEE]     Attr 2: id=0x0002, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0x0003, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 4: id=0x0004, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 5: id=0x0005, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 6: id=0x0007, type=0x30, size=1, flags=0
+.[GPIO] Parsed GPIO pin 'A2' as 2
+.[ZIGBEE]     Attr 3: id=0x0003, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 4: id=0x0004, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 5: id=0x0005, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 6: id=0x0007, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 7: id=0x0012, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+....[GPIO] Parsed GPIO pin 'C3' as 35
+[GPIO] Init pin 34 as output, pull=0
+[GPIO] Init pin 35 as output, pull=0
+[GPIO] Read pin 0 = 1
+[TASKS] Initialized task at 0x63ae8a5f41e0
+.[ZIGBEE]     Attr 6: id=0x0007, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 7: id=0x0012, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 13: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 3: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+..[NVM] Item 04 not found
+[NVM] Item 09 not found
+[NVM] Item 09 not found
+[GPIO] Clear pin 1 = 0
+[ZIGBEE] Attribute changed: ep=2, cluster=0x0006, attr=0xff02
+[ZIGBEE] Initialized Zigbee with 2 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=6
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=13, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x20, size=1, flags=0
+.[GPIO] Simulated input pin 3 = 1
+[ZIGBEE] Network status set to 1
+[NVM] Item 01 not found
+[NVM] Wrote 2 bytes to item 01
+[NVM] Read 130 bytes from item 02
+[GPIO] Parsed GPIO pin 'A0u' as 0
+[GPIO] Init pin 0 as input, pull=1
+[GPIO] Parsed GPIO pin 'B0' as 16
+[GPIO] Init pin 16 as output, pull=0
+[GPIO] Parsed GPIO pin 'A1' as 1
+[GPIO] Init pin 1 as output, pull=0
+[GPIO] Clear pin 1 = 0
+[GPIO] Read pin 0 = 1
+[TASKS] Initialized task at 0x59074af3c1e0
+[GPIO] Set callback for pin 0
+[GPIO] Clear pin 1 = 0
+[TASKS] Initialized task at 0x59074af3c648
+[GPIO] Clear pin 16 = 0
+[NVM] Item 21 not found
+[NVM] Item 03 not found
+[NVM] Item 04 not found
+[NVM] Item 09 not found
+[NVM] Item 09 not found
+[GPIO] Clear pin 1 = 0
+[ZIGBEE] Attribute changed: ep=2, cluster=0x0006, attr=0xff02
+[ZIGBEE] Initialized Zigbee with 2 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=6
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=13, is_server=1
+.[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+.[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+..[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+.[ZIGBEE]     Attr 3: id=0xff02, type=0x10, size=1, flags=1
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 4: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+.[ZIGBEE] Registered attribute change callback
+[NVM] Read 4 bytes from item 20
+[ZIGBEE] Sending Zigbee announce
+[ZIGBEE] Cleared all bindings
+.........[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Endpoint 10: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+..[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 8: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+.[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+.[TASKS] Initialized task at 0x63d57be2a248
+[GPIO] Set callback for pin 1
+[GPIO] Read pin 2 = 1
+[TASKS] Initialized task at 0x63d57be2a2b0
+[GPIO] Set callback for pin 2
+[GPIO] Read pin 3 = 1
+[TASKS] Initialized task at 0x63d57be2a318
+[GPIO] Set callback for pin 3
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x63d57be2a648
+[GPIO] Clear pin 16 = 0
+[TASKS] Initialized task at 0x63d57be2a678
+[GPIO] Clear pin 17 = 0
+[TASKS] Initialized task at 0x63d57be2a6a8
+[GPIO] Clear pin 18 = 0
+[TASKS] Initialized task at 0x63d57be2a6d8
+[GPIO] Clear pin 19 = 0
+[TASKS] Initialized task at 0x63d57be2a708
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x63d57be2a738
+[GPIO] Clear pin 33 = 0
+[TASKS] Initialized task at 0x63d57be2a768
+[GPIO] Clear pin 34 = 0
+[TASKS] Initialized task at 0x63d57be2a798
+[GPIO] Clear pin 35 = 0
+[GPIO] Set pin 32 = 1
+[NVM] Item 21 not found
+[NVM] Item 03 not found
+[GPIO] Set pin 32 = 1
+[NVM] Item 04 not found
+[NVM] Item 05 not found
+[NVM] Item 06 not found
+[NVM] Item 07 not found
+[NVM] Item 09 not found
+[NVM] Item 09 not found
+[NVM] Item 0a not found
+[NVM] Item 0a not found
+[NVM] Item 0b not found
+[NVM] Item 0b not found
+[NVM] Item 0c not found
+[NVM] Item 0c not found
+[TASKS] Initialized task at 0x63d57be2b3c8
+[NVM] Item 11 not found
+[TASKS] Initialized task at 0x63d57be2b468
+[NVM] Item 12 not found
+[ZIGBEE] Initialized Zigbee with 10 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=6
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=14, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=0
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+.[TASKS] Initialized task at 0x5881beb3f1e0
+[GPIO] Set callback for pin 0
+[GPIO] Read pin 1 = 1
+[TASKS] Initialized task at 0x5881beb3f248
+[GPIO] Set callback for pin 1
+[GPIO] Read pin 2 = 1
+[TASKS] Initialized task at 0x5881beb3f2b0
+[GPIO] Set callback for pin 2
+[GPIO] Read pin 3 = 1
+[TASKS] Initialized task at 0x5881beb3f318
+[GPIO] Set callback for pin 3
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x5881beb3f648
+[GPIO] Clear pin 16 = 0
+[TASKS] Initialized task at 0x5881beb3f678
+[GPIO] Clear pin 17 = 0
+[TASKS] Initialized task at 0x5881beb3f6a8
+[GPIO] Clear pin 18 = 0
+[TASKS] Initialized task at 0x5881beb3f6d8
+[GPIO] Clear pin 19 = 0
+[TASKS] Initialized task at 0x5881beb3f708
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x5881beb3f738
+[GPIO] Clear pin 33 = 0
+[TASKS] Initialized task at 0x5881beb3f768
+[GPIO] Clear pin 34 = 0
+[TASKS] Initialized task at 0x5881beb3f798
+[GPIO] Clear pin 35 = 0
+[GPIO] Set pin 32 = 1
+[NVM] Item 21 not found
+[NVM] Item 03 not found
+[GPIO] Set pin 32 = 1
+[ZIGBEE] Endpoint 7: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+.[GPIO] Clear pin 34 = 0
+[TASKS] Initialized task at 0x63dd282dc798
+[GPIO] Clear pin 35 = 0
+[GPIO] Set pin 32 = 1
+[NVM] Item 21 not found
+.[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+....[GPIO] Clear pin 19 = 0
+[TASKS] Initialized task at 0x5d54091bc708
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x5d54091bc738
+[ZIGBEE] No matching bindings found
+..[NVM] Item 11 not found
+[TASKS] Initialized task at 0x56fd61974468
+[NVM] Item 12 not found
+[ZIGBEE] Initialized Zigbee with 10 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=6
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=14, is_server=1
+.... [ 66%]
+[GPIO] Clear pin 34 = 0
+[TASKS] Initialized task at 0x587369262798
+[GPIO] Clear pin 35 = 0
+[GPIO] Set pin 32 = 1
+[NVM] Item 21 not found
+[NVM] Item 03 not found
+[GPIO] Set pin 32 = 1
+[NVM] Item 04 not found
+[NVM] Item 05 not found
+[NVM] Item 06 not found
+[NVM] Item 07 not found
+..[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 3: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+...[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 7: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 8: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 9: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Endpoint 10: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[NVM] Wrote 8 bytes to item 04
+.[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 13: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 3: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 3: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 5: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[TASKS] Executing task 0x5969569bf1e0 from slot 0
+[ZIGBEE] Sending command: ep=1, cluster=0x0008, cmd=0x07, len=0
+[ZIGBEE] No matching bindings found
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[TASKS] Task completed and removed from slot 0
+.[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 5: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 6: profile=0x0104, device=0xffff, clusters=3
+.[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Endpoint 10: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[NVM] Wrote 8 bytes to item 04
+.[ZIGBEE] Endpoint 9: profile=0x0104, device=0xffff, clusters=1
+.....[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 3: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+.[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+..[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+...[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 3: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+...[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+.[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+.[GPIO] Clear pin 35 = 0
+[GPIO] Set pin 32 = 1
+[NVM] Item 21 not found
+[NVM] Item 03 not found
+[GPIO] Set pin 32 = 1
+[NVM] Item 04 not found
+[NVM] Item 05 not found
+[NVM] Item 06 not found
+[NVM] Item 07 not found
+[NVM] Item 09 not found
+[NVM] Item 09 not found
+[NVM] Item 0a not found
+[NVM] Item 0a not found
+[NVM] Item 0b not found
+[NVM] Item 0b not found
+[NVM] Item 0c not found
+[NVM] Item 0c not found
+[TASKS] Initialized task at 0x5a585d3143c8
+[NVM] Item 11 not found
+[TASKS] Initialized task at 0x5a585d314468
+[NVM] Item 12 not found
+[ZIGBEE] Initialized Zigbee with 10 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=6
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=14, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0002, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0x0003, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 4: id=0x0004, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 5: id=0x0005, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 6: id=0x0007, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 7: id=0x0012, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 13: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 3: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 3: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 5: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 6: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 7: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 8: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 9: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Endpoint 10: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[NVM] Wrote 8 bytes to item 04
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[TASKS] Task completed and removed from slot 0
+.[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[TASKS] Task completed and removed from slot 0
+.[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 5: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+.[TASKS] Executing task 0x60232745b1e0 from slot 0
+[ZIGBEE] Sending command: ep=1, cluster=0x0008, cmd=0x07, len=0
+[ZIGBEE] No matching bindings found
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[TASKS] Task completed and removed from slot 0
+[ZIGBEE] Cleared all bindings
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+..[GPIO] Set callback for pin 3
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x562ce75fc648
+[GPIO] Clear pin 16 = 0
+[TASKS] Initialized task at 0x562ce75fc678
+[GPIO] Clear pin 17 = 0
+[TASKS] Initialized task at 0x562ce75fc6a8
+[GPIO] Clear pin 18 = 0
+[TASKS] Initialized task at 0x562ce75fc6d8
+[GPIO] Clear pin 19 = 0
+[TASKS] Initialized task at 0x562ce75fc708
+[GPIO] Clear pin 32 = 0
+[TASKS] Initialized task at 0x562ce75fc738
+.[GPIO] Set pin 32 = 1
+[NVM] Item 04 not found
+[NVM] Item 05 not found
+.[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+.[GPIO] Clear pin 16 = 0
+.[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 3: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+.[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 13: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 3: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 3: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[TASKS] Executing task 0x56e5250d11e0 from slot 0
+[GPIO] Clear pin 16 = 0
+[ZIGBEE] Attribute changed: ep=5, cluster=0x0006, attr=0x0000
+.[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 13: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 3: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[TASKS] Executing task 0x63b13dab51e0 from slot 0
+[GPIO] Clear pin 16 = 0
+[ZIGBEE] Attribute changed: ep=5, cluster=0x0006, attr=0x0000
+[ZIGBEE] Sending command: ep=1, cluster=0x0006, cmd=0x02, len=0
+[ZIGBEE] No matching bindings found
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[TASKS] Task completed and removed from slot 0
+.[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 3: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+.[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+..[NVM] Item 11 not found
+[TASKS] Initialized task at 0x58abb1fd8468
+[NVM] Item 12 not found
+[ZIGBEE] Initialized Zigbee with 10 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=6
+.[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Endpoint 10: profile=0x0104, device=0xffff, clusters=1
+[ZIGBEE]   Cluster 0: id=0x0102, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0008, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0xff01, type=0x10, size=1, flags=1
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[NVM] Wrote 8 bytes to item 04
+.[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 5: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 6: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+.relay_toggle
+relay_off
+EVT gpio pin=16 value=0
+EVT zcl_attr_change ep=5 cluster=0x0006 attr=0x0000
+EVT zcl_cmd_send ep=1 cluster=0x0006 cmd=0x00 len=0 data_hex=
+EVT zcl_attr_change ep=1 cluster=0x0012 attr=0x0055
+.[ZIGBEE] Sending command: ep=1, cluster=0x0006, cmd=0x01, len=0
+[ZIGBEE] No matching bindings found
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[TASKS] Task completed and removed from slot 0
+EVT zcl_cmd_send ep=1 cluster=0x0006 cmd=0x01 len=0 data_hex=
+EVT zcl_attr_change ep=1 cluster=0x0012 attr=0x0055
+..[NVM] Item 03 not found
+[GPIO] Set pin 32 = 1
+..[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 6: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0008, attrs=0, is_server=1
+[ZIGBEE]   Cluster 2: id=0x0004, attrs=1, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x18, size=1, flags=0
+[ZIGBEE] Endpoint 7: profile=0x0104, device=0xffff, clusters=3
+[ZIGBEE]   Cluster 0: id=0x0006, attrs=2, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x4003, type=0x30, size=1, flags=1
+....[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 4: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+.[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+.[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+.[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+.........[NVM] Wrote 2 bytes to item 01
+[NVM] Read 130 bytes from item 02
+[GPIO] Parsed GPIO pin 'A0u' as 0
+[GPIO] Init pin 0 as input, pull=1
+[GPIO] Parsed GPIO pin 'A1u' as 1
+[GPIO] Init pin 1 as input, pull=1
+[GPIO] Read pin 0 = 1
+[TASKS] Initialized task at 0x61ac34d311e0
+[GPIO] Set callback for pin 0
+[GPIO] Read pin 1 = 1
+[TASKS] Initialized task at 0x61ac34d31248
+[GPIO] Set callback for pin 1
+[NVM] Item 21 not found
+[NVM] Item 03 not found
+[NVM] Item 04 not found
+[NVM] Item 05 not found
+[ZIGBEE] Initialized Zigbee with 2 endpoints
+[ZIGBEE] Endpoint 1: profile=0x0104, device=0xffff, clusters=6
+[ZIGBEE]   Cluster 0: id=0x0000, attrs=13, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0001, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0002, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 3: id=0x0003, type=0x20, size=1, flags=0
+[ZIGBEE]     Attr 4: id=0x0004, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 5: id=0x0005, type=0x42, size=32, flags=0
+[ZIGBEE]     Attr 6: id=0x0007, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 7: id=0x0012, type=0x10, size=1, flags=1
+[ZIGBEE]     Attr 8: id=0x4000, type=0x42, size=6, flags=0
+[ZIGBEE]     Attr 9: id=0x0006, type=0x42, size=9, flags=0
+[ZIGBEE]     Attr 10: id=0xfffd, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 11: id=0xff00, type=0x44, size=130, flags=1
+[ZIGBEE]     Attr 12: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0019, attrs=3, is_server=0
+[ZIGBEE]     Attr 0: id=0x0000, type=0xf0, size=8, flags=1
+[ZIGBEE]     Attr 1: id=0x0001, type=0x23, size=4, flags=1
+[ZIGBEE]     Attr 2: id=0x0006, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 2: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 3: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+.[TASKS] Executing task 0x61d0b07a81e0 from slot 0
+[ZIGBEE] Sending command: ep=1, cluster=0x0008, cmd=0x07, len=0
+[ZIGBEE] No matching bindings found
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[TASKS] Task completed and removed from slot 0
+.[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+.[ZIGBEE]   Cluster 4: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 5: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Endpoint 2: profile=0x0104, device=0xffff, clusters=4
+[ZIGBEE]   Cluster 0: id=0x0007, attrs=8, is_server=1
+[ZIGBEE]     Attr 0: id=0x0000, type=0x30, size=1, flags=0
+[ZIGBEE]     Attr 1: id=0x0010, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+.[TASKS] Executing task 0x5a8a6173f1e0 from slot 0
+[ZIGBEE] Sending command: ep=1, cluster=0x0006, cmd=0x02, len=0
+[ZIGBEE] No matching bindings found
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[TASKS] Scheduled task 0x5a8a6173f1e0 in slot 1, delay=740 ms, execute_at=800
+[TASKS] Task completed and removed from slot 0
+.[ZIGBEE]     Attr 2: id=0xff00, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 3: id=0xff01, type=0x30, size=1, flags=1
+[ZIGBEE]     Attr 4: id=0xff02, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 3: id=0x006f, type=0x18, size=1, flags=0
+[ZIGBEE]   Cluster 3: id=0x0008, attrs=0, is_server=0
+[ZIGBEE] Registered attribute change callback
+[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+.[TASKS] Executing task 0x5c4e2afc01e0 from slot 0
+[ZIGBEE] Sending command: ep=1, cluster=0x0006, cmd=0x02, len=0
+[ZIGBEE] No matching bindings found
+[ZIGBEE] Attribute changed: ep=1, cluster=0x0012, attr=0x0055
+[TASKS] Task completed and removed from slot 0
+.[NVM] Item 20 not found
+[NVM] Wrote 4 bytes to item 20
+[ZIGBEE] Sending Zigbee announce
+. [ 99%]
+[ZIGBEE]     Attr 5: id=0xff03, type=0x21, size=2, flags=1
+[ZIGBEE]     Attr 6: id=0xff04, type=0x20, size=1, flags=1
+[ZIGBEE]     Attr 7: id=0xff05, type=0x30, size=1, flags=1
+[ZIGBEE]   Cluster 1: id=0x0006, attrs=0, is_server=0
+[ZIGBEE]   Cluster 2: id=0x0012, attrs=4, is_server=1
+[ZIGBEE]     Attr 0: id=0x004a, type=0x21, size=2, flags=0
+[ZIGBEE]     Attr 1: id=0x0051, type=0x10, size=1, flags=0
+[ZIGBEE]     Attr 2: id=0x0055, type=0x21, size=2, flags=0
+..                                                                       [100%]
+218 passed in 2.94s

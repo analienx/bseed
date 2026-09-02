@@ -1,0 +1,108 @@
+{
+  "created_at": "2026-09-02T06:05:02Z",
+  "purpose": "r2 revalidation per supervisor comment 5505067709 (self-remediating validation; preserves failed-run record d1db9f2)",
+  "evidence_branch": "executor/ts0726-redesign-inputs-2026-09-01",
+  "links_prior_failed": "revalidation-2026-09-02 @ d1db9f2 (immutable, not overwritten)",
+  "pins": {
+    "v1": "analienx/tuya-zigbee-switch supervisor/target-overlay-v4-release @ e933e3528332bf0a20e58b1cef023b024704257b",
+    "v2": "analienx/tuya-zigbee-switch supervisor/ts0726-redesign-v4 @ 4281c6465bbcea31801088b36317e186b97f8ee5",
+    "v3": "analienx/home-assistant-stack supervisor/ts0726-post-migration-ha-v1 @ 8efc5696debdf80b394bd65ff947118f33ac3215 (carry-forward)"
+  },
+  "results": {
+    "v1": "PASS (focused 9/9, full 218/218, audit PASS, action-probe PASS relative path, matcher PASS, bundle BUILT_NOT_DEPLOYED, installed-ZHC PASS, UX PASS)",
+    "v1_ux": "PASS",
+    "v2": "PASS (validator PASS, focused 46/46, full 282/282, forbidden-surface PASS, builds PASS, identities exact)",
+    "v2_format_note": "cosmetic uncrustify 0.78.1 finding on device_migration.c (+2 bytes: macro alignment + 2 blank lines); not self-fixed (recovery-critical firmware surface at supervisor pin)",
+    "v3": "PASS carry-forward @ 8efc5696 (8/8 validator re-run; branch verified unchanged)"
+  },
+  "files": {
+    "commands.txt": {
+      "sha256": "9b8b9a0e5e8d857ca2c1871e905941cb49e40ab79e6d67b5aac6685a3e138d5d",
+      "size": 2279
+    },
+    "environment.json": {
+      "sha256": "87fea196d97a536ca82abb5c9cfb03c967b2f586afd745bbf83471da5bc3c91a",
+      "size": 955
+    },
+    "REVALIDATION-REPORT.md": {
+      "sha256": "2326a839956b25ff284583490194adc96d56a5768b588b57bf3f20553d4d569c",
+      "size": 4935
+    },
+    "v1/action-contract.log": {
+      "sha256": "af2ed3baf16ef86438232d871762b015b2f0ad36253e1c0742204738636db9b8",
+      "size": 2001
+    },
+    "v1/audit.log": {
+      "sha256": "c835b1a92e0a40e57ce831d37f55f8cae01b6c054be88f2950af01357a5e19fa",
+      "size": 318
+    },
+    "v1/bundle-manifest.json": {
+      "sha256": "ef0a09107bedf75bf34c7e6cdbcf037c2c04dc8616f8b58709d5f4797209261f",
+      "size": 3946
+    },
+    "v1/exposes-full.json": {
+      "sha256": "0ce4f6af92c966c48705f81f89b8a3c0443531bca5e3f4e3f10aa56350134d5f",
+      "size": 31050
+    },
+    "v1/focused-tests.log": {
+      "sha256": "6cfb81cd439929e4e749485a362722144a59599ffda343ffee29b7b0f55e2467",
+      "size": 98
+    },
+    "v1/full-tests.log": {
+      "sha256": "87437b15e2f63a56289ab0564293bf41225676f9e22589ba97cf546fd0cf3581",
+      "size": 97487
+    },
+    "v1/installed-zhc-probe.json": {
+      "sha256": "6a34dae46310bf2445df79d7eb4463d83808f906370b76977ac1b28247abcef9",
+      "size": 21160
+    },
+    "v1/matcher.log": {
+      "sha256": "5070096762c05d4b822a21ac3eb84602c17be0430e82cc558b37a0a91849fbe0",
+      "size": 933
+    },
+    "v1/node-check.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "v1/UX-REPORT.md": {
+      "sha256": "6592e43ccae349a8dd55f945f0c38a53a053cbef0fccd7b721e2237e00d76bba",
+      "size": 4103
+    },
+    "v2/build-manifest.json": {
+      "sha256": "155909152109056bec76c59b70c62dd3bba14f7a15bf48c2b6b399c003ed8a47",
+      "size": 1902
+    },
+    "v2/focused-tests.log": {
+      "sha256": "799a0350068540c222065e770ddbc909cc66baa4f0e14776bf615cbe1e796211",
+      "size": 12307
+    },
+    "v2/forbidden-surface.log": {
+      "sha256": "70aee35711527fccd96ff1dac3a0ce4e2bf5a2bc3b1b4f1f362baba3a92fdbec",
+      "size": 84
+    },
+    "v2/format-audit.log": {
+      "sha256": "c6db36a15c6f1ddaacb793194ecf2c7fcde61d37e259de796a4dcc7b270e43cc",
+      "size": 393
+    },
+    "v2/forward-artifact.json": {
+      "sha256": "28f51fe561133f6acc63a97a4bae9c0b87feaf404637c0c6fb7226018d4f5161",
+      "size": 743
+    },
+    "v2/full-tests.log": {
+      "sha256": "578385e852b60608b33204bb04ad1336ea36c7ce5ac8ef4c168d70247bbec87a",
+      "size": 94790
+    },
+    "v2/recovery-artifact.json": {
+      "sha256": "b8ffe3847b820e78c575aa95cf47fff361c501f47aaab64f2c45fc6ab02768a9",
+      "size": 747
+    },
+    "v2/validator.log": {
+      "sha256": "32b45ebb9fb67e336d18bd229bfcef5d8e9472c4c41b2d79c1dfcca890daaf48",
+      "size": 839
+    },
+    "v3/validator.log": {
+      "sha256": "e0ba766722b8c8754ba89992705d8c8077be03a85b38bcc80f068508848db80d",
+      "size": 804
+    }
+  }
+}
