@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "sourceCommit": "66aa885c4aa13bf4e27d013080170323cb3db52a",
+  "focusedTests": [
+    "tests/test_device_migration.py",
+    "tests/test_cross_image_migration.py"
+  ],
+  "steps": [
+    {
+      "command": [
+        "make",
+        "stub/build"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "make",
+        "stub/build_end_device"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "tests/test_device_migration.py",
+        "tests/test_cross_image_migration.py",
+        "-q"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "note": "BUILD+TEST only; no OTA publication or flash performed"
+}

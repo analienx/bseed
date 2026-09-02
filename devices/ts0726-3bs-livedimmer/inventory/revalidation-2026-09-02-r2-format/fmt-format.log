@@ -1,0 +1,6 @@
+do_source_file: Parsing: src/device_config/device_migration.c as language C
+PASS: src/device_config/device_migration.c (18691 bytes)
+do_source_file: Parsing: src/device_config/device_migration.h as language C-Header
+PASS: src/device_config/device_migration.h (1200 bytes)
+do_source_file: Parsing: src/app.c as language C
+PASS: src/app.c (3127 bytes)

@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-09-02T06:50:00Z",
+  "purpose": "V2 format closure per supervisor 5505442301; prior evidence r2 @ fe7e59a preserved",
+  "evidence_branch": "executor/ts0726-redesign-inputs-2026-09-01",
+  "format_commit": "analienx/tuya-zigbee-switch supervisor/ts0726-redesign-v4 @ 66aa885c4aa13bf4e27d013080170323cb3db52a (parent 4281c646)",
+  "results": {
+    "validator": "PASS",
+    "focused": "46/46 PASS",
+    "full": "282/282 PASS",
+    "forbidden_surface": "PASS",
+    "format_audit": "PASS",
+    "forward_hash": "old == new (4a2e444e...f68ba)",
+    "recovery_hash": "old == new (6ebd25f4...7ebf8)"
+  },
+  "token_stream_proof": "whitespace-stripped cmp identical (13953 bytes)",
+  "files": {
+    "fmt-format.log": {
+      "size": 350,
+      "sha256": "4a5c109d93e597ccc0db43d13c3ce9d78f15a4f8288bd45862b2a39dd40485b4"
+    },
+    "fmt-validator.log": {
+      "size": 839,
+      "sha256": "9d9cd0dca9843cccd4839e24b7c6291f2ec3335c01802171afb4da8b790f0e67"
+    },
+    "format-commit.txt": {
+      "size": 1470,
+      "sha256": "5897c47e876063ea2ce96b21987f7beddd16f0dce5243203a98832bc20ab53b2"
+    },
+    "REPORT.md": {
+      "size": 2662,
+      "sha256": "7191082784dbadc93e3d18815d99e4178840ad8209203459d4b6bc09a469240d"
+    }
+  }
+}
