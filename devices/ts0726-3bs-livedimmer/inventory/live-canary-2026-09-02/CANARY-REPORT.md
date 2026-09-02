@@ -48,6 +48,22 @@ Temp server: node http server bound to `127.0.0.1:8899` **inside** the Z2M conta
 
 Fleet delta (pre vs post `bridge/devices`, 104 devices): **exactly 3 fields, all on the target** — `definition`, `software_build_id`, `date_code`. Bindings/configured-reportings/endpoints/groups: **0 deltas** fleet-wide; groups 21/21 identical; bound targets unchanged.
 
+### D2. Raw migration-state verification (read-only raw reads, EP4/5/6)
+
+Direct raw reads of `genOnOff` (attr `0xff03` = 65283, physical relay behavior) on all three endpoints, via ZHC converter read only:
+
+```text
+EP4 (relay_left)   {"65283":1,"onOff":0}   → 0xff03 = 1 = DETACHED_ON, onOff = 0
+EP5 (relay_middle) {"65283":1,"onOff":0}   → 0xff03 = 1 = DETACHED_ON, onOff = 0
+EP6 (relay_right)  {"65283":1,"onOff":0}   → 0xff03 = 1 = DETACHED_ON, onOff = 0
+```
+
+**3× DETACHED_ON confirmed — the supervisor's forward-migration invariant holds** (`raw/raw-read-0xff03.log`, `raw/state-after-rawreads.json`).
+
+Notes:
+- The initial post-OTA publication of `relay_*_physical_mode` as `null` was a pre-read publication defect only; after the raw read Z2M publishes all three selects as `always_on` (matching the HA finalizer precondition — finalizer NOT executed).
+- Indicator RIGHT now reads `same` + `OFF` (pre: `same` + `ON` with relay OFF): under v4 semantics the `same` indicator follows the logical relay state (OFF → LED OFF). The firmware did not write the mode (user's `same` preserved); L/M remain `manual`+`ON` migration safety values.
+
 ## E. Physical continuity
 
 Software telemetry shows no relay/main state change, but per supervisor: **PHYSICAL_CONTINUITY = PENDING_OPERATOR** — no operator was present to visually confirm the downstream smart lights did not blink during the device reboot window. Availability of the bound smart-light path (`LivingRoomLinearDimmer`) remained `online` throughout (monitor log).
