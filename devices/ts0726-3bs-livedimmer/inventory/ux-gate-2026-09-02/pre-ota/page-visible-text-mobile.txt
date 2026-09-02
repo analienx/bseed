@@ -1,0 +1,216 @@
+LivingRoomMainDimmer
+About
+Exposes
+Bind
+Reporting
+Settings
+Settings (specific)
+State
+Clusters
+Groups
+Scene
+Dev console
+Advanced hardware configuration (Endpoint: switch_left)
+Advanced Romasku hardware pin mapping. This describes which MCU pins are connected to buttons, relays, indicators and other peripherals; it is NOT a normal behavior setting. An incorrect value can make buttons, relays or indicators stop working and may require recovery firmware. Do not edit unless you are porting or repairing a device.
+Factory-reset press count (Endpoint: switch_left)
+Number of consecutive button presses required to trigger factory reset. Set to 0 to disable multi-press reset.
+0
+255
+Network indicator (Endpoint: switch_left)
+Controls the dedicated network-status indicator LED.
+OFFON
+State (Endpoint: relay_left)
+On/off state of the switch
+OFFON
+State (Endpoint: relay_middle)
+On/off state of the switch
+OFFON
+State (Endpoint: relay_right)
+On/off state of the switch
+OFFON
+Power-on behavior (Endpoint: relay_left)
+Controls the behavior when the device is powered on after power loss
+off
+on
+toggle
+previous
+Power-on behavior (Endpoint: relay_middle)
+Controls the behavior when the device is powered on after power loss
+off
+on
+toggle
+previous
+Power-on behavior (Endpoint: relay_right)
+Controls the behavior when the device is powered on after power loss
+off
+on
+toggle
+previous
+Last button action (Endpoint: switch_left)
+Most recently reported physical button action.
+released
+Button type (Endpoint: switch_left)
+Electrical type of the wall control: toggle/rocker, momentary push button, or normally-closed momentary input.
+toggle
+momentary
+momentary_nc
+Button command behavior (Endpoint: switch_left)
+Controls which On/Off command the wall control produces: - on_off: When switch physically moved to position 1 it always generates ON command, and when moved to position 2 it generates OFF command - off_on: Same as on_off, but positions are swapped - toggle_simple: Any press of physical switch will TOGGLE the relay and send TOGGLE command to binds - toggle_smart_sync: Any press of physical switch will TOGGLE the relay and send corresponding ON/OFF command to keep binds in sync with relay - toggle_smart_opposite: Any press of physical switch: TOGGLE the relay and send corresponding ON/OFF command to keep binds in the state opposite to the relay
+on_off
+off_on
+toggle_simple
+toggle_smart_sync
+toggle_smart_opposite
+Local relay trigger (Endpoint: switch_left)
+Controls when this physical button changes its assigned local Zigbee relay state. This is independent of Physical relay behavior: the Zigbee relay state can change even when the electrical output is forced Always on or Always off.
+detached
+press_start
+short_press
+long_press
+Assigned local relay (Endpoint: switch_left)
+Selects which local relay endpoint this wall control changes.
+relay_1
+relay_2
+relay_3
+Bound-device trigger (Endpoint: switch_left)
+Controls when this button sends commands directly to Zigbee-bound devices or groups.
+press_start
+short_press
+long_press
+Long-press threshold (Endpoint: switch_left)
+How long the button must be held before it is treated as a long press.
+0
+5000
+ms
+Hold dimming speed (Endpoint: switch_left)
+Brightness-change rate sent in Zigbee Level Control Move commands while the button is held.
+1
+255
+level/s
+Last button action (Endpoint: switch_middle)
+Most recently reported physical button action.
+released
+Button type (Endpoint: switch_middle)
+Electrical type of the wall control: toggle/rocker, momentary push button, or normally-closed momentary input.
+toggle
+momentary
+momentary_nc
+Button command behavior (Endpoint: switch_middle)
+Controls which On/Off command the wall control produces: - on_off: When switch physically moved to position 1 it always generates ON command, and when moved to position 2 it generates OFF command - off_on: Same as on_off, but positions are swapped - toggle_simple: Any press of physical switch will TOGGLE the relay and send TOGGLE command to binds - toggle_smart_sync: Any press of physical switch will TOGGLE the relay and send corresponding ON/OFF command to keep binds in sync with relay - toggle_smart_opposite: Any press of physical switch: TOGGLE the relay and send corresponding ON/OFF command to keep binds in the state opposite to the relay
+on_off
+off_on
+toggle_simple
+toggle_smart_sync
+toggle_smart_opposite
+Local relay trigger (Endpoint: switch_middle)
+Controls when this physical button changes its assigned local Zigbee relay state. This is independent of Physical relay behavior: the Zigbee relay state can change even when the electrical output is forced Always on or Always off.
+detached
+press_start
+short_press
+long_press
+Assigned local relay (Endpoint: switch_middle)
+Selects which local relay endpoint this wall control changes.
+relay_1
+relay_2
+relay_3
+Bound-device trigger (Endpoint: switch_middle)
+Controls when this button sends commands directly to Zigbee-bound devices or groups.
+press_start
+short_press
+long_press
+Long-press threshold (Endpoint: switch_middle)
+How long the button must be held before it is treated as a long press.
+0
+5000
+ms
+Hold dimming speed (Endpoint: switch_middle)
+Brightness-change rate sent in Zigbee Level Control Move commands while the button is held.
+1
+255
+level/s
+Last button action (Endpoint: switch_right)
+Most recently reported physical button action.
+released
+Button type (Endpoint: switch_right)
+Electrical type of the wall control: toggle/rocker, momentary push button, or normally-closed momentary input.
+toggle
+momentary
+momentary_nc
+Button command behavior (Endpoint: switch_right)
+Controls which On/Off command the wall control produces: - on_off: When switch physically moved to position 1 it always generates ON command, and when moved to position 2 it generates OFF command - off_on: Same as on_off, but positions are swapped - toggle_simple: Any press of physical switch will TOGGLE the relay and send TOGGLE command to binds - toggle_smart_sync: Any press of physical switch will TOGGLE the relay and send corresponding ON/OFF command to keep binds in sync with relay - toggle_smart_opposite: Any press of physical switch: TOGGLE the relay and send corresponding ON/OFF command to keep binds in the state opposite to the relay
+on_off
+off_on
+toggle_simple
+toggle_smart_sync
+toggle_smart_opposite
+Local relay trigger (Endpoint: switch_right)
+Controls when this physical button changes its assigned local Zigbee relay state. This is independent of Physical relay behavior: the Zigbee relay state can change even when the electrical output is forced Always on or Always off.
+detached
+press_start
+short_press
+long_press
+Assigned local relay (Endpoint: switch_right)
+Selects which local relay endpoint this wall control changes.
+relay_1
+relay_2
+relay_3
+Bound-device trigger (Endpoint: switch_right)
+Controls when this button sends commands directly to Zigbee-bound devices or groups.
+press_start
+short_press
+long_press
+Long-press threshold (Endpoint: switch_right)
+How long the button must be held before it is treated as a long press.
+0
+5000
+ms
+Hold dimming speed (Endpoint: switch_right)
+Brightness-change rate sent in Zigbee Level Control Move commands while the button is held.
+1
+255
+level/s
+Indicator LED behavior (Endpoint: relay_left)
+same: LED follows the relay's virtual On/Off state; opposite: LED shows the inverse state; manual: LED state is controlled separately with Indicator LED state.
+same
+opposite
+manual
+Indicator LED state (Endpoint: relay_left)
+Manual state of the panel indicator LED. Used when Indicator LED behavior is set to manual.
+OFFON
+Indicator LED behavior (Endpoint: relay_middle)
+same: LED follows the relay's virtual On/Off state; opposite: LED shows the inverse state; manual: LED state is controlled separately with Indicator LED state.
+same
+opposite
+manual
+Indicator LED state (Endpoint: relay_middle)
+Manual state of the panel indicator LED. Used when Indicator LED behavior is set to manual.
+OFFON
+Indicator LED behavior (Endpoint: relay_right)
+same: LED follows the relay's virtual On/Off state; opposite: LED shows the inverse state; manual: LED state is controlled separately with Indicator LED state.
+same
+opposite
+manual
+Indicator LED state (Endpoint: relay_right)
+Manual state of the panel indicator LED. Used when Indicator LED behavior is set to manual.
+OFFON
+Physical relay behavior (Endpoint: relay_left)
+Controls the electrical relay independently of the Zigbee On/Off state. Follow state: the physical relay follows the Zigbee On/Off state; selecting it immediately synchronizes the electrical output to the current Zigbee state. Always on: keeps the physical output energized. Recommended for smart bulbs or other loads that must remain powered; Zigbee state, button actions and bindings can continue independently. Always off: keeps the physical output de-energized while the Zigbee state can continue to change independently. Changing this setting can immediately switch mains power. The setting is stored and restored after restart.
+follow_state
+always_on
+always_off
+Physical relay behavior (Endpoint: relay_middle)
+Controls the electrical relay independently of the Zigbee On/Off state. Follow state: the physical relay follows the Zigbee On/Off state; selecting it immediately synchronizes the electrical output to the current Zigbee state. Always on: keeps the physical output energized. Recommended for smart bulbs or other loads that must remain powered; Zigbee state, button actions and bindings can continue independently. Always off: keeps the physical output de-energized while the Zigbee state can continue to change independently. Changing this setting can immediately switch mains power. The setting is stored and restored after restart.
+follow_state
+always_on
+always_off
+Physical relay behavior (Endpoint: relay_right)
+Controls the electrical relay independently of the Zigbee On/Off state. Follow state: the physical relay follows the Zigbee On/Off state; selecting it immediately synchronizes the electrical output to the current Zigbee state. Always on: keeps the physical output energized. Recommended for smart bulbs or other loads that must remain powered; Zigbee state, button actions and bindings can continue independently. Always off: keeps the physical output de-energized while the Zigbee state can continue to change independently. Changing this setting can immediately switch mains power. The setting is stored and restored after restart.
+follow_state
+always_on
+always_off
+Action
+Triggered action (e.g. a button click)
+N/A
+Linkquality
+Link quality (signal strength)
+128lqi
