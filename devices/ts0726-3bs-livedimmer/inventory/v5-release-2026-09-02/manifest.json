@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "release": "BSEED TS0726-3-BS v5 canary",
+  "generatedUtc": "2026-09-02T21:19:03Z",
+  "target": {
+    "friendlyName": "LivingRoomMainDimmer",
+    "ieee": "0xa4c13843a9d40f85",
+    "manufacturerName": "iedhxgyi",
+    "modelID": "TS0726-3-BS",
+    "board": "SWITCH_BSEED_TS0726_3GANG"
+  },
+  "pins": {
+    "firmwareRepo": "analienx/tuya-zigbee-switch",
+    "firmwareBranch": "supervisor/ts0726-redesign-v5",
+    "firmwareCommit": "69a4775c4cb4c87f2e948a8aa5b6f099df703ba5",
+    "overlayRepo": "analienx/tuya-zigbee-switch",
+    "overlayBranch": "supervisor/target-overlay-v5",
+    "overlayCommit": "eaba4ceca83df265ddedde5a6ea60e72ff3522d3",
+    "overlayPath": "zigbee2mqtt/converters/bseed_ts0726_v5.js",
+    "overlayGitBlob": "ff53b04ac1f24f935f31f2c4ce9ff5f4aece1b0f",
+    "haRepo": "analienx/home-assistant-stack",
+    "haBranch": "supervisor/ts0726-post-migration-ha-v2",
+    "haCommit": "68972efd4b1feb2eb16c3e98c7174c0c36efa65f"
+  },
+  "firmware": {
+    "forward": {
+      "softwareBuildID": "1.1.5-bseedv5",
+      "fileVersion": 285356037,
+      "manufacturerCode": 4417,
+      "imageType": 45577,
+      "binSha256": "97a08214e67d0f052cf463cad109ddf9ebd20921e8db548df788438380ca7281",
+      "binSha512": "e33283c8c0025f88f727c4432ce717942caa9ad0e0fa5f5cb916b6ca144bef4981ce24578ab1fa0620853ceec61c2bff6c43760d9c6bf25c646c6f9a36993382",
+      "otaSha256": "033fe2317fee25c9177c2121b17807fa37bee6ab4ceb8178564ab5e8f3e5f1ae",
+      "otaSha512": "05d8bef0c1b0a813d3e8d422bcaba2430c64fa9a2e7cc53fe46c80628ec58387ec14be13716a26c57473ab999cc8a03ba569c52d69cd132a4ab4e2b8796a57b9"
+    },
+    "recovery": {
+      "softwareBuildID": "1.1.5-bseedv5r",
+      "fileVersion": 285356038,
+      "manufacturerCode": 4417,
+      "imageType": 45577,
+      "binSha256": "e1e4cdbb7d13b2b5de75487979948e5a9de04eda1df52a8da8b5c7835115883f",
+      "binSha512": "fba590ccc1c305a395e84b13bc9b0f71c075fb6ec628d6ab8d25e0e31d2416effe67970ad48a9449c56c2dc0c9fcdbdb02490bc2bca2f45c75fec44552dcafc2",
+      "otaSha256": "001e60bc6ae249f2548f9ed76c9988846984b95e770319781febd7af403d81f6",
+      "otaSha512": "66b453ca90d645948d381675cc0b98503461d410d2a97d3b0c4cd54c4b82f8ef6019b10ba9a2440eda86a3ae1588fbf514f24c34f58187a3441be0a82847ef34"
+    },
+    "buildRun": 33684200082,
+    "buildJob": 100427622558,
+    "artifactID": 9867510244,
+    "artifactName": "bseed-ts0726-v5-final-69a4775c",
+    "artifactArchiveDigest": "sha256:2b004d404a9c8397d99e2d581ae398356b7d3794302a0b435200e55ca4f4d1c4"
+  },
+  "validation": {
+    "firmwareFunctionalRun": 33684180425,
+    "firmwareFunctionalJobResult": "PASS",
+    "firmwareLintDisposition": "UNRELATED_VENDOR_ONLY",
+    "firmwareLintOnlyFailures": [
+      "src/silabs/spiflash_extension/spiflash/btl_storage_spiflash.c",
+      "src/silabs/spiflash_extension/spiflash/btl_storage_spiflash_configs.h"
+    ],
+    "overlayExactZhcRun": 33683419338,
+    "overlayExactZhcVersion": "26.90.0",
+    "overlayExactZhcResult": "PASS",
+    "haRun": 33683734622,
+    "haResult": "PASS",
+    "haConfigCheck": "PASS"
+  },
+  "liveDisposition": {
+    "currentFirmware": "1.1.4-bseedv4",
+    "currentV4MustRemainUntouchedUntilStagingPass": true,
+    "v5LiveDeployed": false,
+    "haV2LiveDeployed": false,
+    "deviceConfigLiveRoundTripAuthorized": false
+  }
+}
