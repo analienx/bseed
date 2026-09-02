@@ -1,0 +1,45 @@
+{
+  "board": "SWITCH_BSEED_TS0726_3GANG",
+  "canonicalConfig": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;",
+  "images": {
+    "forward": {
+      "bin": {
+        "bytes": 183753,
+        "fileName": "forward.bin",
+        "sha256": "4a2e444ee11e0393bfd5310ec71e5e49e3cd0eddafbbe565bf19aae3ad2f68ba",
+        "sha512": "9aaab57e2464f143937b239b58e46aeec0a13c88ba29581bd0d9af84954e922ef368d737a4c59bfb6fd8115e80d10c077bdd1dc69d7abb7653e7de6d0f013276"
+      },
+      "fileVersion": 285356035,
+      "imageType": 45577,
+      "manufacturerCode": 4417,
+      "ota": {
+        "bytes": 183826,
+        "fileName": "forward.ota",
+        "sha256": "db2328b1e86f58ff66c5863c2b969b9ffb90e5fbbca5e5be263fb9d246060aa8",
+        "sha512": "97440ddf42241d6dd4962dac69515cbf820e9d9bfd25d773b9ee19c145de36e3c2585c118828752a2e5745d5272123f0eb008bfd1e0b4f6fd4d662d24cbc33d8"
+      },
+      "swBuildId": "1.1.4-bseedv4"
+    },
+    "recovery": {
+      "bin": {
+        "bytes": 183117,
+        "fileName": "recovery.bin",
+        "sha256": "6ebd25f473e5d98f8be2f145313b0c8c2d3d3582c2b337d5b044bd2d8047ebf8",
+        "sha512": "043071953e891218bc82e9894f7f7faa7f62c1c68df10fe56c68e7c83bb2ff0fa6d348a336ca87c24319d8fc36d7de66cfe976ec53cc88fa7540670dcbd71d52"
+      },
+      "fileVersion": 285356036,
+      "imageType": 45577,
+      "manufacturerCode": 4417,
+      "ota": {
+        "bytes": 183186,
+        "fileName": "recovery.ota",
+        "sha256": "bac0b9ba1b5ac3b8ad8862d994619bf3bc8eb771fb217dbf9c4ecdcd834231a2",
+        "sha512": "35b334aa96f8b2c8e6dc4e6159e315894304d1b8b160d2febb0627ea7d6b3aa9e32e0ffce2132b302b9616f9a77b7c951b7815669d749be2831a3f94d32abd6d"
+      },
+      "swBuildId": "1.1.4-bseedv4r"
+    }
+  },
+  "migrationFromConfig": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC0;IC2;SB7u;RD7;IC3;SB4u;RD2;IB5;M;",
+  "schema": 1,
+  "sourceCommit": "f1c0631a819d44190f855b5fe31f9001924ef1f3"
+}

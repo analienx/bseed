@@ -1,0 +1,132 @@
+{
+  "status": "BUILT_NOT_DEPLOYED",
+  "architecture": "exact historical fleet converter + authoritative firmware-scoped BSEED v4 target overlay",
+  "historical": {
+    "file": "00-switch_custom-historical.js",
+    "sha256": "ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe",
+    "bytes": 967427,
+    "required_sha256": "ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe",
+    "source_raw_sha256": "ef79acfd2141837b539189bfadda07799b53267bd746e1209335d38b91c66bfe",
+    "source_normalization": "none"
+  },
+  "overlay": {
+    "file": "10-bseed-ts0726-overlay.js",
+    "sha256": "d5b276dd967541e261e51606fdbf1e5412d55b7b660b8559d930e000eda04fa2",
+    "bytes": 15678,
+    "db_key": "SWITCH_BSEED_TS0726_3GANG",
+    "fingerprint": {
+      "manufacturerName": "iedhxgyi",
+      "modelID": "TS0726-3-BS",
+      "softwareBuildID": "1.1.4-bseedv4",
+      "priority": 100
+    },
+    "model": "EC-GL86ZPCS31"
+  },
+  "checks": {
+    "overlay_audit": {
+      "status": "PASS",
+      "failures": [],
+      "softwareBuildID": "1.1.4-bseedv4",
+      "targetModelCount": 1,
+      "physicalModeCalls": {
+        "relay_left_physical_mode": 1,
+        "relay_middle_physical_mode": 1,
+        "relay_right_physical_mode": 1
+      },
+      "rawHardwareConfigReadOnly": true,
+      "zeroConfigureMutationSurface": true
+    },
+    "javascript_syntax": "PASS",
+    "action_contract": {
+      "status": "PASS",
+      "model": "EC-GL86ZPCS31",
+      "cases": [
+        {
+          "label": "left press report",
+          "result": {
+            "action": "switch_0_press",
+            "action_switch_left": "press"
+          }
+        },
+        {
+          "label": "middle long press report",
+          "result": {
+            "action": "switch_1_long_press",
+            "action_switch_middle": "long_press"
+          }
+        },
+        {
+          "label": "right toggle command",
+          "result": {
+            "action": "switch_2_toggle",
+            "action_switch_right": "toggle"
+          }
+        },
+        {
+          "label": "left dim up",
+          "result": {
+            "action": "switch_0_brightness_move_up",
+            "action_switch_left": "brightness_move_up"
+          }
+        },
+        {
+          "label": "middle dim down",
+          "result": {
+            "action": "switch_1_brightness_move_down",
+            "action_switch_middle": "brightness_move_down"
+          }
+        },
+        {
+          "label": "right dim stop",
+          "result": {
+            "action": "switch_2_brightness_stop",
+            "action_switch_right": "brightness_stop"
+          }
+        }
+      ],
+      "genericActionValues": [
+        "switch_0_release",
+        "switch_0_press",
+        "switch_0_long_press",
+        "switch_0_position_on",
+        "switch_0_position_off",
+        "switch_0_on",
+        "switch_0_off",
+        "switch_0_toggle",
+        "switch_0_brightness_move_up",
+        "switch_0_brightness_move_down",
+        "switch_0_brightness_stop",
+        "switch_1_release",
+        "switch_1_press",
+        "switch_1_long_press",
+        "switch_1_position_on",
+        "switch_1_position_off",
+        "switch_1_on",
+        "switch_1_off",
+        "switch_1_toggle",
+        "switch_1_brightness_move_up",
+        "switch_1_brightness_move_down",
+        "switch_1_brightness_stop",
+        "switch_2_release",
+        "switch_2_press",
+        "switch_2_long_press",
+        "switch_2_position_on",
+        "switch_2_position_off",
+        "switch_2_on",
+        "switch_2_off",
+        "switch_2_toggle",
+        "switch_2_brightness_move_up",
+        "switch_2_brightness_move_down",
+        "switch_2_brightness_stop"
+      ],
+      "configureCallbacks": 0
+    },
+    "runtime_match_probe_required": true,
+    "installed_zhc_mutation_probe_required": true
+  },
+  "deployment": {
+    "automatic": false,
+    "requires_controlled_restart": true,
+    "actual_ota_included": false
+  }
+}
