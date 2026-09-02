@@ -1,0 +1,39 @@
+{
+  "rendered_frontend_package": "zigbee2mqtt-windfront (identified from served app)",
+  "base_url": "http://192.168.50.58:18099/",
+  "final_device_url": "http://192.168.50.58:18099/#/device/0/0xa4c13843a9d40f85/exposes",
+  "document_title": "Zigbee2MQTT",
+  "navigation_log": [
+    "url after Devices: http://192.168.50.58:18099/#/devices",
+    "search filled",
+    "device opened via a[href*=\"0xa4c13843a9d40f85\"]",
+    "url after device open: http://192.168.50.58:18099/#/device/0/0xa4c13843a9d40f85/info",
+    "tab clicked: Exposes"
+  ],
+  "viewport_desktop": {
+    "w": 1440,
+    "h": 1200
+  },
+  "viewport_mobile": {
+    "w": 412,
+    "h": 915
+  },
+  "timestamp_utc": "2026-09-02T12:33:23.497186+00:00",
+  "firmware_observed": "1.1.4-bseedv4 (post-OTA canary)",
+  "section_f_assertions": {
+    "must_contain_missing": [],
+    "generic_state_label_occurrences": 0,
+    "label_positions": {
+      "Logical relay state": 119,
+      "Physical relay behavior": 237,
+      "Button type": 2876,
+      "Indicator LED behavior": 6779,
+      "Advanced hardware configuration (read-only)": 8535
+    },
+    "order_ok": true
+  },
+  "files": [
+    "post-ota-browser-access-desktop.png",
+    "post-ota-browser-access-mobile.png"
+  ]
+}

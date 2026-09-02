@@ -1,0 +1,466 @@
+{
+  "start_url": "http://192.168.50.58:18099/",
+  "ts": "2026-09-02T08:23:45.925221+00:00",
+  "home_anchors": [
+    {
+      "href": "#/device/0/0xa4c1381647fb6fe1/info",
+      "text": "HallBreakerMain"
+    },
+    {
+      "href": "#/device/0/0xa4c1381647fb6fe1/info",
+      "text": "HallBreakerMain"
+    },
+    {
+      "href": "#/device/0/0xa4c1381647fb6fe1/info",
+      "text": "HallBreakerMain"
+    },
+    {
+      "href": "#/group/0/20/devices",
+      "text": "Bedroom Lights"
+    },
+    {
+      "href": "#/device/0/0xa4c138c160b4890d/info",
+      "text": "BathroomPIR"
+    },
+    {
+      "href": "#/device/0/0x6cfd22fffee99de5/info",
+      "text": "BedroomBulb1"
+    },
+    {
+      "href": "#/device/0/0xa4c1383a4b55557a/info",
+      "text": "BedroomCabinetHumidityTempL1"
+    },
+    {
+      "href": "#/device/0/0xa4c138f6936a1788/info",
+      "text": "BedroomDimmer"
+    },
+    {
+      "href": "#/device/0/0xa4c13824a7005afb/info",
+      "text": "BedroomSocketCabinetRight"
+    },
+    {
+      "href": "#/device/0/0xa4c138aed67ea773/info",
+      "text": "BedroomSocketWindowR"
+    },
+    {
+      "href": "#/device/0/0x8c8b48fffec9b5aa/info",
+      "text": "buttBedroomEntranceUSB"
+    },
+    {
+      "href": "#/device/0/0xa4c13830b44b8775/info",
+      "text": "BathroomPIREntrance"
+    },
+    {
+      "href": "#/device/0/0x0c2a6ffffe08159a/info",
+      "text": "BedroomBulb2"
+    },
+    {
+      "href": "#/device/0/0xa4c13878175921dc/info",
+      "text": "BedroomCabinetHumidityTempL2"
+    },
+    {
+      "href": "#/device/0/0x94b216fffe505df2/info",
+      "text": "BedroomLightColors"
+    },
+    {
+      "href": "#/device/0/0xa4c138054d265da2/info",
+      "text": "BedroomSocketDoorL"
+    },
+    {
+      "href": "#/device/0/0xa4c138d47dc9e412/info",
+      "text": "BedroomTemp"
+    },
+    {
+      "href": "#/device/0/0x08fd52fffe0aa5ae/info",
+      "text": "buttBedroomLightsHall"
+    },
+    {
+      "href": "#/device/0/0x04e3e5fffed39c39/info",
+      "text": "BathroomSwitchRouter"
+    },
+    {
+      "href": "#/device/0/0x70c59cfffe6c80c3/info",
+      "text": "BedroomBulb3"
+    },
+    {
+      "href": "#/device/0/0xa4c138bb0d75444c/info",
+      "text": "BedroomCabinetHumidityTempL3"
+    },
+    {
+      "href": "#/device/0/0xa4c138ac993cc245/info",
+      "text": "BedroomSocketBalcony"
+    },
+    {
+      "href": "#/device/0/0xa4c1386e4892f726/info",
+      "text": "BedroomSocketDoorR"
+    },
+    {
+      "href": "#/device/0/0xf0fd45fffe3847f7/info",
+      "text": "ButtBedroomCabinet"
+    },
+    {
+      "href": "#/device/0/0x001788010ed4427c/info",
+      "text": "ButtHallDoor"
+    },
+    {
+      "href": "#/device/0/0xa4c1384f030f8edb/info",
+      "text": "BathroomTemp"
+    },
+    {
+      "href": "#/device/0/0xa4c138a67b88f8ac/info",
+      "text": "BedroomCabinetHumidityTempL0"
+    },
+    {
+      "href": "#/device/0/0xa4c138c8a9f237a5/info",
+      "text": "BedroomCabinetHumidityTempL4"
+    },
+    {
+      "href": "#/device/0/0xa4c13837b0bc5952/info",
+      "text": "BedroomSocketCabinetL"
+    },
+    {
+      "href": "#/device/0/0xa4c138e4befcb1d8/info",
+      "text": "BedroomSocketWindowL"
+    },
+    {
+      "href": "#/device/0/0x08fd52fffe2a01f4/info",
+      "text": "buttBedroomCabinetUSB"
+    },
+    {
+      "href": "#/device/0/0x94a081fffef44a55/info",
+      "text": "buttHallHAPower"
+    },
+    {
+      "href": "#/",
+      "text": "Home"
+    },
+    {
+      "href": "#/dashboard",
+      "text": "Dashboard"
+    },
+    {
+      "href": "#/devices",
+      "text": "Devices"
+    },
+    {
+      "href": "#/groups",
+      "text": "Groups"
+    },
+    {
+      "href": "#/reporting",
+      "text": "Reporting"
+    },
+    {
+      "href": "#/bindings",
+      "text": "Bindings"
+    },
+    {
+      "href": "#/ota",
+      "text": "OTA"
+    },
+    {
+      "href": "#/touchlink",
+      "text": "Touchlink"
+    },
+    {
+      "href": "#/network",
+      "text": "Network"
+    },
+    {
+      "href": "#/logs",
+      "text": "Logs"
+    },
+    {
+      "href": "#/activity",
+      "text": "Activity"
+    },
+    {
+      "href": "#/settings",
+      "text": "Settings"
+    },
+    {
+      "href": "#/frontend-settings",
+      "text": "Frontend settings"
+    },
+    {
+      "href": "https://github.com/Nerivec/zigbee2mqtt-windfront/wiki",
+      "text": ""
+    },
+    {
+      "href": "#/contribute",
+      "text": "Contribute"
+    }
+  ],
+  "nav_devices_count": 1,
+  "devices_url": "http://192.168.50.58:18099/#/devices",
+  "devices_anchors_sample": [
+    {
+      "href": "#/device/0/0xa4c138c160b4890d/info",
+      "text": "BathroomPIR"
+    },
+    {
+      "href": "#/device/0/0xa4c138c160b4890d/info",
+      "text": "0xa4c138c160b4890d"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/devices/ZG-204ZL.html",
+      "text": "ZG-204ZL"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/supported-devices/#v=Tuya",
+      "text": "Tuya"
+    },
+    {
+      "href": "#/device/0/0xa4c13830b44b8775/info",
+      "text": "BathroomPIREntrance"
+    },
+    {
+      "href": "#/device/0/0xa4c13830b44b8775/info",
+      "text": "0xa4c13830b44b8775"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/devices/ZG-204ZV.html",
+      "text": "ZG-204ZV"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/supported-devices/#v=HOBEIAN",
+      "text": "HOBEIAN"
+    },
+    {
+      "href": "#/device/0/0x04e3e5fffed39c39/info",
+      "text": "BathroomSwitchRouter"
+    },
+    {
+      "href": "#/device/0/0x04e3e5fffed39c39/info",
+      "text": "0x04e3e5fffed39c39"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/devices/ZBMINIR2.html",
+      "text": "ZBMINIR2"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/supported-devices/#v=SONOFF",
+      "text": "SONOFF"
+    },
+    {
+      "href": "#/device/0/0xa4c1384f030f8edb/info",
+      "text": "BathroomTemp"
+    },
+    {
+      "href": "#/device/0/0xa4c1384f030f8edb/info",
+      "text": "0xa4c1384f030f8edb"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/devices/ZTH05Z.html",
+      "text": "ZTH05Z"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/supported-devices/#v=Tuya",
+      "text": "Tuya"
+    },
+    {
+      "href": "#/device/0/0x6cfd22fffee99de5/info",
+      "text": "BedroomBulb1"
+    },
+    {
+      "href": "#/device/0/0x6cfd22fffee99de5/info",
+      "text": "0x6cfd22fffee99de5"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/devices/LED2004G8.html",
+      "text": "LED2004G8"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/supported-devices/#v=IKEA",
+      "text": "IKEA"
+    },
+    {
+      "href": "#/device/0/0x0c2a6ffffe08159a/info",
+      "text": "BedroomBulb2"
+    },
+    {
+      "href": "#/device/0/0x0c2a6ffffe08159a/info",
+      "text": "0x0c2a6ffffe08159a"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/devices/LED2004G8.html",
+      "text": "LED2004G8"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/supported-devices/#v=IKEA",
+      "text": "IKEA"
+    },
+    {
+      "href": "#/device/0/0x70c59cfffe6c80c3/info",
+      "text": "BedroomBulb3"
+    },
+    {
+      "href": "#/device/0/0x70c59cfffe6c80c3/info",
+      "text": "0x70c59cfffe6c80c3"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/devices/LED2004G8.html",
+      "text": "LED2004G8"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/supported-devices/#v=IKEA",
+      "text": "IKEA"
+    },
+    {
+      "href": "#/device/0/0xa4c138a67b88f8ac/info",
+      "text": "BedroomCabinetHumidityTempL0"
+    },
+    {
+      "href": "#/device/0/0xa4c138a67b88f8ac/info",
+      "text": "0xa4c138a67b88f8ac"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/devices/TH01Z.html",
+      "text": "TH01Z"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/supported-devices/#v=Tuya",
+      "text": "Tuya"
+    },
+    {
+      "href": "#/device/0/0xa4c1383a4b55557a/info",
+      "text": "BedroomCabinetHumidityTempL1"
+    },
+    {
+      "href": "#/device/0/0xa4c1383a4b55557a/info",
+      "text": "0xa4c1383a4b55557a"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/devices/TH01.html",
+      "text": "TH01"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/supported-devices/#v=Zbeacon",
+      "text": "Zbeacon"
+    },
+    {
+      "href": "#/device/0/0xa4c13878175921dc/info",
+      "text": "BedroomCabinetHumidityTempL2"
+    },
+    {
+      "href": "#/device/0/0xa4c13878175921dc/info",
+      "text": "0xa4c13878175921dc"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/devices/TH01.html",
+      "text": "TH01"
+    },
+    {
+      "href": "https://www.zigbee2mqtt.io/supported-devices/#v=Zbeacon",
+      "text": "Zbeacon"
+    }
+  ],
+  "visible_inputs": [
+    {
+      "i": 0,
+      "type": "text",
+      "ph": "Search",
+      "name": null,
+      "cls": ""
+    },
+    {
+      "i": 1,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 2,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 3,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 4,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 5,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 6,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 7,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 8,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 9,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 10,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 11,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 12,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 13,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    },
+    {
+      "i": 14,
+      "type": "checkbox",
+      "ph": null,
+      "name": null,
+      "cls": "checkbox checkbox-xs"
+    }
+  ],
+  "devices_text_head": "Advanced search\nEntries: 103\nColumns:\nSource\nFriendly name\nIEEE Address\nOUI\nModel\nType\nLQI\nLast seen\nAvailability\nPower source\nBattery level\nBattery low\nDisabled\nActions\nFriendly name ↑\n\t\nIEEE Address\n\t\nModel\n\t\nLQI\n\t\nLast seen\n\t\nAvailability\n\t\n\n\nBathroomPIR\n\t\n0xa4c138c160b4890d\n0x36D6\n14038\n\tZG-204ZL\nTuya\n\t 100\tDisabled\tOnline\t\n\n\nBathroomPIREntrance\n\t\n0xa4c13830b44b8775\n0xCB7B\n52091\n\tZG-204ZV\nHOBEIAN\n\t 96\tDisabled\tOnline\t\n\n\nBathroomSwitchRouter\n\t\n0x04e3e5fffed39c39\n0xF6D8\n63192\n\tZBMINIR2\nSONOFF\n\t 112\tDisabled\tOnline\t\n\n\nBathroomTemp\n\t\n0xa4c1384f030f8edb\n0x6817\n26647\n\tZTH05Z\nTuya\n\t 108\tDisabled\tOnline\t\n\n\nBedroomBulb1\n\t\n0x6cfd22fffee99de5\n0xD3F1\n54257\n\tLED2004G8\nIKEA\n\t N/A\tDisabled\tOffline\t\n\n\nBedroomBulb2\n\t\n0x0c2a6ffffe08159a\n0x5105\n20741\n\tLED2004G8\nIKEA\n\t N/A\tDisabled\tOffline\t\n\n\nBedroomBulb3\n\t\n0x70c59cfffe6c80c3\n0x2C3F\n11327\n\tLED2004G8\nIKEA\n\t 88\tDisabled\tOffline\t\n\n\nBedroomCabinetHumidityTempL0\n\t\n0xa4c138a67b88f8ac\n0x04B7\n1207\n\tTH01Z\nTuya\n\t 132\tDisabled\tOnline\t\n\n\nBedroomCabinetHumidityTempL1\n\t\n0xa4c1383a4b55557a\n0xDAE1\n56033\n\tTH01\nZbeacon\n\t 140\tDisabled\tOnline\t\n\n\nBedroomCabinetHumidityTempL2\n\t\n0xa4c13878175921dc\n0x42CE\n17102\n\tTH01\nZbeacon\n\t 180\tDisabled\tOnline\t\n\n\nBedroomCabinetHumidityTempL3\n\t\n0xa4c138bb0d75444c\n0x0243\n579\n\tTH01\nZbeacon\n\t 140\tDisabled\tOnline\t\n\n\nBedroomCabinetHumidityTempL4\n\t\n0xa4c138c8a9f237a5\n0x8DB2\n36274\n\tTH01\nZbeacon\n\t 184\tDisabled\tOnline\t\n\n\nBedroomDimmer\n\t\n0xa4c138f6936a1788\n0x9FE0\n40928\n\tEC-GL86ZPCS11\nTuya-custom\n\t 124\tDisabled\tOnline\t\n\n\nBedroomLightColors\n\t\n0x94b216fffe505df2\n0x571F\n22303\n\tTS0044\nTuya\n\t 180\tDisabled\tOnline\t\n\n\nBedroomSocketBalcony\n\t\n0xa4c138ac993cc245\n0x9863\n39011\n\t_TZ3000_o1jzcxou\nTuya-custom\n\t 112\tDisabled\tOnline\t\n\n\nBedroomSocketCabinetL\n\t\n0xa4c13837b0bc5952\n0xE61E\n58910\n\tTS011F_plug_1_2\nBSEED\n\t 132\tDisabled\tOnline\t\n\n\nBedroomSocketCabinetRight\n\t\n0xa4c13824a7005afb\n0xBB97\n48023\n\t_TZ3000_o1jzcxou\nTuya-custom\n\t 128\tDisabled\tOnline\t\n\n\nBedroomSocketDoorL\n\t\n0xa4c138054d265da2\n0x9621\n38433\n\tTS011F_plug_1_2\nBSEED\n\t 124\tDisabled\tOnline\t\n\n\nBedroomSocketDoorR\n\t\n0xa4c1386e4892f726\n0x38A2\n14498\n\tTS011F_plug_1_2\nBSEED\n\t 112\tDisabled\tOnline\t\n\n\nBedroomSocketWindowL\n\t\n0xa4c138e4befcb1d8\n0x6DAA\n28074\n\tTS011F_plug_1_2\nBSEED\n\t 120\tDisabled\tOnline\t\n\n\nZigbee2MQTT\nHome\nDashboard\nDevices\nGroups\nReporting\nBindings\nOTA\nTouchlink\nNetwork\nLogs\nActivity\nSettings\nFrontend settings\nPermit join\nAll\nen\nContribute"
+}
