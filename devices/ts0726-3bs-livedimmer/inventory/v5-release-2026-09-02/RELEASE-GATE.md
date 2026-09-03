@@ -1,5 +1,8 @@
 # TS0726-3-BS v5 release gate — 2026-09-02
 
+> **Historical gate, superseded after the live v5 canary.**
+> Firmware `1.1.5-bseedv5` remains accepted and installed. The original overlay/HA pins below were superseded because live testing found endpoint-routing and profile-contract defects. Current correction evidence is under `v5.1-correction-2026-09-03/`.
+
 ## Disposition
 
 **SOFTWARE V5 GATE: CLOSED / PASS**
@@ -23,7 +26,7 @@ Overlay path:
 
 Git blob:
 
-`ff53b04ac1f24f935f31f2c4ce9ff5f4aece1b0f`
+`eafc31957e29b848b778f2f9c7eb9c333af086e9`
 
 ## Exact firmware identities
 
