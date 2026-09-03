@@ -1,0 +1,372 @@
+[2026-09-03 17:15:11] info: 	z2m: Logging to console, file (filename: log.log)
+[2026-09-03 17:15:11] info: 	z2m: Starting Zigbee2MQTT version 2.13.0 (commit #unknown)
+[2026-09-03 17:15:11] info: 	z2m: Starting zigbee-herdsman (10.8.0)
+[2026-09-03 17:15:12] info: 	zh:ember: Using default stack config.
+[2026-09-03 17:15:12] info: 	zh:ember: ======== Ember Adapter Starting ========
+[2026-09-03 17:15:12] info: 	zh:ember:ezsp: ======== EZSP starting ========
+[2026-09-03 17:15:12] info: 	zh:ember:uart:ash: ======== ASH Adapter reset ========
+[2026-09-03 17:15:12] info: 	zh:ember:uart:ash: RTS/CTS config is off, enabling software flow control.
+[2026-09-03 17:15:12] info: 	zh:ember:uart:ash: Serial port opened
+[2026-09-03 17:15:12] info: 	zh:ember:uart:ash: ======== ASH starting ========
+[2026-09-03 17:15:13] info: 	zh:ember:uart:ash: ======== ASH connected ========
+[2026-09-03 17:15:13] info: 	zh:ember:uart:ash: ======== ASH started ========
+[2026-09-03 17:15:13] info: 	zh:ember:ezsp: ======== EZSP started ========
+[2026-09-03 17:15:13] info: 	zh:ember: Adapter version info: {"ezsp":19,"revision":"9.1.1 [GA]","build":0,"major":9,"minor":1,"patch":1,"special":0,"type":170}
+[2026-09-03 17:15:13] info: 	zh:ember: [STACK STATUS] Network up.
+[2026-09-03 17:15:13] info: 	zh:ember: [INIT TC] Adapter network matches config.
+[2026-09-03 17:15:13] info: 	zh:ember: [CONCENTRATOR] Started source route discovery. 1246ms until next broadcast.
+[2026-09-03 17:15:14] info: 	z2m: zigbee-herdsman started (resumed)
+[2026-09-03 17:15:14] info: 	z2m: Coordinator firmware version: '{"meta":{"build":0,"ezsp":19,"major":9,"minor":1,"patch":1,"revision":"9.1.1 [GA]","special":0,"type":170},"type":"EmberZNet"}'
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomSocketWifiRight (0xa4c138b5e090e7c0): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomSocketWifiLeft (0xa4c138ba60b92c5f): Not supported (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomSocketHA (0xa4c13812088a54ac): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomSocketTableLeft (0xa4c138cdf963eac3): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: KitchenSocketLeft (0xa4c138241e3de538): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: KitchenSocketRight (0xa4c138075cd16ed4): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomSocketEntrance (0xa4c13889b20f010e): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomSocketHifiLeft (0xa4c138da1333dc70): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomSocketHifiRight (0xa4c138eb22efaa91): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: KitchenSocketDishwasher (0xa4c1382292dbe653): TS011F_plug_3 - Tuya Smart plug (with power monitoring by polling) (Router)
+[2026-09-03 17:15:14] info: 	z2m: KitchenSocketFridge (0xa4c138460c83974f): TS011F_plug_3 - Tuya Smart plug (with power monitoring by polling) (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBreakerMain (0xa4c1381647fb6fe1): STB3L-125-ZJ - SUTON Zigbee DIN RCBO energy meter (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBreakerFAFI2 (0x94b216fffe75de0a): TO-Q-SY2-163JZT - Tongou Smart circuit breaker (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBreakerFAFI3 (0x94b216fffe776a41): TO-Q-SY2-163JZT - Tongou Smart circuit breaker (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBulb1 (0xa4c13861dd842a03): TS0505B_1_1 - Tuya Zigbee 3.0 18W led light bulb E27 RGBCW (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBulb2 (0xa4c13805fc0dacfb): TS0505B_1_1 - Tuya Zigbee 3.0 18W led light bulb E27 RGBCW (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomCircleLightDimmer (0xa4c13850cfcdb3a4): GL-SD-301P - Gledopto Zigbee triac AC dimmer (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBulb3 (0xa4c138cec3e04283): TS0505B_1_1 - Tuya Zigbee 3.0 18W led light bulb E27 RGBCW (Router)
+[2026-09-03 17:15:14] info: 	z2m: DoorSensor (0xa4c1383043612ca4): TS0203 - Tuya Door/window sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: HallPIRSensorEntrance (0xa4c138adb5fa215f): ZG-204ZL - Tuya Luminance motion sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: HALLSocketMain (0xa4c138186a69b78c): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallSocketBedroom (0xa4c13873701cd36c): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: WRSocketWindowLeft (0xa4c138ef578c9f75): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: WRSocketWindowRightL (0xa4c138793505c5cc): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: WRSocketWindowRightR (0xa4c138278260973a): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: BedroomSocketDoorR (0xa4c1386e4892f726): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: BedroomSocketDoorL (0xa4c138054d265da2): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: BedroomSocketCabinetL (0xa4c13837b0bc5952): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: BedroomSocketWindowL (0xa4c138e4befcb1d8): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: BedroomSocketWindowR (0xa4c138aed67ea773): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: buttHallHAPower (0x94a081fffef44a55): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: BedroomLightColors (0x94b216fffe505df2): TS0044 - Tuya Wireless switch with 4 buttons (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: buttWorkRoomTableLightsDimmer (0x08b95ffffed12cba): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: HallSmartDimmer (0xb4e3f9fffeec4e36): VES-ZB-WAL-012 - Vesternet Zigbee wall controller - 8 button (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: BedroomBulb2 (0x0c2a6ffffe08159a): LED2004G8 - IKEA TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm (Router)
+[2026-09-03 17:15:14] info: 	z2m: BedroomBulb1 (0x6cfd22fffee99de5): LED2004G8 - IKEA TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm (Router)
+[2026-09-03 17:15:14] info: 	z2m: BedroomBulb3 (0x70c59cfffe6c80c3): LED2004G8 - IKEA TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm (Router)
+[2026-09-03 17:15:14] info: 	z2m: BedroomSocketBalcony (0xa4c138ac993cc245): Not supported (Router)
+[2026-09-03 17:15:14] info: 	z2m: WRSocketEntrance (0xa4c1387b13e9436d): Not supported (Router)
+[2026-09-03 17:15:14] info: 	z2m: BedroomSocketCabinetRight (0xa4c13824a7005afb): Not supported (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBedroomSwitchRouter (0xfc4d6afffe6e6b53): ZBMINIR2 - SONOFF Zigbee smart switch (Router)
+[2026-09-03 17:15:14] info: 	z2m: ButtHallLightsDimmer (0xd44867fffefeab39): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomLinearSwitchPower (0x8c8b48fffe67c120): ZBMINIR2 - SONOFF Zigbee smart switch (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBreakerFA11 (0x94b216fffe7734c9): TO-Q-SY2-163JZT - Tongou Smart circuit breaker (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomMainDimmer (0xa4c13843a9d40f85): Not supported (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallMainSwitchAvatto (0xa4c138f29eba8f49): Not supported (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomPIRSensorVertical (0xa4c1380db190ca8b): ZG-204ZV - HOBEIAN Millimeter wave motion detection (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: BedroomDimmer (0xa4c138f6936a1788): Not supported (Router)
+[2026-09-03 17:15:14] info: 	z2m: ButtHallDoor (0x001788010ed4427c): 929002398602 - Philips Hue dimmer switch gen 2 (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomBulbTableLeft (0xa4c138b9bda6dbcf): RB 287 C - Innr Smart Bulb Colour E27 1200lm (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomBulbTableMiddle (0xa4c1385c11d46ae5): RB 287 C - Innr Smart Bulb Colour E27 1200lm (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomBulbTableRight (0xa4c138d6a7100473): RB 287 C - Innr Smart Bulb Colour E27 1200lm (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallShoesLed (0xa4c138105a8e4207): GL-C-006P - Gledopto Zigbee LED Controller WW/CW (pro) (Router)
+[2026-09-03 17:15:14] info: 	z2m: WorkRoomMainSwitchDimmer (0xa4c13803d7475156): Not supported (Router)
+[2026-09-03 17:15:14] info: 	z2m: BathroomPIR (0xa4c138c160b4890d): ZG-204ZL - Tuya Luminance motion sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: WorkRoomSwitchLedMain (0xa4c1381daa061e97): Not supported (Router)
+[2026-09-03 17:15:14] info: 	z2m: WorkroomSwitchLedsTable (0x8c8b48fffe685a39): ZBMINIR2 - SONOFF Zigbee smart switch (Router)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomPIREntrance (0xa4c1381b8b4eff23): ZG-204ZL - Tuya Luminance motion sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomLinearDimmer (0xa4c1388b709b209c): GL-C-009P - Gledopto Zigbee LED Controller W (pro) (Router)
+[2026-09-03 17:15:14] info: 	z2m: WorkroomTableRightDimmer (0x70ac08fffe48994a): 50208702 - Sunricher LED dimmable driver (Router)
+[2026-09-03 17:15:14] info: 	z2m: WorkroomTableLeftDimmer (0x70ac08fffe489643): 50208702 - Sunricher LED dimmable driver (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallPIRSensorMain (0xa4c13812aebbdaa0): ZP01 - Tuya Motion sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: HallCabinetPIR (0xa4c1385bc54e54bf): ZG-204ZV - HOBEIAN Millimeter wave motion detection (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: ButtBedroomCabinet (0xf0fd45fffe3847f7): E2001/E2002/E2313 - IKEA STYRBAR remote control (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: OutdoorTerasaTemp (0xa4c138ff9d303f05): SNZB-02 - SONOFF Temperature and humidity sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: BathroomTemp (0xa4c1384f030f8edb): ZTH05Z - Tuya Temperature and humidity sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: OutdoorBalconyTemp (0xa4c1382ca6f1bdde): TS0201 - Tuya Temperature & humidity sensor with display (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: BathroomPIREntrance (0xa4c13830b44b8775): ZG-204ZV - HOBEIAN Millimeter wave motion detection (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: HallPIRAdvanced (0xa4c138b7eca277e9): ZP01 - Tuya Motion sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: HallPIRSensorBedroomAdvanced (0xa4c138da26407e17): ZG-204ZM - Tuya PIR 24Ghz human presence sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: HallBreakerFA5 (0x94b216fffe9260f5): TO-Q-SY2-163JZT - Tongou Smart circuit breaker (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallEntranceIlluminance (0xa4c1386c6faff53b): ZG-106Z - HOBEIAN Light intensity sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: RestroomPIR (0xa4c138626fd5eda7): ZG-204Z - HOBEIAN Motion sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: RestroomSwitch (0xc02cedfffec48f9d): ZBMINIR2 - SONOFF Zigbee smart switch (Router)
+[2026-09-03 17:15:14] info: 	z2m: BathroomSwitchRouter (0x04e3e5fffed39c39): ZBMINIR2 - SONOFF Zigbee smart switch (Router)
+[2026-09-03 17:15:14] info: 	z2m: buttBedroomEntranceUSB (0x8c8b48fffec9b5aa): E2213 - IKEA SOMRIG shortcut button (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: buttBedroomCabinetUSB (0x08fd52fffe2a01f4): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: ButtHallShoesDimmer (0x8c8b48fffed271c7): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: LivingRoomSocketTableRight (0xa4c13852d7bbc587): TS011F_plug_1_2 - BSEED Wall-mounted electrical EU/FR/UK socket with power monitoring (Router)
+[2026-09-03 17:15:14] info: 	z2m: WorkRoomPIREntrance (0xa4c1380e94d2ff82): ZG-204ZL - Tuya Luminance motion sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: WorkroomTemp (0xa4c138267bfd0080): TH05Z - ONENUO Temperature & humidity sensor with clock and humidity display (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: BedroomTemp (0xa4c138d47dc9e412): TS0201 - Tuya Temperature & humidity sensor with display (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: buttLivingRoomTableSocketLeft (0x08fd52fffe0aa5a6): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: HallBreakerFA3 (0x94b216fffe928d4a): TO-Q-SY2-163JZT - Tongou Smart circuit breaker (Router)
+[2026-09-03 17:15:14] info: 	z2m: BedroomCabinetHumidityTempL1 (0xa4c1383a4b55557a): TH01 - Zbeacon Temperature and humidity sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: BedroomCabinetHumidityTempL2 (0xa4c13878175921dc): TH01 - Zbeacon Temperature and humidity sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: BedroomCabinetHumidityTempL3 (0xa4c138bb0d75444c): TH01 - Zbeacon Temperature and humidity sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: BedroomCabinetHumidityTempL4 (0xa4c138c8a9f237a5): TH01 - Zbeacon Temperature and humidity sensor (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: BedroomCabinetHumidityTempL0 (0xa4c138a67b88f8ac): TH01Z - Tuya Temperature and humidity sensor with clock (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: ButtLivingRoomCicleDimmer (0x348d13fffefffa53): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: buttWorkRoomMainDimmer (0x08fd52fffe0b0ce1): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: WorkroomSocketCabinet (0xa4c138c5f07ee732): Not supported (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBreakerKitchenInduction (0xa4c138278695ef31): STB3L-125-ZJ - SUTON Zigbee DIN RCBO energy meter (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBereakerFA8 (0x94b216fffe774cc4): TO-Q-SY2-163JZT - Tongou Smart circuit breaker (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBreakerFA12 (0x94b216fffe897bfb): TO-Q-SY2-163JZT - Tongou Smart circuit breaker (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBreakerFAFI1 (0x94b216fffe943151): TO-Q-SY2-163JZT - Tongou Smart circuit breaker (Router)
+[2026-09-03 17:15:14] info: 	z2m: ButtLivingRoomLinearDimmer (0xecf64cfffead3b8c): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: buttLivingRoomTableSocketLeftPrinter (0xf0fd45fffeef553b): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: WorkRoomLedMainDimmer (0x385b44fffefc81c0): 50208702 - Sunricher LED dimmable driver (Router)
+[2026-09-03 17:15:14] info: 	z2m: HallBreakerFA7 (0xdc8e95fffe8aea30): TO-Q-SY2-163JZT - Tongou Smart circuit breaker (Router)
+[2026-09-03 17:15:14] info: 	z2m: buttLivingRoomKitchenTableBulbs (0xd44867fffe16b355): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: buttLivingRoomLights (0xa4c13810ae3bffff): SNZB-01M - SONOFF Four-way wireless button (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: 0x08fd52fffe0aa5ae (0x08fd52fffe0aa5ae): E2201 - IKEA RODRET wireless dimmer/power switch (EndDevice)
+[2026-09-03 17:15:14] info: 	z2m: Currently 103 devices are joined.
+[2026-09-03 17:15:14] info: 	z2m: Connecting to MQTT server at mqtt://homeassistant:1883
+[2026-09-03 17:15:14] info: 	z2m: Connected to MQTT server
+[2026-09-03 17:15:14] info: 	z2m: Loaded external converter 'bseed_ts0726_v4.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'bseed_ts0726_v5.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'stb3l_125_zj_phase_fix.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'switch_custom.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Loaded external converter 'tuya_with_ota.js'.
+[2026-09-03 17:15:15] info: 	z2m: Started frontend on port 8099
+[2026-09-03 17:15:16] info: 	z2m: Zigbee2MQTT started!

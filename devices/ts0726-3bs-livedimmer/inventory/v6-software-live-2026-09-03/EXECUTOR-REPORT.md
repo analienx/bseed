@@ -193,3 +193,114 @@ staging/state-after-rollback-p007.json  post-rollback target state (V5, canonica
 ```
 
 Still STOPPED for Supervisor. No OTA, no CHECK, no device mutation in B2 either.
+
+---
+
+# WORK UNIT 3 (2026-09-03 ~17:15Z) — corrected single-overlay V5→V6 transition, Step B only
+
+Dispatch: issue #8 comment `5527598873` (supervisor). Frozen source: repo
+`analienx/tuya-zigbee-switch`, branch `supervisor/target-overlay-v56-transition`,
+commit `833b117388b3a324b71e12963e277a342c4c49da`, blob `ae48e23a974244923ab3a27a69a7e5341c920eb4`.
+Local blob hash verified byte-exact before staging. `git hash-object` = `ae48e23a…` ✓.
+
+## A. Baseline (fresh, p007 environment)
+
+```text
+sw            = 1.1.5-bseedv5         (live bridge/devices fingerprint string)
+device_config = iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;  (canonical, live read)
+0xff03        = 1/1/1                 (relay_*_physical_mode "Always on" ×3, live property reads;
+                                       attr confirmed as genOnOff 0xff03 type 0x30 in converter source)
+frontend      = healthy (200 OK in-container)
+bridge        = 104 devices / 21 groups snapshot: evidence/transition/bridge-transition-baseline.json
+note          = integer fv 285356037 (genBasic 0x4000) was proven in work unit B1; no device write has
+                occurred since (zero topology deltas through B1/B2/B3), so identity is unchanged.
+                Modern Z2M 2.x build has legacy raw-read API disabled; endpoint-scoped raw get is not
+                available without it, so the string identity + canonical config carry the proof.
+```
+
+## B. In-place replacement + one controlled restart
+
+```text
+external_converters before: v4 + v5 only (no bseed_ts0726_v6.js) ✓
+backup of proven V5.1 (outside external_converters):
+  backup-transition/bseed_ts0726_v5.pre-transition.js  sha256 4940ad694de9c61e9afbdd529f59ffcf02edf3dc707979301dfc7a73068e5bda ✓
+replaced in place: /config/zigbee2mqtt/external_converters/bseed_ts0726_v5.js
+  on-disk sha256 = 9b34e77292a9a7e0776a0bf68865e764533a057b484b2f006daf0bfea17e9093 (blob ae48e23a…)
+V4 + all unrelated converters untouched ✓
+ONE restart at 17:15:11Z
+```
+
+### Require gates — ALL PASS
+
+```text
+Started frontend on port 8099     ✓ 17:15:15 (with transition overlay loaded)
+frontend HTTP                     ✓ 200 OK in-container, port LISTEN
+Z2M healthy                       ✓ container healthy, MQTT publishing
+target identity                   ✓ 1.1.5-bseedv5 / 0xa4c13843a9d40f85 / interview_completed
+transition definition resolution  ✓ EC-GL86ZPCS31, source "external", 48 exposes
+device_config                     ✓ canonical (live read post-restart)
+EP4/5/6 mains 0xff03              ✓ 1/1/1 ("Always on" ×3, live reads)
+topology delta                    ✓ 0 — IEEE set, endpoints/bindings/reportings, groups all
+                                     byte-identical (transition-topology-diff.json)
+no interview / re-pair            ✓ none
+no converter startup error        ✓ "Loaded external converter 'bseed_ts0726_v5.js'" clean
+no Zigbee writes                  ✓ log shows zero write/set/configure traffic to target
+```
+
+Observation (read-only, no gate impact): `switch_left/right_action_mode` reads
+now return device-side values ("Match local state" / "Toggle"); earlier
+NO_RESPONSE was mesh flakiness (fleet-wide ping failures all day on other
+devices) — a converter swap cannot write device state, and device_config
+(byte-encoded per-channel config) is unchanged.
+
+## Transition probe against ACTUAL installed ZHC 26.90.0 — PASS (ok: true, exit 0)
+
+```text
+zhc_version                      = 26.90.0 (in-container)
+definition_model                 = EC-GL86ZPCS31 (not present in ZHC core: external only)
+exactly_two_fingerprints         ✓ (1.1.5-bseedv5 + 1.1.6-bseedv6, both priority 100)
+no_bare_zigbee_model_fallback    ✓
+matches_v5_spy                   ✓ (target resolves through transition today)
+matches_v6_spy_post_ota          ✓ (1.1.6-bseedv6 will match after OTA)
+fleet_matches_target_only        ✓ (1/103 non-coordinator devices)
+exactly_one_custom_genBasic      ✓ (deviceAddCustomCluster total = 1)
+no_custom_genOnOffSwitchCfg      ✓
+```
+
+SET-path behavior (V5 named `switchActions` max 2; 3/4 rejected pre-traffic;
+unknown firmware fails closed) was runtime-validated by the supervisor
+(run 33769292042 / job 100695075845) and is not re-exercised here per dispatch
+("do not SET Direct-binding 3/4 while still on V5").
+
+## Evidence (this directory, `transition/`)
+
+```text
+bridge-transition-baseline.json    pre-swap bridge snapshot (104/21)
+bridge-transition-after.json       post-restart bridge snapshot
+transition-topology-diff.json      deep diff: delta 0
+transition-probe-result.json       ZHC 26.90.0 composition probe (ok: true)
+target-baseline-identity.json      target identity (V5, IEEE, definition)
+post-restart-properties.json       live property reads post-restart (0xff03 1/1/1)
+post-restart-public-get.json       live public get post-restart (canonical config)
+transition-restart-log.txt         non-publish log of the transition restart
+bseed_ts0726_v5.pre-transition.js  backup of proven V5.1 (sha256 4940ad69…)
+```
+
+## Return
+
+```text
+V56_TRANSITION_STEP_B PASS
+frontend=PASS
+z2m_health=PASS
+v5_identity=PASS
+canonical_config=PASS
+mains=1/1/1
+topology_delta=0
+transition_definition=PASS
+evidence=<commit sha of this commit>
+```
+
+Still forbidden and not performed: OTA CHECK/UPDATE, setting writes, successful
+device_config commit, bind/unbind/group mutation, interview/re-pair, coordinator
+mutation, physical button presses, HA deployment. STOPPED for Supervisor.
+

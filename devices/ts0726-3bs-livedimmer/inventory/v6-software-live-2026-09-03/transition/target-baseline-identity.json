@@ -1,0 +1,45 @@
+{
+  "ieee": "0xa4c13843a9d40f85",
+  "network_address": 24677,
+  "type": "Router",
+  "supported": true,
+  "software_build_id": "1.1.5-bseedv5",
+  "manufacturer": "iedhxgyi",
+  "model_id": "TS0726-3-BS",
+  "definition": {
+    "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+    "vendor": "Tuya-custom",
+    "exposes_count": 48
+  },
+  "power_source": "Mains (single phase)",
+  "disabled": false,
+  "interview_completed": true,
+  "endpoints": [
+    {
+      "id": "1",
+      "clusters_count": 3
+    },
+    {
+      "id": "2",
+      "clusters_count": 2
+    },
+    {
+      "id": "3",
+      "clusters_count": 2
+    },
+    {
+      "id": "4",
+      "clusters_count": 3
+    },
+    {
+      "id": "5",
+      "clusters_count": 3
+    },
+    {
+      "id": "6",
+      "clusters_count": 3
+    }
+  ],
+  "groups_count": 21,
+  "devices_count": 104
+}

@@ -1,0 +1,41 @@
+{
+  "zhc_version": "26.90.0",
+  "zhc_in_list": 0,
+  "definition_model": "EC-GL86ZPCS31",
+  "fingerprints": [
+    {
+      "manufacturerName": "iedhxgyi",
+      "modelID": "TS0726-3-BS",
+      "softwareBuildID": "1.1.5-bseedv5",
+      "priority": 100
+    },
+    {
+      "manufacturerName": "iedhxgyi",
+      "modelID": "TS0726-3-BS",
+      "softwareBuildID": "1.1.6-bseedv6",
+      "priority": 100
+    }
+  ],
+  "checks": {
+    "exactly_two_fingerprints": true,
+    "both_priority_100": true,
+    "v5_and_v6_sw_builds": true,
+    "no_bare_zigbee_model_fallback": true,
+    "matches_v5_spy": true,
+    "matches_v6_spy_post_ota": true,
+    "fleet_matches_target_only": true,
+    "deviceAddCustomCluster_total": 1,
+    "exactly_one_custom_genBasic": true,
+    "no_custom_genOnOffSwitchCfg": true,
+    "exposes_count": "none"
+  },
+  "fleet_matches": [
+    {
+      "ieee": "0xa4c13843a9d40f85",
+      "friendly": "LivingRoomMainDimmer",
+      "sw": "1.1.5-bseedv5"
+    }
+  ],
+  "non_coordinator_devices": 103,
+  "ok": true
+}
