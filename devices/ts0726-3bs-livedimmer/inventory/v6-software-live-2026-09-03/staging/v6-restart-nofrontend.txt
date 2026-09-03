@@ -1,0 +1,8 @@
+[2026-09-03 12:21:22] info: 	zh:ember:uart:ash:   Out of sequence : RX=0
+[2026-09-03 12:21:22] info: 	zh:ember:uart:ash:   ACK timeouts    : RX=0
+[2026-09-03 12:21:27] info: 	zh:ember:uart:ash: Port closed, error=null
+[2026-09-03 12:21:27] info: 	zh:ember:uart:ash: ======== ASH stopped ========
+[2026-09-03 12:21:27] info: 	zh:ember:ezsp: ======== EZSP stopped ========
+[2026-09-03 12:21:27] info: 	zh:ember: ======== Ember Adapter Stopped ========
+[2026-09-03 12:21:27] info: 	z2m: Stopped zigbee-herdsman
+[2026-09-03 12:21:27] info: 	z2m: Stopped Zigbee2MQTT

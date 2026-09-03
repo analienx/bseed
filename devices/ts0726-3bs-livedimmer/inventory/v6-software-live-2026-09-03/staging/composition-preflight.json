@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "definitions": {
+    "v4": {
+      "model": "EC-GL86ZPCS31",
+      "fingerprints": [
+        {
+          "manufacturerName": "iedhxgyi",
+          "modelID": "TS0726-3-BS",
+          "softwareBuildID": "1.1.4-bseedv4",
+          "priority": 100
+        }
+      ]
+    },
+    "v5": {
+      "model": "EC-GL86ZPCS31",
+      "fingerprints": [
+        {
+          "manufacturerName": "iedhxgyi",
+          "modelID": "TS0726-3-BS",
+          "softwareBuildID": "1.1.5-bseedv5",
+          "priority": 100
+        }
+      ]
+    },
+    "v6": {
+      "model": "EC-GL86ZPCS31",
+      "fingerprints": [
+        {
+          "manufacturerName": "iedhxgyi",
+          "modelID": "TS0726-3-BS",
+          "softwareBuildID": "1.1.6-bseedv6",
+          "priority": 100
+        }
+      ]
+    }
+  },
+  "matches": {
+    "v4": [],
+    "v5": [
+      {
+        "ieee": "0xa4c13843a9d40f85",
+        "friendly": "LivingRoomMainDimmer",
+        "sw": "1.1.5-bseedv5",
+        "priority": 100
+      }
+    ],
+    "v6": []
+  },
+  "checks": {
+    "v5_matches_target_only": true,
+    "v6_matches_nothing_yet": true,
+    "v6_would_match_target_after_ota": true,
+    "v5_would_not_match_target_after_ota": true,
+    "ts0726_devices_in_fleet": [
+      {
+        "ieee": "0xa4c13843a9d40f85",
+        "sw": "1.1.5-bseedv5"
+      }
+    ],
+    "non_coordinator_devices": 103
+  },
+  "ok": true
+}
