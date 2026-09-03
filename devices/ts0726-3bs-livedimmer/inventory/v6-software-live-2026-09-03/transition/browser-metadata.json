@@ -1,0 +1,29 @@
+{
+  "started_utc": "2026-09-03T19:29:27.079227+00:00",
+  "base_url": "http://192.168.50.58:18099/",
+  "final_device_url": "http://192.168.50.58:18099/#/device/0/0xa4c13843a9d40f85/exposes",
+  "document_title": "Zigbee2MQTT",
+  "navigation_log": [
+    "2026-09-03T19:29:28.552045+00:00 goto base",
+    "2026-09-03T19:29:45.117609+00:00 exposes tab clicked",
+    "2026-09-03T19:29:48.005822+00:00 canonical visible in exposes page: False",
+    "2026-09-03T19:29:48.071907+00:00 editor found disabled=False readonly=False",
+    "2026-09-03T19:30:01.974188+00:00 canonical visible mobile: False"
+  ],
+  "editor": {
+    "found": true,
+    "value_is_canonical": true,
+    "disabled": false,
+    "readonly": false
+  },
+  "console": [
+    "[log] WebSocket opened {idx: 0, socket: WebSocket, attempts: 0, reconnectTimer: undefined, transactionPrefix: ofv7y}"
+  ],
+  "errors": [
+    "search: Page.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"search\\\"], input[placeholder*=\\\"earch\\\" i]\")\n",
+    "device link: Page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"a[href*=\\\"0xa4c13843a9d40f85\\\"]\")\n"
+  ],
+  "canonical_visible_exposes": false,
+  "canonical_visible_mobile": false,
+  "finished_utc": "2026-09-03T19:30:04.247778+00:00"
+}

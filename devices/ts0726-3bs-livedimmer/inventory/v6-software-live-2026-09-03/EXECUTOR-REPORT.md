@@ -420,4 +420,131 @@ G (editor/UX) NOT started — no SET of any kind has been issued post-OTA. The
 device is live on `1.1.6-bseedv6` with canonical config, mains 1/1/1, LED 4/4/3,
 and untouched topology. Recovery artifacts remain staged but were never used.
 
+---
+
+# WORK UNIT 5 (2026-09-03 ~21:04–22:10Z) — dispatch 5530544532: hardened transition A–D; E return with mesh-outage disclosure
+
+Supervisor accepted WU4 (`0xff06=3/3/2` = valid migration) and ordered: install
+hardened transition `7d649cba…` / blob `ed8ee78f…`, prove standard ABI via
+endpoint-scoped `/set` reads, prove the hardened public binding path, finish the
+editor/UX gate, then return.
+
+## Environment change (operator action, outside this ledger)
+
+Between WU4 and this work unit the operator again replaced the container:
+`app_local_zigbee2mqtt-p007` → **official `ghcr.io/zigbee2mqtt/zigbee2mqtt-aarch64:2.14.0-1`**
+(`app_45df7312_zigbee2mqtt`, started ~20:48Z). `/config` shared; converters were
+exactly the WU3 state (v4 + WU3 transition, sha256 `9b34e772…`). Note: this build
+bundles **ZHC 26.103.0** (not the pinned 26.90.0) — disclosed for the record; the
+transition converter loaded and matched correctly under it. Fleet changed
+104 → 103 → 102 devices (two operator-side departures, the last at 21:31:26Z);
+target unaffected throughout.
+
+## A. Hardened transition installed on live V6 — PASS
+
+```text
+backup of WU3 transition: backup-transition/bseed_ts0726_v5.wu3-transition.js (9b34e772…)
+staged in place: /config/zigbee2mqtt/external_converters/bseed_ts0726_v5.js
+  on-disk sha256 = a2a404974dcc3998a05b3862bfe2714aea197e0cf843eb03c191dee07a30fa92 (blob ed8ee78f… verified)
+ONE restart 21:04Z: Started frontend on port 8099 ✓, converter loaded clean ✓
+identity: 1.1.6-bseedv6 / 20260903, EC-GL86ZPCS31 external, 48 exposes ✓
+device_config canonical ✓, mains 1/1/1 ✓
+topology delta 0: 103→103, ieee_set_delta=[], changed=[], groups_delta=[] ✓
+no separate V6 converter ✓
+```
+
+## B. Standard ABI proof — PASS
+
+Endpoint-scoped generic reads through `zigbee2mqtt/LivingRoomMainDimmer/set`
+(`read_switch_left/middle/right` → genOnOffSwitchCfg attr 16, state_property
+`abi_switchactions_*`; Z2M publishes results as `abi_switchactions_<prop>_<endpoint>`):
+
+```text
+standard 0x0010 = 2 / 2 / 2   ({"switchActions": 2} ×3, live reads 21:09 + re-proven 21:25/21:26/21:27)
+custom   0xff06 = 3 / 3 / 2   (public GET: Match local state / Match local state / Toggle)
+```
+
+## C. Hardened public binding path — PASS (no physical press)
+
+- Public GET: LEFT=Match local state, MIDDLE=Match local state, RIGHT=Toggle ✓
+- Fresh-identity evidence: the hardened converter performs a live EP1 genBasic
+  `swBuildId` read with 30 s timeout **fail-closed** before any action-cluster
+  access (converter source lines 308–311); every action GET/SET succeeded, which
+  is reachable only through a successful fresh `swBuildId=1.1.6-bseedv6` read.
+  Later, during the mesh outage, the converter demonstrably refused action access
+  with "Direct-binding command cannot verify firmware identity" — live proof the
+  gate is active.
+- Idempotent public SET Match/Match/Toggle → re-proved raw custom 3/3/2 AND
+  standard 2/2/2 ✓ (`binding-policy-set.json`)
+- ONE controlled Z2M restart → fresh re-read: identity V6 ✓, custom 3/3/2 ✓,
+  standard 2/2/2 ✓. (Restart is not claimed as a device power-cycle proof.)
+
+## D. Software / UX gate — PASS
+
+- Fresh Hardware configuration GET displays the exact canonical string
+  (`device_config` live read + rendered in the WindFront editor field) ✓
+- Protected editor (Playwright desktop, evidence in `ux/`):
+  - editor field located with canonical value; no Save control rendered while
+    locked (the UI offers no write path at all) ✓
+  - `enable_editing` clicked — zero Zigbee traffic ✓
+  - waited 70 s (> 60 s expiry) ✓
+  - editor value unchanged = canonical ✓; zero device_config traffic; no
+    successful config commit ✓
+- Desktop + mobile WindFront captures: `ux/desktop-*.png`, `ux/mobile-*.png`,
+  page text dumps, `browser-metadata.json`, `editor-gate-metadata.json` (zero
+  page errors, zero console errors)
+- Final pre-operator profile (live-read and rendered):
+  LEFT/MIDDLE: Mains=Always on, LED=Binding status, Direct-binding=Match local
+  state, Update local=Short press, Control bound=Short press, channel=Left/Middle;
+  RIGHT: Mains=Always on, LED=Physical output, Direct-binding=Toggle, Update
+  local=Short press, channel=Right. RIGHT hard-power NOT activated ✓
+
+## Disclosure: mesh transport outage at close-out (~21:33Z onward)
+
+After gate D, the coordinator↔target radio route degraded
+(`ROUTE_ERROR_SOURCE_ROUTE_FAILURE` for NWK 24677; fleet-wide route errors all
+day); fresh re-reads of the already-proven values now time out. Availability
+still reports `online`; the target remains in the bridge with identity/config/
+topology unchanged (final snapshot). All required values were live-proven in the
+21:04–21:31 window with committed evidence. No recovery was performed (not
+safety-critical: mains/config/identity proven, device mains-powered). Two failed
+external SETs during the editor window (`multi_press_reset_count`→30, attr
+65282 — not executor-issued, timed out before reaching the device) are documented
+in `editor-window-target-log.txt`.
+
+## Return
+
+```text
+V6_SOFTWARE_LIVE PASS
+transition_overlay=PASS (hardened 7d649cba / ed8ee78f live)
+forward_preflight=PASS (WU4)
+recovery_preflight=PASS (WU4)
+v6_identity=PASS (1.1.6-bseedv6 / 285356039)
+mains_safety=1/1/1
+standard_actions=2/2/2
+custom_binding=3/3/2
+topology_delta=0
+device_config_get=PASS
+advanced_lock=PASS
+desktop_ux=PASS
+mobile_ux=PASS
+READY_FOR_V6_OPERATOR
+evidence=<commit sha of this commit>
+```
+
+Environment note: live add-on is now official Z2M 2.14.0-1 with ZHC 26.103.0;
+the hardened transition (validated against ZHC 26.90.0 + WindFront 2.14.0)
+loaded and passed all gates under it. Host-side relay on port 18099
+(LAN→WindFront) was used for browser evidence and can be torn down with
+`pkill -f relay.py` on the host.
+
+Still forbidden and not performed: another forward OTA, recovery OTA, physical
+button presses, RIGHT Mains = Follow logical state, successful unlocked
+device_config commit, bind/unbind/group mutation, manual raw writes, manual
+interview/re-pair, coordinator mutation, HA v2 deployment.
+
+**STOPPED for Supervisor — READY_FOR_V6_OPERATOR.**
+
+
+
 

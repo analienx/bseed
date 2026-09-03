@@ -1,0 +1,52 @@
+{
+  "started_utc": "2026-09-03T19:36:25.732832+00:00",
+  "steps": [
+    "2026-09-03T19:36:29.153961+00:00 base loaded",
+    "2026-09-03T19:36:31.228527+00:00 exposes tab clicked",
+    "2026-09-03T19:36:33.741067+00:00 device exposes page loaded",
+    "2026-09-03T19:36:33.777749+00:00 editor found after 0 poll rounds",
+    "2026-09-03T19:36:34.307749+00:00 editor textarea located with canonical value",
+    "2026-09-03T19:36:34.307798+00:00 attempting LOCKED save #1",
+    "2026-09-03T19:36:34.315114+00:00 locked1: no save control found; html dumped",
+    "2026-09-03T19:36:35.901149+00:00 locked save #1 ui: ['Advanced — Enable editing (Endpoint: advanced)', 'Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked.', 'enable_editing', 'Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware.']",
+    "2026-09-03T19:36:35.955626+00:00 clicked 'enable_editing'",
+    "2026-09-03T19:36:39.001803+00:00 after enable ui: ['Advanced — Enable editing (Endpoint: advanced)', 'Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked.', 'enable_editing', 'Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware.']",
+    "2026-09-03T19:36:39.001906+00:00 waiting 70 s for unlock expiry",
+    "2026-09-03T19:37:49.007147+00:00 attempting save #2 after expiry (locked again)",
+    "2026-09-03T19:37:49.014049+00:00 expired: no save control found; html dumped",
+    "2026-09-03T19:37:50.610923+00:00 expired save ui: ['Advanced — Enable editing (Endpoint: advanced)', 'Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked.', 'enable_editing', 'Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware.']",
+    "2026-09-03T19:37:50.617756+00:00 editor value unchanged: True"
+  ],
+  "console": [
+    "[log] WebSocket opened {idx: 0, socket: WebSocket, attempts: 0, reconnectTimer: undefined, transactionPrefix: d0twn}",
+    "[log] Calling API (0 | 0): {\"topic\":\"0xa4c13843a9d40f85/set\",\"payload\":{\"device_config_unlock\":\"enable_editing\"}}"
+  ],
+  "errors": [],
+  "editor_canonical": true,
+  "editor_html": [
+    "<div class=\"list-row p-3\"><div><svg data-prefix=\"fas\" data-icon=\"circle\" class=\"svg-inline--fa fa-circle opacity-0 fa-2xl\" role=\"img\" viewBox=\"0 0 512 512\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z\"></path></svg></div><div><div title=\"device_config\">Advanced — Hardware configuration (Endpoint: advanced)</div><div class=\"text-xs font-semibold opacity-60\">Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware.</div></div><div class=\"list-col-wrap flex flex-col gap-2\"><input class=\"input validator\" type=\"text\" value=\"iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;\"></div><button type=\"button\" class=\"btn btn-xs btn-square btn-primary btn-soft \"><svg data-prefix=\"fas\" data-icon=\"arrows-rotate\" class=\"svg-inline--fa fa-arrows-rotate\" role=\"img\" viewBox=\"0 0 512 512\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M65.9 228.5c13.3-93 93.4-164.5 190.1-164.5 53 0 101 21.5 135.8 56.2 .2 .2 .4 .4 .6 .6l7.6 7.2-47.9 0c-",
+    "<div class=\"list-row p-3\"><div><svg data-prefix=\"fas\" data-icon=\"circle\" class=\"svg-inline--fa fa-circle opacity-0 fa-2xl\" role=\"img\" viewBox=\"0 0 512 512\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z\"></path></svg></div><div><div title=\"device_config\">Advanced — Hardware configuration (Endpoint: advanced)</div><div class=\"text-xs font-semibold opacity-60\">Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware.</div></div><div class=\"list-col-wrap flex flex-col gap-2\"><input class=\"input validator\" type=\"text\" value=\"iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;\" style=\"\"></div><button type=\"button\" class=\"btn btn-xs btn-square btn-primary btn-soft \"><svg data-prefix=\"fas\" data-icon=\"arrows-rotate\" class=\"svg-inline--fa fa-arrows-rotate\" role=\"img\" viewBox=\"0 0 512 512\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M65.9 228.5c13.3-93 93.4-164.5 190.1-164.5 53 0 101 21.5 135.8 56.2 .2 .2 .4 .4 .6 .6l7.6 7.2"
+  ],
+  "locked_save_1_ui": [
+    "Advanced — Enable editing (Endpoint: advanced)",
+    "Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked.",
+    "enable_editing",
+    "Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware."
+  ],
+  "enable_editing_clicked": true,
+  "after_enable_body": [
+    "Advanced — Enable editing (Endpoint: advanced)",
+    "Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked.",
+    "enable_editing",
+    "Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware."
+  ],
+  "expired_wait_done": true,
+  "expired_save_ui": [
+    "Advanced — Enable editing (Endpoint: advanced)",
+    "Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked.",
+    "enable_editing",
+    "Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware."
+  ],
+  "editor_value_unchanged": true,
+  "finished_utc": "2026-09-03T19:37:53.245585+00:00"
+}

@@ -1,0 +1,252 @@
+LivingRoomMainDimmer
+About
+Exposes
+Bind
+Reporting
+Settings
+Settings (specific)
+State
+Clusters
+Groups
+Scene
+Dev console
+Left — Logical state (Endpoint: relay_left)
+The Zigbee state for this channel. Use it for automations and state tracking. It is not the same as mains power: with Mains power behavior set to Always on, this may be OFF while the smart load remains continuously powered.
+OFFON
+Middle — Logical state (Endpoint: relay_middle)
+The Zigbee state for this channel. Use it for automations and state tracking. It is not the same as mains power: with Mains power behavior set to Always on, this may be OFF while the smart load remains continuously powered.
+OFFON
+Right — Logical state (Endpoint: relay_right)
+The Zigbee state for this channel. Use it for automations and state tracking. It is not the same as mains power: with Mains power behavior set to Always on, this may be OFF while the smart load remains continuously powered.
+OFFON
+Left — State after power-up (Endpoint: relay_left)
+Chooses the Zigbee state restored after restart. This affects the logical channel only. It never overrides Mains power behavior, so Always on remains electrically powered.
+off
+on
+toggle
+previous
+Middle — State after power-up (Endpoint: relay_middle)
+Chooses the Zigbee state restored after restart. This affects the logical channel only. It never overrides Mains power behavior, so Always on remains electrically powered.
+off
+on
+toggle
+previous
+Right — State after power-up (Endpoint: relay_right)
+Chooses the Zigbee state restored after restart. This affects the logical channel only. It never overrides Mains power behavior, so Always on remains electrically powered.
+off
+on
+toggle
+previous
+Left — Mains power (Endpoint: relay_left)
+Controls the actual electrical output for this channel. For smart bulbs and smart dimmers choose Always on so they stay powered while logical state changes. Follow logical state is for a load this device should physically switch. Always off keeps the output de-energized. Changing this can affect power immediately, so verify the connected load first. The choice survives restart.
+Follow logical state
+Always on
+Always off
+Middle — Mains power (Endpoint: relay_middle)
+Controls the actual electrical output for this channel. For smart bulbs and smart dimmers choose Always on so they stay powered while logical state changes. Follow logical state is for a load this device should physically switch. Always off keeps the output de-energized. Changing this can affect power immediately, so verify the connected load first. The choice survives restart.
+Follow logical state
+Always on
+Always off
+Right — Mains power (Endpoint: relay_right)
+Controls the actual electrical output for this channel. For smart bulbs and smart dimmers choose Always on so they stay powered while logical state changes. Follow logical state is for a load this device should physically switch. Always off keeps the output de-energized. Changing this can affect power immediately, so verify the connected load first. The choice survives restart.
+Follow logical state
+Always on
+Always off
+Left — Button type (Endpoint: switch_left)
+Match this to the wall mechanism. Rocker / toggle is a maintained switch. Push button is a normal momentary input. Use Push button (normally closed) only for an NC contact. A wrong choice makes presses appear inverted or unreliable.
+Rocker / toggle
+Push button
+Push button (normally closed)
+Left — Direct-binding command (Endpoint: switch_left)
+Chooses the On/Off command sent directly to bound lights. Toggle is the simplest choice and does not depend on local state. Match local state sends explicit On/Off to match this channel; Opposite local state sends the inverse. On then off and Off then on are mainly useful with maintained rocker inputs.
+On then off
+Off then on
+Toggle
+Match local state
+Opposite local state
+Left — Update local state (Endpoint: switch_left)
+Chooses when this physical button updates the assigned Zigbee state. Never (detached) leaves local state untouched. On press updates immediately; Short press waits for a completed click; Long press waits for the hold threshold. This does not override Mains power behavior.
+Never (detached)
+On press
+Short press
+Long press
+Left — Local state channel (Endpoint: switch_left)
+Chooses which local Zigbee channel this button updates: Left, Middle or Right. This affects logical state only and does not remap physical GPIO pins.
+Left
+Middle
+Right
+Left — Control bound light (Endpoint: switch_left)
+Chooses when the button sends a direct command to existing bindings or groups. On press is fastest; Short press waits for a completed click; Long press sends only after a hold. This does not create or remove bindings.
+On press
+Short press
+Long press
+Left — Hold threshold (Endpoint: switch_left)
+How long the button must stay pressed before it becomes a long press. Increase it to reduce accidental holds; decrease it for faster hold actions.
+0
+5000
+ms
+Left — Dimming speed (Endpoint: switch_left)
+Speed of direct-binding brightness changes while held. Higher values dim faster; lower values give finer control.
+1
+255
+level/s
+Middle — Button type (Endpoint: switch_middle)
+Match this to the wall mechanism. Rocker / toggle is a maintained switch. Push button is a normal momentary input. Use Push button (normally closed) only for an NC contact. A wrong choice makes presses appear inverted or unreliable.
+Rocker / toggle
+Push button
+Push button (normally closed)
+Middle — Direct-binding command (Endpoint: switch_middle)
+Chooses the On/Off command sent directly to bound lights. Toggle is the simplest choice and does not depend on local state. Match local state sends explicit On/Off to match this channel; Opposite local state sends the inverse. On then off and Off then on are mainly useful with maintained rocker inputs.
+On then off
+Off then on
+Toggle
+Match local state
+Opposite local state
+Middle — Update local state (Endpoint: switch_middle)
+Chooses when this physical button updates the assigned Zigbee state. Never (detached) leaves local state untouched. On press updates immediately; Short press waits for a completed click; Long press waits for the hold threshold. This does not override Mains power behavior.
+Never (detached)
+On press
+Short press
+Long press
+Middle — Local state channel (Endpoint: switch_middle)
+Chooses which local Zigbee channel this button updates: Left, Middle or Right. This affects logical state only and does not remap physical GPIO pins.
+Left
+Middle
+Right
+Middle — Control bound light (Endpoint: switch_middle)
+Chooses when the button sends a direct command to existing bindings or groups. On press is fastest; Short press waits for a completed click; Long press sends only after a hold. This does not create or remove bindings.
+On press
+Short press
+Long press
+Middle — Hold threshold (Endpoint: switch_middle)
+How long the button must stay pressed before it becomes a long press. Increase it to reduce accidental holds; decrease it for faster hold actions.
+0
+5000
+ms
+Middle — Dimming speed (Endpoint: switch_middle)
+Speed of direct-binding brightness changes while held. Higher values dim faster; lower values give finer control.
+1
+255
+level/s
+Right — Button type (Endpoint: switch_right)
+Match this to the wall mechanism. Rocker / toggle is a maintained switch. Push button is a normal momentary input. Use Push button (normally closed) only for an NC contact. A wrong choice makes presses appear inverted or unreliable.
+Rocker / toggle
+Push button
+Push button (normally closed)
+Right — Direct-binding command (Endpoint: switch_right)
+Chooses the On/Off command sent directly to bound lights. Toggle is the simplest choice and does not depend on local state. Match local state sends explicit On/Off to match this channel; Opposite local state sends the inverse. On then off and Off then on are mainly useful with maintained rocker inputs.
+On then off
+Off then on
+Toggle
+Match local state
+Opposite local state
+Right — Update local state (Endpoint: switch_right)
+Chooses when this physical button updates the assigned Zigbee state. Never (detached) leaves local state untouched. On press updates immediately; Short press waits for a completed click; Long press waits for the hold threshold. This does not override Mains power behavior.
+Never (detached)
+On press
+Short press
+Long press
+Right — Local state channel (Endpoint: switch_right)
+Chooses which local Zigbee channel this button updates: Left, Middle or Right. This affects logical state only and does not remap physical GPIO pins.
+Left
+Middle
+Right
+Right — Control bound light (Endpoint: switch_right)
+Chooses when the button sends a direct command to existing bindings or groups. On press is fastest; Short press waits for a completed click; Long press sends only after a hold. This does not create or remove bindings.
+On press
+Short press
+Long press
+Right — Hold threshold (Endpoint: switch_right)
+How long the button must stay pressed before it becomes a long press. Increase it to reduce accidental holds; decrease it for faster hold actions.
+0
+5000
+ms
+Right — Dimming speed (Endpoint: switch_right)
+Speed of direct-binding brightness changes while held. Higher values dim faster; lower values give finer control.
+1
+255
+level/s
+Left — LED shows (Endpoint: relay_left)
+Chooses what the small panel LED represents. Logical state follows this channel's Zigbee state. Inverse logical state shows the opposite. Manual lets you control the LED separately. Physical output shows the electrical-output command. Binding status is recommended when this button directly controls a smart light: it follows locally tracked On/Off intent sent through the binding. It is intent, not confirmation of remote state. These options control only the panel LED and never change the electrical output.
+Logical state
+Inverse logical state
+Manual
+Physical output
+Binding status
+Left — Bound light (tracked) (Endpoint: relay_left)
+The On/Off state this device currently believes the bound light should be in. Direct-binding commands update it locally, and Home Assistant can correct it from the real light state. Use it with LED shows = Binding status. It is not remote-state confirmation by itself. Changing this only corrects the local tracker: it sends no command, changes no binding and never changes electrical power.
+OFFON
+Left — Manual LED (Endpoint: relay_left)
+Turns the panel LED on or off when LED shows is Manual. It has no effect in other LED modes and never controls power.
+OFFON
+Middle — LED shows (Endpoint: relay_middle)
+Chooses what the small panel LED represents. Logical state follows this channel's Zigbee state. Inverse logical state shows the opposite. Manual lets you control the LED separately. Physical output shows the electrical-output command. Binding status is recommended when this button directly controls a smart light: it follows locally tracked On/Off intent sent through the binding. It is intent, not confirmation of remote state. These options control only the panel LED and never change the electrical output.
+Logical state
+Inverse logical state
+Manual
+Physical output
+Binding status
+Middle — Bound light (tracked) (Endpoint: relay_middle)
+The On/Off state this device currently believes the bound light should be in. Direct-binding commands update it locally, and Home Assistant can correct it from the real light state. Use it with LED shows = Binding status. It is not remote-state confirmation by itself. Changing this only corrects the local tracker: it sends no command, changes no binding and never changes electrical power.
+OFFON
+Middle — Manual LED (Endpoint: relay_middle)
+Turns the panel LED on or off when LED shows is Manual. It has no effect in other LED modes and never controls power.
+OFFON
+Right — LED shows (Endpoint: relay_right)
+Chooses what the small panel LED represents. Logical state follows this channel's Zigbee state. Inverse logical state shows the opposite. Manual lets you control the LED separately. Physical output shows the electrical-output command. Binding status is recommended when this button directly controls a smart light: it follows locally tracked On/Off intent sent through the binding. It is intent, not confirmation of remote state. These options control only the panel LED and never change the electrical output.
+Logical state
+Inverse logical state
+Manual
+Physical output
+Binding status
+Right — Bound light (tracked) (Endpoint: relay_right)
+The On/Off state this device currently believes the bound light should be in. Direct-binding commands update it locally, and Home Assistant can correct it from the real light state. Use it with LED shows = Binding status. It is not remote-state confirmation by itself. Changing this only corrects the local tracker: it sends no command, changes no binding and never changes electrical power.
+OFFON
+Right — Manual LED (Endpoint: relay_right)
+Turns the panel LED on or off when LED shows is Manual. It has no effect in other LED modes and never controls power.
+OFFON
+Left — Last button input (Endpoint: switch_left)
+Diagnostic view of the most recent physical input event seen by firmware. Useful for checking wiring and input mode.
+Released
+Middle — Last button input (Endpoint: switch_middle)
+Diagnostic view of the most recent physical input event seen by firmware. Useful for checking wiring and input mode.
+Released
+Right — Last button input (Endpoint: switch_right)
+Diagnostic view of the most recent physical input event seen by firmware. Useful for checking wiring and input mode.
+Released
+Network LED (Endpoint: switch_left)
+Controls the separate network-status LED. This is independent of the three channel LEDs.
+OFFON
+Factory-reset press count (Endpoint: switch_left)
+Consecutive presses required for factory reset. Set to 0 to disable press-based reset. Change only if you have another recovery method.
+0
+255
+Advanced — Enable editing (Endpoint: advanced)
+Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked.
+enable_editing
+Advanced — Hardware configuration (Endpoint: advanced)
+Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware.
+Action
+Triggered action (e.g. a button click)
+N/A
+Linkquality
+Link quality (signal strength)
+56lqi
+Zigbee2MQTT
+Home
+Dashboard
+Devices
+Groups
+Reporting
+Bindings
+OTA
+Touchlink
+Network
+Logs
+Activity
+Settings
+Frontend settings
+Permit join
+All
+en
+Contribute

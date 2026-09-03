@@ -1,0 +1,96 @@
+{
+  "url": "http://192.168.50.58:18099/#/device/0/0xa4c13843a9d40f85/exposes",
+  "textareas": [],
+  "inputs": [
+    {
+      "t": "checkbox",
+      "v": "on"
+    },
+    {
+      "t": "checkbox",
+      "v": "on"
+    },
+    {
+      "t": "text",
+      "v": ""
+    },
+    {
+      "t": "checkbox",
+      "v": "on"
+    },
+    {
+      "t": "checkbox",
+      "v": "on"
+    },
+    {
+      "t": "checkbox",
+      "v": "on"
+    },
+    {
+      "t": "range",
+      "v": "2500"
+    },
+    {
+      "t": "number",
+      "v": ""
+    },
+    {
+      "t": "range",
+      "v": "128"
+    },
+    {
+      "t": "number",
+      "v": ""
+    },
+    {
+      "t": "range",
+      "v": "2500"
+    },
+    {
+      "t": "number",
+      "v": ""
+    },
+    {
+      "t": "range",
+      "v": "128"
+    },
+    {
+      "t": "number",
+      "v": ""
+    },
+    {
+      "t": "range",
+      "v": "2500"
+    },
+    {
+      "t": "number",
+      "v": ""
+    },
+    {
+      "t": "range",
+      "v": "128"
+    },
+    {
+      "t": "number",
+      "v": ""
+    },
+    {
+      "t": "checkbox",
+      "v": "on"
+    },
+    {
+      "t": "checkbox",
+      "v": "on"
+    }
+  ],
+  "has_hw_label": 13871,
+  "body_len": 14998,
+  "scrollables": [
+    {
+      "tag": "HTML",
+      "cls": "",
+      "sh": 6058,
+      "ch": 1200
+    }
+  ]
+}

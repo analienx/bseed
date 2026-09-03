@@ -1,0 +1,21 @@
+base loaded
+exposes tab clicked
+device exposes page loaded
+editor found after 0 poll rounds
+editor textarea located with canonical value
+attempting LOCKED save #1
+locked1: no save control found; html dumped
+locked save #1 ui: ['Advanced — Enable editing (Endpoint: advanced)', 'Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked.', 'enable_editing', 'Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware.']
+clicked 'enable_editing'
+after enable ui: ['Advanced — Enable editing (Endpoint: advanced)', 'Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked.', 'enable_editing', 'Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware.']
+waiting 70 s for unlock expiry
+attempting save #2 after expiry (locked again)
+expired: no save control found; html dumped
+expired save ui: ['Advanced — Enable editing (Endpoint: advanced)', 'Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked.', 'enable_editing', 'Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware.']
+editor value unchanged: True
+{
+  "editor_canonical": true,
+  "enable_editing_clicked": true,
+  "editor_value_unchanged": true,
+  "errors": []
+}

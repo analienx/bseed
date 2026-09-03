@@ -1,0 +1,104 @@
+{
+  "policy": {
+    "switch_left_action_mode": "Match local state",
+    "switch_middle_action_mode": "Match local state",
+    "switch_right_action_mode": "Toggle"
+  },
+  "observed_last": {
+    "switch_left_action_mode": "Match local state",
+    "switch_middle_action_mode": "Match local state",
+    "switch_right_action_mode": "Toggle"
+  },
+  "steps": [
+    {
+      "via": "state",
+      "key": "switch_left_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_middle_action_mode",
+      "value": "Toggle"
+    },
+    {
+      "via": "state",
+      "key": "switch_right_action_mode",
+      "value": "Toggle"
+    },
+    {
+      "via": "state",
+      "key": "switch_left_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_middle_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_right_action_mode",
+      "value": "Toggle"
+    },
+    {
+      "via": "state",
+      "key": "switch_left_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_middle_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_right_action_mode",
+      "value": "Toggle"
+    },
+    {
+      "via": "state",
+      "key": "switch_left_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_middle_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_right_action_mode",
+      "value": "Toggle"
+    },
+    {
+      "via": "state",
+      "key": "switch_left_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_middle_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_right_action_mode",
+      "value": "Toggle"
+    },
+    {
+      "via": "state",
+      "key": "switch_left_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_middle_action_mode",
+      "value": "Match local state"
+    },
+    {
+      "via": "state",
+      "key": "switch_right_action_mode",
+      "value": "Toggle"
+    }
+  ]
+}
