@@ -17,7 +17,7 @@
     "overlayBranch": "supervisor/target-overlay-v5",
     "overlayCommit": "eaba4ceca83df265ddedde5a6ea60e72ff3522d3",
     "overlayPath": "zigbee2mqtt/converters/bseed_ts0726_v5.js",
-    "overlayGitBlob": "ff53b04ac1f24f935f31f2c4ce9ff5f4aece1b0f",
+    "overlayGitBlob": "eafc31957e29b848b778f2f9c7eb9c333af086e9",
     "haRepo": "analienx/home-assistant-stack",
     "haBranch": "supervisor/ts0726-post-migration-ha-v2",
     "haCommit": "68972efd4b1feb2eb16c3e98c7174c0c36efa65f"
@@ -70,5 +70,11 @@
     "v5LiveDeployed": false,
     "haV2LiveDeployed": false,
     "deviceConfigLiveRoundTripAuthorized": false
+  },
+  "supersededBy": {
+    "reason": "Live v5 canary found endpoint-routing, direct-binding-control and device_config GET defects in the original overlay plus an outdated HA all-channels profile.",
+    "overlayCommit": "d0ec7c1b3b67cf8265244b768b76684e44691374",
+    "haCommit": "9472e5b2825e0c1db5705f2b0b2f63349fb09864",
+    "evidencePath": "devices/ts0726-3bs-livedimmer/inventory/v5.1-correction-2026-09-03/"
   }
 }
