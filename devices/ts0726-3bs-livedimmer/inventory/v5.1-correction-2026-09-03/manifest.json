@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "release": "BSEED TS0726-3-BS v5.1 overlay/HA correction",
+  "generatedUtc": "2026-09-03T06:07:00Z",
+  "target": {
+    "friendlyName": "LivingRoomMainDimmer",
+    "ieee": "0xa4c13843a9d40f85",
+    "manufacturerName": "iedhxgyi",
+    "modelID": "TS0726-3-BS"
+  },
+  "liveState": {
+    "firmwareInstalled": "1.1.5-bseedv5",
+    "fileVersion": 285356037,
+    "firmwareReflashRequired": false,
+    "originalV5OverlayLiveCommit": "eaba4ceca83df265ddedde5a6ea60e72ff3522d3",
+    "originalV5OverlayDisposition": "SUPERSEDED_AFTER_LIVE_CANARY",
+    "haV2Live": false
+  },
+  "frozenPins": {
+    "firmware": {
+      "repo": "analienx/tuya-zigbee-switch",
+      "branch": "supervisor/ts0726-redesign-v5",
+      "commit": "69a4775c4cb4c87f2e948a8aa5b6f099df703ba5",
+      "disposition": "UNCHANGED_ACCEPTED"
+    },
+    "overlay": {
+      "repo": "analienx/tuya-zigbee-switch",
+      "branch": "supervisor/target-overlay-v5",
+      "commit": "d0ec7c1b3b67cf8265244b768b76684e44691374",
+      "path": "zigbee2mqtt/converters/bseed_ts0726_v5.js",
+      "gitBlob": "5e04d9e50fee0c3d6f9b9b2f92114b25daac4b3e"
+    },
+    "homeAssistant": {
+      "repo": "analienx/home-assistant-stack",
+      "branch": "supervisor/ts0726-post-migration-ha-v2",
+      "commit": "9472e5b2825e0c1db5705f2b0b2f63349fb09864"
+    }
+  },
+  "fixes": {
+    "endpointSafeControls": {
+      "status": "PASS",
+      "detail": "Every named per-channel SET/GET is pinned directly to EP1..EP6 via meta.device.getEndpoint(id); no determineEndpoint fallback."
+    },
+    "directBindingCommand": {
+      "status": "PASS_SOFTWARE",
+      "detail": "Match local state uses raw genOnOffSwitchCfg 0x0010 value 3 on explicit EP1/EP2; restart persistence remains live-readback gate."
+    },
+    "deviceConfigGet": {
+      "status": "PASS_SOFTWARE",
+      "detail": "genBasic is extended with named writable LONG_CHAR_STR deviceConfig attribute 0xff00; GET is pinned to EP1 and decoded back to legacy public property device_config."
+    },
+    "haProfile": {
+      "status": "PASS",
+      "left": "Always on + Binding status; corrective reconciliation",
+      "middle": "Always on + Binding status; corrective reconciliation",
+      "right": "Follow logical state + Physical output; excluded from downstream-light reconciliation"
+    }
+  },
+  "validation": {
+    "overlayFunctionalRun": 33722476993,
+    "overlayFunctionalTestJob": 100544309672,
+    "overlayFunctionalResult": "PASS",
+    "overlayExactZhcRun": 33722502239,
+    "overlayExactZhcJob": 100544387469,
+    "overlayExactZhcVersion": "26.90.0",
+    "overlayExactZhcResult": "PASS",
+    "unscopedEndpointRegression": "PASS",
+    "homeAssistantRun": 33722202782,
+    "homeAssistantCommit": "9472e5b2825e0c1db5705f2b0b2f63349fb09864",
+    "homeAssistantResult": "PASS",
+    "homeAssistantCheckConfig": "PASS",
+    "lintDisposition": "UNRELATED_VENDOR_ONLY"
+  },
+  "nextGate": {
+    "firmwareReflash": false,
+    "replaceOverlayOnly": true,
+    "z2mRestartOnce": true,
+    "reapplyAndRawReadbackProfile": true,
+    "restartPersistenceReadback": true,
+    "advancedConfigGet": true,
+    "advancedLockUx": true,
+    "operatorHardwareAcceptance": true,
+    "haDeployAfterHardwareAcceptance": true
+  }
+}
