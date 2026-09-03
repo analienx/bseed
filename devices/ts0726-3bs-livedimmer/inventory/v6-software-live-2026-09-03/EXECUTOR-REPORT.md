@@ -13,6 +13,10 @@ A PASS · B composition preflight PASS, staging restart FAILED service health
 C/D/E/F/G/H NOT REACHED (no OTA CHECK, no OTA transfer, no setting change)
 Rollback executed exactly as prescribed: remove ONLY V6 overlay + one restart.
 RECOVERY PROVEN. Target untouched on V5. Stopped for Supervisor.
+
+B2 ADDENDUM: failure REPRODUCED on the operator's patched add-on
+(local/aarch64-addon-zigbee2mqtt-p007:2.13.0-1-p007) with an identical
+signature — see ADDENDUM B2 below. The V6 overlay itself is the trigger.
 ```
 
 ## A. Re-prove current safe V5 baseline — PASS
@@ -114,3 +118,78 @@ ota/  raw/  ux/                    empty — steps C–H not reached
 Stopped per dispatch. No OTA, no CHECK, no device mutation occurred. The V5
 electrically-safe state is fully restored and proven. Physical-button boundary was
 never approached.
+
+---
+
+# ADDENDUM B2 (2026-09-03 ~12:40Z) — failure REPRODUCED on operator-built add-on `p007`
+
+## Environment change observed (operator action, outside this ledger)
+
+While this return was pending, the operator replaced the Z2M add-on container:
+
+```text
+old: app_45df7312_zigbee2mqtt (stock 2.13.0-1 add-on)         — removed
+new: app_local_zigbee2mqtt-p007
+     image local/aarch64-addon-zigbee2mqtt-p007:2.13.0-1-p007 — started 12:27:43Z
+```
+
+`/config` is shared: external_converters were exactly my rollback state
+(v4 `d5b276dd…`, v5 `4940ad69…`, no V6 file). ZHC is still the pinned
+`26.90.0` (`/app/node_modules/.pnpm/zigbee-herdsman-converters@26.90.0/`);
+Z2M still 2.13.0. Frontend healthy on 8099 after the operator's own start.
+
+## B re-run on p007 (same work unit, same pinned artifacts)
+
+All staging re-verified in-container (overlay `9f954ce8…`, forward.ota
+`d18c420d…`, recovery.ota `4a09b522…`). Fresh bridge baseline captured
+(`staging/bridge-before-p007.json`). Composition preflight PASS again.
+V6 overlay deployed (hash verified on disk) → ONE controlled restart (12:38:51).
+
+**FAIL-1 REPRODUCED, identical signature:**
+
+```text
+12:38:56  Connected to MQTT server
+12:38:56  Loaded external converter 'bseed_ts0726_v4.js' / v5 / v6 / stb3l / switch_custom ×2 / tuya_with_ota ×…
+12:38:57  (last non-publish startup line)
+          → "Started frontend on port 8099" NEVER logged; 127.0.0.1:8099 ECONNREFUSED
+          → process alive: bridge publishes continue normally
+```
+
+No converter error, no exception, no uncaught-rejection line — the frontend start
+is silently skipped/lost whenever the V6 overlay is loaded. This eliminates the
+add-on build as the variable: **the V6 overlay itself deterministically prevents
+frontend startup** on both independent Z2M 2.13.0-1 builds (stock and operator
+patch p007).
+
+Prescribed rollback executed (remove ONLY V6 overlay + one restart, 12:40:04):
+`Started frontend on port 8099` at 12:40:15, `PORT_OPEN 127.0.0.1:8099`
+(`staging/p007-restart-nofrontend.txt` is the full non-publish log tail of the
+failed boot).
+
+Post-rollback state re-proven identical to the p007 baseline
+(`bridge-after-rollback-p007.json` vs `bridge-before-p007.json`):
+104 devices, IEEE set unchanged, groups unchanged, target bindings unchanged,
+configured_reportings unchanged; target `1.1.5-bseedv5`, canonical
+device_config, `raw_ep4/5/6_onoff_physical_*` = `{"65283":1}` ×3.
+
+## Conclusion for Supervisor
+
+The V6 overlay (`bseed_ts0726_v6.js` @ `e31221ff`, blob `b64d6af4…`) blocks
+Z2M frontend startup with WindFront while otherwise booting cleanly. The delta
+vs the proven V5.1 overlay (same repo family) is the primary suspect surface:
+the V6-specific exposes (0xff06 5-value `buttonCommandBehavior`, `deviceConfigUnlock`
+editor pair, `lastButtonAction`, `networkIndicator`, extended
+`legacyActionEvent` aggregate, `configTransportCluster` shape) and any WindFront
+interaction with them should be audited offline in the firmware repo. No further
+live restarts were performed after the prescribed rollback.
+
+## Additional evidence (B2)
+
+```text
+staging/bridge-before-p007.json        p007 baseline (pre-deploy)
+staging/p007-restart-nofrontend.txt    full non-publish log tail of failed boot on p007
+staging/bridge-after-rollback-p007.json post-rollback bridge snapshot (deltas 0)
+staging/state-after-rollback-p007.json  post-rollback target state (V5, canonical, 0xff03=1/1/1)
+```
+
+Still STOPPED for Supervisor. No OTA, no CHECK, no device mutation in B2 either.
