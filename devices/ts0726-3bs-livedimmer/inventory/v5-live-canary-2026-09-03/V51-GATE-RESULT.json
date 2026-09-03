@@ -1,0 +1,39 @@
+{
+  "release": "TS0726-3-BS v5.1 correction",
+  "target": "LivingRoomMainDimmer",
+  "ieee": "0xa4c13843a9d40f85",
+  "firmware": {
+    "softwareBuildId": "1.1.5-bseedv5",
+    "fileVersion": 285356037,
+    "reflash": false
+  },
+  "overlay": {
+    "commit": "d0ec7c1b3b67cf8265244b768b76684e44691374",
+    "gitBlob": "5e04d9e50fee0c3d6f9b9b2f92114b25daac4b3e",
+    "sha256": "4940ad694de9c61e9afbdd529f59ffcf02edf3dc707979301dfc7a73068e5bda",
+    "bytes": 34423
+  },
+  "restart": "PASS_CLEAN",
+  "exactZhcRoutingProbe": {
+    "version": "26.90.0",
+    "setGetCases": 33,
+    "status": "PASS"
+  },
+  "safeMainsReadback": {
+    "EP4": 1,
+    "EP5": 1,
+    "EP6": 1,
+    "status": "PASS"
+  },
+  "actionModeReadback": {
+    "EP1": 2,
+    "EP2": 2,
+    "EP3": 2,
+    "required": {"EP1": 3, "EP2": 3, "EP3": 2},
+    "status": "FAIL_STOP"
+  },
+  "advancedGet": "NOT_ATTEMPTED",
+  "physicalAcceptance": "NOT_ATTEMPTED",
+  "haDeployment": "NOT_ATTEMPTED",
+  "safeState": "All mains Always on; LED source Binding/Binding/Physical"
+}

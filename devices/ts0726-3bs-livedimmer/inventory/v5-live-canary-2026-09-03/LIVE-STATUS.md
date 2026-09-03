@@ -42,3 +42,12 @@ EP4/EP5/EP6 binding intent 0xff04 = 0 / 0 / 0
 ```
 
 No bindings, groups, coordinator settings, or hardware pin mappings were changed. HA v2 was not deployed. Recovery fileVersion `285356038` remains staged and hash-verified on the HA host.
+
+## V5.1 correction gate — 2026-09-03
+
+- Corrected overlay `d0ec7c1b3b67cf8265244b768b76684e44691374`, blob `5e04d9e50fee0c3d6f9b9b2f92114b25daac4b3e`, is live byte-exact; SHA256 `4940ad694de9c61e9afbdd529f59ffcf02edf3dc707979301dfc7a73068e5bda`, 34423 bytes.
+- One controlled Z2M restart completed cleanly; target remains v5 and the exact-ZHC routing probe passes 33/33 cases.
+- Safe per-channel Mains-power writes/readbacks pass: EP4/EP5/EP6 each remain `0xff03 = 1`.
+- Corrected live action-mode SETs still do not persist: raw EP1/EP2 `0x0010` remain `2`, not required `3`. GETs also returned no response. This is the active stop condition.
+- Advanced hardware-config GET, lock/expiry UX, desktop/mobile UX, physical acceptance, and HA v2 deployment were not attempted after this failure.
+- IEEE set and group set remain unchanged; target bindings/reportings remain unchanged. A global before/after database comparison shows only an unrelated device gained pre-existing cluster-1 binds/reportings during the interval; no target topology mutation is attributed to this correction.
