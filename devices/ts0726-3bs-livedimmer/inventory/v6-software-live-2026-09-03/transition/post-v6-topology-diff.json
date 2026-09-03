@@ -1,0 +1,690 @@
+{
+ "devices_before": 104,
+ "devices_after": 104,
+ "ieee_set_delta": [],
+ "changed": [
+  {
+   "ieee": "0xa4c13843a9d40f85",
+   "name": "LivingRoomMainDimmer",
+   "before": {
+    "type": "Router",
+    "network_address": 24677,
+    "friendly_name": "LivingRoomMainDimmer",
+    "supported": true,
+    "disabled": false,
+    "interview_completed": true,
+    "interviewing": false,
+    "software_build_id": "1.1.6-bseedv6",
+    "definition_model": "EC-GL86ZPCS31",
+    "power_source": "Mains (single phase)",
+    "endpoints": {
+     "1": {
+      "bindings": [
+       {
+        "cluster": "genMultistateInput",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 11,
+         "ieee_address": "0xa4c1388b709b209c",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 11,
+         "ieee_address": "0xa4c1388b709b209c",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 4,
+         "ieee_address": "0xa4c13843a9d40f85",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genBasic",
+        "genOnOffSwitchCfg",
+        "genMultistateInput"
+       ],
+       "output": [
+        "genOta",
+        "genOnOff",
+        "genLevelCtrl"
+       ]
+      },
+      "configured_reportings": [
+       {
+        "attribute": "presentValue",
+        "cluster": "genMultistateInput",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       }
+      ],
+      "name": "switch_left",
+      "scenes": []
+     },
+     "2": {
+      "bindings": [
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "id": 25,
+         "type": "group"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "id": 25,
+         "type": "group"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 5,
+         "ieee_address": "0xa4c13843a9d40f85",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genMultistateInput",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genOnOffSwitchCfg",
+        "genMultistateInput"
+       ],
+       "output": [
+        "genOnOff",
+        "genLevelCtrl"
+       ]
+      },
+      "configured_reportings": [
+       {
+        "attribute": "presentValue",
+        "cluster": "genMultistateInput",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       }
+      ],
+      "name": "switch_middle",
+      "scenes": []
+     },
+     "3": {
+      "bindings": [
+       {
+        "cluster": "genMultistateInput",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genOnOffSwitchCfg",
+        "genMultistateInput"
+       ],
+       "output": [
+        "genOnOff",
+        "genLevelCtrl"
+       ]
+      },
+      "configured_reportings": [
+       {
+        "attribute": "presentValue",
+        "cluster": "genMultistateInput",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       }
+      ],
+      "name": "switch_right",
+      "scenes": []
+     },
+     "4": {
+      "bindings": [
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genOnOff",
+        "genLevelCtrl",
+        "genGroups"
+       ],
+       "output": []
+      },
+      "configured_reportings": [
+       {
+        "attribute": "attr0",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       },
+       {
+        "attribute": "onOff",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 300,
+        "minimum_report_interval": 0,
+        "reportable_change": 0
+       }
+      ],
+      "name": "relay_left",
+      "scenes": []
+     },
+     "5": {
+      "bindings": [
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genOnOff",
+        "genLevelCtrl",
+        "genGroups"
+       ],
+       "output": []
+      },
+      "configured_reportings": [
+       {
+        "attribute": "attr0",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       },
+       {
+        "attribute": "onOff",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 300,
+        "minimum_report_interval": 0,
+        "reportable_change": 0
+       }
+      ],
+      "name": "relay_middle",
+      "scenes": []
+     },
+     "6": {
+      "bindings": [
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genOnOff",
+        "genLevelCtrl",
+        "genGroups"
+       ],
+       "output": []
+      },
+      "configured_reportings": [
+       {
+        "attribute": "attr0",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       },
+       {
+        "attribute": "onOff",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       }
+      ],
+      "name": "relay_right",
+      "scenes": []
+     }
+    }
+   },
+   "after": {
+    "type": "Router",
+    "network_address": 24677,
+    "friendly_name": "LivingRoomMainDimmer",
+    "supported": true,
+    "disabled": false,
+    "interview_completed": true,
+    "interviewing": false,
+    "software_build_id": "1.1.5-bseedv5",
+    "definition_model": "EC-GL86ZPCS31",
+    "power_source": "Mains (single phase)",
+    "endpoints": {
+     "1": {
+      "bindings": [
+       {
+        "cluster": "genMultistateInput",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 11,
+         "ieee_address": "0xa4c1388b709b209c",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 11,
+         "ieee_address": "0xa4c1388b709b209c",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 4,
+         "ieee_address": "0xa4c13843a9d40f85",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genBasic",
+        "genOnOffSwitchCfg",
+        "genMultistateInput"
+       ],
+       "output": [
+        "genOta",
+        "genOnOff",
+        "genLevelCtrl"
+       ]
+      },
+      "configured_reportings": [
+       {
+        "attribute": "presentValue",
+        "cluster": "genMultistateInput",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       }
+      ],
+      "name": "switch_left",
+      "scenes": []
+     },
+     "2": {
+      "bindings": [
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "id": 25,
+         "type": "group"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "id": 25,
+         "type": "group"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 5,
+         "ieee_address": "0xa4c13843a9d40f85",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genMultistateInput",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genOnOffSwitchCfg",
+        "genMultistateInput"
+       ],
+       "output": [
+        "genOnOff",
+        "genLevelCtrl"
+       ]
+      },
+      "configured_reportings": [
+       {
+        "attribute": "presentValue",
+        "cluster": "genMultistateInput",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       }
+      ],
+      "name": "switch_middle",
+      "scenes": []
+     },
+     "3": {
+      "bindings": [
+       {
+        "cluster": "genMultistateInput",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genOnOffSwitchCfg",
+        "genMultistateInput"
+       ],
+       "output": [
+        "genOnOff",
+        "genLevelCtrl"
+       ]
+      },
+      "configured_reportings": [
+       {
+        "attribute": "presentValue",
+        "cluster": "genMultistateInput",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       }
+      ],
+      "name": "switch_right",
+      "scenes": []
+     },
+     "4": {
+      "bindings": [
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genOnOff",
+        "genLevelCtrl",
+        "genGroups"
+       ],
+       "output": []
+      },
+      "configured_reportings": [
+       {
+        "attribute": "attr0",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       },
+       {
+        "attribute": "onOff",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 300,
+        "minimum_report_interval": 0,
+        "reportable_change": 0
+       }
+      ],
+      "name": "relay_left",
+      "scenes": []
+     },
+     "5": {
+      "bindings": [
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       },
+       {
+        "cluster": "genLevelCtrl",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genOnOff",
+        "genLevelCtrl",
+        "genGroups"
+       ],
+       "output": []
+      },
+      "configured_reportings": [
+       {
+        "attribute": "attr0",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       },
+       {
+        "attribute": "onOff",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 300,
+        "minimum_report_interval": 0,
+        "reportable_change": 0
+       }
+      ],
+      "name": "relay_middle",
+      "scenes": []
+     },
+     "6": {
+      "bindings": [
+       {
+        "cluster": "genOnOff",
+        "target": {
+         "endpoint": 1,
+         "ieee_address": "0xfdb1122d004b1200",
+         "type": "endpoint"
+        }
+       }
+      ],
+      "clusters": {
+       "input": [
+        "genOnOff",
+        "genLevelCtrl",
+        "genGroups"
+       ],
+       "output": []
+      },
+      "configured_reportings": [
+       {
+        "attribute": "attr0",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       },
+       {
+        "attribute": "onOff",
+        "cluster": "genOnOff",
+        "maximum_report_interval": 65000,
+        "minimum_report_interval": 0,
+        "reportable_change": 1
+       }
+      ],
+      "name": "relay_right",
+      "scenes": []
+     }
+    }
+   }
+  }
+ ],
+ "groups_delta": []
+}

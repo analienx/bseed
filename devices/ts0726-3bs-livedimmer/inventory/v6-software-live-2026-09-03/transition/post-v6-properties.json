@@ -1,0 +1,11 @@
+{
+  "switch_left_action_mode": "Match local state",
+  "switch_middle_action_mode": "Match local state",
+  "switch_right_action_mode": "Toggle",
+  "switch_left_binded_mode": "Short press",
+  "switch_middle_binded_mode": "Short press",
+  "switch_right_binded_mode": "Short press",
+  "relay_left_physical_mode": "Always on",
+  "relay_middle_physical_mode": "Always on",
+  "relay_right_physical_mode": "Always on"
+}

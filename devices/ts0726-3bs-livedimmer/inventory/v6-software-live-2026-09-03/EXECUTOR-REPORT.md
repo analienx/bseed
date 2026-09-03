@@ -304,3 +304,120 @@ Still forbidden and not performed: OTA CHECK/UPDATE, setting writes, successful
 device_config commit, bind/unbind/group mutation, interview/re-pair, coordinator
 mutation, physical button presses, HA deployment. STOPPED for Supervisor.
 
+---
+
+# WORK UNIT 4 (2026-09-03 ~18:20–19:00Z) — dispatch 5528641047, C–G: C PASS, D PASS, E STOP at action-storage gate
+
+Dispatch: issue #8 comment `5528641047` (supervisor) authorized C–G with the
+frozen transition overlay kept installed. **No F/G writes were performed.**
+
+## C. Rehash + OTA CHECK preflight — PASS
+
+Staged artifacts re-verified byte-exact on host AND in-container:
+
+```text
+forward.ota  sha256 d18c420d18e1a741b8946482c8ef885b61d8ceb92a434f7bb1beddb6dd3ec79c ✓ (185858 B)
+recovery.ota sha256 4a09b5221d06889f34abd5c3cf89405d42bb168810013b45f1cef64433bf1b19 ✓ (185682 B)
+```
+
+Mechanism: temp HTTP server inside the container on `127.0.0.1:8899` serving a
+flat root (`/tmp/ota-canary-v6/ota-root/`) with two single-entry indexes
+(`index-forward.json` = forward only, `index-recovery.json` = recovery only) and
+both images. **No forward+recovery co-exposure**: each CHECK passed exactly one
+index URL in the bridge request (`url` parameter, same mechanism as the proven
+E2 canary); no configuration.yaml change.
+
+```text
+CHECK fwd-01 (index-forward.json):  status ok, update_available true, downgrade false,
+                                    source http://127.0.0.1:8899/forward.ota
+                                    index metadata: fileVersion 285356039 / 4417 / 45577, sha512 pinned
+CHECK rec-01 (index-recovery.json): status ok, update_available true, downgrade false,
+                                    source http://127.0.0.1:8899/recovery.ota
+                                    index metadata: fileVersion 285356040 / 4417 / 45577
+CHECK fwd-02 (index-forward.json):  status ok, source http://127.0.0.1:8899/forward.ota (exact repeat)
+```
+
+All three CHECKs selected the exact expected image. Recovery never active beyond
+its single CHECK. Server left running but inert.
+
+## D. ONE target-only forward OTA — PASS
+
+```text
+tx = d-gate-update-fwd-01, UPDATE only 0xa4c13843a9d40f85 via forward index
+transfer: 1191 s, zh:controller:ota progress 5% → 100%, no retries visible
+response: status ok,
+  from: softwareBuildID 1.1.5-bseedv5, fileVersion 285356037
+  to:   softwareBuildID 1.1.6-bseedv6, fileVersion 285356039, dateCode 20260903
+Z2M performed its automatic post-update re-interview at 18:42:12 (inherent to the
+Z2M OTA flow, same as the E2 canary; not a user-triggered interview/re-pair).
+No other setting write occurred during OTA.
+```
+
+## E. Immediate read-only V6 gate — identity/hardware/service PASS; action storage DEVIATION → STOP
+
+### Identity — PASS
+
+```text
+software_build_id = 1.1.6-bseedv6 (live in bridge/devices post-announce)
+date_code         = 20260903
+definition        = EC-GL86ZPCS31, source external, 48 exposes (auto-rematched, no restart)
+separate v6 file  = NOT present (external_converters: v4 + transition v5 file only)
+104 devices / 21 groups; interview_completed; interviewing false; permit_join false
+```
+
+### Hardware — PASS
+
+```text
+device_config = iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M; (canonical, live read)
+EP4/EP5/EP6 genOnOff 0xff03 = 1/1/1  (relay_*_physical_mode "Always on" ×3, live)
+LED source EP4/EP5/EP6 0xff01 = 4/4/3 ("Binding status"/"Binding status"/"Physical output") — exact match
+```
+
+### Topology/service — PASS
+
+Deep diff pre-V6 vs post-V6 snapshot: `ieee_set_delta=[]`, `groups_delta=[]`,
+`changed=[target only]`, target delta = identity only; EP1–EP6 bindings,
+configured_reportings and clusters byte-identical. Frontend + Z2M healthy.
+
+### Standards-clean action storage — DEVIATION → recorded, STOP
+
+Read-only constraint: on V6 firmware the transition overlay's only public
+property touching direct-binding state is `switch_*_action_mode`, whose GET
+reads **custom 0xff06** (V6 transport). No public property GETs standard
+genOnOffSwitchCfg 0x0010 on V6 (legacy endpoint-scoped raw reads are disabled
+on this modern Z2M build), so standard 0x0010 could not be re-proven
+non-mutatingly; last hard-proven state = 2/2/2 (supervisor-confirmed); no write
+path was exercised.
+
+Exact recorded raw values (custom 0xff06, EP1/EP2/EP3, live reads):
+
+```text
+expected (dispatch E): 2 / 2 / 2
+read (live):           3 / 3 / 2   ("Match local state"/"Match local state"/"Toggle")
+```
+
+Per dispatch E: identity/mains/config/service all PASS, action values differ →
+"do not immediately recover merely for an action/UX mismatch; record exact raw
+values; STOP for Supervisor." Note the values coincide exactly with the F target
+policy (3/3/2), consistent with V6 firmware seeding the custom attribute from
+prior direct-binding state; the decision belongs to the Supervisor.
+
+## Evidence (this directory, `transition/`)
+
+```text
+bridge-post-v6.json          post-OTA bridge snapshot (104/21, V6 identity)
+v6-identity.json             extracted post-OTA target identity
+post-v6-topology-diff.json   deep diff pre-V6 vs post-V6 (delta: target identity only)
+post-v6-properties.json      live action/binded/physical reads post-OTA (raw 0xff06 = 3/3/2)
+post-v6-public-get.json      live full public GET post-OTA (canonical config, LED 4/4/3)
+post-v6-log-excerpt.txt      OTA success + auto re-interview log lines
+```
+
+## Stop
+
+STOPPED for Supervisor per dispatch E action-storage clause. F (policy SET) and
+G (editor/UX) NOT started — no SET of any kind has been issued post-OTA. The
+device is live on `1.1.6-bseedv6` with canonical config, mains 1/1/1, LED 4/4/3,
+and untouched topology. Recovery artifacts remain staged but were never used.
+
+
