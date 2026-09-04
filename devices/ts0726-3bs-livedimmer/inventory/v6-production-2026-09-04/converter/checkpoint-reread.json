@@ -1,0 +1,72 @@
+{
+ "at_utc": "2026-09-04T18:09:27.894Z",
+ "raw": {
+  "pk_ep1_ff00_switch_left": {
+   "value": {
+    "65280": 1
+   },
+   "at": "18:09:22"
+  },
+  "pk_ep1_ff05_switch_left": {
+   "value": {
+    "65285": 3
+   },
+   "at": "18:09:22"
+  },
+  "pk_ep2_ff00_switch_middle": {
+   "value": {
+    "65280": 1
+   },
+   "at": "18:09:23"
+  },
+  "pk_ep2_ff05_switch_middle": {
+   "value": {
+    "65285": 3
+   },
+   "at": "18:09:23"
+  },
+  "pk_ep3_ff00_switch_right": {
+   "value": {
+    "65280": 1
+   },
+   "at": "18:09:24"
+  },
+  "pk_ep3_ff05_switch_right": {
+   "value": {
+    "65285": 0
+   },
+   "at": "18:09:24"
+  },
+  "pk_ep4_policy_relay_left": {
+   "value": {
+    "65283": 1
+   },
+   "at": "18:09:26"
+  },
+  "pk_ep5_policy_relay_middle": {
+   "value": {
+    "65283": 1
+   },
+   "at": "18:09:26"
+  },
+  "pk_ep6_policy_relay_right": {
+   "value": {
+    "65283": 1
+   },
+   "at": "18:09:27"
+  },
+  "pk_ep6_onoff_relay_right": {
+   "value": {
+    "onOff": 0
+   },
+   "at": "18:09:27"
+  }
+ },
+ "checks": {
+  "ff00_1_1_1": true,
+  "ff05_3_3_0": true,
+  "policies_on": true,
+  "right_logical_off": true,
+  "ALL_PASS": true
+ }
+}
