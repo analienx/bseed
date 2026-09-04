@@ -31,10 +31,12 @@ session's earlier phases therefore measured EP1 and is VOID for EP2/EP3.
 Corrected verification (endpoint-scoped topics, `ep3-endpoint-scoped-poll.json`,
 `authoritative-endpoint-reads.json`, 16:13–16:18Z):
 ```text
-EP3 0xff05: 0 at 16:13:52, 16:14:24, 16:14:56, 16:18:57   ← HELD ≥70 min, no revert
-EP1 0xff05: 3 (correct for LEFT) ; EP2 0xff05: 3 (correct)
+EP3 0xff05: 0 at 16:13:52, 16:14:24, 16:14:56, 16:18:57   ← HELD ≥10 min post-SET
+EP1 0xff05: 3 (correct for LEFT)   ; EP2: 3 (correct)
 standard 0x0010 = 2/2/2 ; custom 0xff06 = 3/3/2 (RIGHT=Toggle per profile)
 swBuildId 1.1.6-bseedv6
+(The 15:17Z SET's converter-side readback also returned EP3=0; the 15:17-16:09 gap was
+only ever sampled with the flawed mechanism, so no claim is made for that window.)
 ```
 
 ## Retraction chain (mine, in order, explicitly)
@@ -53,8 +55,10 @@ swBuildId 1.1.6-bseedv6
 **Neither.** No other MQTT `/set` writer touched the device in-window (segment shows
 only my 4 messages + 1 converter publish), no ZDO/rejoin/restart/route-error frames,
 and no `3` ever arrived at EP3. There is no revert to localize; the observed `3`s were
-EP1 due to the core routing quirk above. The flashed V6 keeps `0xff05=0` in volatile
-state for at least 70 minutes across two independent SETs.
+EP1 due to the core routing quirk above. EP3 was verified `0xff05=0` held continuously
+for ≥10 min after the 16:09 SET (and the 15:17 SET's converter-side readback also
+returned 0); the 15:17–16:09 gap was only ever sampled with the flawed mechanism, so no
+claim is made for that window.
 
 ## What remains genuinely open (ruling §B stands)
 - **Cross-reboot persistence is still unproven** (ignored `hal_nvm_write()` return +
