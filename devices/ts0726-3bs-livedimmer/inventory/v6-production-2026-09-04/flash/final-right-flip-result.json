@@ -1,0 +1,26 @@
+{
+ "at_utc": "2026-09-04T19:08:05.865Z",
+ "steps": [
+  {
+   "at": "19:08:06",
+   "action": "SET relay_right_physical_mode=Follow logical state"
+  }
+ ],
+ "pre": {
+  "policy": 1,
+  "logical": 0
+ },
+ "post": {
+  "policy_raw": 0,
+  "logical_raw": 0,
+  "left_policy": 1,
+  "mid_policy": 1
+ },
+ "verdict": {
+  "right_policy_follows": true,
+  "right_logical_off": true,
+  "left_still_always_on": true,
+  "middle_still_always_on": true,
+  "ALL_PASS": true
+ }
+}
