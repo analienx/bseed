@@ -1,0 +1,29 @@
+{
+ "fresh": {
+  "fresh_ff05_left": {
+   "value": {
+    "65285": 3
+   },
+   "at": "12:03:29.614"
+  },
+  "fresh_ff05_middle": {
+   "value": {
+    "65285": 3
+   },
+   "at": "12:03:29.614"
+  },
+  "fresh_ff05_right": {
+   "value": {
+    "65285": 3
+   },
+   "at": "12:03:29.614"
+  },
+  "fresh_std_right": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "12:03:29.614"
+  }
+ },
+ "note": "device-side raw ZCL read; compare to Z2M cached switch_right_binded_mode"
+}

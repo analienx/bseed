@@ -55,3 +55,16 @@ Service health did NOT regress, so the §5 restore clause is not triggered.
 Optional rollback: `cp backup-production-20260904/bseed_ts0726_v5.pre-production-transition.js
 config/zigbee2mqtt/external_converters/bseed_ts0726_v5.js`, remove
 `bseed_ts0726_v6_production.js` from external_converters, one restart.
+
+## Follow-up recheck (12:03:29Z, `fresh-ff05-recheck-120329Z.json`) — blocker CONFIRMED + cache-lie found
+
+Fresh raw ZCL re-reads, no writes: **EP3 `0xff05 = 3`** (left/middle also 3;
+EP3 standard `switchActions = 2` intact). Meanwhile Z2M `state.json` cache
+advertises `switch_right_binded_mode = "Never (disabled)"` (both base and
+`_switch_right` keys) — the production converter's convertSet returns the
+optimistic `{state}` and Z2M persists it although the device never retained the
+value. **Safety consequence:** any HA/MQTT consumer currently sees RIGHT
+bound-control as DISABLED when the device still acts on it (Short press). Until
+the firmware accepts `0xff05=0`, the exposed property must not be treated as
+device truth; a raw `read` (65285) is the only reliable check. No further blind
+SETs attempted (each would re-pollute the cache with the same false value).
