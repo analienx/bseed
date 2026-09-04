@@ -1,0 +1,21 @@
+{
+ "started_utc": "2026-09-04T15:15:58.222Z",
+ "retained_snapshot": null,
+ "publishes_after_get": [
+  {
+   "at": "15:16:00.909",
+   "base": "Never (disabled)",
+   "ep": "Never (disabled)"
+  }
+ ],
+ "get_issued_at": "15:16:00.748",
+ "verdict": {
+  "retained_before": null,
+  "after_get": {
+   "at": "15:16:00.909",
+   "base": "Never (disabled)",
+   "ep": "Never (disabled)"
+  },
+  "converged_to_truth": false
+ }
+}

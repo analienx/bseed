@@ -1,0 +1,64 @@
+{
+ "started_utc": "2026-09-04T15:09:05.660Z",
+ "current_cache": null,
+ "samples_after_barriers": [
+  {
+   "at": "15:09:08.324",
+   "base": "Never (disabled)",
+   "ep": "Never (disabled)",
+   "raw": {
+    "65285": 3
+   },
+   "all_keys": 122
+  },
+  {
+   "at": "15:09:08.324",
+   "raw_only": {
+    "65285": 3
+   }
+  },
+  {
+   "at": "15:09:08.324",
+   "base": "Never (disabled)",
+   "ep": "Never (disabled)",
+   "raw": {
+    "65285": 3
+   },
+   "all_keys": 122
+  },
+  {
+   "at": "15:09:08.324",
+   "raw_only": {
+    "65285": 3
+   }
+  },
+  {
+   "at": "15:09:16.352",
+   "base": "Never (disabled)",
+   "ep": "Never (disabled)",
+   "raw": {
+    "65285": 3
+   },
+   "all_keys": 122
+  },
+  {
+   "at": "15:09:16.352",
+   "raw_only": {
+    "65285": 3
+   }
+  }
+ ],
+ "last_published": {
+  "at": "15:09:16.352",
+  "base": "Never (disabled)",
+  "ep": "Never (disabled)",
+  "raw": {
+   "65285": 3
+  },
+  "all_keys": 122
+ },
+ "verdict_raw": {
+  "65285": 3
+ },
+ "converged": false
+}

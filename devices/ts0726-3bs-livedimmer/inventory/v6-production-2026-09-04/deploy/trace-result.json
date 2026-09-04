@@ -1,0 +1,61 @@
+{
+ "started_utc": "2026-09-04T15:17:13.859Z",
+ "prior_log_level": "info",
+ "steps": [],
+ "state_publishes": [
+  {
+   "at": "15:17:17.432",
+   "base": "Never (disabled)",
+   "ep": "Never (disabled)"
+  },
+  {
+   "at": "15:17:17.433",
+   "base": "Never (disabled)",
+   "ep": "Never (disabled)"
+  },
+  {
+   "at": "15:17:34.440",
+   "base": "Never (disabled)",
+   "ep": "Never (disabled)"
+  }
+ ],
+ "options_responses": [
+  {
+   "at": "15:17:15.492",
+   "requested": {
+    "advanced": {
+     "log_level": "debug"
+    }
+   },
+   "status": "ok",
+   "restart_required": false
+  },
+  {
+   "at": "15:17:32.047",
+   "requested": {
+    "advanced": {
+     "log_level": "info"
+    }
+   },
+   "status": "ok",
+   "restart_required": false
+  }
+ ],
+ "log_file": "/config/zigbee2mqtt/log/2026-09-04.17-03-27/log.log",
+ "debug_response": {
+  "at": "15:17:15.492",
+  "requested": {
+   "advanced": {
+    "log_level": "debug"
+   }
+  },
+  "status": "ok",
+  "restart_required": false
+ },
+ "set_issued_at": "15:17:16.993",
+ "debug_log_bytes": 151684,
+ "restored_log_level": "info",
+ "restore_proven": true,
+ "sets_performed": 1,
+ "finished_utc": "2026-09-04T15:17:41.060Z"
+}
