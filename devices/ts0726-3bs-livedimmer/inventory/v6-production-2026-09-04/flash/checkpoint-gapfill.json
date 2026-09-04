@@ -1,0 +1,19 @@
+{
+ "at_utc": "2026-09-04T17:18:22.098Z",
+ "got": {
+  "gk_ep6_onoff_relay_right": {
+   "value": {
+    "onOff": 0
+   },
+   "via": "zigbee2mqtt/LivingRoomMainDimmer"
+  },
+  "gk_ep6_policy_relay_right": {
+   "value": {
+    "65283": 1
+   },
+   "via": "zigbee2mqtt/LivingRoomMainDimmer"
+  }
+ },
+ "rightLogicalOff": true,
+ "rightPolicyAlwaysOn": true
+}

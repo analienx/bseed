@@ -1,0 +1,69 @@
+{
+  "board": "SWITCH_BSEED_TS0726_3GANG",
+  "canonicalConfig": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;",
+  "images": {
+    "forward": {
+      "bin": {
+        "bytes": 185781,
+        "fileName": "forward.bin",
+        "sha256": "6241ae184654bba023224496ffc6535e0fa2fdfdf07056e5afec766f0b249e97",
+        "sha512": "9f03405fd7bf9b6dacfbd74a4915f5eba441e5b4957be1ccb54b17c9c13f8372f987d341268dec5cfdc21dc0f97024b9da1c7e5736a0c57fcc16b85bf4c4ed1d"
+      },
+      "fileVersion": 285356039,
+      "imageType": 45577,
+      "manufacturerCode": 4417,
+      "ota": {
+        "bytes": 185858,
+        "fileName": "forward.ota",
+        "sha256": "d18c420d18e1a741b8946482c8ef885b61d8ceb92a434f7bb1beddb6dd3ec79c",
+        "sha512": "c95a1fe94e7d6a06567d651c370fbe9d2e333d5f45e059d02cf9ce05f3db575d581b06811c9cda0ea2103301c1a1c8e3c622d652d51cd7844975d84dc335e7e6"
+      },
+      "otaHeader": {
+        "fieldControl": 0,
+        "fileVersion": 285356039,
+        "headerLength": 56,
+        "headerVersion": 256,
+        "identifier": 200208670,
+        "imageType": 45577,
+        "manufacturerCode": 4417,
+        "stackVersion": 2
+      },
+      "sourceCommit": "182c0195a8bb781abd7c4f1e2508278079b7b119",
+      "strategy": "clean-v6-forward",
+      "swBuildId": "1.1.6-bseedv6"
+    },
+    "recovery": {
+      "bin": {
+        "bytes": 185613,
+        "fileName": "recovery.bin",
+        "sha256": "3dfdaf732c94c751f65a75274d0947a852add7b34c636c44466b92724315a139",
+        "sha512": "6a1649d35cc90a3e24d4b778c63c174c7ca8c33548ddb6b6b03af85698b0438c93deb03b90ea248c1156b2b425fa0bd7d1c88c94c14c4fb1e4e1ae13938d9cae"
+      },
+      "fileVersion": 285356040,
+      "imageType": 45577,
+      "manufacturerCode": 4417,
+      "ota": {
+        "bytes": 185682,
+        "fileName": "recovery.ota",
+        "sha256": "4a09b5221d06889f34abd5c3cf89405d42bb168810013b45f1cef64433bf1b19",
+        "sha512": "12bf5c3bcb0ab0d02d61b11790e9c144f0b66f47f33e5f0b596d6a10fb24a10877fc9e3051ba830ae330dcde8106e3aced8b1253a1902a4f43d9cb8fe8c74c8f"
+      },
+      "otaHeader": {
+        "fieldControl": 0,
+        "fileVersion": 285356040,
+        "headerLength": 56,
+        "headerVersion": 256,
+        "identifier": 200208670,
+        "imageType": 45577,
+        "manufacturerCode": 4417,
+        "stackVersion": 2
+      },
+      "sourceCommit": "69a4775c4cb4c87f2e948a8aa5b6f099df703ba5",
+      "strategy": "proven-v5-canonical-no-revert",
+      "swBuildId": "1.1.5-bseedv5"
+    }
+  },
+  "migrationFromConfig": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC0;IC2;SB7u;RD7;IC3;SB4u;RD2;IB5;M;",
+  "recoveryChangesPinMap": false,
+  "schema": 1
+}
