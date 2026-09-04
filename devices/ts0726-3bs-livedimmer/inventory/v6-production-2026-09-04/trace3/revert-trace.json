@@ -1,0 +1,91 @@
+{
+ "started_utc": "2026-09-04T16:09:09.932Z",
+ "prior_log_level": "info",
+ "polls": [
+  {
+   "phase": "baseline",
+   "tag": "rv1_base",
+   "at": "16:09:12.524",
+   "value": {
+    "65285": 3
+   }
+  },
+  {
+   "phase": "baseline",
+   "tag": "rv2_base",
+   "at": "16:09:12.826",
+   "value": {
+    "65285": 3
+   }
+  },
+  {
+   "phase": "post-set",
+   "tag": "rv3_p",
+   "at": "16:09:18.133",
+   "raw": 3
+  }
+ ],
+ "mqtt_set_traffic": [
+  {
+   "at": "16:09:12.224",
+   "topic": "zigbee2mqtt/LivingRoomMainDimmer/set",
+   "data": "{\"read\":{\"cluster\":\"genOnOffSwitchCfg\",\"attributes\":[65285],\"state_property\":\"rv1_base\",\"endpoint\":\"switch_right\"}}"
+  },
+  {
+   "at": "16:09:12.526",
+   "topic": "zigbee2mqtt/LivingRoomMainDimmer/set",
+   "data": "{\"read\":{\"cluster\":\"genOnOffSwitchCfg\",\"attributes\":[65285],\"state_property\":\"rv2_base\",\"endpoint\":\"switch_right\"}}"
+  },
+  {
+   "at": "16:09:12.827",
+   "topic": "zigbee2mqtt/LivingRoomMainDimmer/set",
+   "data": "{\"switch_right_binded_mode\":\"Never (disabled)\"}"
+  },
+  {
+   "at": "16:09:17.832",
+   "topic": "zigbee2mqtt/LivingRoomMainDimmer/set",
+   "data": "{\"read\":{\"cluster\":\"genOnOffSwitchCfg\",\"attributes\":[65285],\"state_property\":\"rv3_p\",\"endpoint\":\"switch_right\"}}"
+  }
+ ],
+ "notes": [],
+ "debug_enable": {
+  "at": "16:09:11.220",
+  "status": "ok"
+ },
+ "log_file": "/config/zigbee2mqtt/log/2026-09-04.17-03-27/log.log",
+ "t_set": "16:09:12.826",
+ "tail_answers": [
+  [
+   "rv1_base",
+   {
+    "65285": 3
+   }
+  ],
+  [
+   "rv2_base",
+   {
+    "65285": 3
+   }
+  ],
+  [
+   "rv3_p",
+   {
+    "65285": 3
+   }
+  ]
+ ],
+ "restore": {
+  "at": "16:09:21.386",
+  "status": "ok",
+  "level_now": "info",
+  "proven": true
+ },
+ "segment_bytes": 137039,
+ "result": {
+  "saw_zero_after_set": false,
+  "last_zero_at": null,
+  "first_three_at": "16:09:18.133",
+  "set_at": "16:09:12.826",
+  "polls": 3
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "started_utc": "2026-09-04T16:18:58.301Z",
+ "reads": {
+  "a_ep1_ff05_switch_left": {
+   "value": {
+    "65285": 3
+   },
+   "at": "16:18:55"
+  },
+  "a_ep1_std0010_switch_left": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "16:18:55"
+  },
+  "a_ep1_ff06_switch_left": {
+   "value": {
+    "65286": 3
+   },
+   "at": "16:18:56"
+  },
+  "a_ep2_ff05_switch_middle": {
+   "value": {
+    "65285": 3
+   },
+   "at": "16:18:56"
+  },
+  "a_ep2_std0010_switch_middle": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "16:18:56"
+  },
+  "a_ep2_ff06_switch_middle": {
+   "value": {
+    "65286": 3
+   },
+   "at": "16:18:56"
+  },
+  "a_ep3_ff05_switch_right": {
+   "value": {
+    "65285": 0
+   },
+   "at": "16:18:57"
+  },
+  "a_ep3_std0010_switch_right": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "16:18:57"
+  },
+  "a_ep3_ff06_switch_right": {
+   "value": {
+    "65286": 2
+   },
+   "at": "16:18:57"
+  },
+  "a_ep1_swbuild_switch_left": {
+   "value": {
+    "swBuildId": "1.1.6-bseedv6"
+   },
+   "at": "16:18:58"
+  }
+ }
+}
