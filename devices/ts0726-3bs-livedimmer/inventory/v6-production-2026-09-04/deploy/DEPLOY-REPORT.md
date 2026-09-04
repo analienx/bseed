@@ -56,6 +56,32 @@ Optional rollback: `cp backup-production-20260904/bseed_ts0726_v5.pre-production
 config/zigbee2mqtt/external_converters/bseed_ts0726_v5.js`, remove
 `bseed_ts0726_v6_production.js` from external_converters, one restart.
 
+## OPERATOR CLARIFICATION recorded (issue #8 comment 5540859472, 2026-09-04)
+
+Final resting state AFTER the RIGHT-channel production/physical test completes:
+
+```text
+RIGHT logical state = OFF
+RIGHT mains/physical output = OFF      (achieved via policy "Follow logical state" + logical OFF)
+RIGHT LED (Physical output) = OFF      (follows automatically once physical output is OFF)
+LEFT and MIDDLE remain permanently powered (Always on) — unaffected.
+```
+
+Test sequence must exercise OFF->ON and ON->OFF as needed, then **explicitly
+return RIGHT to OFF and verify the final readback** before STOP. Do NOT finish
+the unit with RIGHT energized.
+
+Interpretation notes (executor):
+- Consistent with the frozen profile: RIGHT mains policy target stays
+  `Follow logical state`; resting physical OFF follows from resting logical OFF.
+  No profile change implied. "Always off" (2) would BREAK the pure-relay purpose
+  and is NOT what was requested.
+- This clarification defines the END of the still-blocked §6 finalize/test.
+  It does not lift the `0xff05=0` firmware blocker or the unobservable-bind-table
+  condition; until those are resolved by the Supervisor, the test itself cannot
+  start. When it runs, the epilogue is: set logical OFF -> raw-verify EP6 `65283=0`
+  and `onOff=0`, LED publishes OFF, then STOP.
+
 ## Follow-up recheck (12:03:29Z, `fresh-ff05-recheck-120329Z.json`) — blocker CONFIRMED + cache-lie found
 
 Fresh raw ZCL re-reads, no writes: **EP3 `0xff05 = 3`** (left/middle also 3;
