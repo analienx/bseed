@@ -1,0 +1,267 @@
+[
+ {
+  "at": "2026-09-04T20:57:22.191Z",
+  "topic": "device/bind",
+  "label": "LivingRoomMainDimmer/EP1->coordinator/EP1",
+  "payload": {
+   "from": "LivingRoomMainDimmer",
+   "from_endpoint": 1,
+   "to": "coordinator",
+   "to_endpoint": 1,
+   "clusters": [
+    "genMultistateInput",
+    "genOnOff",
+    "genLevelCtrl"
+   ]
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:23.193Z",
+  "topic": "device/bind",
+  "label": "LivingRoomMainDimmer/EP2->coordinator/EP1",
+  "payload": {
+   "from": "LivingRoomMainDimmer",
+   "from_endpoint": 2,
+   "to": "coordinator",
+   "to_endpoint": 1,
+   "clusters": [
+    "genMultistateInput",
+    "genOnOff",
+    "genLevelCtrl"
+   ]
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:33.591Z",
+  "topic": "device/bind",
+  "label": "LivingRoomMainDimmer/EP3->coordinator/EP1",
+  "payload": {
+   "from": "LivingRoomMainDimmer",
+   "from_endpoint": 3,
+   "to": "coordinator",
+   "to_endpoint": 1,
+   "clusters": [
+    "genMultistateInput",
+    "genOnOff",
+    "genLevelCtrl"
+   ]
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:34.453Z",
+  "topic": "device/bind",
+  "label": "LivingRoomMainDimmer/EP4->coordinator/EP1",
+  "payload": {
+   "from": "LivingRoomMainDimmer",
+   "from_endpoint": 4,
+   "to": "coordinator",
+   "to_endpoint": 1,
+   "clusters": [
+    "genOnOff",
+    "genLevelCtrl"
+   ]
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:35.189Z",
+  "topic": "device/bind",
+  "label": "LivingRoomMainDimmer/EP5->coordinator/EP1",
+  "payload": {
+   "from": "LivingRoomMainDimmer",
+   "from_endpoint": 5,
+   "to": "coordinator",
+   "to_endpoint": 1,
+   "clusters": [
+    "genOnOff",
+    "genLevelCtrl"
+   ]
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:36.128Z",
+  "topic": "device/bind",
+  "label": "LivingRoomMainDimmer/EP6->coordinator/EP1",
+  "payload": {
+   "from": "LivingRoomMainDimmer",
+   "from_endpoint": 6,
+   "to": "coordinator",
+   "to_endpoint": 1,
+   "clusters": [
+    "genOnOff"
+   ]
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:37.174Z",
+  "topic": "device/bind",
+  "label": "LivingRoomMainDimmer/EP1->LivingRoomLinearDimmer/EP11",
+  "payload": {
+   "from": "LivingRoomMainDimmer",
+   "from_endpoint": 1,
+   "to": "LivingRoomLinearDimmer",
+   "to_endpoint": 11,
+   "clusters": [
+    "genOnOff",
+    "genLevelCtrl"
+   ]
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:37.768Z",
+  "topic": "device/bind",
+  "label": "LivingRoomMainDimmer/EP1->LivingRoomMainDimmer/EP4",
+  "payload": {
+   "from": "LivingRoomMainDimmer",
+   "from_endpoint": 1,
+   "to": "LivingRoomMainDimmer",
+   "to_endpoint": 4,
+   "clusters": [
+    "genOnOff"
+   ]
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:38.555Z",
+  "topic": "device/bind",
+  "label": "LivingRoomMainDimmer/EP2->Kitchen Table Bulbs/EPundefined",
+  "payload": {
+   "from": "LivingRoomMainDimmer",
+   "from_endpoint": 2,
+   "to": "Kitchen Table Bulbs",
+   "clusters": [
+    "genOnOff",
+    "genLevelCtrl"
+   ]
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:39.189Z",
+  "topic": "device/bind",
+  "label": "LivingRoomMainDimmer/EP2->LivingRoomMainDimmer/EP5",
+  "payload": {
+   "from": "LivingRoomMainDimmer",
+   "from_endpoint": 2,
+   "to": "LivingRoomMainDimmer",
+   "to_endpoint": 5,
+   "clusters": [
+    "genOnOff"
+   ]
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:43.761Z",
+  "topic": "device/configure_reporting",
+  "label": "LivingRoomMainDimmer/switch_left genMultistateInput",
+  "payload": {
+   "id": "LivingRoomMainDimmer",
+   "endpoint": "switch_left",
+   "cluster": "genMultistateInput",
+   "attribute": "presentValue",
+   "minimum_report_interval": 0,
+   "maximum_report_interval": 65000,
+   "reportable_change": 1
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:44.578Z",
+  "topic": "device/configure_reporting",
+  "label": "LivingRoomMainDimmer/switch_middle genMultistateInput",
+  "payload": {
+   "id": "LivingRoomMainDimmer",
+   "endpoint": "switch_middle",
+   "cluster": "genMultistateInput",
+   "attribute": "presentValue",
+   "minimum_report_interval": 0,
+   "maximum_report_interval": 65000,
+   "reportable_change": 1
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:45.456Z",
+  "topic": "device/configure_reporting",
+  "label": "LivingRoomMainDimmer/switch_right genMultistateInput",
+  "payload": {
+   "id": "LivingRoomMainDimmer",
+   "endpoint": "switch_right",
+   "cluster": "genMultistateInput",
+   "attribute": "presentValue",
+   "minimum_report_interval": 0,
+   "maximum_report_interval": 65000,
+   "reportable_change": 1
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:46.366Z",
+  "topic": "device/configure_reporting",
+  "label": "LivingRoomMainDimmer/relay_left genOnOff",
+  "payload": {
+   "id": "LivingRoomMainDimmer",
+   "endpoint": "relay_left",
+   "cluster": "genOnOff",
+   "attribute": "onOff",
+   "minimum_report_interval": 0,
+   "maximum_report_interval": 300,
+   "reportable_change": 0
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:47.208Z",
+  "topic": "device/configure_reporting",
+  "label": "LivingRoomMainDimmer/relay_middle genOnOff",
+  "payload": {
+   "id": "LivingRoomMainDimmer",
+   "endpoint": "relay_middle",
+   "cluster": "genOnOff",
+   "attribute": "onOff",
+   "minimum_report_interval": 0,
+   "maximum_report_interval": 300,
+   "reportable_change": 0
+  },
+  "status": "ok",
+  "error": null
+ },
+ {
+  "at": "2026-09-04T20:57:57.630Z",
+  "topic": "device/configure_reporting",
+  "label": "LivingRoomMainDimmer/relay_right genOnOff",
+  "payload": {
+   "id": "LivingRoomMainDimmer",
+   "endpoint": "relay_right",
+   "cluster": "genOnOff",
+   "attribute": "onOff",
+   "minimum_report_interval": 0,
+   "maximum_report_interval": 65000,
+   "reportable_change": 1
+  },
+  "status": "ok",
+  "error": null
+ }
+]
