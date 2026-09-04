@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "fingerprints": [
+    "1.1.5-bseedv5",
+    "1.1.6-bseedv6"
+  ],
+  "customClusterExtensions": [
+    {
+      "name": "genBasic",
+      "ID": 0
+    }
+  ],
+  "v5": {
+    "standardAttribute": "switchActions",
+    "extendedFailsClosed": true
+  },
+  "v6": {
+    "customAttribute": "0xff06",
+    "matchLocalState": 3
+  },
+  "unknownFirmwareFailsClosed": true,
+  "freshFirmwareIdentityRead": true,
+  "staleCacheIgnored": true,
+  "identityReadFailureFailsClosed": true,
+  "readback": {
+    "v5Named": true,
+    "v6Raw": true
+  }
+}

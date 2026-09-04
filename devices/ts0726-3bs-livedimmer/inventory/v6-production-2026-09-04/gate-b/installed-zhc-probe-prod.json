@@ -1,0 +1,446 @@
+{
+  "status": "PASS",
+  "converterPath": "/tmp/v6prod-20260904/stage/zigbee2mqtt/converters/bseed_ts0726_v6_production.js",
+  "converterBytes": 4086,
+  "installedZhc": {
+    "version": "26.103.0",
+    "packageRoot": "/app/node_modules/.pnpm/zigbee-herdsman-converters@26.103.0/node_modules/zigbee-herdsman-converters",
+    "packageJsonPath": "/app/node_modules/.pnpm/zigbee-herdsman-converters@26.103.0/node_modules/zigbee-herdsman-converters/package.json",
+    "modernExtend": "/app/node_modules/.pnpm/zigbee-herdsman-converters@26.103.0/node_modules/zigbee-herdsman-converters/dist/lib/modernExtend.js",
+    "nodeModulesRoot": "/app/node_modules/.pnpm/zigbee-herdsman-converters@26.103.0/node_modules"
+  },
+  "target": {
+    "model": "EC-GL86ZPCS31",
+    "vendor": "Tuya-custom",
+    "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+    "fingerprint": [
+      {
+        "manufacturerName": "iedhxgyi",
+        "modelID": "TS0726-3-BS",
+        "softwareBuildID": "1.1.5-bseedv5",
+        "priority": 100
+      },
+      {
+        "manufacturerName": "iedhxgyi",
+        "modelID": "TS0726-3-BS",
+        "softwareBuildID": "1.1.6-bseedv6",
+        "priority": 100
+      }
+    ],
+    "zigbeeModel": []
+  },
+  "configure": {
+    "callbacks": [
+      "definition.configure",
+      "extend[0].configure[0]"
+    ],
+    "mutationCount": 0,
+    "localCustomClusterRegistrationCount": 1,
+    "bindCount": 0,
+    "configureReportingCount": 0,
+    "writeCount": 0,
+    "commandCount": 0,
+    "readCount": 0,
+    "reads": [],
+    "deviceSaveCount": 0
+  },
+  "exposes": [
+    {
+      "name": "state",
+      "property": "state_relay_left",
+      "label": "Left — Logical state",
+      "endpoint": "relay_left",
+      "category": null,
+      "access": 7,
+      "values": null,
+      "description": "The Zigbee state for this channel. Use it for automations and state tracking. It is not the same as mains power: with Mains power behavior set to Always on, this may be OFF while the smart load remains continuously powered."
+    },
+    {
+      "name": "state",
+      "property": "state_relay_middle",
+      "label": "Middle — Logical state",
+      "endpoint": "relay_middle",
+      "category": null,
+      "access": 7,
+      "values": null,
+      "description": "The Zigbee state for this channel. Use it for automations and state tracking. It is not the same as mains power: with Mains power behavior set to Always on, this may be OFF while the smart load remains continuously powered."
+    },
+    {
+      "name": "state",
+      "property": "state_relay_right",
+      "label": "Right — Logical state",
+      "endpoint": "relay_right",
+      "category": null,
+      "access": 7,
+      "values": null,
+      "description": "The Zigbee state for this channel. Use it for automations and state tracking. It is not the same as mains power: with Mains power behavior set to Always on, this may be OFF while the smart load remains continuously powered."
+    },
+    {
+      "name": "power_on_behavior",
+      "property": "power_on_behavior_relay_left",
+      "label": "Left — State after power-up",
+      "endpoint": "relay_left",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "off",
+        "on",
+        "toggle",
+        "previous"
+      ],
+      "description": "Chooses the Zigbee state restored after restart. This affects the logical channel only. It never overrides Mains power behavior, so Always on remains electrically powered."
+    },
+    {
+      "name": "power_on_behavior",
+      "property": "power_on_behavior_relay_middle",
+      "label": "Middle — State after power-up",
+      "endpoint": "relay_middle",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "off",
+        "on",
+        "toggle",
+        "previous"
+      ],
+      "description": "Chooses the Zigbee state restored after restart. This affects the logical channel only. It never overrides Mains power behavior, so Always on remains electrically powered."
+    },
+    {
+      "name": "power_on_behavior",
+      "property": "power_on_behavior_relay_right",
+      "label": "Right — State after power-up",
+      "endpoint": "relay_right",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "off",
+        "on",
+        "toggle",
+        "previous"
+      ],
+      "description": "Chooses the Zigbee state restored after restart. This affects the logical channel only. It never overrides Mains power behavior, so Always on remains electrically powered."
+    },
+    {
+      "name": "relay_left_physical_mode",
+      "property": "relay_left_physical_mode",
+      "label": "Left — Mains power",
+      "endpoint": "relay_left",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Follow logical state",
+        "Always on",
+        "Always off"
+      ],
+      "description": "Controls the actual electrical output for this channel. For smart bulbs and smart dimmers choose Always on so they stay powered while logical state changes. Follow logical state is for a load this device should physically switch. Always off keeps the output de-energized. Changing this can affect power immediately, so verify the connected load first. The choice survives restart."
+    },
+    {
+      "name": "relay_middle_physical_mode",
+      "property": "relay_middle_physical_mode",
+      "label": "Middle — Mains power",
+      "endpoint": "relay_middle",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Follow logical state",
+        "Always on",
+        "Always off"
+      ],
+      "description": "Controls the actual electrical output for this channel. For smart bulbs and smart dimmers choose Always on so they stay powered while logical state changes. Follow logical state is for a load this device should physically switch. Always off keeps the output de-energized. Changing this can affect power immediately, so verify the connected load first. The choice survives restart."
+    },
+    {
+      "name": "relay_right_physical_mode",
+      "property": "relay_right_physical_mode",
+      "label": "Right — Mains power",
+      "endpoint": "relay_right",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Follow logical state",
+        "Always on",
+        "Always off"
+      ],
+      "description": "Controls the actual electrical output for this channel. For smart bulbs and smart dimmers choose Always on so they stay powered while logical state changes. Follow logical state is for a load this device should physically switch. Always off keeps the output de-energized. Changing this can affect power immediately, so verify the connected load first. The choice survives restart."
+    },
+    {
+      "name": "switch_left_mode",
+      "property": "switch_left_mode",
+      "label": "Left — Button type",
+      "endpoint": "switch_left",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Rocker / toggle",
+        "Push button",
+        "Push button (normally closed)"
+      ],
+      "description": "Match this to the wall mechanism. Rocker / toggle is a maintained switch. Push button is a normal momentary input. Use Push button (normally closed) only for an NC contact. A wrong choice makes presses appear inverted or unreliable."
+    },
+    {
+      "name": "switch_left_action_mode",
+      "property": "switch_left_action_mode",
+      "label": "Left — Direct-binding command",
+      "endpoint": "switch_left",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "On then off",
+        "Off then on",
+        "Toggle",
+        "Match local state",
+        "Opposite local state"
+      ],
+      "description": "Chooses the On/Off command sent directly to bound lights. Toggle is the simplest choice and does not depend on local state. Match local state sends explicit On/Off to match this channel; Opposite local state sends the inverse. On then off and Off then on are mainly useful with maintained rocker inputs."
+    },
+    {
+      "name": "switch_left_relay_mode",
+      "property": "switch_left_relay_mode",
+      "label": "Left — Update local state",
+      "endpoint": "switch_left",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Never (detached)",
+        "On press",
+        "Short press",
+        "Long press"
+      ],
+      "description": "Chooses when this physical button updates the assigned Zigbee state. Never (detached) leaves local state untouched. On press updates immediately; Short press waits for a completed click; Long press waits for the hold threshold. This does not override Mains power behavior."
+    },
+    {
+      "name": "switch_left_binded_mode",
+      "property": "switch_left_binded_mode",
+      "label": "Left — Control bound light",
+      "endpoint": "switch_left",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Never (disabled)",
+        "On press",
+        "Long press",
+        "Short press"
+      ],
+      "description": "Chooses when this button sends a direct On/Off command to existing bindings or groups. Never (disabled) sends no direct-binding command and is the correct choice for a pure local-relay channel. On press is fastest; Short press waits for a completed click; Long press sends only after a hold. This setting does not create, remove or rewrite bindings."
+    },
+    {
+      "name": "switch_middle_mode",
+      "property": "switch_middle_mode",
+      "label": "Middle — Button type",
+      "endpoint": "switch_middle",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Rocker / toggle",
+        "Push button",
+        "Push button (normally closed)"
+      ],
+      "description": "Match this to the wall mechanism. Rocker / toggle is a maintained switch. Push button is a normal momentary input. Use Push button (normally closed) only for an NC contact. A wrong choice makes presses appear inverted or unreliable."
+    },
+    {
+      "name": "switch_middle_action_mode",
+      "property": "switch_middle_action_mode",
+      "label": "Middle — Direct-binding command",
+      "endpoint": "switch_middle",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "On then off",
+        "Off then on",
+        "Toggle",
+        "Match local state",
+        "Opposite local state"
+      ],
+      "description": "Chooses the On/Off command sent directly to bound lights. Toggle is the simplest choice and does not depend on local state. Match local state sends explicit On/Off to match this channel; Opposite local state sends the inverse. On then off and Off then on are mainly useful with maintained rocker inputs."
+    },
+    {
+      "name": "switch_middle_relay_mode",
+      "property": "switch_middle_relay_mode",
+      "label": "Middle — Update local state",
+      "endpoint": "switch_middle",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Never (detached)",
+        "On press",
+        "Short press",
+        "Long press"
+      ],
+      "description": "Chooses when this physical button updates the assigned Zigbee state. Never (detached) leaves local state untouched. On press updates immediately; Short press waits for a completed click; Long press waits for the hold threshold. This does not override Mains power behavior."
+    },
+    {
+      "name": "switch_middle_binded_mode",
+      "property": "switch_middle_binded_mode",
+      "label": "Middle — Control bound light",
+      "endpoint": "switch_middle",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Never (disabled)",
+        "On press",
+        "Long press",
+        "Short press"
+      ],
+      "description": "Chooses when this button sends a direct On/Off command to existing bindings or groups. Never (disabled) sends no direct-binding command and is the correct choice for a pure local-relay channel. On press is fastest; Short press waits for a completed click; Long press sends only after a hold. This setting does not create, remove or rewrite bindings."
+    },
+    {
+      "name": "switch_right_mode",
+      "property": "switch_right_mode",
+      "label": "Right — Button type",
+      "endpoint": "switch_right",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Rocker / toggle",
+        "Push button",
+        "Push button (normally closed)"
+      ],
+      "description": "Match this to the wall mechanism. Rocker / toggle is a maintained switch. Push button is a normal momentary input. Use Push button (normally closed) only for an NC contact. A wrong choice makes presses appear inverted or unreliable."
+    },
+    {
+      "name": "switch_right_action_mode",
+      "property": "switch_right_action_mode",
+      "label": "Right — Direct-binding command",
+      "endpoint": "switch_right",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "On then off",
+        "Off then on",
+        "Toggle",
+        "Match local state",
+        "Opposite local state"
+      ],
+      "description": "Chooses the On/Off command sent directly to bound lights. Toggle is the simplest choice and does not depend on local state. Match local state sends explicit On/Off to match this channel; Opposite local state sends the inverse. On then off and Off then on are mainly useful with maintained rocker inputs."
+    },
+    {
+      "name": "switch_right_relay_mode",
+      "property": "switch_right_relay_mode",
+      "label": "Right — Update local state",
+      "endpoint": "switch_right",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Never (detached)",
+        "On press",
+        "Short press",
+        "Long press"
+      ],
+      "description": "Chooses when this physical button updates the assigned Zigbee state. Never (detached) leaves local state untouched. On press updates immediately; Short press waits for a completed click; Long press waits for the hold threshold. This does not override Mains power behavior."
+    },
+    {
+      "name": "switch_right_binded_mode",
+      "property": "switch_right_binded_mode",
+      "label": "Right — Control bound light",
+      "endpoint": "switch_right",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Never (disabled)",
+        "On press",
+        "Long press",
+        "Short press"
+      ],
+      "description": "Chooses when this button sends a direct On/Off command to existing bindings or groups. Never (disabled) sends no direct-binding command and is the correct choice for a pure local-relay channel. On press is fastest; Short press waits for a completed click; Long press sends only after a hold. This setting does not create, remove or rewrite bindings."
+    },
+    {
+      "name": "relay_left_indicator_mode",
+      "property": "relay_left_indicator_mode",
+      "label": "Left — LED shows",
+      "endpoint": "relay_left",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Logical state",
+        "Inverse logical state",
+        "Manual",
+        "Physical output",
+        "Binding status"
+      ],
+      "description": "Chooses what the small panel LED represents. Logical state follows this channel's Zigbee state. Inverse logical state shows the opposite. Manual lets you control the LED separately. Physical output shows the electrical-output command. Binding status is recommended when this button directly controls a smart light: it follows locally tracked On/Off intent sent through the binding. It is intent, not confirmation of remote state. These options control only the panel LED and never change the electrical output."
+    },
+    {
+      "name": "relay_left_binding_intent",
+      "property": "relay_left_binding_intent",
+      "label": "Left — Bound light (tracked)",
+      "endpoint": "relay_left",
+      "category": "config",
+      "access": 7,
+      "values": null,
+      "description": "The On/Off state this device currently believes the bound light should be in. Direct-binding commands update it locally, and Home Assistant can correct it from the real light state. Use it with LED shows = Binding status. It is not remote-state confirmation by itself. Changing this only corrects the local tracker: it sends no command, changes no binding and never changes electrical power."
+    },
+    {
+      "name": "relay_middle_indicator_mode",
+      "property": "relay_middle_indicator_mode",
+      "label": "Middle — LED shows",
+      "endpoint": "relay_middle",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Logical state",
+        "Inverse logical state",
+        "Manual",
+        "Physical output",
+        "Binding status"
+      ],
+      "description": "Chooses what the small panel LED represents. Logical state follows this channel's Zigbee state. Inverse logical state shows the opposite. Manual lets you control the LED separately. Physical output shows the electrical-output command. Binding status is recommended when this button directly controls a smart light: it follows locally tracked On/Off intent sent through the binding. It is intent, not confirmation of remote state. These options control only the panel LED and never change the electrical output."
+    },
+    {
+      "name": "relay_middle_binding_intent",
+      "property": "relay_middle_binding_intent",
+      "label": "Middle — Bound light (tracked)",
+      "endpoint": "relay_middle",
+      "category": "config",
+      "access": 7,
+      "values": null,
+      "description": "The On/Off state this device currently believes the bound light should be in. Direct-binding commands update it locally, and Home Assistant can correct it from the real light state. Use it with LED shows = Binding status. It is not remote-state confirmation by itself. Changing this only corrects the local tracker: it sends no command, changes no binding and never changes electrical power."
+    },
+    {
+      "name": "relay_right_indicator_mode",
+      "property": "relay_right_indicator_mode",
+      "label": "Right — LED shows",
+      "endpoint": "relay_right",
+      "category": "config",
+      "access": 7,
+      "values": [
+        "Logical state",
+        "Inverse logical state",
+        "Manual",
+        "Physical output",
+        "Binding status"
+      ],
+      "description": "Chooses what the small panel LED represents. Logical state follows this channel's Zigbee state. Inverse logical state shows the opposite. Manual lets you control the LED separately. Physical output shows the electrical-output command. Binding status is recommended when this button directly controls a smart light: it follows locally tracked On/Off intent sent through the binding. It is intent, not confirmation of remote state. These options control only the panel LED and never change the electrical output."
+    },
+    {
+      "name": "relay_right_binding_intent",
+      "property": "relay_right_binding_intent",
+      "label": "Right — Bound light (tracked)",
+      "endpoint": "relay_right",
+      "category": "config",
+      "access": 7,
+      "values": null,
+      "description": "The On/Off state this device currently believes the bound light should be in. Direct-binding commands update it locally, and Home Assistant can correct it from the real light state. Use it with LED shows = Binding status. It is not remote-state confirmation by itself. Changing this only corrects the local tracker: it sends no command, changes no binding and never changes electrical power."
+    },
+    {
+      "name": "device_config_unlock",
+      "property": "device_config_unlock",
+      "label": "Advanced — Enable editing",
+      "endpoint": "advanced",
+      "category": "config",
+      "access": 2,
+      "values": [
+        "enable_editing"
+      ],
+      "description": "Unlocks Hardware configuration for this device for 60 seconds. The button itself changes nothing. A valid save consumes the unlock immediately. If transfer fails, unlock again before retrying. Restarting Zigbee2MQTT also returns the editor to locked."
+    },
+    {
+      "name": "device_config",
+      "property": "device_config",
+      "label": "Advanced — Hardware configuration",
+      "endpoint": "advanced",
+      "category": "config",
+      "access": 7,
+      "values": null,
+      "description": "Current low-level hardware map for this exact BSEED 3-gang device. Editing is locked by default: first click Advanced — Enable editing, then save within 60 seconds. Before Zigbee traffic is sent, the converter checks identity, required 3-gang structure, token syntax and duplicate GPIO assignments. Safe Romasku options D… (debounce) and SLP are allowed. Firmware repeats the board-topology checks, then verifies all chunks and CRC before replacing NVM and rebooting. A valid save consumes the unlock. Wrong pin assignments can still require recovery firmware."
+    }
+  ]
+}

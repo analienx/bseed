@@ -1,0 +1,42 @@
+{
+  "captured_utc": "2026-09-04T07:40:00.037Z",
+  "device": "LivingRoomMainDimmer",
+  "requested": [
+    "device_config",
+    "switch_left_action_mode",
+    "switch_middle_action_mode",
+    "switch_right_action_mode",
+    "switch_left_binded_mode",
+    "switch_middle_binded_mode",
+    "switch_right_binded_mode",
+    "relay_left_physical_mode",
+    "relay_middle_physical_mode",
+    "relay_right_physical_mode",
+    "relay_left_indicator_mode",
+    "relay_middle_indicator_mode",
+    "relay_right_indicator_mode"
+  ],
+  "answered": {},
+  "timed_out_or_missing": [
+    "device_config",
+    "switch_left_action_mode",
+    "switch_middle_action_mode",
+    "switch_right_action_mode",
+    "switch_left_binded_mode",
+    "switch_middle_binded_mode",
+    "switch_right_binded_mode",
+    "relay_left_physical_mode",
+    "relay_middle_physical_mode",
+    "relay_right_physical_mode",
+    "relay_left_indicator_mode",
+    "relay_middle_indicator_mode",
+    "relay_right_indicator_mode"
+  ],
+  "mqtt_log": [
+    "[0.0s] RX zigbee2mqtt/LivingRoomMainDimmer/availability: {\"state\":\"online\"}",
+    "[1.5s] TX zigbee2mqtt/LivingRoomMainDimmer/get: ",
+    "[1.5s] published empty-payload GET (read all)",
+    "[1.5s] RX zigbee2mqtt/LivingRoomMainDimmer/get: "
+  ],
+  "route_verdict": "NO_RESPONSE"
+}

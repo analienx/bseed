@@ -1,0 +1,1994 @@
+{
+  "captured_utc": "2026-09-04T07:26:01.013Z",
+  "installedZhc": {
+    "version": "26.103.0",
+    "nodeModulesRoot": "/app/node_modules/.pnpm/zigbee-herdsman-converters@26.103.0/node_modules"
+  },
+  "targetDescriptor": {
+    "modelID": "TS0726-3-BS",
+    "manufacturerName": "iedhxgyi",
+    "swBuildId": "1.1.6-bseedv6",
+    "type": "Router",
+    "endpoints": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "externalCounts": {
+    "NOBSEED": {
+      "stb3l_125_zj_phase_fix.js": 1,
+      "switch_custom.js": 199,
+      "tuya_with_ota.js": 43
+    },
+    "LIVE": {
+      "bseed_ts0726_v4.js": 1,
+      "bseed_ts0726_v5.js": 1,
+      "stb3l_125_zj_phase_fix.js": 1,
+      "switch_custom.js": 199,
+      "tuya_with_ota.js": 43
+    },
+    "PROD": {
+      "bseed_ts0726_v4.js": 1,
+      "stb3l_125_zj_phase_fix.js": 1,
+      "switch_custom.js": 199,
+      "tuya_with_ota.js": 43,
+      "bseed_ts0726_v6_production.js": 1
+    }
+  },
+  "fleetResolution": {
+    "NOBSEED": {
+      "0xfdb1122d004b1200": null,
+      "0xa4c138b5e090e7c0": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138ba60b92c5f": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "Tuya-custom",
+        "description": "BSEED PM outlet 🅰 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c13812088a54ac": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138cdf963eac3": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138241e3de538": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138075cd16ed4": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c13889b20f010e": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138da1333dc70": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138eb22efaa91": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c1382292dbe653": {
+        "model": "TS011F_plug_3",
+        "vendor": "Tuya",
+        "description": "Smart plug (with power monitoring by polling)",
+        "externalConverterName": null
+      },
+      "0xa4c138460c83974f": {
+        "model": "TS011F_plug_3",
+        "vendor": "Tuya",
+        "description": "Smart plug (with power monitoring by polling)",
+        "externalConverterName": null
+      },
+      "0xa4c1381647fb6fe1": {
+        "model": "STB3L-125-ZJ",
+        "vendor": "SUTON",
+        "description": "Zigbee DIN RCBO energy meter",
+        "externalConverterName": null
+      },
+      "0x94b216fffe75de0a": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0x94b216fffe776a41": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c13861dd842a03": {
+        "model": "TS0505B_1_1",
+        "vendor": "Tuya",
+        "description": "Zigbee 3.0 18W led light bulb E27 RGBCW",
+        "externalConverterName": null
+      },
+      "0xa4c13805fc0dacfb": {
+        "model": "TS0505B_1_1",
+        "vendor": "Tuya",
+        "description": "Zigbee 3.0 18W led light bulb E27 RGBCW",
+        "externalConverterName": null
+      },
+      "0xa4c138cec3e04283": {
+        "model": "TS0505B_1_1",
+        "vendor": "Tuya",
+        "description": "Zigbee 3.0 18W led light bulb E27 RGBCW",
+        "externalConverterName": null
+      },
+      "0xa4c1383043612ca4": {
+        "model": "TS0203",
+        "vendor": "Tuya",
+        "description": "Door/window sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138adb5fa215f": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138186a69b78c": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c13873701cd36c": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138ef578c9f75": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138793505c5cc": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138278260973a": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c1386e4892f726": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138054d265da2": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c13837b0bc5952": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138e4befcb1d8": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138aed67ea773": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0x94a081fffef44a55": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x94b216fffe505df2": {
+        "model": "TS0044",
+        "vendor": "Tuya",
+        "description": "Wireless switch with 4 buttons",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0x08b95ffffed12cba": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xb4e3f9fffeec4e36": {
+        "model": "VES-ZB-WAL-012",
+        "vendor": "Vesternet",
+        "description": "Zigbee wall controller - 8 button",
+        "externalConverterName": null
+      },
+      "0x0c2a6ffffe08159a": {
+        "model": "LED2004G8",
+        "vendor": "IKEA",
+        "description": "TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm",
+        "externalConverterName": null
+      },
+      "0x6cfd22fffee99de5": {
+        "model": "LED2004G8",
+        "vendor": "IKEA",
+        "description": "TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm",
+        "externalConverterName": null
+      },
+      "0x70c59cfffe6c80c3": {
+        "model": "LED2004G8",
+        "vendor": "IKEA",
+        "description": "TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm",
+        "externalConverterName": null
+      },
+      "0xa4c138ac993cc245": {
+        "model": "_TZ3000_o1jzcxou",
+        "vendor": "Tuya-custom",
+        "description": "BSEED outlet — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c1387b13e9436d": {
+        "model": "_TZ3000_o1jzcxou",
+        "vendor": "Tuya-custom",
+        "description": "BSEED outlet — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c13824a7005afb": {
+        "model": "_TZ3000_o1jzcxou",
+        "vendor": "Tuya-custom",
+        "description": "BSEED outlet — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xfc4d6afffe6e6b53": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0xd44867fffefeab39": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x8c8b48fffe67c120": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0x94b216fffe7734c9": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c138f29eba8f49": {
+        "model": "ZWSM16-1-Zigbee",
+        "vendor": "Tuya-custom",
+        "description": "AVATTO ZWSM16-1 🅰🅱 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c1380db190ca8b": {
+        "model": "ZG-204ZV",
+        "vendor": "HOBEIAN",
+        "description": "Millimeter wave motion detection",
+        "externalConverterName": null
+      },
+      "0xa4c138f6936a1788": {
+        "model": "EC-GL86ZPCS11",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 1-gang — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0x001788010ed4427c": {
+        "model": "929002398602",
+        "vendor": "Philips",
+        "description": "Hue dimmer switch gen 2",
+        "externalConverterName": null
+      },
+      "0xa4c138b9bda6dbcf": {
+        "model": "RB 287 C",
+        "vendor": "Innr",
+        "description": "Smart Bulb Colour E27 1200lm",
+        "externalConverterName": null
+      },
+      "0xa4c1385c11d46ae5": {
+        "model": "RB 287 C",
+        "vendor": "Innr",
+        "description": "Smart Bulb Colour E27 1200lm",
+        "externalConverterName": null
+      },
+      "0xa4c138d6a7100473": {
+        "model": "RB 287 C",
+        "vendor": "Innr",
+        "description": "Smart Bulb Colour E27 1200lm",
+        "externalConverterName": null
+      },
+      "0xa4c138105a8e4207": {
+        "model": "GL-C-006P",
+        "vendor": "Gledopto",
+        "description": "Zigbee LED Controller WW/CW (pro)",
+        "externalConverterName": null
+      },
+      "0xa4c13803d7475156": {
+        "model": "ZWSM16-2-Zigbee",
+        "vendor": "Tuya-custom",
+        "description": "AVATTO ZWSM16-2 🅰🅱 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c138c160b4890d": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1381daa061e97": {
+        "model": "ZWSM16-1-Zigbee",
+        "vendor": "Tuya-custom",
+        "description": "AVATTO ZWSM16-1 🅰🅱 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0x8c8b48fffe685a39": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0xa4c1381b8b4eff23": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1388b709b209c": {
+        "model": "GL-C-009P",
+        "vendor": "Gledopto",
+        "description": "Zigbee LED Controller W (pro)",
+        "externalConverterName": null
+      },
+      "0x70ac08fffe48994a": {
+        "model": "50208702",
+        "vendor": "Sunricher",
+        "description": "LED dimmable driver",
+        "externalConverterName": null
+      },
+      "0x70ac08fffe489643": {
+        "model": "50208702",
+        "vendor": "Sunricher",
+        "description": "LED dimmable driver",
+        "externalConverterName": null
+      },
+      "0xa4c13812aebbdaa0": {
+        "model": "ZP01",
+        "vendor": "Tuya",
+        "description": "Motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1385bc54e54bf": {
+        "model": "ZG-204ZV",
+        "vendor": "HOBEIAN",
+        "description": "Millimeter wave motion detection",
+        "externalConverterName": null
+      },
+      "0xf0fd45fffe3847f7": {
+        "model": "E2001/E2002/E2313",
+        "vendor": "IKEA",
+        "description": "STYRBAR remote control",
+        "externalConverterName": null
+      },
+      "0xa4c138ff9d303f05": {
+        "model": "SNZB-02",
+        "vendor": "SONOFF",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1384f030f8edb": {
+        "model": "ZTH05Z",
+        "vendor": "Tuya",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1382ca6f1bdde": {
+        "model": "TS0201",
+        "vendor": "Tuya",
+        "description": "Temperature & humidity sensor with display",
+        "externalConverterName": null
+      },
+      "0xa4c13830b44b8775": {
+        "model": "ZG-204ZV",
+        "vendor": "HOBEIAN",
+        "description": "Millimeter wave motion detection",
+        "externalConverterName": null
+      },
+      "0xa4c138b7eca277e9": {
+        "model": "ZP01",
+        "vendor": "Tuya",
+        "description": "Motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138da26407e17": {
+        "model": "ZG-204ZM",
+        "vendor": "Tuya",
+        "description": "PIR 24Ghz human presence sensor",
+        "externalConverterName": null
+      },
+      "0x94b216fffe9260f5": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c1386c6faff53b": {
+        "model": "ZG-106Z",
+        "vendor": "HOBEIAN",
+        "description": "Light intensity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138626fd5eda7": {
+        "model": "ZG-204Z",
+        "vendor": "HOBEIAN",
+        "description": "Motion sensor",
+        "externalConverterName": null
+      },
+      "0xc02cedfffec48f9d": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0x04e3e5fffed39c39": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0x8c8b48fffec9b5aa": {
+        "model": "E2213",
+        "vendor": "IKEA",
+        "description": "SOMRIG shortcut button",
+        "externalConverterName": null
+      },
+      "0x08fd52fffe2a01f4": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x8c8b48fffed271c7": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xa4c13852d7bbc587": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c1380e94d2ff82": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138267bfd0080": {
+        "model": "TH05Z",
+        "vendor": "ONENUO",
+        "description": "Temperature & humidity sensor with clock and humidity display",
+        "externalConverterName": null
+      },
+      "0xa4c138d47dc9e412": {
+        "model": "TS0201",
+        "vendor": "Tuya",
+        "description": "Temperature & humidity sensor with display",
+        "externalConverterName": null
+      },
+      "0x08fd52fffe0aa5a6": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x94b216fffe928d4a": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c1383a4b55557a": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c13878175921dc": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138bb0d75444c": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138c8a9f237a5": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138a67b88f8ac": {
+        "model": "TH01Z",
+        "vendor": "Tuya",
+        "description": "Temperature and humidity sensor with clock",
+        "externalConverterName": null
+      },
+      "0x348d13fffefffa53": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x08fd52fffe0b0ce1": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xa4c138c5f07ee732": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "Tuya-custom",
+        "description": "BSEED PM outlet 🅰 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c138278695ef31": {
+        "model": "STB3L-125-ZJ",
+        "vendor": "SUTON",
+        "description": "Zigbee DIN RCBO energy meter",
+        "externalConverterName": null
+      },
+      "0x94b216fffe774cc4": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0x94b216fffe897bfb": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0x94b216fffe943151": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xecf64cfffead3b8c": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xf0fd45fffeef553b": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x385b44fffefc81c0": {
+        "model": "50208702",
+        "vendor": "Sunricher",
+        "description": "LED dimmable driver",
+        "externalConverterName": null
+      },
+      "0xdc8e95fffe8aea30": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xd44867fffe16b355": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xa4c13810ae3bffff": {
+        "model": "SNZB-01M",
+        "vendor": "SONOFF",
+        "description": "Four-way wireless button",
+        "externalConverterName": null
+      },
+      "0xa4c13843a9d40f85": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 3-gang — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c13850cfcdb3a4": {
+        "model": "GL-SD-301P",
+        "vendor": "Gledopto",
+        "description": "Zigbee triac AC dimmer",
+        "externalConverterName": null
+      }
+    },
+    "LIVE": {
+      "0xfdb1122d004b1200": null,
+      "0xa4c138b5e090e7c0": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138ba60b92c5f": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "Tuya-custom",
+        "description": "BSEED PM outlet 🅰 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c13812088a54ac": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138cdf963eac3": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138241e3de538": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138075cd16ed4": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c13889b20f010e": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138da1333dc70": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138eb22efaa91": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c1382292dbe653": {
+        "model": "TS011F_plug_3",
+        "vendor": "Tuya",
+        "description": "Smart plug (with power monitoring by polling)",
+        "externalConverterName": null
+      },
+      "0xa4c138460c83974f": {
+        "model": "TS011F_plug_3",
+        "vendor": "Tuya",
+        "description": "Smart plug (with power monitoring by polling)",
+        "externalConverterName": null
+      },
+      "0xa4c1381647fb6fe1": {
+        "model": "STB3L-125-ZJ",
+        "vendor": "SUTON",
+        "description": "Zigbee DIN RCBO energy meter",
+        "externalConverterName": null
+      },
+      "0x94b216fffe75de0a": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0x94b216fffe776a41": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c13861dd842a03": {
+        "model": "TS0505B_1_1",
+        "vendor": "Tuya",
+        "description": "Zigbee 3.0 18W led light bulb E27 RGBCW",
+        "externalConverterName": null
+      },
+      "0xa4c13805fc0dacfb": {
+        "model": "TS0505B_1_1",
+        "vendor": "Tuya",
+        "description": "Zigbee 3.0 18W led light bulb E27 RGBCW",
+        "externalConverterName": null
+      },
+      "0xa4c138cec3e04283": {
+        "model": "TS0505B_1_1",
+        "vendor": "Tuya",
+        "description": "Zigbee 3.0 18W led light bulb E27 RGBCW",
+        "externalConverterName": null
+      },
+      "0xa4c1383043612ca4": {
+        "model": "TS0203",
+        "vendor": "Tuya",
+        "description": "Door/window sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138adb5fa215f": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138186a69b78c": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c13873701cd36c": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138ef578c9f75": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138793505c5cc": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138278260973a": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c1386e4892f726": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138054d265da2": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c13837b0bc5952": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138e4befcb1d8": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138aed67ea773": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0x94a081fffef44a55": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x94b216fffe505df2": {
+        "model": "TS0044",
+        "vendor": "Tuya",
+        "description": "Wireless switch with 4 buttons",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0x08b95ffffed12cba": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xb4e3f9fffeec4e36": {
+        "model": "VES-ZB-WAL-012",
+        "vendor": "Vesternet",
+        "description": "Zigbee wall controller - 8 button",
+        "externalConverterName": null
+      },
+      "0x0c2a6ffffe08159a": {
+        "model": "LED2004G8",
+        "vendor": "IKEA",
+        "description": "TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm",
+        "externalConverterName": null
+      },
+      "0x6cfd22fffee99de5": {
+        "model": "LED2004G8",
+        "vendor": "IKEA",
+        "description": "TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm",
+        "externalConverterName": null
+      },
+      "0x70c59cfffe6c80c3": {
+        "model": "LED2004G8",
+        "vendor": "IKEA",
+        "description": "TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm",
+        "externalConverterName": null
+      },
+      "0xa4c138ac993cc245": {
+        "model": "_TZ3000_o1jzcxou",
+        "vendor": "Tuya-custom",
+        "description": "BSEED outlet — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c1387b13e9436d": {
+        "model": "_TZ3000_o1jzcxou",
+        "vendor": "Tuya-custom",
+        "description": "BSEED outlet — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c13824a7005afb": {
+        "model": "_TZ3000_o1jzcxou",
+        "vendor": "Tuya-custom",
+        "description": "BSEED outlet — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xfc4d6afffe6e6b53": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0xd44867fffefeab39": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x8c8b48fffe67c120": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0x94b216fffe7734c9": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c138f29eba8f49": {
+        "model": "ZWSM16-1-Zigbee",
+        "vendor": "Tuya-custom",
+        "description": "AVATTO ZWSM16-1 🅰🅱 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c1380db190ca8b": {
+        "model": "ZG-204ZV",
+        "vendor": "HOBEIAN",
+        "description": "Millimeter wave motion detection",
+        "externalConverterName": null
+      },
+      "0xa4c138f6936a1788": {
+        "model": "EC-GL86ZPCS11",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 1-gang — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0x001788010ed4427c": {
+        "model": "929002398602",
+        "vendor": "Philips",
+        "description": "Hue dimmer switch gen 2",
+        "externalConverterName": null
+      },
+      "0xa4c138b9bda6dbcf": {
+        "model": "RB 287 C",
+        "vendor": "Innr",
+        "description": "Smart Bulb Colour E27 1200lm",
+        "externalConverterName": null
+      },
+      "0xa4c1385c11d46ae5": {
+        "model": "RB 287 C",
+        "vendor": "Innr",
+        "description": "Smart Bulb Colour E27 1200lm",
+        "externalConverterName": null
+      },
+      "0xa4c138d6a7100473": {
+        "model": "RB 287 C",
+        "vendor": "Innr",
+        "description": "Smart Bulb Colour E27 1200lm",
+        "externalConverterName": null
+      },
+      "0xa4c138105a8e4207": {
+        "model": "GL-C-006P",
+        "vendor": "Gledopto",
+        "description": "Zigbee LED Controller WW/CW (pro)",
+        "externalConverterName": null
+      },
+      "0xa4c13803d7475156": {
+        "model": "ZWSM16-2-Zigbee",
+        "vendor": "Tuya-custom",
+        "description": "AVATTO ZWSM16-2 🅰🅱 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c138c160b4890d": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1381daa061e97": {
+        "model": "ZWSM16-1-Zigbee",
+        "vendor": "Tuya-custom",
+        "description": "AVATTO ZWSM16-1 🅰🅱 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0x8c8b48fffe685a39": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0xa4c1381b8b4eff23": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1388b709b209c": {
+        "model": "GL-C-009P",
+        "vendor": "Gledopto",
+        "description": "Zigbee LED Controller W (pro)",
+        "externalConverterName": null
+      },
+      "0x70ac08fffe48994a": {
+        "model": "50208702",
+        "vendor": "Sunricher",
+        "description": "LED dimmable driver",
+        "externalConverterName": null
+      },
+      "0x70ac08fffe489643": {
+        "model": "50208702",
+        "vendor": "Sunricher",
+        "description": "LED dimmable driver",
+        "externalConverterName": null
+      },
+      "0xa4c13812aebbdaa0": {
+        "model": "ZP01",
+        "vendor": "Tuya",
+        "description": "Motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1385bc54e54bf": {
+        "model": "ZG-204ZV",
+        "vendor": "HOBEIAN",
+        "description": "Millimeter wave motion detection",
+        "externalConverterName": null
+      },
+      "0xf0fd45fffe3847f7": {
+        "model": "E2001/E2002/E2313",
+        "vendor": "IKEA",
+        "description": "STYRBAR remote control",
+        "externalConverterName": null
+      },
+      "0xa4c138ff9d303f05": {
+        "model": "SNZB-02",
+        "vendor": "SONOFF",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1384f030f8edb": {
+        "model": "ZTH05Z",
+        "vendor": "Tuya",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1382ca6f1bdde": {
+        "model": "TS0201",
+        "vendor": "Tuya",
+        "description": "Temperature & humidity sensor with display",
+        "externalConverterName": null
+      },
+      "0xa4c13830b44b8775": {
+        "model": "ZG-204ZV",
+        "vendor": "HOBEIAN",
+        "description": "Millimeter wave motion detection",
+        "externalConverterName": null
+      },
+      "0xa4c138b7eca277e9": {
+        "model": "ZP01",
+        "vendor": "Tuya",
+        "description": "Motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138da26407e17": {
+        "model": "ZG-204ZM",
+        "vendor": "Tuya",
+        "description": "PIR 24Ghz human presence sensor",
+        "externalConverterName": null
+      },
+      "0x94b216fffe9260f5": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c1386c6faff53b": {
+        "model": "ZG-106Z",
+        "vendor": "HOBEIAN",
+        "description": "Light intensity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138626fd5eda7": {
+        "model": "ZG-204Z",
+        "vendor": "HOBEIAN",
+        "description": "Motion sensor",
+        "externalConverterName": null
+      },
+      "0xc02cedfffec48f9d": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0x04e3e5fffed39c39": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0x8c8b48fffec9b5aa": {
+        "model": "E2213",
+        "vendor": "IKEA",
+        "description": "SOMRIG shortcut button",
+        "externalConverterName": null
+      },
+      "0x08fd52fffe2a01f4": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x8c8b48fffed271c7": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xa4c13852d7bbc587": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c1380e94d2ff82": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138267bfd0080": {
+        "model": "TH05Z",
+        "vendor": "ONENUO",
+        "description": "Temperature & humidity sensor with clock and humidity display",
+        "externalConverterName": null
+      },
+      "0xa4c138d47dc9e412": {
+        "model": "TS0201",
+        "vendor": "Tuya",
+        "description": "Temperature & humidity sensor with display",
+        "externalConverterName": null
+      },
+      "0x08fd52fffe0aa5a6": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x94b216fffe928d4a": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c1383a4b55557a": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c13878175921dc": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138bb0d75444c": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138c8a9f237a5": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138a67b88f8ac": {
+        "model": "TH01Z",
+        "vendor": "Tuya",
+        "description": "Temperature and humidity sensor with clock",
+        "externalConverterName": null
+      },
+      "0x348d13fffefffa53": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x08fd52fffe0b0ce1": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xa4c138c5f07ee732": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "Tuya-custom",
+        "description": "BSEED PM outlet 🅰 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c138278695ef31": {
+        "model": "STB3L-125-ZJ",
+        "vendor": "SUTON",
+        "description": "Zigbee DIN RCBO energy meter",
+        "externalConverterName": null
+      },
+      "0x94b216fffe774cc4": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0x94b216fffe897bfb": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0x94b216fffe943151": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xecf64cfffead3b8c": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xf0fd45fffeef553b": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x385b44fffefc81c0": {
+        "model": "50208702",
+        "vendor": "Sunricher",
+        "description": "LED dimmable driver",
+        "externalConverterName": null
+      },
+      "0xdc8e95fffe8aea30": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xd44867fffe16b355": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xa4c13810ae3bffff": {
+        "model": "SNZB-01M",
+        "vendor": "SONOFF",
+        "description": "Four-way wireless button",
+        "externalConverterName": null
+      },
+      "0xa4c13843a9d40f85": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+        "externalConverterName": "bseed_ts0726_v5.js"
+      },
+      "0xa4c13850cfcdb3a4": {
+        "model": "GL-SD-301P",
+        "vendor": "Gledopto",
+        "description": "Zigbee triac AC dimmer",
+        "externalConverterName": null
+      }
+    },
+    "PROD": {
+      "0xfdb1122d004b1200": null,
+      "0xa4c138b5e090e7c0": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138ba60b92c5f": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "Tuya-custom",
+        "description": "BSEED PM outlet 🅰 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c13812088a54ac": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138cdf963eac3": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138241e3de538": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138075cd16ed4": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c13889b20f010e": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138da1333dc70": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138eb22efaa91": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c1382292dbe653": {
+        "model": "TS011F_plug_3",
+        "vendor": "Tuya",
+        "description": "Smart plug (with power monitoring by polling)",
+        "externalConverterName": null
+      },
+      "0xa4c138460c83974f": {
+        "model": "TS011F_plug_3",
+        "vendor": "Tuya",
+        "description": "Smart plug (with power monitoring by polling)",
+        "externalConverterName": null
+      },
+      "0xa4c1381647fb6fe1": {
+        "model": "STB3L-125-ZJ",
+        "vendor": "SUTON",
+        "description": "Zigbee DIN RCBO energy meter",
+        "externalConverterName": null
+      },
+      "0x94b216fffe75de0a": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0x94b216fffe776a41": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c13861dd842a03": {
+        "model": "TS0505B_1_1",
+        "vendor": "Tuya",
+        "description": "Zigbee 3.0 18W led light bulb E27 RGBCW",
+        "externalConverterName": null
+      },
+      "0xa4c13805fc0dacfb": {
+        "model": "TS0505B_1_1",
+        "vendor": "Tuya",
+        "description": "Zigbee 3.0 18W led light bulb E27 RGBCW",
+        "externalConverterName": null
+      },
+      "0xa4c138cec3e04283": {
+        "model": "TS0505B_1_1",
+        "vendor": "Tuya",
+        "description": "Zigbee 3.0 18W led light bulb E27 RGBCW",
+        "externalConverterName": null
+      },
+      "0xa4c1383043612ca4": {
+        "model": "TS0203",
+        "vendor": "Tuya",
+        "description": "Door/window sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138adb5fa215f": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138186a69b78c": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c13873701cd36c": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138ef578c9f75": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138793505c5cc": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138278260973a": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c1386e4892f726": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138054d265da2": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c13837b0bc5952": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138e4befcb1d8": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c138aed67ea773": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0x94a081fffef44a55": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x94b216fffe505df2": {
+        "model": "TS0044",
+        "vendor": "Tuya",
+        "description": "Wireless switch with 4 buttons",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0x08b95ffffed12cba": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xb4e3f9fffeec4e36": {
+        "model": "VES-ZB-WAL-012",
+        "vendor": "Vesternet",
+        "description": "Zigbee wall controller - 8 button",
+        "externalConverterName": null
+      },
+      "0x0c2a6ffffe08159a": {
+        "model": "LED2004G8",
+        "vendor": "IKEA",
+        "description": "TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm",
+        "externalConverterName": null
+      },
+      "0x6cfd22fffee99de5": {
+        "model": "LED2004G8",
+        "vendor": "IKEA",
+        "description": "TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm",
+        "externalConverterName": null
+      },
+      "0x70c59cfffe6c80c3": {
+        "model": "LED2004G8",
+        "vendor": "IKEA",
+        "description": "TRADFRI bulb E26/E27, white spectrum, globe, clear, 800/806/810 lm",
+        "externalConverterName": null
+      },
+      "0xa4c138ac993cc245": {
+        "model": "_TZ3000_o1jzcxou",
+        "vendor": "Tuya-custom",
+        "description": "BSEED outlet — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c1387b13e9436d": {
+        "model": "_TZ3000_o1jzcxou",
+        "vendor": "Tuya-custom",
+        "description": "BSEED outlet — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c13824a7005afb": {
+        "model": "_TZ3000_o1jzcxou",
+        "vendor": "Tuya-custom",
+        "description": "BSEED outlet — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xfc4d6afffe6e6b53": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0xd44867fffefeab39": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x8c8b48fffe67c120": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0x94b216fffe7734c9": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c138f29eba8f49": {
+        "model": "ZWSM16-1-Zigbee",
+        "vendor": "Tuya-custom",
+        "description": "AVATTO ZWSM16-1 🅰🅱 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c1380db190ca8b": {
+        "model": "ZG-204ZV",
+        "vendor": "HOBEIAN",
+        "description": "Millimeter wave motion detection",
+        "externalConverterName": null
+      },
+      "0xa4c138f6936a1788": {
+        "model": "EC-GL86ZPCS11",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 1-gang — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0x001788010ed4427c": {
+        "model": "929002398602",
+        "vendor": "Philips",
+        "description": "Hue dimmer switch gen 2",
+        "externalConverterName": null
+      },
+      "0xa4c138b9bda6dbcf": {
+        "model": "RB 287 C",
+        "vendor": "Innr",
+        "description": "Smart Bulb Colour E27 1200lm",
+        "externalConverterName": null
+      },
+      "0xa4c1385c11d46ae5": {
+        "model": "RB 287 C",
+        "vendor": "Innr",
+        "description": "Smart Bulb Colour E27 1200lm",
+        "externalConverterName": null
+      },
+      "0xa4c138d6a7100473": {
+        "model": "RB 287 C",
+        "vendor": "Innr",
+        "description": "Smart Bulb Colour E27 1200lm",
+        "externalConverterName": null
+      },
+      "0xa4c138105a8e4207": {
+        "model": "GL-C-006P",
+        "vendor": "Gledopto",
+        "description": "Zigbee LED Controller WW/CW (pro)",
+        "externalConverterName": null
+      },
+      "0xa4c13803d7475156": {
+        "model": "ZWSM16-2-Zigbee",
+        "vendor": "Tuya-custom",
+        "description": "AVATTO ZWSM16-2 🅰🅱 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c138c160b4890d": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1381daa061e97": {
+        "model": "ZWSM16-1-Zigbee",
+        "vendor": "Tuya-custom",
+        "description": "AVATTO ZWSM16-1 🅰🅱 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0x8c8b48fffe685a39": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0xa4c1381b8b4eff23": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1388b709b209c": {
+        "model": "GL-C-009P",
+        "vendor": "Gledopto",
+        "description": "Zigbee LED Controller W (pro)",
+        "externalConverterName": null
+      },
+      "0x70ac08fffe48994a": {
+        "model": "50208702",
+        "vendor": "Sunricher",
+        "description": "LED dimmable driver",
+        "externalConverterName": null
+      },
+      "0x70ac08fffe489643": {
+        "model": "50208702",
+        "vendor": "Sunricher",
+        "description": "LED dimmable driver",
+        "externalConverterName": null
+      },
+      "0xa4c13812aebbdaa0": {
+        "model": "ZP01",
+        "vendor": "Tuya",
+        "description": "Motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1385bc54e54bf": {
+        "model": "ZG-204ZV",
+        "vendor": "HOBEIAN",
+        "description": "Millimeter wave motion detection",
+        "externalConverterName": null
+      },
+      "0xf0fd45fffe3847f7": {
+        "model": "E2001/E2002/E2313",
+        "vendor": "IKEA",
+        "description": "STYRBAR remote control",
+        "externalConverterName": null
+      },
+      "0xa4c138ff9d303f05": {
+        "model": "SNZB-02",
+        "vendor": "SONOFF",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1384f030f8edb": {
+        "model": "ZTH05Z",
+        "vendor": "Tuya",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c1382ca6f1bdde": {
+        "model": "TS0201",
+        "vendor": "Tuya",
+        "description": "Temperature & humidity sensor with display",
+        "externalConverterName": null
+      },
+      "0xa4c13830b44b8775": {
+        "model": "ZG-204ZV",
+        "vendor": "HOBEIAN",
+        "description": "Millimeter wave motion detection",
+        "externalConverterName": null
+      },
+      "0xa4c138b7eca277e9": {
+        "model": "ZP01",
+        "vendor": "Tuya",
+        "description": "Motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138da26407e17": {
+        "model": "ZG-204ZM",
+        "vendor": "Tuya",
+        "description": "PIR 24Ghz human presence sensor",
+        "externalConverterName": null
+      },
+      "0x94b216fffe9260f5": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c1386c6faff53b": {
+        "model": "ZG-106Z",
+        "vendor": "HOBEIAN",
+        "description": "Light intensity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138626fd5eda7": {
+        "model": "ZG-204Z",
+        "vendor": "HOBEIAN",
+        "description": "Motion sensor",
+        "externalConverterName": null
+      },
+      "0xc02cedfffec48f9d": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0x04e3e5fffed39c39": {
+        "model": "ZBMINIR2",
+        "vendor": "SONOFF",
+        "description": "Zigbee smart switch",
+        "externalConverterName": null
+      },
+      "0x8c8b48fffec9b5aa": {
+        "model": "E2213",
+        "vendor": "IKEA",
+        "description": "SOMRIG shortcut button",
+        "externalConverterName": null
+      },
+      "0x08fd52fffe2a01f4": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x8c8b48fffed271c7": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xa4c13852d7bbc587": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "BSEED",
+        "description": "Wall-mounted electrical EU/FR/UK socket with power monitoring",
+        "externalConverterName": "tuya_with_ota.js"
+      },
+      "0xa4c1380e94d2ff82": {
+        "model": "ZG-204ZL",
+        "vendor": "Tuya",
+        "description": "Luminance motion sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138267bfd0080": {
+        "model": "TH05Z",
+        "vendor": "ONENUO",
+        "description": "Temperature & humidity sensor with clock and humidity display",
+        "externalConverterName": null
+      },
+      "0xa4c138d47dc9e412": {
+        "model": "TS0201",
+        "vendor": "Tuya",
+        "description": "Temperature & humidity sensor with display",
+        "externalConverterName": null
+      },
+      "0x08fd52fffe0aa5a6": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x94b216fffe928d4a": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xa4c1383a4b55557a": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c13878175921dc": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138bb0d75444c": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138c8a9f237a5": {
+        "model": "TH01",
+        "vendor": "Zbeacon",
+        "description": "Temperature and humidity sensor",
+        "externalConverterName": null
+      },
+      "0xa4c138a67b88f8ac": {
+        "model": "TH01Z",
+        "vendor": "Tuya",
+        "description": "Temperature and humidity sensor with clock",
+        "externalConverterName": null
+      },
+      "0x348d13fffefffa53": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x08fd52fffe0b0ce1": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xa4c138c5f07ee732": {
+        "model": "TS011F_plug_1_2",
+        "vendor": "Tuya-custom",
+        "description": "BSEED PM outlet 🅰 — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      },
+      "0xa4c138278695ef31": {
+        "model": "STB3L-125-ZJ",
+        "vendor": "SUTON",
+        "description": "Zigbee DIN RCBO energy meter",
+        "externalConverterName": null
+      },
+      "0x94b216fffe774cc4": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0x94b216fffe897bfb": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0x94b216fffe943151": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xecf64cfffead3b8c": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xf0fd45fffeef553b": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0x385b44fffefc81c0": {
+        "model": "50208702",
+        "vendor": "Sunricher",
+        "description": "LED dimmable driver",
+        "externalConverterName": null
+      },
+      "0xdc8e95fffe8aea30": {
+        "model": "TO-Q-SY2-163JZT",
+        "vendor": "Tongou",
+        "description": "Smart circuit breaker",
+        "externalConverterName": null
+      },
+      "0xd44867fffe16b355": {
+        "model": "E2201",
+        "vendor": "IKEA",
+        "description": "RODRET wireless dimmer/power switch",
+        "externalConverterName": null
+      },
+      "0xa4c13810ae3bffff": {
+        "model": "SNZB-01M",
+        "vendor": "SONOFF",
+        "description": "Four-way wireless button",
+        "externalConverterName": null
+      },
+      "0xa4c13843a9d40f85": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+        "externalConverterName": "bseed_ts0726_v6_production.js"
+      },
+      "0xa4c13850cfcdb3a4": {
+        "model": "GL-SD-301P",
+        "vendor": "Gledopto",
+        "description": "Zigbee triac AC dimmer",
+        "externalConverterName": null
+      }
+    }
+  },
+  "targetCases": {
+    "LIVE": {
+      "actual": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+        "externalConverterName": "bseed_ts0726_v5.js"
+      },
+      "spy_1_1_6_bseedv6": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+        "externalConverterName": "bseed_ts0726_v5.js"
+      },
+      "spy_1_1_5_bseedv5_recovery": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+        "externalConverterName": "bseed_ts0726_v5.js"
+      },
+      "spy_1_1_4_bseedv4": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 3-gang — Romasku v4 canary",
+        "externalConverterName": "bseed_ts0726_v4.js"
+      }
+    },
+    "PROD": {
+      "actual": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+        "externalConverterName": "bseed_ts0726_v6_production.js"
+      },
+      "spy_1_1_6_bseedv6": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+        "externalConverterName": "bseed_ts0726_v6_production.js"
+      },
+      "spy_1_1_5_bseedv5_recovery": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+        "externalConverterName": "bseed_ts0726_v6_production.js"
+      },
+      "spy_1_1_4_bseedv4": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 3-gang — Romasku v4 canary",
+        "externalConverterName": "bseed_ts0726_v4.js"
+      }
+    },
+    "NOBSEED": {
+      "actual": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 3-gang — Romasku custom firmware",
+        "externalConverterName": "switch_custom.js"
+      }
+    }
+  },
+  "checks": {
+    "v6_target_matches_exactly_one_transition_definition": true,
+    "no_broad_ts0726_fallback_collision": {
+      "what_matches_target_without_bseed": "EC-GL86ZPCS31",
+      "prod_resolution_is_bseed_not_fallback": true
+    },
+    "fleet_delta_live_to_prod_total": 1,
+    "fleet_delta_live_to_prod_outside_target": 0,
+    "no_other_fleet_device_resolves_to_bseed_under_prod": [],
+    "recovery_fingerprint_under_prod": {
+      "model": "EC-GL86ZPCS31",
+      "vendor": "Tuya-custom",
+      "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+      "externalConverterName": "bseed_ts0726_v6_production.js"
+    },
+    "v4_overlay_isolation_under_prod": {
+      "spy_1_1_4": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED Echo Click / Scale 3-gang — Romasku v4 canary",
+        "externalConverterName": "bseed_ts0726_v4.js"
+      },
+      "note": "1.1.4-bseedv4 must resolve to v4 overlay (unchanged behavior); 1.1.6 to production wrapper"
+    }
+  },
+  "fleetDeltas": [
+    {
+      "ieee": "0xa4c13843a9d40f85",
+      "friendly": "LivingRoomMainDimmer",
+      "live": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+        "externalConverterName": "bseed_ts0726_v5.js"
+      },
+      "prod": {
+        "model": "EC-GL86ZPCS31",
+        "vendor": "Tuya-custom",
+        "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration",
+        "externalConverterName": "bseed_ts0726_v6_production.js"
+      }
+    }
+  ]
+}

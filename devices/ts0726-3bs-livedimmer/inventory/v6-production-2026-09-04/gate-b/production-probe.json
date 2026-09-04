@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "definitionCount": 1,
+  "v5RecoveryFingerprint": true,
+  "v6ProductionFingerprint": true,
+  "disabledBoundControl": "0xff05=0",
+  "endpointsPinned": [
+    1,
+    2,
+    3
+  ],
+  "rightPureRelayRepresentable": true,
+  "directBindingIdentityReadFirst": true,
+  "directBindingV6Attribute": "0xff06"
+}
