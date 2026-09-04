@@ -1,0 +1,1102 @@
+[
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:07:46] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:07:46] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieeeAddr\":\"0xa4c13843a9d40f85\",\"manufacturerID\":4417,\"manufacturerName\":\"iedhxgyi\",\"model\":\"EC-GL86ZPCS31\",\"networkAddress\":"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:07:46] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieeeAddr\":\"0xa4c13843a9d40f85\",\"manufacturerID\":4417,\"manufacturerName\":\"iedhxgyi\",\"model\":\"EC-GL86ZPCS31\",\"networkAddress\":"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:07:57] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:07:57] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieeeAddr\":\"0xa4c13843a9d40f85\",\"manufacturerID\":4417,\"manufactu"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:07:57] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieeeAddr\":\"0xa4c13843a9d40f85\",\"manufacturerID\":4417,\"manufactu"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:08:09] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:08:09] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:08:09] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:08:50] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:08:50] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:08:50] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:09:25] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:09:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:09:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:09:37] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:09:37] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:09:37] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:09:49] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:09:49] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:09:49] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:10:40] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:10:52] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:11:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:11:16] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:11:30] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:11:42] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:00] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:19] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:19] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:20] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:20] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:30] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:31] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:32] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:34] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:34] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:35] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:35] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:37] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:38] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:40] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:40] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:40] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:52] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:52] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:12:52] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:13:04] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:13:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-04-51/log.log",
+  "line": "[2026-09-03 21:13:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:13:38] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:39] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:40] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:40] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:41] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:42] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:42] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:43] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:43] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:44] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:48] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:48] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:48] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:58] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:58] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:14:58] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:10] info: \tzhc:tz: Read result of 'genOnOffSwitchCfg': {\"switchActions\":2}"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:10] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:10] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:39] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:42] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:43] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:44] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:45] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:45] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:45] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:45] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:46] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:46] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:47] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:47] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:48] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:48] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:48] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:49] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:49] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:49] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:50] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:51] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:51] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:52] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:53] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:53] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:54] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:54] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:54] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:54] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:55] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:57] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:57] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:57] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:15:57] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:16:01] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:16:29] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:17:19] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:17:19] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:17:20] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:17:20] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:13] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:42] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:42] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:43] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:43] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:44] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:44] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:45] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:46] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:46] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:46] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:50] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:50] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:51] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:21:53] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:22:19] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:22:19] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:22:20] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:22:20] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:00] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:00] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:01] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:01] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:01] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:01] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:01] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:01] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:02] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:12] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:12] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:14] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:15] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:15] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:15] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:15] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:15] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:15] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:16] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:16] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_1_off\",\"action_switch_middle\":\"off\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyN"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:16] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_1_press\",\"action_switch_middle\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frien"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:16] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_1_release\",\"action_switch_middle\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"f"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_1_off\",\"action_switch_middle\":\"off\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyN"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_0_press\",\"action_switch_left\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendl"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_0_release\",\"action_switch_left\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fri"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_0_release\",\"action_switch_left\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fri"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_0_off\",\"action_switch_left\":\"off\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyNam"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:18] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:19] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:26:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:27:00] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:27:38] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:27:38] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:27:39] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:27:40] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:27:41] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:06] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:08] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:09] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:09] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:16] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:16] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:18] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:18] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:22] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:28:51] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:29:22] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:29:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:29:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:29:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:30:48] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:05] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:16] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:17] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:18] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:19] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:20] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:20] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:20] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:21] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:21] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:22] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:22] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:24] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:31:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:32:50] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:32:50] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:32:50] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:32:52] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:32:52] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:32:52] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:32:52] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:32:52] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:32:53] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:32:53] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:03] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:04] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:23] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:24] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:24] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:24] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:24] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:24] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:24] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:24] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:24] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:25] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friendlyName\":\"LivingRoomMainDimmer\",\"hardwareVersion\":0,\"ieee"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:26] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:27] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:27] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:27] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:27] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:27] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_press\",\"action_switch_right\":\"press\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"friend"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:27] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:27] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:28] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_toggle\",\"action_switch_right\":\"toggle\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"frie"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:28] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:33:28] info: \tz2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\"abi_switchactions_left_switch_left\":{\"switchActions\":2},\"abi_switchactions_middle_switch_middle\":{\"switchActions\":2},\"abi_switchactions_right_switch_right\":{\"switchActions\":2},\"action\":\"switch_2_release\",\"action_switch_right\":\"release\",\"device\":{\"applicationVersion\":3,\"dateCode\":\"20260903\",\"fr"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:45:16] error: \tz2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/1 genOnOffSwitchCfg.read([16], {\"timeout\":10000,\"disableResponse\":false,\"disableRecovery\":false,\"disableDefaultResponse\":true,\"direction\":0,\"reservedBits\":0,\"writeUndiv\":false}) failed ({\"target\":24677,\"apsFrame\":{\"profileId\":260,\"clusterId\":7,\"sourceEndpoint\":1,\"destina"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:45:26] error: \tz2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/2 genOnOffSwitchCfg.read([16], {\"timeout\":10000,\"disableResponse\":false,\"disableRecovery\":false,\"disableDefaultResponse\":true,\"direction\":0,\"reservedBits\":0,\"writeUndiv\":false}) failed ({\"target\":24677,\"apsFrame\":{\"profileId\":260,\"clusterId\":7,\"sourceEndpoint\":1,\"destina"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:45:36] error: \tz2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/3 genOnOffSwitchCfg.read([16], {\"timeout\":10000,\"disableResponse\":false,\"disableRecovery\":false,\"disableDefaultResponse\":true,\"direction\":0,\"reservedBits\":0,\"writeUndiv\":false}) failed ({\"target\":24677,\"apsFrame\":{\"profileId\":260,\"clusterId\":7,\"sourceEndpoint\":1,\"destina"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:50:47] error: \tz2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/1 genOnOffSwitchCfg.read([16], {\"timeout\":10000,\"disableResponse\":false,\"disableRecovery\":false,\"disableDefaultResponse\":true,\"direction\":0,\"reservedBits\":0,\"writeUndiv\":false}) failed ({\"target\":24677,\"apsFrame\":{\"profileId\":260,\"clusterId\":7,\"sourceEndpoint\":1,\"destina"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:50:57] error: \tz2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/2 genOnOffSwitchCfg.read([16], {\"timeout\":10000,\"disableResponse\":false,\"disableRecovery\":false,\"disableDefaultResponse\":true,\"direction\":0,\"reservedBits\":0,\"writeUndiv\":false}) failed ({\"target\":24677,\"apsFrame\":{\"profileId\":260,\"clusterId\":7,\"sourceEndpoint\":1,\"destina"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 21:51:07] error: \tz2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/3 genOnOffSwitchCfg.read([16], {\"timeout\":10000,\"disableResponse\":false,\"disableRecovery\":false,\"disableDefaultResponse\":true,\"direction\":0,\"reservedBits\":0,\"writeUndiv\":false}) failed ({\"target\":24677,\"apsFrame\":{\"profileId\":260,\"clusterId\":7,\"sourceEndpoint\":1,\"destina"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 22:01:58] error: \tz2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/1 genOnOffSwitchCfg.read([16], {\"timeout\":10000,\"disableResponse\":false,\"disableRecovery\":false,\"disableDefaultResponse\":true,\"direction\":0,\"reservedBits\":0,\"writeUndiv\":false}) failed ({\"target\":24677,\"apsFrame\":{\"profileId\":260,\"clusterId\":7,\"sourceEndpoint\":1,\"destina"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 22:02:08] error: \tz2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/2 genOnOffSwitchCfg.read([16], {\"timeout\":10000,\"disableResponse\":false,\"disableRecovery\":false,\"disableDefaultResponse\":true,\"direction\":0,\"reservedBits\":0,\"writeUndiv\":false}) failed ({\"target\":24677,\"apsFrame\":{\"profileId\":260,\"clusterId\":7,\"sourceEndpoint\":1,\"destina"
+ },
+ {
+  "file": "2026-09-03.21-13-34/log1.log",
+  "line": "[2026-09-03 22:02:28] error: \tz2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/3 genOnOffSwitchCfg.read([16], {\"timeout\":10000,\"disableResponse\":false,\"disableRecovery\":false,\"disableDefaultResponse\":true,\"direction\":0,\"reservedBits\":0,\"writeUndiv\":false}) failed ({\"target\":24677,\"apsFrame\":{\"profileId\":260,\"clusterId\":7,\"sourceEndpoint\":1,\"destina"
+ }
+]

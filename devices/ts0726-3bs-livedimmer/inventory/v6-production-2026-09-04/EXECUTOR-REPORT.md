@@ -10,11 +10,17 @@ Firmware: `1.1.6-bseedv6` / build `285356039` (cache-corroborated; see Gate C).
 ## Verdict
 
 ```text
-GATES A-C: B PASS · A NOT-CLOSABLE-AS-SPECIFIED · C FAIL(route-degraded) => STOP
-Production deployment NOT authorized (brief gates it on A+B+C all-PASS).
+GATES A-C: B PASS · A PASS (durably recovered from live logs; see CORRECTION below) · C FAIL(route-degraded) => STOP
+Production deployment NOT authorized (brief gates it on A+B+C all-PASS; C is the blocker).
 NO converter deployment, NO restart, NO settings writes, NO bind/unbind
 mutation, NO RIGHT hard-power activation, NO recover-flash performed.
 ```
+
+> **CORRECTION (2026-09-04, same day, later session hour):** the first pass of this
+> work unit reported Gate A as NOT-CLOSABLE-AS-SPECIFIED. That was WRONG and is
+> retracted below in section "Gate A". Durable per-EP standard-ABI evidence DOES
+> exist in the live logs and state; the recovery satisfies the Supervisor's
+> option 1. The Gate C STOP stands unchanged.
 
 ## Gate B — exact live runtime probe (Z2M 2.14.0-1 / ZHC 26.103.0) — PASS
 
@@ -54,37 +60,43 @@ Local mock transition probe
 `identityReadFailureFailsClosed: true`, `staleCacheIgnored: true`,
 `v6.customAttribute: 0xff06` (`gate-b/transition-mock-probe-local.json`).
 
-## Gate A — durable standard-ABI (EP1/2/3 genOnOffSwitchCfg 0x0010 = 2) — NOT CLOSABLE AS SPECIFIED
+## Gate A — durable standard-ABI proof (EP1/2/3 genOnOffSwitchCfg 0x0010 = 2) — PASS via recovery
 
-Two independent findings, both evidence-backed:
+**Retraction of this unit's earlier verdict:** "durable evidence does not exist;
+the WU5 mechanism exists nowhere on this runtime" — **FALSE**. It came from (a)
+an evidence-agent log search whose token list omitted `abi_switchactions`, and
+(b) my own cmd-mangled `/app/dist` greps misread as clean negatives. Corrected
+evidence, verbatim lines and honest limits: `gate-a/STANDARD-ABI-EVIDENCE.md`;
+machine dump `gate-a/abi-read-lines-recovered.json` (253 EP-tagged publishes,
+13 `Read result of 'genOnOffSwitchCfg': {"switchActions":2}` lines, 9 outage-era
+`read([16])` timeout errors, all timestamped from retained WU5 windows).
 
-1. **The durable evidence the brief hoped to recover does not exist.**
-   Full-coverage search of the live Z2M log rotation AND the archived host-side
-   WU5 bundles (per-file line counts and first/last timestamps in
-   `gate-a-evidence-absence-report.txt`): every retained log is `info` level;
-   `readResponse`/`attributeReport`/`0xff06`/raw-frame tokens = 0 occurrences;
-   the explicit endpoint-scoped `genOnOffSwitchCfg.read([16])` (= 0x0010)
-   attempts (9x EP1/EP2/EP3, 21:45–22:02 local Sep-3) ALL timed out; the only
-   2-valued `{"switchActions":2}` read-results (13x, 21:07–21:15 local) predate
-   the outage but are **not endpoint-attributable at info level** — the committed
-   `abi-standard-reads.json` / `final-standard-reads.json` (NO_RESPONSE x3)
-   remain the only endpoint-labeled files and they contradict the WU5 narrative.
-2. **The described WU5 re-probe mechanism cannot exist on this runtime.**
-   `read_switch_*` / `state_property` / `abi_switchactions_*` appears nowhere in
-   Z2M 2.14.0-1 `/app/dist`, in the live transition converter (blob `ed8ee78f`),
-   or anywhere on the host (`grep -r` of /config + /mnt/data). On V6 the
-   hardened converter's only public action-property GET reads **custom 0xff06**
-   (transport chosen by fresh `swBuildId`); there is NO public property that GETs
-   standard 0x0010 on V6, Z2M 2.14 has no legacy raw-read API, and the installed
-   WindFront build exposes no DevTools/ZCL-passthrough surface. Re-running the
-   "same read-only /set probes" cannot produce standard-0x0010 evidence with the
-   current converter + runtime — even with a healthy route.
+Recovered proof (host-local +02:00):
 
-=> Gate A needs a Supervisor ruling: an authorized read path for standard 0x0010
-(e.g. a probe-only higher-priority definition or a converter surface exposing
-standard-action GET + EP-tagged state publish, `debug` log capture, or accepting
-the WU4/WU5 custom-0xff06 + V5-era standard 2/2/2 chain as the release proof).
-NOTHING was improvised on the live system to force this closed.
+```text
+PRE policy-restart (window 2026-09-03.21-04-51):
+  EP1(left)   {"switchActions":2} first 21:07:46  (40 EP-tagged publishes)
+  EP2(middle) {"switchActions":2} first 21:07:57  (38)
+  EP3(right)  {"switchActions":2} first 21:08:09  (36; all-three-keys publish)
+POST policy-restart (window 2026-09-03.21-13-34, boot 21:13:34):
+  fresh Read-result lines 21:14:48 / 21:14:58 / 21:15:10 (10 s per-EP cadence)
+  EP-tagged publishes x213 per key through 21:33:28
+OUTAGE RE-PROBES (not counter-evidence): 9x read([16]) timeouts 21:45:16-22:02:28
+PERSISTENT: /config/zigbee2mqtt/state.json (sha256 58bb3401...) still holds all
+  three abi_switchactions_* keys = {"switchActions": 2} on 2026-09-04
+```
+
+`switchActions` is the ZCL standard name for genOnOffSwitchCfg `0x0010` (custom
+attrs decode as 65280/65285/65286, never `switchActions`); the failed outage
+twins show the exact request form (`0xa4c13843a9d40f85/N
+genOnOffSwitchCfg.read([16])`, EP-tagged `/1 /2 /3`). WU5's "2/2/2" narrative
+was true; its committed sentinel files recorded only the LAST (outage) attempts
+— which is precisely why the Supervisor demanded recovery from the logs, and
+this recovery satisfies that option 1.
+
+The mechanism is Z2M core's `set 'read'` + `state_property` (converter-
+independent, read-only). Once routes return it can re-prove Gate A live and
+fits the Gate C snapshot fields; no converter improvisation is needed.
 
 ## Gate C — fresh pre-production snapshot — FAIL: target does not answer fresh reads
 
@@ -128,8 +140,8 @@ authorized-applied in this work unit and the cache must not be treated as such.
 
 ## Production converter, settings, topology — NOT STARTED
 
-Sections 5–7 of the dispatch are gated on A–C PASS. B passes; A is structurally
-unclosable as specified; C fails on route. Nothing installed, nothing restarted,
+Sections 5–7 of the dispatch are gated on A–C PASS. B and A now pass; **C fails
+on route** — single remaining blocker. Nothing installed, nothing restarted,
 no `/set`, no bind/group mutation, no OTA. HA v2 remains staged.
 
 ## Additional disclosures
@@ -141,19 +153,18 @@ no `/set`, no bind/group mutation, no OTA. HA v2 remains staged.
    STATUS.md Gate-F ledger value (967,427 B / `50d135be…`); it does not govern
    the target while BSEED wins by fingerprint+priority, but the ledger needs
    reconciliation.
-3. Host/container staging dirs for this work unit: `/tmp/v6prod-20260904/`
-   (host + container), inert scripts + capture outputs only, nothing in
-   `/config`; tear-down is `rm -rf /tmp/v6prod-20260904` on host and
-   `docker exec app_45df7312_zigbee2mqtt rm -rf /tmp/v6prod-20260904
-   /tmp/v6prod-20260904-stage`.
+3. Host/container staging dirs for this work unit (`/tmp/v6prod-20260904*` +
+   probe copies) were **torn down** after evidence retrieval; `/config` was
+   never touched this unit (verified post-run: external_converters unchanged,
+   no converter_lib dir).
 
 ## Return
 
 ```text
 GATE_B(runtime_zhc_26_103)=PASS
-GATE_A(standard_abi_durable_evidence)=NOT_CLOSABLE_AS_SPECIFIED -> SUPERVISOR RULING REQUIRED
+GATE_A(standard_abi_durable_evidence)=PASS_RECOVERED (2/2/2 pre AND post policy restart; see gate-a/)
 GATE_C(fresh_pre_production_snapshot)=FAIL_ROUTE_DEGRADED
-PRODUCTION_DEPLOYMENT=NOT_AUTHORIZED (gates not all PASS)
+PRODUCTION_DEPLOYMENT=NOT_AUTHORIZED (C outstanding)
 DEVICE_MUTATIONS=NONE
 evidence=<commit sha of this commit>
 STOPPED — per dispatch: do not recover-flash; wait for mesh investigation
@@ -162,9 +173,13 @@ STOPPED — per dispatch: do not recover-flash; wait for mesh investigation
 ## Artifacts
 
 ```text
+gate-a/            STANDARD-ABI-EVIDENCE.md (recovered proof + limits) +
+                   abi-read-lines-recovered.json (275 raw log lines)
 gate-b/            composition scan, installed-ZHC probes (live+prod files),
-                   production probe, bridge captures + merged descriptors (07:19Z)
+                   production probe, pytest+mock transcripts, bridge captures
+                   + merged descriptors (07:19Z)
 gate-c/            read-only route-health GET snapshot (TX/RX transcript, 07:40Z)
-gate-a-evidence-absence-report.txt   live-log coverage table + bundle audit
-scripts/           all probe/capture scripts used (re-runnable)
+gate-a-evidence-absence-report.txt   SUPERSEDED first-pass absence audit (kept
+                   for audit trail; its log token list omitted abi_switchactions)
+scripts/           all probe/capture/recovery scripts used (re-runnable)
 ```
