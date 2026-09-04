@@ -1,0 +1,23 @@
+{
+ "started_utc": "2026-09-04T10:21:22.680Z",
+ "log": [
+  {
+   "at": "10:21:23.914",
+   "text": "PUBLISHED endpoint-scoped SET Never (disabled)"
+  },
+  {
+   "at": "10:21:24.031",
+   "text": "{\"level\":\"info\",\"message\":\"z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\\\"abi_swbuild\\\":{\\\"swBuildId\\\":\\\"1.1.6-bseedv6\\\"},\\\"abi_switchactions_left\\\":{\\\"switchActions\\\":2},\\\"abi_switchactions_left_switch_left\\\":{\\\"switchActions\\\":2},\\\"abi_switchactions_middle\\\":{\\\"switc"
+  },
+  {
+   "at": "10:21:32.150",
+   "text": "{\"level\":\"info\",\"message\":\"z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\\\"abi_swbuild\\\":{\\\"swBuildId\\\":\\\"1.1.6-bseedv6\\\"},\\\"abi_switchactions_left\\\":{\\\"switchActions\\\":2},\\\"abi_switchactions_left_switch_left\\\":{\\\"switchActions\\\":2},\\\"abi_switchactions_middle\\\":{\\\"switc"
+  }
+ ],
+ "raw": {
+  "rprobe_ff05@10:21:32.151": {
+   "65285": 3
+  }
+ },
+ "finished_utc": "2026-09-04T10:21:43.921Z"
+}

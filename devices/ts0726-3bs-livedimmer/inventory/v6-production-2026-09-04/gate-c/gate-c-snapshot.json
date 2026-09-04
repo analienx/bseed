@@ -1,0 +1,244 @@
+{
+ "started_utc": "2026-09-04T08:51:57.862Z",
+ "abi_reads": {
+  "abi_swbuild": {
+   "value": {
+    "swBuildId": "1.1.6-bseedv6"
+   },
+   "at": "08:51:59.727"
+  },
+  "abi_switchactions_left": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "08:51:59.727"
+  },
+  "abi_switchactions_left_switch_left": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "08:51:59.727"
+  },
+  "abi_switchactions_middle": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "08:51:59.727"
+  },
+  "abi_switchactions_middle_switch_middle": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "08:51:59.727"
+  },
+  "abi_switchactions_right": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "08:51:59.727"
+  },
+  "abi_switchactions_right_switch_right": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "08:51:59.727"
+  }
+ },
+ "get_answers": {
+  "device_config": {
+   "value": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;",
+   "at": "08:51:58.203"
+  },
+  "relay_left_indicator_mode": {
+   "value": "Binding status",
+   "at": "08:51:58.203"
+  },
+  "relay_left_physical_mode": {
+   "value": "Always on",
+   "at": "08:51:58.203"
+  },
+  "relay_middle_indicator_mode": {
+   "value": "Binding status",
+   "at": "08:51:58.203"
+  },
+  "relay_middle_physical_mode": {
+   "value": "Always on",
+   "at": "08:51:58.203"
+  },
+  "relay_right_indicator_mode": {
+   "value": "Physical output",
+   "at": "08:51:58.203"
+  },
+  "relay_right_physical_mode": {
+   "value": "Follow logical state",
+   "at": "08:51:58.203"
+  },
+  "state_relay_left": {
+   "value": "OFF",
+   "at": "08:51:58.203"
+  },
+  "state_relay_middle": {
+   "value": "OFF",
+   "at": "08:51:58.203"
+  },
+  "state_relay_right": {
+   "value": "OFF",
+   "at": "08:51:58.203"
+  },
+  "switch_left_action_mode": {
+   "value": "Toggle",
+   "at": "08:51:58.203"
+  },
+  "switch_left_binded_mode": {
+   "value": "Short press",
+   "at": "08:51:58.203"
+  },
+  "switch_left_relay_index": {
+   "value": "Left",
+   "at": "08:51:58.203"
+  },
+  "switch_left_relay_mode": {
+   "value": "Short press",
+   "at": "08:51:58.203"
+  },
+  "switch_middle_action_mode": {
+   "value": "Match local state",
+   "at": "08:51:58.203"
+  },
+  "switch_middle_binded_mode": {
+   "value": "Short press",
+   "at": "08:51:58.203"
+  },
+  "switch_middle_relay_index": {
+   "value": "Middle",
+   "at": "08:51:58.203"
+  },
+  "switch_middle_relay_mode": {
+   "value": "Short press",
+   "at": "08:51:58.203"
+  },
+  "switch_right_action_mode": {
+   "value": "Toggle",
+   "at": "08:51:58.203"
+  },
+  "switch_right_binded_mode": {
+   "value": "Short press",
+   "at": "08:51:58.203"
+  },
+  "switch_right_relay_index": {
+   "value": "Right",
+   "at": "08:51:58.203"
+  },
+  "switch_right_relay_mode": {
+   "value": "Short press",
+   "at": "08:51:58.203"
+  }
+ },
+ "publishes": [],
+ "errors": [],
+ "timeline": [
+  {
+   "at": "08:51:58.067",
+   "topic": "zigbee2mqtt/LivingRoomMainDimmer/set",
+   "payload": "{\"read\":{\"cluster\":\"genOnOffSwitchCfg\",\"attributes\":[16],\"state_property\":\"abi_switchactions_left\",\"endpoint\":\"switch_left\"}}"
+  },
+  {
+   "at": "08:51:58.569",
+   "topic": "zigbee2mqtt/LivingRoomMainDimmer/set",
+   "payload": "{\"read\":{\"cluster\":\"genOnOffSwitchCfg\",\"attributes\":[16],\"state_property\":\"abi_switchactions_middle\",\"endpoint\":\"switch_middle\"}}"
+  },
+  {
+   "at": "08:51:59.071",
+   "topic": "zigbee2mqtt/LivingRoomMainDimmer/set",
+   "payload": "{\"read\":{\"cluster\":\"genOnOffSwitchCfg\",\"attributes\":[16],\"state_property\":\"abi_switchactions_right\",\"endpoint\":\"switch_right\"}}"
+  },
+  {
+   "at": "08:51:59.572",
+   "topic": "zigbee2mqtt/LivingRoomMainDimmer/set",
+   "payload": "{\"read\":{\"cluster\":\"genBasic\",\"attributes\":[\"swBuildId\"],\"state_property\":\"abi_swbuild\",\"endpoint\":\"switch_left\"}}"
+  }
+ ],
+ "bridge_devices_target": {
+  "definition": {
+   "model": "EC-GL86ZPCS31",
+   "description": "BSEED 3-gang smart-light controller — protected mains control, direct binding and advanced configuration"
+  },
+  "software_build_id": "1.1.6-bseedv6",
+  "endpoints": {
+   "1": {
+    "bindings": [],
+    "configured_reportings": []
+   },
+   "2": {
+    "bindings": [],
+    "configured_reportings": []
+   },
+   "3": {
+    "bindings": [],
+    "configured_reportings": []
+   },
+   "4": {
+    "bindings": [],
+    "configured_reportings": []
+   },
+   "5": {
+    "bindings": [],
+    "configured_reportings": []
+   },
+   "6": {
+    "bindings": [],
+    "configured_reportings": []
+   }
+  }
+ },
+ "finished_utc": "2026-09-04T08:52:00.073Z",
+ "verdict": {
+  "abi": {
+   "abi_swbuild": {
+    "value": {
+     "swBuildId": "1.1.6-bseedv6"
+    },
+    "at": "08:51:59.727"
+   },
+   "abi_switchactions_left": {
+    "value": {
+     "switchActions": 2
+    },
+    "at": "08:51:59.727"
+   },
+   "abi_switchactions_left_switch_left": {
+    "value": {
+     "switchActions": 2
+    },
+    "at": "08:51:59.727"
+   },
+   "abi_switchactions_middle": {
+    "value": {
+     "switchActions": 2
+    },
+    "at": "08:51:59.727"
+   },
+   "abi_switchactions_middle_switch_middle": {
+    "value": {
+     "switchActions": 2
+    },
+    "at": "08:51:59.727"
+   },
+   "abi_switchactions_right": {
+    "value": {
+     "switchActions": 2
+    },
+    "at": "08:51:59.727"
+   },
+   "abi_switchactions_right_switch_right": {
+    "value": {
+     "switchActions": 2
+    },
+    "at": "08:51:59.727"
+   }
+  },
+  "missing_props": [],
+  "fresh_reads_answered": 22,
+  "route": "HEALTHY_ALL_ANSWERED"
+ }
+}

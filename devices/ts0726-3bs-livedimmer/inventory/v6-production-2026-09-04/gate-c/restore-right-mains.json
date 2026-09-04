@@ -1,0 +1,256 @@
+{
+ "started_utc": "2026-09-04T09:00:11.402Z",
+ "events": [
+  {
+   "at": "09:00:12.008",
+   "set": "{\"relay_right_physical_mode\":\"Always on\"}"
+  },
+  {
+   "at": "09:00:17.512",
+   "set": "{\"read\":{\"cluster\":\"genOnOffSwitchCfg\",\"attributes\":[16],\"state_property\":\"abi_switchactions_left\",\"endpoint\":\"switch_left\"}}"
+  },
+  {
+   "at": "09:00:20.514",
+   "set": "{\"read\":{\"cluster\":\"genOnOffSwitchCfg\",\"attributes\":[16],\"state_property\":\"abi_switchactions_middle\",\"endpoint\":\"switch_middle\"}}"
+  },
+  {
+   "at": "09:00:23.517",
+   "set": "{\"read\":{\"cluster\":\"genOnOffSwitchCfg\",\"attributes\":[16],\"state_property\":\"abi_switchactions_right\",\"endpoint\":\"switch_right\"}}"
+  }
+ ],
+ "reads": {
+  "relay_right_physical_mode@09:00:11.653": "Follow logical state",
+  "state_relay_right@09:00:11.653": "OFF",
+  "abi_swbuild@09:00:11.653": {
+   "swBuildId": "1.1.6-bseedv6"
+  },
+  "abi_switchactions_left@09:00:11.653": {
+   "switchActions": 2
+  },
+  "abi_switchactions_left_switch_left@09:00:11.653": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle@09:00:11.653": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle_switch_middle@09:00:11.653": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right@09:00:11.653": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right_switch_right@09:00:11.653": {
+   "switchActions": 2
+  },
+  "relay_right_physical_mode@09:00:13.813": "Follow logical state",
+  "state_relay_right@09:00:13.813": "OFF",
+  "abi_swbuild@09:00:13.813": {
+   "swBuildId": "1.1.6-bseedv6"
+  },
+  "abi_switchactions_left@09:00:13.813": {
+   "switchActions": 2
+  },
+  "abi_switchactions_left_switch_left@09:00:13.813": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle@09:00:13.813": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle_switch_middle@09:00:13.813": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right@09:00:13.813": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right_switch_right@09:00:13.813": {
+   "switchActions": 2
+  },
+  "relay_right_physical_mode@09:00:14.055": "Always on",
+  "state_relay_right@09:00:14.055": "OFF",
+  "abi_swbuild@09:00:14.055": {
+   "swBuildId": "1.1.6-bseedv6"
+  },
+  "abi_switchactions_left@09:00:14.055": {
+   "switchActions": 2
+  },
+  "abi_switchactions_left_switch_left@09:00:14.055": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle@09:00:14.055": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle_switch_middle@09:00:14.055": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right@09:00:14.055": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right_switch_right@09:00:14.055": {
+   "switchActions": 2
+  },
+  "relay_right_physical_mode@09:00:16.153": "Always on",
+  "state_relay_right@09:00:16.153": "OFF",
+  "abi_swbuild@09:00:16.153": {
+   "swBuildId": "1.1.6-bseedv6"
+  },
+  "abi_switchactions_left@09:00:16.153": {
+   "switchActions": 2
+  },
+  "abi_switchactions_left_switch_left@09:00:16.153": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle@09:00:16.153": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle_switch_middle@09:00:16.153": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right@09:00:16.153": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right_switch_right@09:00:16.153": {
+   "switchActions": 2
+  },
+  "relay_right_physical_mode@09:00:16.280": "Always on",
+  "state_relay_right@09:00:16.280": "OFF",
+  "abi_swbuild@09:00:16.280": {
+   "swBuildId": "1.1.6-bseedv6"
+  },
+  "abi_switchactions_left@09:00:16.280": {
+   "switchActions": 2
+  },
+  "abi_switchactions_left_switch_left@09:00:16.280": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle@09:00:16.280": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle_switch_middle@09:00:16.280": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right@09:00:16.280": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right_switch_right@09:00:16.280": {
+   "switchActions": 2
+  },
+  "relay_right_physical_mode@09:00:17.648": "Always on",
+  "state_relay_right@09:00:17.648": "OFF",
+  "abi_swbuild@09:00:17.648": {
+   "swBuildId": "1.1.6-bseedv6"
+  },
+  "abi_switchactions_left@09:00:17.648": {
+   "switchActions": 2
+  },
+  "abi_switchactions_left_switch_left@09:00:17.648": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle@09:00:17.648": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle_switch_middle@09:00:17.648": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right@09:00:17.648": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right_switch_right@09:00:17.648": {
+   "switchActions": 2
+  },
+  "relay_right_physical_mode@09:00:20.689": "Always on",
+  "state_relay_right@09:00:20.690": "OFF",
+  "abi_swbuild@09:00:20.690": {
+   "swBuildId": "1.1.6-bseedv6"
+  },
+  "abi_switchactions_left@09:00:20.690": {
+   "switchActions": 2
+  },
+  "abi_switchactions_left_switch_left@09:00:20.690": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle@09:00:20.690": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle_switch_middle@09:00:20.690": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right@09:00:20.690": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right_switch_right@09:00:20.690": {
+   "switchActions": 2
+  },
+  "relay_right_physical_mode@09:00:20.690": "Always on",
+  "relay_right_physical_mode@09:00:20.989": "Always on",
+  "state_relay_right@09:00:20.989": "OFF",
+  "abi_swbuild@09:00:20.990": {
+   "swBuildId": "1.1.6-bseedv6"
+  },
+  "abi_switchactions_left@09:00:20.990": {
+   "switchActions": 2
+  },
+  "abi_switchactions_left_switch_left@09:00:20.990": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle@09:00:20.990": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle_switch_middle@09:00:20.990": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right@09:00:20.990": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right_switch_right@09:00:20.990": {
+   "switchActions": 2
+  },
+  "relay_right_physical_mode@09:00:23.661": "Always on",
+  "state_relay_right@09:00:23.661": "OFF",
+  "abi_swbuild@09:00:23.661": {
+   "swBuildId": "1.1.6-bseedv6"
+  },
+  "abi_switchactions_left@09:00:23.661": {
+   "switchActions": 2
+  },
+  "abi_switchactions_left_switch_left@09:00:23.661": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle@09:00:23.661": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle_switch_middle@09:00:23.661": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right@09:00:23.661": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right_switch_right@09:00:23.661": {
+   "switchActions": 2
+  },
+  "relay_right_physical_mode@09:00:23.662": "Always on",
+  "state_relay_right@09:00:23.662": "OFF",
+  "abi_swbuild@09:00:23.662": {
+   "swBuildId": "1.1.6-bseedv6"
+  },
+  "abi_switchactions_left@09:00:23.662": {
+   "switchActions": 2
+  },
+  "abi_switchactions_left_switch_left@09:00:23.662": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle@09:00:23.662": {
+   "switchActions": 2
+  },
+  "abi_switchactions_middle_switch_middle@09:00:23.662": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right@09:00:23.662": {
+   "switchActions": 2
+  },
+  "abi_switchactions_right_switch_right@09:00:23.662": {
+   "switchActions": 2
+  }
+ },
+ "errors": [],
+ "finished_utc": "2026-09-04T09:00:26.518Z"
+}

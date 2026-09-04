@@ -1,0 +1,194 @@
+{
+ "started_utc": "2026-09-04T10:11:05.132Z",
+ "steps": [
+  {
+   "step": "LEFT direct-binding=Match",
+   "prop": "switch_left_action_mode",
+   "pre": "Match local state",
+   "set": "Match local state",
+   "post": "Match local state",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:09.168"
+  },
+  {
+   "step": "LEFT LED=Binding status",
+   "prop": "relay_left_indicator_mode",
+   "pre": "Binding status",
+   "set": "Binding status",
+   "post": "Binding status",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:11.673"
+  },
+  {
+   "step": "LEFT update=Short press",
+   "prop": "switch_left_relay_mode",
+   "pre": "Short press",
+   "set": "Short press",
+   "post": "Short press",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:12.677"
+  },
+  {
+   "step": "LEFT bound=Short press",
+   "prop": "switch_left_binded_mode",
+   "pre": "Short press",
+   "set": "Short press",
+   "post": "Short press",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:14.680"
+  },
+  {
+   "step": "LEFT channel=Left",
+   "prop": "switch_left_relay_index",
+   "pre": "Left",
+   "set": "Left",
+   "post": "Left",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:15.682"
+  },
+  {
+   "step": "LEFT mains=Always on",
+   "prop": "relay_left_physical_mode",
+   "pre": "Always on",
+   "set": "Always on",
+   "post": "Always on",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:16.685"
+  },
+  {
+   "step": "MIDDLE direct-binding=Match",
+   "prop": "switch_middle_action_mode",
+   "pre": "Match local state",
+   "set": "Match local state",
+   "post": "Match local state",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:17.687"
+  },
+  {
+   "step": "MIDDLE LED=Binding status",
+   "prop": "relay_middle_indicator_mode",
+   "pre": "Binding status",
+   "set": "Binding status",
+   "post": "Binding status",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:18.689"
+  },
+  {
+   "step": "MIDDLE update=Short press",
+   "prop": "switch_middle_relay_mode",
+   "pre": "Short press",
+   "set": "Short press",
+   "post": "Short press",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:19.691"
+  },
+  {
+   "step": "MIDDLE bound=Short press",
+   "prop": "switch_middle_binded_mode",
+   "pre": "Short press",
+   "set": "Short press",
+   "post": "Short press",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:20.693"
+  },
+  {
+   "step": "MIDDLE channel=Middle",
+   "prop": "switch_middle_relay_index",
+   "pre": "Middle",
+   "set": "Middle",
+   "post": "Middle",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:21.696"
+  },
+  {
+   "step": "MIDDLE mains=Always on",
+   "prop": "relay_middle_physical_mode",
+   "pre": "Always on",
+   "set": "Always on",
+   "post": "Always on",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:23.199"
+  },
+  {
+   "step": "RIGHT LED=Physical output",
+   "prop": "relay_right_indicator_mode",
+   "pre": "Physical output",
+   "set": "Physical output",
+   "post": "Physical output",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:24.202"
+  },
+  {
+   "step": "RIGHT direct-binding=Toggle",
+   "prop": "switch_right_action_mode",
+   "pre": "Toggle",
+   "set": "Toggle",
+   "post": "Toggle",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:25.205"
+  },
+  {
+   "step": "RIGHT update=Short press",
+   "prop": "switch_right_relay_mode",
+   "pre": "Short press",
+   "set": "Short press",
+   "post": "Short press",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:26.707"
+  },
+  {
+   "step": "RIGHT channel=Right",
+   "prop": "switch_right_relay_index",
+   "pre": "Right",
+   "set": "Right",
+   "post": "Right",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": true,
+   "at": "10:11:27.710"
+  },
+  {
+   "step": "RIGHT bound=Never (disabled)",
+   "prop": "switch_right_binded_mode",
+   "pre": "Short press",
+   "set": "Never (disabled)",
+   "post": "Short press",
+   "answered_pre": true,
+   "answered_post": true,
+   "ok": false,
+   "at": "10:11:30.217"
+  }
+ ],
+ "errors": [],
+ "fatal": "Error: readback mismatch RIGHT bound=Never (disabled)\n    at step (/tmp/apply-profile.js:55:69)\n    at async /tmp/apply-profile.js:82:5"
+}

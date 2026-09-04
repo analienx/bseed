@@ -10,17 +10,28 @@ Firmware: `1.1.6-bseedv6` / build `285356039` (cache-corroborated; see Gate C).
 ## Verdict
 
 ```text
-GATES A-C: B PASS · A PASS (durably recovered from live logs; see CORRECTION below) · C FAIL(route-degraded) => STOP
-Production deployment NOT authorized (brief gates it on A+B+C all-PASS; C is the blocker).
-NO converter deployment, NO restart, NO settings writes, NO bind/unbind
-mutation, NO RIGHT hard-power activation, NO recover-flash performed.
+PHASE 2 SUPERSEDES THE PHASE-1 STOP BELOW. FINAL (10:27Z):
+GATES A = PASS (recovered) · B = PASS (runtime) · C = PASS (route recovered 08:52Z, all fresh reads answer)
+PRODUCTION CONVERTER d50fd53 DEPLOYED (one restart, service healthy, single prod definition)
+FROZEN PROFILE APPLIED 16/17 (LEFT+MIDDLE complete w/ readbacks; RIGHT partial)
+BLOCKER: V6 firmware does NOT persist EP3 0xff05=0 ("Never (disabled)") -> RIGHT pure-relay
+         premise unmet -> bind removal NOT attempted; RIGHT mains NOT flipped (safe at Always on)
+DEVICE MUTATIONS MADE: RIGHT mains restore + 16 profile SETs (operator-authorized phase 2).
+NO bind/group/OTA/raw-attribute-write performed.
+See deploy/DEPLOY-REPORT.md for the full phase-2 sequence and gate-c/final-raw-verify.json for
+the authoritative as-left raw state.
 ```
+
+> **Note on the phase-1 sections below:** they document the 07:40Z route-degraded
+> STOP honestly and are kept for the audit trail; phase 2 (route recovered,
+> operator released the gate) superseded them. Where a phase-1 line says
+> "NOT started / NO mutations", phase 2 above is the current truth.
 
 > **CORRECTION (2026-09-04, same day, later session hour):** the first pass of this
 > work unit reported Gate A as NOT-CLOSABLE-AS-SPECIFIED. That was WRONG and is
 > retracted below in section "Gate A". Durable per-EP standard-ABI evidence DOES
 > exist in the live logs and state; the recovery satisfies the Supervisor's
-> option 1. The Gate C STOP stands unchanged.
+> option 1. (The phase-1 Gate C STOP it referred to was later lifted in phase 2.)
 
 ## Gate B — exact live runtime probe (Z2M 2.14.0-1 / ZHC 26.103.0) — PASS
 
@@ -98,7 +109,7 @@ The mechanism is Z2M core's `set 'read'` + `state_property` (converter-
 independent, read-only). Once routes return it can re-prove Gate A live and
 fits the Gate C snapshot fields; no converter improvisation is needed.
 
-## Gate C — fresh pre-production snapshot — FAIL: target does not answer fresh reads
+## Gate C — fresh pre-production snapshot — FAIL at 07:40Z -> **PASS at 08:52Z after route recovery** (phase 2)
 
 Fresh read-only probe at `2026-09-04T07:39–07:40Z` (empty-payload
 `zigbee2mqtt/LivingRoomMainDimmer/get`, full TX/RX transcript in
@@ -138,11 +149,12 @@ Disclosed while-not-trusting cache: `state.json` cache holds
 `"Always off"` — unverified cache only; RIGHT hard-power has NOT been
 authorized-applied in this work unit and the cache must not be treated as such.
 
-## Production converter, settings, topology — NOT STARTED
+## PRODUCTION DEPLOYMENT & SETTINGS — EXECUTED, STOPPED at firmware blocker (phase 2 — supersedes this section's phase-1 "NOT STARTED")
 
-Sections 5–7 of the dispatch are gated on A–C PASS. B and A now pass; **C fails
-on route** — single remaining blocker. Nothing installed, nothing restarted,
-no `/set`, no bind/group mutation, no OTA. HA v2 remains staged.
+Phase 1 (07:40Z): NOT STARTED — C failed on route; nothing installed. See
+`deploy/DEPLOY-REPORT.md` for phase 2 (08:52–10:27Z): converter **deployed**,
+profile **16/17 applied**, stopped at the `0xff05=0` firmware persistence
+failure before any bind/mains-final action.
 
 ## Additional disclosures
 
@@ -153,21 +165,27 @@ no `/set`, no bind/group mutation, no OTA. HA v2 remains staged.
    STATUS.md Gate-F ledger value (967,427 B / `50d135be…`); it does not govern
    the target while BSEED wins by fingerprint+priority, but the ledger needs
    reconciliation.
-3. Host/container staging dirs for this work unit (`/tmp/v6prod-20260904*` +
-   probe copies) were **torn down** after evidence retrieval; `/config` was
-   never touched this unit (verified post-run: external_converters unchanged,
-   no converter_lib dir).
+3. Phase 1 staging (`/tmp/v6prod-20260904*`) was torn down after retrieval.
+   **Phase 2 DID mutate live config as authorized**: `converter_lib/` created +
+   hardened base installed (`a2a40497`), `bseed_ts0726_v6_production.js`
+   installed (`82a1197e`), transition `bseed_ts0726_v5.js` moved to
+   `backup-production-20260904/` (two `a2a40497` copies there = rollback), one
+   restart performed. All hashes in `deploy/installed-hashes.txt`.
 
 ## Return
 
 ```text
-GATE_B(runtime_zhc_26_103)=PASS
 GATE_A(standard_abi_durable_evidence)=PASS_RECOVERED (2/2/2 pre AND post policy restart; see gate-a/)
-GATE_C(fresh_pre_production_snapshot)=FAIL_ROUTE_DEGRADED
-PRODUCTION_DEPLOYMENT=NOT_AUTHORIZED (C outstanding)
-DEVICE_MUTATIONS=NONE
-evidence=<commit sha of this commit>
-STOPPED — per dispatch: do not recover-flash; wait for mesh investigation
+GATE_B(runtime_zhc_26_103)=PASS
+GATE_C(fresh_pre_production_snapshot)=PASS_AT_08:52Z (route recovered; all fresh reads answered)
+PRODUCTION_CONVERTER_DEPLOYED=PASS (d50fd53, one restart 10:01:32Z, service healthy)
+PROFILE_APPLIED=16/17 (LEFT+MIDDLE complete w/ device readbacks; RIGHT minus bound=Never)
+BLOCKER(FIRMWARE)=EP3 0xff05=0 NOT PERSISTENT on 1.1.6-bseedv6 -> RIGHT pure-relay premise unmet
+RIGHT_MAINS=Always on (final Follow-logical-state flip WITHHELD, predicated on pure-relay)
+BIND_OPERATIONS=NONE (also unobservable: no binding-table read on this runtime)
+PHYSICAL_ACCEPTANCE=NOT_ATTEMPTED (premise unmet)
+evidence=<this commit>
+STOPPED_FOR_SUPERVISOR — firmware-side diagnosis needed for binded_mode=0 persistence
 ```
 
 ## Artifacts
@@ -178,8 +196,13 @@ gate-a/            STANDARD-ABI-EVIDENCE.md (recovered proof + limits) +
 gate-b/            composition scan, installed-ZHC probes (live+prod files),
                    production probe, pytest+mock transcripts, bridge captures
                    + merged descriptors (07:19Z)
-gate-c/            read-only route-health GET snapshot (TX/RX transcript, 07:40Z)
+gate-c/            07:40Z route-DEAD snapshot AND 08:52Z PASS snapshot
+                   (gate-c-snapshot.json), RIGHT mains restore, 10:27Z
+                   final-raw-verify.json (authoritative as-left truth)
+deploy/            DEPLOY-REPORT.md (phase-2 sequence), apply-profile-steps.json
+                   (16/17 with readbacks), ff05-never-probe*.json (the firmware
+                   finding), installed-hashes.txt
 gate-a-evidence-absence-report.txt   SUPERSEDED first-pass absence audit (kept
                    for audit trail; its log token list omitted abi_switchactions)
-scripts/           all probe/capture/recovery scripts used (re-runnable)
+scripts/           all probe/capture/recovery/deploy scripts used (re-runnable)
 ```

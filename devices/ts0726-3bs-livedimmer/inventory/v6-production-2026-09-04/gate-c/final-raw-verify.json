@@ -1,0 +1,88 @@
+{
+ "started_utc": "2026-09-04T10:26:20.485Z",
+ "values": {
+  "v_std_left": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "10:27:25.998"
+  },
+  "v_std_middle": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "10:27:25.998"
+  },
+  "v_std_right": {
+   "value": {
+    "switchActions": 2
+   },
+   "at": "10:27:25.998"
+  },
+  "v_ff06_left": {
+   "value": {
+    "65286": 3
+   },
+   "at": "10:27:25.998"
+  },
+  "v_ff06_middle": {
+   "value": {
+    "65286": 3
+   },
+   "at": "10:27:25.998"
+  },
+  "v_ff06_right": {
+   "value": {
+    "65286": 3
+   },
+   "at": "10:27:25.998"
+  },
+  "v_ff05_left": {
+   "value": {
+    "65285": 3
+   },
+   "at": "10:27:25.998"
+  },
+  "v_ff05_middle": {
+   "value": {
+    "65285": 3
+   },
+   "at": "10:27:25.998"
+  },
+  "v_ff05_right": {
+   "value": {
+    "65285": 3
+   },
+   "at": "10:27:25.998"
+  },
+  "v_mains_ep4": {
+   "value": null,
+   "at": "10:26:45.361",
+   "timeout": true
+  },
+  "v_mains_ep5": {
+   "value": null,
+   "at": "10:27:05.389",
+   "timeout": true
+  },
+  "v_mains_ep6": {
+   "value": null,
+   "at": "10:27:25.414",
+   "timeout": true
+  },
+  "v_swbuild": {
+   "value": {
+    "swBuildId": "1.1.6-bseedv6"
+   },
+   "at": "10:27:25.998"
+  },
+  "v_devconfig": {
+   "value": {
+    "deviceConfig": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;"
+   },
+   "at": "10:27:25.998"
+  }
+ },
+ "errors": [],
+ "finished_utc": "2026-09-04T10:27:26.216Z"
+}
