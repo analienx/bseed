@@ -1,0 +1,27 @@
+{
+ "_note": "Reconstructed verbatim from the checkpoint-pre-flash.js hard-timeout stdout dump (the script's fast-path key match missed endpoint-suffixed keys so it never wrote its file; all 17 reads present except final ck_ep6_onoff, completed by checkpoint-gapfill.json). Values unaltered.",
+ "at_utc": "2026-09-04T17:12:21Z->17:16:09Z",
+ "got": {
+  "ck_ep1_ff05_switch_left": {"value": {"65285": 3}, "at": "17:12:21"},
+  "ck_ep1_ff00_switch_left": {"value": {"65280": 1}, "at": "17:12:33"},
+  "ck_ep1_std_switch_left": {"value": {"switchActions": 2}, "at": "17:12:45"},
+  "ck_ep1_ff06_switch_left": {"value": {"65286": 3}, "at": "17:12:57"},
+  "ck_ep2_ff05_switch_middle": {"value": {"65285": 3}, "at": "17:13:09"},
+  "ck_ep2_ff00_switch_middle": {"value": {"65280": 1}, "at": "17:13:21"},
+  "ck_ep2_std_switch_middle": {"value": {"switchActions": 2}, "at": "17:13:33"},
+  "ck_ep2_ff06_switch_middle": {"value": {"65286": 3}, "at": "17:13:45"},
+  "ck_ep3_ff05_switch_right": {"value": {"65285": 0}, "at": "17:13:59"},
+  "ck_ep3_ff00_switch_right": {"value": {"65280": 1}, "at": "17:14:09"},
+  "ck_ep3_std_switch_right": {"value": {"switchActions": 2}, "at": "17:14:30"},
+  "ck_ep3_ff06_switch_right": {"value": {"65286": 2}, "at": "17:14:33"},
+  "ck_ep4_policy_relay_left": {"value": {"65283": 1}, "at": "17:14:45"},
+  "ck_ep4_led_relay_left": {"value": {"65282": 0}, "at": "17:14:57"},
+  "ck_ep4_onoff_relay_left": {"value": {"onOff": 0}, "at": "17:15:09"},
+  "ck_ep5_policy_relay_middle": {"value": {"65283": 1}, "at": "17:15:21"},
+  "ck_ep5_led_relay_middle": {"value": {"65282": 0}, "at": "17:15:33"},
+  "ck_ep5_onoff_relay_middle": {"value": {"onOff": 0}, "at": "17:15:46"},
+  "ck_ep6_policy_relay_right": {"value": {"65283": 1}, "at": "17:15:57"},
+  "ck_ep6_led_relay_right": {"value": {"65282": 1}, "at": "17:16:09"},
+  "ck_ep6_onoff_relay_right": {"value": {"onOff": 0}, "at": "17:18:22", "source": "gapfill run"}
+ }
+}
