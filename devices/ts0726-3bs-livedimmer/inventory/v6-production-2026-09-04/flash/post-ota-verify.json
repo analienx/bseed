@@ -1,0 +1,73 @@
+{
+ "at_utc": "2026-09-04T19:05:25.797Z",
+ "checks": {
+  "swbuild_is_v7": true,
+  "swbuild_value": "1.1.7-bseedv7",
+  "ff00_1_1_1": true,
+  "std_2_2_2": true,
+  "ff05_3_3_0": true,
+  "ff05_values": [
+   3,
+   3,
+   0
+  ],
+  "policies_on": true,
+  "right_logical_off": true,
+  "nvm_persistence_proof": true,
+  "ALL_PASS": true
+ },
+ "stateSnap": {
+  "update": {
+   "installed_version": 285356041,
+   "latest_release_notes": null,
+   "latest_source": null,
+   "latest_version": 285356041,
+   "state": "idle"
+  },
+  "software_build_id": "1.1.7-bseedv7"
+ },
+ "raw": {
+  "po_swbuild_switch_left": {
+   "swBuildId": "1.1.7-bseedv7"
+  },
+  "po_ep1_ff00_switch_left": {
+   "65280": 1
+  },
+  "po_ep1_ff05_switch_left": {
+   "65285": 3
+  },
+  "po_ep1_std_switch_left": {
+   "switchActions": 2
+  },
+  "po_ep2_ff00_switch_middle": {
+   "65280": 1
+  },
+  "po_ep2_ff05_switch_middle": {
+   "65285": 3
+  },
+  "po_ep2_std_switch_middle": {
+   "switchActions": 2
+  },
+  "po_ep3_ff00_switch_right": {
+   "65280": 1
+  },
+  "po_ep3_ff05_switch_right": {
+   "65285": 0
+  },
+  "po_ep3_std_switch_right": {
+   "switchActions": 2
+  },
+  "po_ep4_policy_relay_left": {
+   "65283": 1
+  },
+  "po_ep5_policy_relay_middle": {
+   "65283": 1
+  },
+  "po_ep6_policy_relay_right": {
+   "65283": 1
+  },
+  "po_ep6_onoff_relay_right": {
+   "onOff": 0
+  }
+ }
+}
