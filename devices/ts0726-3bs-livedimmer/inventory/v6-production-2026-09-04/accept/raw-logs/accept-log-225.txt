@@ -1,0 +1,302 @@
+Fri Sep  4 23:09:59 CEST 2026
+lines=394 (prefix='22:5')
+[2026-09-04 22:53:56] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device 'LivingRoomMainDimmer/switch_right' does not exist","status":"error"}'
+[2026-09-04 22:53:56] error: 	z2m: Source device 'LivingRoomMainDimmer/switch_right' does not exist
+[2026-09-04 22:53:57] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer/relay_left","to":"coordinator","clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:53:57] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device 'LivingRoomMainDimmer/relay_left' does not exist","status":"error"}'
+[2026-09-04 22:53:57] error: 	z2m: Source device 'LivingRoomMainDimmer/relay_left' does not exist
+[2026-09-04 22:53:57] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer/relay_middle","to":"coordinator","clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:53:57] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device 'LivingRoomMainDimmer/relay_middle' does not exist","status":"error"}'
+[2026-09-04 22:53:57] error: 	z2m: Source device 'LivingRoomMainDimmer/relay_middle' does not exist
+[2026-09-04 22:53:58] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer/relay_right","to":"coordinator","clusters":["genOnOff"]}'
+[2026-09-04 22:53:58] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device 'LivingRoomMainDimmer/relay_right' does not exist","status":"error"}'
+[2026-09-04 22:53:58] error: 	z2m: Source device 'LivingRoomMainDimmer/relay_right' does not exist
+[2026-09-04 22:53:58] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer/switch_left","to":"LivingRoomLinearDimmer/11","clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:53:58] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device 'LivingRoomMainDimmer/switch_left' does not exist","status":"error"}'
+[2026-09-04 22:53:58] error: 	z2m: Source device 'LivingRoomMainDimmer/switch_left' does not exist
+[2026-09-04 22:53:58] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer/switch_left","to":"LivingRoomMainDimmer/relay_left","clusters":["genOnOff"]}'
+[2026-09-04 22:53:58] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device 'LivingRoomMainDimmer/switch_left' does not exist","status":"error"}'
+[2026-09-04 22:53:58] error: 	z2m: Source device 'LivingRoomMainDimmer/switch_left' does not exist
+[2026-09-04 22:53:59] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer/switch_middle","to":"25","clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:53:59] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device 'LivingRoomMainDimmer/switch_middle' does not exist","status":"error"}'
+[2026-09-04 22:53:59] error: 	z2m: Source device 'LivingRoomMainDimmer/switch_middle' does not exist
+[2026-09-04 22:53:59] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer/switch_middle","to":"LivingRoomMainDimmer/relay_middle","clusters":["genOnOff"]}'
+[2026-09-04 22:53:59] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device 'LivingRoomMainDimmer/switch_middle' does not exist","status":"error"}'
+[2026-09-04 22:53:59] error: 	z2m: Source device 'LivingRoomMainDimmer/switch_middle' does not exist
+[2026-09-04 22:54:00] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"switch_left","cluster":"genMultistateInput","attribute":"presentValue","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_chan…
+[2026-09-04 22:54:00] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/1 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:00] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=16 payload=10850fd4a94338c1a40112000300124b002d12b1fd01]
+[2026-09-04 22:54:00] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=17007 sourceEui=0xa4c13843a9d40f85 lastHopLqi=104 lastHopRssi=-74 relayCount=1 relayList=59672
+[2026-09-04 22:54:00] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/1 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":tr…
+[2026-09-04 22:54:00] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":18,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpeci…
+[2026-09-04 22:54:00] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genMultistateInput.presentValue'
+[2026-09-04 22:54:00] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"presentValue","cluster":"genMultistateInput","endpoint":"switch_left","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_ch…
+[2026-09-04 22:54:00] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"switch_middle","cluster":"genMultistateInput","attribute":"presentValue","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_ch…
+[2026-09-04 22:54:00] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/2 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:00] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=17 payload=11850fd4a94338c1a40212000300124b002d12b1fd01]
+[2026-09-04 22:54:01] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/2 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":tr…
+[2026-09-04 22:54:01] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":18,"sourceEndpoint":1,"destinationEndpoint":2,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpeci…
+[2026-09-04 22:54:11] debug: 	zh:controller:endpoint: Error: ZCL command 0xa4c13843a9d40f85/2 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultRespo…
+[2026-09-04 22:54:11] error: 	z2m: Request 'zigbee2mqtt/bridge/request/device/configure_reporting' failed with error: 'ZCL command 0xa4c13843a9d40f85/2 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableRe…
+[2026-09-04 22:54:11] debug: 	z2m: Error: ZCL command 0xa4c13843a9d40f85/2 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"directio…
+[2026-09-04 22:54:11] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{},"error":"ZCL command 0xa4c13843a9d40f85/2 genMultistateInput.configReport([{\"attribute\":\"presentValue\",\"minimumReportInterval\":0,\"maximumReportInterval\":65000,\"reportableChan…
+[2026-09-04 22:54:11] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"switch_right","cluster":"genMultistateInput","attribute":"presentValue","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_cha…
+[2026-09-04 22:54:11] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/3 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:11] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=18 payload=12850fd4a94338c1a40312000300124b002d12b1fd01]
+[2026-09-04 22:54:11] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=17007 sourceEui=0xa4c13843a9d40f85 lastHopLqi=104 lastHopRssi=-74 relayCount=2 relayList=25021,63192
+[2026-09-04 22:54:11] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/3 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":tr…
+[2026-09-04 22:54:11] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":18,"sourceEndpoint":1,"destinationEndpoint":3,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpeci…
+[2026-09-04 22:54:11] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genMultistateInput.presentValue'
+[2026-09-04 22:54:11] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"presentValue","cluster":"genMultistateInput","endpoint":"switch_right","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_c…
+[2026-09-04 22:54:12] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"relay_left","cluster":"genOnOff","attribute":"onOff","minimum_report_interval":0,"maximum_report_interval":300,"reportable_change":0}'
+[2026-09-04 22:54:12] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/4 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:12] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=19 payload=13850fd4a94338c1a40406000300124b002d12b1fd01]
+[2026-09-04 22:54:12] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/4 genOnOff.configReport([{"attribute":"onOff","minimumReportInterval":0,"maximumReportInterval":300,"reportableChange":0}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"r…
+[2026-09-04 22:54:12] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":6,"sourceEndpoint":1,"destinationEndpoint":4,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecif…
+[2026-09-04 22:54:21] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genOnOff.onOff'
+[2026-09-04 22:54:21] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"onOff","cluster":"genOnOff","endpoint":"relay_left","id":"LivingRoomMainDimmer","maximum_report_interval":300,"minimum_report_interval":0,"reportable_change":0},"status":"o…
+[2026-09-04 22:54:22] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"relay_middle","cluster":"genOnOff","attribute":"onOff","minimum_report_interval":0,"maximum_report_interval":300,"reportable_change":0}'
+[2026-09-04 22:54:22] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/5 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:22] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=20 payload=14850fd4a94338c1a40506000300124b002d12b1fd01]
+[2026-09-04 22:54:22] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/5 genOnOff.configReport([{"attribute":"onOff","minimumReportInterval":0,"maximumReportInterval":300,"reportableChange":0}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"r…
+[2026-09-04 22:54:22] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":6,"sourceEndpoint":1,"destinationEndpoint":5,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecif…
+[2026-09-04 22:54:22] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genOnOff.onOff'
+[2026-09-04 22:54:22] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"onOff","cluster":"genOnOff","endpoint":"relay_middle","id":"LivingRoomMainDimmer","maximum_report_interval":300,"minimum_report_interval":0,"reportable_change":0},"status":…
+[2026-09-04 22:54:23] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"relay_right","cluster":"genOnOff","attribute":"onOff","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_change":1}'
+[2026-09-04 22:54:23] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/6 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:23] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=21 payload=15850fd4a94338c1a40606000300124b002d12b1fd01]
+[2026-09-04 22:54:23] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/6 genOnOff.configReport([{"attribute":"onOff","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,…
+[2026-09-04 22:54:23] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":6,"sourceEndpoint":1,"destinationEndpoint":6,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecif…
+[2026-09-04 22:54:23] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genOnOff.onOff'
+[2026-09-04 22:54:23] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"onOff","cluster":"genOnOff","endpoint":"relay_right","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_change":1},"status"…
+[2026-09-04 22:54:34] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"0xa4c13843a9d40f85/1","to":"0xfdb1122d004b1200/1","clusters":["genMultistateInput","genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:54:34] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device '0xa4c13843a9d40f85/1' does not exist","status":"error"}'
+[2026-09-04 22:54:34] error: 	z2m: Source device '0xa4c13843a9d40f85/1' does not exist
+[2026-09-04 22:54:34] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"0xa4c13843a9d40f85/2","to":"0xfdb1122d004b1200/1","clusters":["genMultistateInput","genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:54:34] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device '0xa4c13843a9d40f85/2' does not exist","status":"error"}'
+[2026-09-04 22:54:34] error: 	z2m: Source device '0xa4c13843a9d40f85/2' does not exist
+[2026-09-04 22:54:35] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"0xa4c13843a9d40f85/3","to":"0xfdb1122d004b1200/1","clusters":["genMultistateInput","genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:54:35] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device '0xa4c13843a9d40f85/3' does not exist","status":"error"}'
+[2026-09-04 22:54:35] error: 	z2m: Source device '0xa4c13843a9d40f85/3' does not exist
+[2026-09-04 22:54:35] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"0xa4c13843a9d40f85/4","to":"0xfdb1122d004b1200/1","clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:54:35] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device '0xa4c13843a9d40f85/4' does not exist","status":"error"}'
+[2026-09-04 22:54:35] error: 	z2m: Source device '0xa4c13843a9d40f85/4' does not exist
+[2026-09-04 22:54:35] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"0xa4c13843a9d40f85/5","to":"0xfdb1122d004b1200/1","clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:54:35] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device '0xa4c13843a9d40f85/5' does not exist","status":"error"}'
+[2026-09-04 22:54:35] error: 	z2m: Source device '0xa4c13843a9d40f85/5' does not exist
+[2026-09-04 22:54:36] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"0xa4c13843a9d40f85/6","to":"0xfdb1122d004b1200/1","clusters":["genOnOff"]}'
+[2026-09-04 22:54:36] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device '0xa4c13843a9d40f85/6' does not exist","status":"error"}'
+[2026-09-04 22:54:36] error: 	z2m: Source device '0xa4c13843a9d40f85/6' does not exist
+[2026-09-04 22:54:36] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"0xa4c13843a9d40f85/1","to":"0xa4c1388b709b209c/11","clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:54:36] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device '0xa4c13843a9d40f85/1' does not exist","status":"error"}'
+[2026-09-04 22:54:36] error: 	z2m: Source device '0xa4c13843a9d40f85/1' does not exist
+[2026-09-04 22:54:37] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"0xa4c13843a9d40f85/1","to":"0xa4c13843a9d40f85/4","clusters":["genOnOff"]}'
+[2026-09-04 22:54:37] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device '0xa4c13843a9d40f85/1' does not exist","status":"error"}'
+[2026-09-04 22:54:37] error: 	z2m: Source device '0xa4c13843a9d40f85/1' does not exist
+[2026-09-04 22:54:37] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"0xa4c13843a9d40f85/2","to":"#25","clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:54:37] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device '0xa4c13843a9d40f85/2' does not exist","status":"error"}'
+[2026-09-04 22:54:37] error: 	z2m: Source device '0xa4c13843a9d40f85/2' does not exist
+[2026-09-04 22:54:37] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"0xa4c13843a9d40f85/2","to":"0xa4c13843a9d40f85/5","clusters":["genOnOff"]}'
+[2026-09-04 22:54:37] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{},"error":"Source device '0xa4c13843a9d40f85/2' does not exist","status":"error"}'
+[2026-09-04 22:54:37] error: 	z2m: Source device '0xa4c13843a9d40f85/2' does not exist
+[2026-09-04 22:54:38] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"switch_left","cluster":"genMultistateInput","attribute":"presentValue","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_chan…
+[2026-09-04 22:54:38] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/1 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:38] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=22 payload=16850fd4a94338c1a40112000300124b002d12b1fd01]
+[2026-09-04 22:54:47] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/1 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":tr…
+[2026-09-04 22:54:47] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":18,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpeci…
+[2026-09-04 22:54:48] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genMultistateInput.presentValue'
+[2026-09-04 22:54:48] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"presentValue","cluster":"genMultistateInput","endpoint":"switch_left","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_ch…
+[2026-09-04 22:54:48] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"switch_middle","cluster":"genMultistateInput","attribute":"presentValue","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_ch…
+[2026-09-04 22:54:48] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/2 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:48] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=23 payload=17850fd4a94338c1a40212000300124b002d12b1fd01]
+[2026-09-04 22:54:49] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/2 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":tr…
+[2026-09-04 22:54:49] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":18,"sourceEndpoint":1,"destinationEndpoint":2,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpeci…
+[2026-09-04 22:54:50] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genMultistateInput.presentValue'
+[2026-09-04 22:54:50] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"presentValue","cluster":"genMultistateInput","endpoint":"switch_middle","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_…
+[2026-09-04 22:54:50] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"switch_right","cluster":"genMultistateInput","attribute":"presentValue","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_cha…
+[2026-09-04 22:54:50] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/3 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:50] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=24 payload=18850fd4a94338c1a40312000300124b002d12b1fd01]
+[2026-09-04 22:54:50] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/3 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":tr…
+[2026-09-04 22:54:50] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":18,"sourceEndpoint":1,"destinationEndpoint":3,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpeci…
+[2026-09-04 22:54:50] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genMultistateInput.presentValue'
+[2026-09-04 22:54:50] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"presentValue","cluster":"genMultistateInput","endpoint":"switch_right","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_c…
+[2026-09-04 22:54:51] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"relay_left","cluster":"genOnOff","attribute":"onOff","minimum_report_interval":0,"maximum_report_interval":300,"reportable_change":0}'
+[2026-09-04 22:54:51] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/4 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:51] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=25 payload=19850fd4a94338c1a40406000300124b002d12b1fd01]
+[2026-09-04 22:54:51] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/4 genOnOff.configReport([{"attribute":"onOff","minimumReportInterval":0,"maximumReportInterval":300,"reportableChange":0}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"r…
+[2026-09-04 22:54:51] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":6,"sourceEndpoint":1,"destinationEndpoint":4,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecif…
+[2026-09-04 22:54:51] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genOnOff.onOff'
+[2026-09-04 22:54:51] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"onOff","cluster":"genOnOff","endpoint":"relay_left","id":"LivingRoomMainDimmer","maximum_report_interval":300,"minimum_report_interval":0,"reportable_change":0},"status":"o…
+[2026-09-04 22:54:51] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"relay_middle","cluster":"genOnOff","attribute":"onOff","minimum_report_interval":0,"maximum_report_interval":300,"reportable_change":0}'
+[2026-09-04 22:54:51] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/5 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:51] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=26 payload=1a850fd4a94338c1a40506000300124b002d12b1fd01]
+[2026-09-04 22:54:52] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/5 genOnOff.configReport([{"attribute":"onOff","minimumReportInterval":0,"maximumReportInterval":300,"reportableChange":0}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"r…
+[2026-09-04 22:54:52] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":6,"sourceEndpoint":1,"destinationEndpoint":5,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecif…
+[2026-09-04 22:54:52] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genOnOff.onOff'
+[2026-09-04 22:54:52] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"onOff","cluster":"genOnOff","endpoint":"relay_middle","id":"LivingRoomMainDimmer","maximum_report_interval":300,"minimum_report_interval":0,"reportable_change":0},"status":…
+[2026-09-04 22:54:52] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"relay_right","cluster":"genOnOff","attribute":"onOff","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_change":1}'
+[2026-09-04 22:54:52] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/6 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:54:52] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=27 payload=1b850fd4a94338c1a40606000300124b002d12b1fd01]
+[2026-09-04 22:54:52] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/6 genOnOff.configReport([{"attribute":"onOff","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,…
+[2026-09-04 22:54:52] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":6,"sourceEndpoint":1,"destinationEndpoint":6,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecif…
+[2026-09-04 22:54:53] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genOnOff.onOff'
+[2026-09-04 22:54:53] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"onOff","cluster":"genOnOff","endpoint":"relay_right","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_change":1},"status"…
+[2026-09-04 22:57:21] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer","from_endpoint":1,"to":"coordinator","to_endpoint":1,"clusters":["genMultistateInput","genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:57:21] debug: 	z2m: binding cluster 'genMultistateInput' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:21] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/1 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:21] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=28 payload=1c850fd4a94338c1a40112000300124b002d12b1fd01]
+[2026-09-04 22:57:21] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=17007 sourceEui=0xa4c13843a9d40f85 lastHopLqi=104 lastHopRssi=-74 relayCount=2 relayList=25021,63192
+[2026-09-04 22:57:21] info: 	z2m: Successfully bound cluster 'genMultistateInput' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:21] debug: 	z2m: binding cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:21] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/1 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:21] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=29 payload=1d850fd4a94338c1a40106000300124b002d12b1fd01]
+[2026-09-04 22:57:21] info: 	z2m: Successfully bound cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:21] debug: 	z2m: binding cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:21] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/1 genLevelCtrl from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:21] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=30 payload=1e850fd4a94338c1a40108000300124b002d12b1fd01]
+[2026-09-04 22:57:22] info: 	z2m: Successfully bound cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:22] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{"clusters":["genMultistateInput","genOnOff","genLevelCtrl"],"failed":[],"from":"LivingRoomMainDimmer","from_endpoint":1,"to":"coordinator","to_endpoint":1},"status":"ok"}'
+[2026-09-04 22:57:22] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer","from_endpoint":2,"to":"coordinator","to_endpoint":1,"clusters":["genMultistateInput","genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:57:22] debug: 	z2m: binding cluster 'genMultistateInput' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:22] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/2 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:22] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=31 payload=1f850fd4a94338c1a40212000300124b002d12b1fd01]
+[2026-09-04 22:57:22] info: 	z2m: Successfully bound cluster 'genMultistateInput' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:22] debug: 	z2m: binding cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:22] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/2 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:22] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=32 payload=20850fd4a94338c1a40206000300124b002d12b1fd01]
+[2026-09-04 22:57:22] info: 	z2m: Successfully bound cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:22] debug: 	z2m: binding cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:22] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/2 genLevelCtrl from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:22] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=33 payload=21850fd4a94338c1a40208000300124b002d12b1fd01]
+[2026-09-04 22:57:23] info: 	z2m: Successfully bound cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:23] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{"clusters":["genMultistateInput","genOnOff","genLevelCtrl"],"failed":[],"from":"LivingRoomMainDimmer","from_endpoint":2,"to":"coordinator","to_endpoint":1},"status":"ok"}'
+[2026-09-04 22:57:23] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer","from_endpoint":3,"to":"coordinator","to_endpoint":1,"clusters":["genMultistateInput","genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:57:23] debug: 	z2m: binding cluster 'genMultistateInput' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:23] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/3 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:23] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=34 payload=22850fd4a94338c1a40312000300124b002d12b1fd01]
+[2026-09-04 22:57:23] info: 	z2m: Successfully bound cluster 'genMultistateInput' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:23] debug: 	z2m: binding cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:23] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/3 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:23] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=35 payload=23850fd4a94338c1a40306000300124b002d12b1fd01]
+[2026-09-04 22:57:24] info: 	z2m: Successfully bound cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:24] debug: 	z2m: binding cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:24] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/3 genLevelCtrl from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:24] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=36 payload=24850fd4a94338c1a40308000300124b002d12b1fd01]
+[2026-09-04 22:57:33] info: 	z2m: Successfully bound cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:33] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{"clusters":["genMultistateInput","genOnOff","genLevelCtrl"],"failed":[],"from":"LivingRoomMainDimmer","from_endpoint":3,"to":"coordinator","to_endpoint":1},"status":"ok"}'
+[2026-09-04 22:57:33] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=17007 sourceEui=0xa4c13843a9d40f85 lastHopLqi=108 lastHopRssi=-73 relayCount=2 relayList=25021,63192
+[2026-09-04 22:57:33] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=17007 sourceEui=0xa4c13843a9d40f85 lastHopLqi=108 lastHopRssi=-73 relayCount=2 relayList=25021,63192
+[2026-09-04 22:57:33] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer","from_endpoint":4,"to":"coordinator","to_endpoint":1,"clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:57:33] debug: 	z2m: binding cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:33] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/4 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:33] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=37 payload=25850fd4a94338c1a40406000300124b002d12b1fd01]
+[2026-09-04 22:57:34] info: 	z2m: Successfully bound cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:34] debug: 	z2m: binding cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:34] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/4 genLevelCtrl from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:34] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=38 payload=26850fd4a94338c1a40408000300124b002d12b1fd01]
+[2026-09-04 22:57:34] info: 	z2m: Successfully bound cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:34] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{"clusters":["genOnOff","genLevelCtrl"],"failed":[],"from":"LivingRoomMainDimmer","from_endpoint":4,"to":"coordinator","to_endpoint":1},"status":"ok"}'
+[2026-09-04 22:57:34] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer","from_endpoint":5,"to":"coordinator","to_endpoint":1,"clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:57:34] debug: 	z2m: binding cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:34] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/5 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:34] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=39 payload=27850fd4a94338c1a40506000300124b002d12b1fd01]
+[2026-09-04 22:57:34] info: 	z2m: Successfully bound cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:34] debug: 	z2m: binding cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:34] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/5 genLevelCtrl from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:34] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=40 payload=28850fd4a94338c1a40508000300124b002d12b1fd01]
+[2026-09-04 22:57:35] info: 	z2m: Successfully bound cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:35] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{"clusters":["genOnOff","genLevelCtrl"],"failed":[],"from":"LivingRoomMainDimmer","from_endpoint":5,"to":"coordinator","to_endpoint":1},"status":"ok"}'
+[2026-09-04 22:57:35] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer","from_endpoint":6,"to":"coordinator","to_endpoint":1,"clusters":["genOnOff"]}'
+[2026-09-04 22:57:35] debug: 	z2m: binding cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:35] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/6 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:35] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=41 payload=29850fd4a94338c1a40606000300124b002d12b1fd01]
+[2026-09-04 22:57:36] info: 	z2m: Successfully bound cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Coordinator'
+[2026-09-04 22:57:36] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{"clusters":["genOnOff"],"failed":[],"from":"LivingRoomMainDimmer","from_endpoint":6,"to":"coordinator","to_endpoint":1},"status":"ok"}'
+[2026-09-04 22:57:36] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer","from_endpoint":1,"to":"LivingRoomLinearDimmer","to_endpoint":11,"clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:57:36] debug: 	z2m: binding cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'LivingRoomLinearDimmer'
+[2026-09-04 22:57:36] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/1 genOnOff from '0xa4c1388b709b209c/11'
+[2026-09-04 22:57:36] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=42 payload=2a850fd4a94338c1a4010600039c209b708b38c1a40b]
+[2026-09-04 22:57:36] info: 	z2m: Successfully bound cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'LivingRoomLinearDimmer'
+[2026-09-04 22:57:36] debug: 	z2m: binding cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'LivingRoomLinearDimmer'
+[2026-09-04 22:57:36] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/1 genLevelCtrl from '0xa4c1388b709b209c/11'
+[2026-09-04 22:57:36] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=43 payload=2b850fd4a94338c1a4010800039c209b708b38c1a40b]
+[2026-09-04 22:57:37] info: 	z2m: Successfully bound cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'LivingRoomLinearDimmer'
+[2026-09-04 22:57:37] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{"clusters":["genOnOff","genLevelCtrl"],"failed":[],"from":"LivingRoomMainDimmer","from_endpoint":1,"to":"LivingRoomLinearDimmer","to_endpoint":11},"status":"ok"}'
+[2026-09-04 22:57:37] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer","from_endpoint":1,"to":"LivingRoomMainDimmer","to_endpoint":4,"clusters":["genOnOff"]}'
+[2026-09-04 22:57:37] debug: 	z2m: binding cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'LivingRoomMainDimmer'
+[2026-09-04 22:57:37] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/1 genOnOff from '0xa4c13843a9d40f85/4'
+[2026-09-04 22:57:37] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=44 payload=2c850fd4a94338c1a401060003850fd4a94338c1a404]
+[2026-09-04 22:57:37] info: 	z2m: Successfully bound cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'LivingRoomMainDimmer'
+[2026-09-04 22:57:37] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{"clusters":["genOnOff"],"failed":[],"from":"LivingRoomMainDimmer","from_endpoint":1,"to":"LivingRoomMainDimmer","to_endpoint":4},"status":"ok"}'
+[2026-09-04 22:57:38] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer","from_endpoint":2,"to":"Kitchen Table Bulbs","clusters":["genOnOff","genLevelCtrl"]}'
+[2026-09-04 22:57:38] debug: 	z2m: binding cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Kitchen Table Bulbs'
+[2026-09-04 22:57:38] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/2 genOnOff from '25'
+[2026-09-04 22:57:38] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=45 payload=2d850fd4a94338c1a4020600011900]
+[2026-09-04 22:57:38] info: 	z2m: Successfully bound cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'Kitchen Table Bulbs'
+[2026-09-04 22:57:38] debug: 	z2m: binding cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Kitchen Table Bulbs'
+[2026-09-04 22:57:38] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/2 genLevelCtrl from '25'
+[2026-09-04 22:57:38] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=46 payload=2e850fd4a94338c1a4020800011900]
+[2026-09-04 22:57:38] info: 	z2m: Successfully bound cluster 'genLevelCtrl' from 'LivingRoomMainDimmer' to 'Kitchen Table Bulbs'
+[2026-09-04 22:57:38] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{"clusters":["genOnOff","genLevelCtrl"],"failed":[],"from":"LivingRoomMainDimmer","from_endpoint":2,"to":"Kitchen Table Bulbs"},"status":"ok"}'
+[2026-09-04 22:57:38] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/bind' with data '{"from":"LivingRoomMainDimmer","from_endpoint":2,"to":"LivingRoomMainDimmer","to_endpoint":5,"clusters":["genOnOff"]}'
+[2026-09-04 22:57:38] debug: 	z2m: binding cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'LivingRoomMainDimmer'
+[2026-09-04 22:57:38] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/2 genOnOff from '0xa4c13843a9d40f85/5'
+[2026-09-04 22:57:38] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=47 payload=2f850fd4a94338c1a402060003850fd4a94338c1a405]
+[2026-09-04 22:57:39] info: 	z2m: Successfully bound cluster 'genOnOff' from 'LivingRoomMainDimmer' to 'LivingRoomMainDimmer'
+[2026-09-04 22:57:39] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/bind', payload '{"data":{"clusters":["genOnOff"],"failed":[],"from":"LivingRoomMainDimmer","from_endpoint":2,"to":"LivingRoomMainDimmer","to_endpoint":5},"status":"ok"}'
+[2026-09-04 22:57:39] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"switch_left","cluster":"genMultistateInput","attribute":"presentValue","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_chan…
+[2026-09-04 22:57:39] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/1 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:39] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=48 payload=30850fd4a94338c1a40112000300124b002d12b1fd01]
+[2026-09-04 22:57:43] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/1 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":tr…
+[2026-09-04 22:57:43] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":18,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpeci…
+[2026-09-04 22:57:43] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genMultistateInput.presentValue'
+[2026-09-04 22:57:43] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"presentValue","cluster":"genMultistateInput","endpoint":"switch_left","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_ch…
+[2026-09-04 22:57:44] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"switch_middle","cluster":"genMultistateInput","attribute":"presentValue","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_ch…
+[2026-09-04 22:57:44] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/2 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:44] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=49 payload=31850fd4a94338c1a40212000300124b002d12b1fd01]
+[2026-09-04 22:57:44] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/2 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":tr…
+[2026-09-04 22:57:44] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":18,"sourceEndpoint":1,"destinationEndpoint":2,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpeci…
+[2026-09-04 22:57:44] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genMultistateInput.presentValue'
+[2026-09-04 22:57:44] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"presentValue","cluster":"genMultistateInput","endpoint":"switch_middle","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_…
+[2026-09-04 22:57:44] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"switch_right","cluster":"genMultistateInput","attribute":"presentValue","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_cha…
+[2026-09-04 22:57:44] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/3 genMultistateInput from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:44] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=50 payload=32850fd4a94338c1a40312000300124b002d12b1fd01]
+[2026-09-04 22:57:45] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/3 genMultistateInput.configReport([{"attribute":"presentValue","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":tr…
+[2026-09-04 22:57:45] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":18,"sourceEndpoint":1,"destinationEndpoint":3,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpeci…
+[2026-09-04 22:57:45] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genMultistateInput.presentValue'
+[2026-09-04 22:57:45] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"presentValue","cluster":"genMultistateInput","endpoint":"switch_right","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_c…
+[2026-09-04 22:57:45] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"relay_left","cluster":"genOnOff","attribute":"onOff","minimum_report_interval":0,"maximum_report_interval":300,"reportable_change":0}'
+[2026-09-04 22:57:45] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/4 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:45] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=51 payload=33850fd4a94338c1a40406000300124b002d12b1fd01]
+[2026-09-04 22:57:46] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/4 genOnOff.configReport([{"attribute":"onOff","minimumReportInterval":0,"maximumReportInterval":300,"reportableChange":0}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"r…
+[2026-09-04 22:57:46] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":6,"sourceEndpoint":1,"destinationEndpoint":4,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecif…
+[2026-09-04 22:57:46] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genOnOff.onOff'
+[2026-09-04 22:57:46] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"onOff","cluster":"genOnOff","endpoint":"relay_left","id":"LivingRoomMainDimmer","maximum_report_interval":300,"minimum_report_interval":0,"reportable_change":0},"status":"o…
+[2026-09-04 22:57:46] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"relay_middle","cluster":"genOnOff","attribute":"onOff","minimum_report_interval":0,"maximum_report_interval":300,"reportable_change":0}'
+[2026-09-04 22:57:46] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/5 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:46] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=52 payload=34850fd4a94338c1a40506000300124b002d12b1fd01]
+[2026-09-04 22:57:46] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/5 genOnOff.configReport([{"attribute":"onOff","minimumReportInterval":0,"maximumReportInterval":300,"reportableChange":0}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"r…
+[2026-09-04 22:57:46] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":6,"sourceEndpoint":1,"destinationEndpoint":5,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecif…
+[2026-09-04 22:57:47] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genOnOff.onOff'
+[2026-09-04 22:57:47] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"onOff","cluster":"genOnOff","endpoint":"relay_middle","id":"LivingRoomMainDimmer","maximum_report_interval":300,"minimum_report_interval":0,"reportable_change":0},"status":…
+[2026-09-04 22:57:47] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure_reporting' with data '{"id":"LivingRoomMainDimmer","endpoint":"relay_right","cluster":"genOnOff","attribute":"onOff","minimum_report_interval":0,"maximum_report_interval":65000,"reportable_change":1}'
+[2026-09-04 22:57:47] debug: 	zh:controller:endpoint: Bind 0xa4c13843a9d40f85/6 genOnOff from '0xfdb1122d004b1200/1'
+[2026-09-04 22:57:47] debug: 	zh:ember: ~~~> [ZDO BIND_REQUEST UNICAST to=0xa4c13843a9d40f85:17007 messageTag=53 payload=35850fd4a94338c1a40606000300124b002d12b1fd01]
+[2026-09-04 22:57:48] debug: 	zh:controller:endpoint: ZCL command 0xa4c13843a9d40f85/6 genOnOff.configReport([{"attribute":"onOff","minimumReportInterval":0,"maximumReportInterval":65000,"reportableChange":1}], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,…
+[2026-09-04 22:57:48] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13843a9d40f85:17007 apsFrame={"profileId":260,"clusterId":6,"sourceEndpoint":1,"destinationEndpoint":6,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecif…
+[2026-09-04 22:57:57] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=17007 sourceEui=0xa4c13843a9d40f85 lastHopLqi=108 lastHopRssi=-73 relayCount=2 relayList=25021,63192
+[2026-09-04 22:57:57] info: 	z2m: Configured reporting for 'LivingRoomMainDimmer', 'genOnOff.onOff'
+[2026-09-04 22:57:57] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure_reporting', payload '{"data":{"attribute":"onOff","cluster":"genOnOff","endpoint":"relay_right","id":"LivingRoomMainDimmer","maximum_report_interval":65000,"minimum_report_interval":0,"reportable_change":1},"status"…
+[2026-09-04 22:58:07] debug: 	z2m: Received Zigbee message from 'LivingRoomMainDimmer', type 'attributeReport', cluster 'genMultistateInput', data '{"presentValue":0}' from endpoint 2 with groupID 0
+[2026-09-04 22:58:07] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{"a_ep1_ff05_switch_left":{"65285":3},"a_ep1_ff06_switch_left":{"65286":3},"a_ep1_std0010_switch_left":{"switchActions":2},"a_ep1_swbuild_switch_left":{"swBuildId":"1.1.6-bseedv6"},"a_ep2_ff05_switch_middle":{"65285"…
+[2026-09-04 22:58:07] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer/action', payload 'switch_1_release'
+[2026-09-04 22:58:07] debug: 	z2m: Received Zigbee message from 'LivingRoomMainDimmer', type 'attributeReport', cluster 'genMultistateInput', data '{"presentValue":0}' from endpoint 3 with groupID 0
+[2026-09-04 22:58:07] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{"a_ep1_ff05_switch_left":{"65285":3},"a_ep1_ff06_switch_left":{"65286":3},"a_ep1_std0010_switch_left":{"switchActions":2},"a_ep1_swbuild_switch_left":{"swBuildId":"1.1.6-bseedv6"},"a_ep2_ff05_switch_middle":{"65285"…
+[2026-09-04 22:58:07] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer/action', payload 'switch_2_release'
+[2026-09-04 22:58:07] debug: 	z2m: Received Zigbee message from 'LivingRoomMainDimmer', type 'attributeReport', cluster 'genOnOff', data '{"onOff":0}' from endpoint 5 with groupID 0
+[2026-09-04 22:58:07] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{"a_ep1_ff05_switch_left":{"65285":3},"a_ep1_ff06_switch_left":{"65286":3},"a_ep1_std0010_switch_left":{"switchActions":2},"a_ep1_swbuild_switch_left":{"swBuildId":"1.1.6-bseedv6"},"a_ep2_ff05_switch_middle":{"65285"…
+[2026-09-04 22:58:07] debug: 	z2m: Received Zigbee message from 'LivingRoomMainDimmer', type 'attributeReport', cluster 'genMultistateInput', data '{"presentValue":0}' from endpoint 1 with groupID 0
+[2026-09-04 22:58:07] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{"a_ep1_ff05_switch_left":{"65285":3},"a_ep1_ff06_switch_left":{"65286":3},"a_ep1_std0010_switch_left":{"switchActions":2},"a_ep1_swbuild_switch_left":{"swBuildId":"1.1.6-bseedv6"},"a_ep2_ff05_switch_middle":{"65285"…
+[2026-09-04 22:58:07] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer/action', payload 'switch_0_release'
+[2026-09-04 22:58:07] debug: 	z2m: Received Zigbee message from 'LivingRoomMainDimmer', type 'attributeReport', cluster 'genOnOff', data '{"onOff":0}' from endpoint 5 with groupID 0
+[2026-09-04 22:58:07] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{"a_ep1_ff05_switch_left":{"65285":3},"a_ep1_ff06_switch_left":{"65286":3},"a_ep1_std0010_switch_left":{"switchActions":2},"a_ep1_swbuild_switch_left":{"swBuildId":"1.1.6-bseedv6"},"a_ep2_ff05_switch_middle":{"65285"…

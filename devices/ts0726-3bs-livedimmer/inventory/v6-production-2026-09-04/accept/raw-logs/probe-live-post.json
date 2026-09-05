@@ -1,0 +1,13 @@
+{
+ "phase": "post",
+ "at_utc": "2026-09-04T20:26:10Z",
+ "note": "Reconstructed from transcript: after operator LEFT presses, EP4 flipped 0->1 (local control confirmed). EP6=1, EP5=0. Multistate presentValue reads return 0 (released). Container /tmp original was destroyed by 06:17 restart; values are the observed reads, timestamp approximate.",
+ "reads": {
+  "lv_post_onoff4_relay_left": 1,
+  "lv_post_onoff5_relay_middle": 0,
+  "lv_post_onoff6_relay_right": 1,
+  "lv_post_ms1_switch_left": 0,
+  "lv_post_ms2_switch_middle": 0,
+  "lv_post_ms3_switch_right": 0
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "at_utc": "2026-09-04T20:18:00Z",
+ "note": "genBinding 0x0000 read probe on switch EP1/EP2/EP3. All returned no published result: the endpoint-scoped read produced no readResponse state for genBinding because the endpoints advertise genMultistateInput/genOnOffSwitchCfg but NOT genBinding (see bindings-post-restore-readback + bridge descriptor: switch EP output clusters are genOnOff/genLevelCtrl only, no genBinding input). Binding truth is therefore derived from the coordinator-side bridge/devices dump, not a device genBinding read.",
+ "reads": {
+  "bt_ep1": { "__timeout": true },
+  "bt_ep2": { "__timeout": true },
+  "bt_ep3": { "__timeout": true }
+ }
+}

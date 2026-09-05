@@ -1,0 +1,15 @@
+{
+ "tag": "fin",
+ "at_utc": "2026-09-04T21:21:08.703Z",
+ "reads": {
+  "abfin_ff05_l_switch_left": 3,
+  "abfin_ff05_m_switch_middle": 3,
+  "abfin_ff05_r_switch_right": 0,
+  "abfin_ff03_l": { "__timeout": true },
+  "abfin_ff03_m": { "__timeout": true },
+  "abfin_ff03_r": { "__timeout": true },
+  "abfin_on4_relay_left": 0,
+  "abfin_on5_relay_middle": 1,
+  "abfin_on6_relay_right": 1
+ }
+}

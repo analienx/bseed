@@ -1,0 +1,12 @@
+{
+ "phase": "pre",
+ "at_utc": "2026-09-04T19:29:40.031Z",
+ "reads": {
+  "lv_pre_onoff4_relay_left": 0,
+  "lv_pre_onoff5_relay_middle": 0,
+  "lv_pre_onoff6_relay_right": 1,
+  "lv_pre_ms1_switch_left": 0,
+  "lv_pre_ms2_switch_middle": 0,
+  "lv_pre_ms3_switch_right": 0
+ }
+}

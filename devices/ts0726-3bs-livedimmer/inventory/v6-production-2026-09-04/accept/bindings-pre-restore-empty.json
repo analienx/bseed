@@ -1,0 +1,16 @@
+{
+ "captured_at_local_cest": "2026-09-04 ~23:31 (pre-restore evidence, re-issued here from transcript)",
+ "ieee": "0xa4c13843a9d40f85",
+ "nwk": 17007,
+ "definition_model": "EC-GL86ZPCS31",
+ "note": "Retained zigbee2mqtt/bridge/devices readback AFTER the Sep-3/4 rejoin and BEFORE the operator-authorized restore. All six endpoints empty. This is the incident evidence: the rejoin wiped the entire binding table (baseline had 6/6/3/2/2/1 bindings + reportings per v6-software-live-2026-09-03/baseline/bridge-before.json).",
+ "endpoints": {
+  "1": { "bindings": [] },
+  "2": { "bindings": [] },
+  "3": { "bindings": [] },
+  "4": { "bindings": [] },
+  "5": { "bindings": [] },
+  "6": { "bindings": [] }
+ },
+ "groups_containing_device": []
+}

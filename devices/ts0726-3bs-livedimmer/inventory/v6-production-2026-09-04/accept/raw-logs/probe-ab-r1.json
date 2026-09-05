@@ -1,0 +1,15 @@
+{
+ "tag": "r1",
+ "at_utc": "2026-09-04T21:42:12.067Z",
+ "reads": {
+  "abr1_ff05_l_switch_left": 3,
+  "abr1_ff05_m_switch_middle": 3,
+  "abr1_ff05_r_switch_right": 0,
+  "abr1_ff03_l": { "__timeout": true },
+  "abr1_ff03_m": { "__timeout": true },
+  "abr1_ff03_r": { "__timeout": true },
+  "abr1_on4_relay_left": 1,
+  "abr1_on5_relay_middle": 0,
+  "abr1_on6_relay_right": 0
+ }
+}
