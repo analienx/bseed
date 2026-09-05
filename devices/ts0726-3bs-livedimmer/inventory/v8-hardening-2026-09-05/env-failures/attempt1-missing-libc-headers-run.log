@@ -1,0 +1,79 @@
+### environment install (repository-normal deps, per .github/workflows/test.yml)
+debconf: delaying package configuration, since apt-utils is not installed
+### toolchain/environment identification
+uname: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64
+distro: Ubuntu 24.04.4 LTS
+python3: Python 3.12.3
+make: GNU Make 4.3
+gcc: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+git: git version 2.43.0
+bash: GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)
+### clone + freeze to the handoff SHA
+HEAD=4684def3091225e12bbf3b28025c77ed60136b49 porcelain=EMPTY (pre-toolchain)
+4684def3 test: cover Basic string and GPIO token validation
+V7 base 0f54303a IS an ancestor of HEAD
+### install Telink SDK + TC32 toolchain via repo tooling only
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.110.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 62055 (61K) [text/plain]
+Saving to: '../../telink_tools/tlsrpgm/TlsrPgm.py'
+
+     0K .......... .......... .......... .......... .......... 82% 3.26M 0s
+    50K ..........                                            100% 18.6M=0.02s
+
+2026-09-05 14:41:23 (3.81 MB/s) - '../../telink_tools/tlsrpgm/TlsrPgm.py' saved [62055/62055]
+
+TlsrPgm programmer tool installed to ../../telink_tools/tlsrpgm/TlsrPgm.py
+TlsrPgm programmer tool installed successfully
+Verifying installed tools...
+✓ Telink Zigbee SDK: ../../telink_tools/sdk
+  Target version: 3.7.2.0
+  Installed version: v3.7.2.0
+✓ TC32 GCC Toolchain: ../../telink_tools/toolchain
+  GCC path: ../../telink_tools/toolchain/tc32/bin/tc32-elf-gcc
+  Version: tc32-elf-gcc (Telink TC32 version 2.0 build) 4.5.1.tc32-elf-1.5
+✓ TlsrPgm Tool: ../../telink_tools/tlsrpgm/TlsrPgm.py
+  Status: 
+All Telink tools have been downloaded and installed to ../../telink_tools
+make[1]: Leaving directory '/work/fw/src/telink'
+make: Leaving directory '/work/fw/src/telink'
+make: Entering directory '/work/fw/src/telink'
+make -f tools.mk status
+make[1]: Entering directory '/work/fw/src/telink'
+Telink Tools Status:
+Tools directory: ../../telink_tools
+Download directory: ../../telink_tools/downloads
+
+make[2]: Entering directory '/work/fw/src/telink'
+Verifying installed tools...
+✓ Telink Zigbee SDK: ../../telink_tools/sdk
+  Target version: 3.7.2.0
+  Installed version: v3.7.2.0
+✓ TC32 GCC Toolchain: ../../telink_tools/toolchain
+  GCC path: ../../telink_tools/toolchain/tc32/bin/tc32-elf-gcc
+  Version: tc32-elf-gcc (Telink TC32 version 2.0 build) 4.5.1.tc32-elf-1.5
+✓ TlsrPgm Tool: ../../telink_tools/tlsrpgm/TlsrPgm.py
+  Status: 
+make[2]: Leaving directory '/work/fw/src/telink'
+make[1]: Leaving directory '/work/fw/src/telink'
+make: Leaving directory '/work/fw/src/telink'
+### run the repository's one-command V8 validator
+VALIDATOR_EXIT=2
+----- validator stdout -----
+{
+  "status": "FAIL",
+  "failed": {
+    "command": [
+      "make",
+      "stub/build"
+    ],
+    "exitCode": 2,
+    "stdout": "make -C src/stub build\nmake[1]: Entering directory '/work/fw/src/stub'\nmkdir -p ../../build/stub\ngcc -Wall -Wno-unused-parameter -Wno-unused-variable -g -O0 -DHAL_STUB -DSTACK_BUILD=1001 -D_DEFAULT_SOURCE -DVERSION_STR=\"0.0.0\" -DNVM_MIGRATIONS_VERSION=1 -std=c99 -I.. -I../include ../app.c ../zigbee/poll_control_cluster.c ../stub/main.c ../stub/hal/gpio.c ../stub/hal/system.c ../stub/hal/timer.c ../stub/hal/tasks.c ../stub/hal/nvm.c ../stub/hal/adc.c ../stub/hal/zigbee.c ../stub/hal/ota.c ../stub/simple_repl.c ../stub/stub_app.c ../stub/commands.c ../stub/machine_io.c ../base_components/led.c ../base_components/relay.c ../base_components/button.c ../base_components/battery.c ../base_components/network_indicator.c ../device_config/config_parser.c ../device_config/config_nv.c ../device_config/device_params_nv.c ../device_config/reset.c ../device_config/nvm_migrations.c ../device_config/device_migration.c ../zigbee/basic_cluster.c ../zigbee/relay_cluster.c ../zigbee/switch_cluster.c ../zigbee/group_cluster.c ../zigbee/general_commands.c ../zigbee/cover_switch_cluster.c ../zigbee/cover_cluster.c ../zigbee/battery_cluster.c -o ../../build/stub/stub_device -lpthread\nmake[1]: Leaving directory '/work/fw/src/stub'\n",
+    "stderr": "In file included from ../device_config/config_nv.h:5,\n                 from ../app.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\n../stub/main.c:1:10: fatal error: getopt.h: No such file or directory\n    1 | #include <getopt.h>\n      |          ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../stub/hal/gpio.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/zigbee.h:6,\n                 from ../stub/hal/system.c:2:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/timer.h:4,\n                 from ../stub/hal/timer.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/tasks.h:4,\n                 from ../stub/hal/tasks.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/nvm.h:4,\n                 from ../stub/hal/nvm.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../hal/adc.h:4,\n                 from ../stub/hal/adc.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/zigbee.h:6,\n                 from ../stub/hal/zigbee.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/zigbee.h:6,\n                 from ../stub/hal/ota.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../stub/simple_repl.c:1:\n../stub/simple_repl.h:5:10: fatal error: signal.h: No such file or directory\n    5 | #include <signal.h>\n      |          ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/zigbee.h:6,\n                 from ../stub/stub_app.h:4,\n                 from ../stub/stub_app.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../stub/commands.h:4,\n                 from ../stub/commands.c:1:\n../stub/simple_repl.h:5:10: fatal error: signal.h: No such file or directory\n    5 | #include <signal.h>\n      |          ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../base_components/led.h:4,\n                 from ../base_components/led.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../base_components/relay.h:4,\n                 from ../base_components/relay.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../base_components/button.h:4,\n                 from ../base_components/button.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../base_components/battery.h:4,\n                 from ../base_components/battery.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../base_components/led.h:4,\n                 from ../base_components/network_indicator.h:4,\n                 from ../base_components/network_indicator.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../device_config/config_parser.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../device_config/config_nv.h:5,\n                 from ../device_config/config_nv.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../device_config/device_params_nv.h:4,\n                 from ../device_config/device_params_nv.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../device_config/reset.h:4,\n                 from ../device_config/reset.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/nvm.h:4,\n                 from ../device_config/nvm_migrations.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../device_config/device_migration.h:4,\n                 from ../device_config/device_migration.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/zigbee.h:6,\n                 from ../zigbee/basic_cluster.h:4,\n                 from ../zigbee/basic_cluster.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../base_components/led.h:4,\n                 from ../zigbee/relay_cluster.h:4,\n                 from ../zigbee/relay_cluster.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../base_components/button.h:4,\n                 from ../zigbee/switch_cluster.h:4,\n                 from ../zigbee/switch_cluster.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/zigbee.h:6,\n                 from ../zigbee/group_cluster.h:4,\n                 from ../zigbee/group_cluster.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/zigbee.h:6,\n                 from ../zigbee/basic_cluster.h:4,\n                 from ../zigbee/general_commands.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../base_components/button.h:4,\n                 from ../zigbee/cover_switch_cluster.h:4,\n                 from ../zigbee/cover_switch_cluster.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/gpio.h:4,\n                 from ../base_components/relay.h:4,\n                 from ../zigbee/cover_cluster.h:4,\n                 from ../zigbee/cover_cluster.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nIn file included from ../hal/zigbee.h:6,\n                 from ../zigbee/battery_cluster.h:4,\n                 from ../zigbee/battery_cluster.c:1:\n/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next <stdint.h>\n      |                ^~~~~~~~~~\ncompilation terminated.\nmake[1]: *** [Makefile:104: build] Error 1\nmake: *** [Makefile:68: stub/build] Error 2\n"
+  }
+}
+----- validator stderr -----
+STOP CONDITION: validator returned non-zero
+no manifest produced
+EXIT=2

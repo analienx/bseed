@@ -1,0 +1,20 @@
+make: Entering directory '/work/fw/src/telink'
+make -f tools.mk status
+make[1]: Entering directory '/work/fw/src/telink'
+Telink Tools Status:
+Tools directory: ../../telink_tools
+Download directory: ../../telink_tools/downloads
+
+make[2]: Entering directory '/work/fw/src/telink'
+Verifying installed tools...
+✓ Telink Zigbee SDK: ../../telink_tools/sdk
+  Target version: 3.7.2.0
+  Installed version: v3.7.2.0
+✓ TC32 GCC Toolchain: ../../telink_tools/toolchain
+  GCC path: ../../telink_tools/toolchain/tc32/bin/tc32-elf-gcc
+  Version: tc32-elf-gcc (Telink TC32 version 2.0 build) 4.5.1.tc32-elf-1.5
+✓ TlsrPgm Tool: ../../telink_tools/tlsrpgm/TlsrPgm.py
+  Status: 
+make[2]: Leaving directory '/work/fw/src/telink'
+make[1]: Leaving directory '/work/fw/src/telink'
+make: Leaving directory '/work/fw/src/telink'

@@ -1,0 +1,156 @@
+### apt environment
+debconf: delaying package configuration, since apt-utils is not installed
+### clone + freeze to the handoff SHA
+HEAD=4684def3091225e12bbf3b28025c77ed60136b49 porcelain=EMPTY (pre-toolchain)
+4684def3 test: cover Basic string and GPIO token validation
+V7 base 0f54303a IS an ancestor of HEAD
+### install Telink SDK + TC32 toolchain via repo tooling only
+Verifying installed tools...
+✓ Telink Zigbee SDK: ../../telink_tools/sdk
+  Target version: 3.7.2.0
+  Installed version: v3.7.2.0
+✓ TC32 GCC Toolchain: ../../telink_tools/toolchain
+  GCC path: ../../telink_tools/toolchain/tc32/bin/tc32-elf-gcc
+  Version: tc32-elf-gcc (Telink TC32 version 2.0 build) 4.5.1.tc32-elf-1.5
+✓ TlsrPgm Tool: ../../telink_tools/tlsrpgm/TlsrPgm.py
+  Status: 
+All Telink tools have been downloaded and installed to ../../telink_tools
+make[1]: Leaving directory '/work/fw/src/telink'
+make: Leaving directory '/work/fw/src/telink'
+make: Entering directory '/work/fw/src/telink'
+make -f tools.mk status
+make[1]: Entering directory '/work/fw/src/telink'
+Telink Tools Status:
+Tools directory: ../../telink_tools
+Download directory: ../../telink_tools/downloads
+
+make[2]: Entering directory '/work/fw/src/telink'
+Verifying installed tools...
+✓ Telink Zigbee SDK: ../../telink_tools/sdk
+  Target version: 3.7.2.0
+  Installed version: v3.7.2.0
+✓ TC32 GCC Toolchain: ../../telink_tools/toolchain
+  GCC path: ../../telink_tools/toolchain/tc32/bin/tc32-elf-gcc
+  Version: tc32-elf-gcc (Telink TC32 version 2.0 build) 4.5.1.tc32-elf-1.5
+✓ TlsrPgm Tool: ../../telink_tools/tlsrpgm/TlsrPgm.py
+  Status: 
+make[2]: Leaving directory '/work/fw/src/telink'
+make[1]: Leaving directory '/work/fw/src/telink'
+make: Leaving directory '/work/fw/src/telink'
+### install repo python venv (requirements.txt) via repo tooling only
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 130.0/130.0 kB 6.0 MB/s eta 0:00:00
+Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 15.3 MB/s eta 0:00:00
+Installing collected packages: pyserial, PyYAML, pygments, pluggy, packaging, MarkupSafe, iniconfig, click, pytest, Jinja2
+Successfully installed Jinja2-3.1.6 MarkupSafe-3.0.2 PyYAML-6.0.2 click-8.1.3 iniconfig-2.3.0 packaging-26.3 pluggy-1.6.0 pygments-2.21.0 pyserial-3.5 pytest-8.4.2
+### toolchain/environment identification
+uname: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64
+distro: Ubuntu 24.04.4 LTS
+python3 (venv): Python 3.12.3 @ /work/fw/.venv/bin/python3
+make: GNU Make 4.3
+gcc: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+git: git version 2.43.0
+bash: GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)
+tc32: tc32-elf-gcc (Telink TC32 version 2.0 build) 4.5.1.tc32-elf-1.5
+sdk: 3.7.2.0 per tools.mk
+--- pip freeze (requirements.txt installed) ---
+click==8.1.3
+Jinja2==3.1.6
+MarkupSafe==3.0.2
+pyserial==3.5
+pytest==8.4.2
+PyYAML==6.0.2
+### run the repository's one-command V8 validator (inside the venv)
+VALIDATOR_EXIT=0
+----- validator stdout -----
+{
+  "status": "PASS",
+  "sourceCommit": "4684def3091225e12bbf3b28025c77ed60136b49",
+  "v7Base": "0f54303a52aed85f985b8c3b08bcf03aa88efc2a",
+  "focusedTests": [
+    "tests/test_nvm_migration_version.py",
+    "tests/test_config_resource_guard.py",
+    "tests/test_image_type_checker.py"
+  ],
+  "manifest": "build/bseed-ts0726-v8/manifest.json",
+  "artifacts": {
+    "forward.bin": {
+      "bytes": 187781,
+      "sha256": "1524f87a56deaffcb5351884f8eb83acd904823bc9f8749429b17f45927f598f",
+      "sha512": "e7c82dfb1235af01ac0ed264dbd08e2577fad30613d08e4b1ea9f3f7818b0f78b0b691bd375a5a2234714ae7ad3e98f1ed0a9c5926494db3bcfc0873abdfa1de"
+    },
+    "forward.ota": {
+      "bytes": 187858,
+      "sha256": "4a74fa80edd9eb495c398ab0a9d574594d17172d5a032c2f2f50d599ac897230",
+      "sha512": "a681fe5606ec35b6637c75b0a4e92077d1c438c9c9fac78cc97222bab019ea3fc52324309edd8b4584cc136ed40e572991f7ef0d3e563f6617a8608653fc95e3"
+    }
+  },
+  "steps": [
+    {
+      "command": [
+        "make",
+        "stub/build"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "make",
+        "stub/build_end_device"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/work/fw/.venv/bin/python3",
+        "-m",
+        "pytest",
+        "tests/test_nvm_migration_version.py",
+        "tests/test_config_resource_guard.py",
+        "tests/test_image_type_checker.py",
+        "-q"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/work/fw/.venv/bin/python3",
+        "-m",
+        "pytest",
+        "tests/",
+        "-q"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/work/fw/.venv/bin/python3",
+        "helper_scripts/check_image_types.py",
+        "device_db.yaml",
+        "--changed-base",
+        "0f54303a52aed85f985b8c3b08bcf03aa88efc2a"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "bash",
+        "make_scripts/build_bseed_ts0726_v8.sh"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "note": "VALIDATE+BUILD only; no publication or device flash performed"
+}
+----- validator stderr -----
+### evidence capture
+porcelain-after lines: 0
+1524f87a56deaffcb5351884f8eb83acd904823bc9f8749429b17f45927f598f  forward.bin
+4a74fa80edd9eb495c398ab0a9d574594d17172d5a032c2f2f50d599ac897230  forward.ota
+e7c82dfb1235af01ac0ed264dbd08e2577fad30613d08e4b1ea9f3f7818b0f78b0b691bd375a5a2234714ae7ad3e98f1ed0a9c5926494db3bcfc0873abdfa1de  forward.bin
+a681fe5606ec35b6637c75b0a4e92077d1c438c9c9fac78cc97222bab019ea3fc52324309edd8b4584cc136ed40e572991f7ef0d3e563f6617a8608653fc95e3  forward.ota
+1524f87a56deaffcb5351884f8eb83acd904823bc9f8749429b17f45927f598f  forward.bin
+4a74fa80edd9eb495c398ab0a9d574594d17172d5a032c2f2f50d599ac897230  forward.ota
+### DONE rc=0
+WRAP_EXIT=0

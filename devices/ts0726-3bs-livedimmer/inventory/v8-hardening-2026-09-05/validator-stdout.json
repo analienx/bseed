@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "sourceCommit": "4684def3091225e12bbf3b28025c77ed60136b49",
+  "v7Base": "0f54303a52aed85f985b8c3b08bcf03aa88efc2a",
+  "focusedTests": [
+    "tests/test_nvm_migration_version.py",
+    "tests/test_config_resource_guard.py",
+    "tests/test_image_type_checker.py"
+  ],
+  "manifest": "build/bseed-ts0726-v8/manifest.json",
+  "artifacts": {
+    "forward.bin": {
+      "bytes": 187781,
+      "sha256": "1524f87a56deaffcb5351884f8eb83acd904823bc9f8749429b17f45927f598f",
+      "sha512": "e7c82dfb1235af01ac0ed264dbd08e2577fad30613d08e4b1ea9f3f7818b0f78b0b691bd375a5a2234714ae7ad3e98f1ed0a9c5926494db3bcfc0873abdfa1de"
+    },
+    "forward.ota": {
+      "bytes": 187858,
+      "sha256": "4a74fa80edd9eb495c398ab0a9d574594d17172d5a032c2f2f50d599ac897230",
+      "sha512": "a681fe5606ec35b6637c75b0a4e92077d1c438c9c9fac78cc97222bab019ea3fc52324309edd8b4584cc136ed40e572991f7ef0d3e563f6617a8608653fc95e3"
+    }
+  },
+  "steps": [
+    {
+      "command": [
+        "make",
+        "stub/build"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "make",
+        "stub/build_end_device"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/work/fw/.venv/bin/python3",
+        "-m",
+        "pytest",
+        "tests/test_nvm_migration_version.py",
+        "tests/test_config_resource_guard.py",
+        "tests/test_image_type_checker.py",
+        "-q"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/work/fw/.venv/bin/python3",
+        "-m",
+        "pytest",
+        "tests/",
+        "-q"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/work/fw/.venv/bin/python3",
+        "helper_scripts/check_image_types.py",
+        "device_db.yaml",
+        "--changed-base",
+        "0f54303a52aed85f985b8c3b08bcf03aa88efc2a"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "bash",
+        "make_scripts/build_bseed_ts0726_v8.sh"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "note": "VALIDATE+BUILD only; no publication or device flash performed"
+}

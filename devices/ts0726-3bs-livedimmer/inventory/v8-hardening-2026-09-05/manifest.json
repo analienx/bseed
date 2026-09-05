@@ -1,0 +1,37 @@
+{
+  "artifacts": {
+    "forward.bin": {
+      "bytes": 187781,
+      "sha256": "1524f87a56deaffcb5351884f8eb83acd904823bc9f8749429b17f45927f598f",
+      "sha512": "e7c82dfb1235af01ac0ed264dbd08e2577fad30613d08e4b1ea9f3f7818b0f78b0b691bd375a5a2234714ae7ad3e98f1ed0a9c5926494db3bcfc0873abdfa1de"
+    },
+    "forward.ota": {
+      "bytes": 187858,
+      "sha256": "4a74fa80edd9eb495c398ab0a9d574594d17172d5a032c2f2f50d599ac897230",
+      "sha512": "a681fe5606ec35b6637c75b0a4e92077d1c438c9c9fac78cc97222bab019ea3fc52324309edd8b4584cc136ed40e572991f7ef0d3e563f6617a8608653fc95e3"
+    }
+  },
+  "board": "SWITCH_BSEED_TS0726_3GANG",
+  "canonicalConfig": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;",
+  "deviceConfigGuard": "BSEED_TS0726_3GANG",
+  "fileVersion": 285356042,
+  "imageType": 45577,
+  "manufacturerCode": 4417,
+  "migrationFromConfig": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC0;IC2;SB7u;RD7;IC3;SB4u;RD2;IB5;M;",
+  "note": "BUILD ONLY; no publication or device flash performed",
+  "nvmMigrationsVersion": 1,
+  "otaHeader": {
+    "fieldControl": 0,
+    "fileVersion": 285356042,
+    "headerLength": 56,
+    "headerVersion": 256,
+    "imageType": 45577,
+    "manufacturerCode": 4417,
+    "totalImageSize": 187858,
+    "zigbeeStackVersion": 2
+  },
+  "schema": 2,
+  "sourceCommit": "4684def3091225e12bbf3b28025c77ed60136b49",
+  "sourceDirty": false,
+  "swBuildId": "1.1.8-bseedv8"
+}
