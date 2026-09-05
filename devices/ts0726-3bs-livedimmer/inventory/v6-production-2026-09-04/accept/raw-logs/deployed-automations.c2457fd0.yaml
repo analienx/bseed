@@ -1,0 +1,2634 @@
+- id: button_ha_shutdown_click
+  alias: Shutdown - HA Only (Manual and Scheduled)
+  description: Handles graceful shutdown for Home Assistant and SLZB06 coordinator only. Supports manual button press and automatic scheduled shutdown.
+  triggers:
+  - trigger: state
+    entity_id: input_button.button_ha_shutdown
+    id: manual
+  - trigger: time
+    at: input_datetime.sleep_time_ha_automatic
+    id: scheduled
+  conditions:
+  - condition: template
+    value_template: "{{ \n  trigger.id == 'manual' or \n  (trigger.id == 'scheduled' and is_state('input_boolean.ha_shutdown', 'on')) \n}}\n"
+  actions:
+  - action: persistent_notification.create
+    data:
+      title: HA Shutdown Initiated
+      message: '{% if trigger.id == ''manual'' %} • Trigger: Manual button press {% else %} • Trigger: Scheduled at {{ states(''input_datetime.sleep_time_ha_automatic'') }} {% endif %} • Wake Mode: {{ states(''input_select.wake_mode_ha'')
+        }}
+
+        '
+  - action: script.unified_shutdown
+    data:
+      shutdown_type: ha
+      trigger_source: '{{ trigger.id }}'
+  mode: single
+- id: shutdown_unified_manual_and_scheduled
+  alias: Shutdown - Unified (Manual and Scheduled)
+  description: Handles the full scheduled or manual shutdown of the router and Home Assistant.
+  triggers:
+  - trigger: state
+    entity_id: input_button.button_shutdown
+    id: manual
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtNetwork/action
+    payload: hold
+    id: manual
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtDoor/action
+    payload: hold
+    id: manual
+  - trigger: time
+    at: input_datetime.sleep_time_automatic
+    id: scheduled
+  conditions:
+  - condition: template
+    value_template: "{{ \n  trigger.id == 'manual' or \n  (trigger.id == 'scheduled' and is_state('input_boolean.night_shutdown', 'on')) \n}}\n"
+  actions:
+  - action: persistent_notification.create
+    data:
+      title: Unified Shutdown Initiated
+      message: '{% if trigger.id == ''manual'' %} • Trigger: Manual ({{ trigger.entity_id if trigger.platform == ''state'' else trigger.topic }}) {% else %} • Trigger: Scheduled at {{ states(''input_datetime.sleep_time_automatic'')
+        }} {% endif %} • Wake Mode: {{ states(''input_select.wake_mode_unified'') }}
+
+        '
+  - action: script.unified_shutdown
+    data:
+      shutdown_type: unified
+      trigger_source: '{{ trigger.id }}'
+  mode: single
+- id: shutdown_router_manual_and_scheduled
+  alias: Shutdown - Router Only (Manual)
+  description: Handles an explicitly requested ASUS router shutdown only.
+  triggers:
+  - trigger: state
+    entity_id: input_button.button_router_shutdown
+    id: manual
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtDoor/action
+    payload: double
+    id: manual
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtWifiSocketRightRemote/action
+    payload: 'off'
+    id: manual
+  conditions: []
+  actions:
+  - action: persistent_notification.create
+    data:
+      title: Router Shutdown Initiated
+      message: '{% if trigger.id == ''manual'' %} • Trigger: Manual ({{ trigger.entity_id if trigger.platform == ''state'' else trigger.topic }}) {% else %} • Trigger: Scheduled at {{ states(''input_datetime.sleep_time_router_automatic'')
+        }} {% endif %} • Wake Mode: {{ states(''input_select.wake_mode_router'') }}
+
+        '
+  - action: script.unified_shutdown
+    data:
+      shutdown_type: router
+      trigger_source: '{{ trigger.id }}'
+  mode: single
+- id: button_sleeper_hold
+  alias: 'ButtNetwork: Single → Router On'
+  description: Single press powers on the router. Wi-Fi radio toggle was removed because ASUS stock firmware is now used and Wi-Fi switching is no longer needed.
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtNetwork/action
+    payload: single
+    id: single
+  conditions: []
+  actions:
+  - action: system_log.write
+    data:
+      message: ButtNetwork single click → powering on router
+      level: info
+  - action: script.router_poweron
+  mode: single
+- id: ha_startup_handler
+  alias: HA Startup Handler
+  description: Restores the WiFi Left socket on HA start and plays the optional startup cue. Router recovery runs independently so Zigbee or audio startup cannot block it.
+  triggers:
+  - trigger: homeassistant
+    event: start
+  conditions: []
+  actions:
+  - alias: Ensure Recorder is enabled after startup
+    action: recorder.enable
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.shutdown_recorder_watchdog
+  - alias: Restore WiFi Left socket until it reports on
+    repeat:
+      sequence:
+      - wait_template: '{{ states(''switch.livingroomsocketwifileft_relay'') not in [''unknown'', ''unavailable''] }}'
+        timeout: 00:00:15
+        continue_on_timeout: true
+      - if: '{{ states(''switch.livingroomsocketwifileft_relay'') not in [''unknown'', ''unavailable''] }}'
+        then:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.livingroomsocketwifileft_relay
+        - wait_template: '{{ is_state(''switch.livingroomsocketwifileft_relay'', ''on'') }}'
+          timeout: 00:00:20
+          continue_on_timeout: true
+      - if: '{{ not is_state(''switch.livingroomsocketwifileft_relay'', ''on'') }}'
+        then:
+        - delay: 00:00:10
+      until:
+      - condition: state
+        entity_id: switch.livingroomsocketwifileft_relay
+        state: 'on'
+  - alias: Wait for USB audio before startup cue
+    wait_template: '{{ states(''media_player.usb_audio_device_analog_stereo'') not in [''unknown'', ''unavailable''] }}'
+    timeout: 00:02:00
+    continue_on_timeout: true
+  - alias: Play selected Home Assistant startup sound
+    if: '{{ states(''media_player.usb_audio_device_analog_stereo'') not in [''unknown'', ''unavailable''] }}'
+    then:
+    - action: script.audio_play_sound
+      data:
+        path: '{{ states(''input_select.ha_startup_sound'') }}'
+  - action: script.smart_startup_sequence
+    data: {}
+    enabled: true
+  mode: single
+- id: ha_startup_router_recovery
+  alias: Network / Restore Router After HA Start
+  description: Keeps router recovery independent of Zigbee and audio startup until WAN, LAN ping, or outlet draw confirms readiness.
+  triggers:
+  - trigger: homeassistant
+    event: start
+  conditions:
+  - condition: state
+    entity_id: input_boolean.router_shutdown_pending
+    state: 'off'
+  actions:
+  - action: script.ensure_router_power_on_with_retries
+  mode: restart
+- id: shutdown_recorder_recovery_watchdog
+  alias: Shutdown / Recorder Recovery Watchdog
+  description: Re-enables Recorder if a requested Home Assistant shutdown did not occur within two minutes.
+  triggers:
+  - trigger: state
+    entity_id: input_boolean.shutdown_recorder_watchdog
+    to: 'on'
+    for: 00:02:00
+  conditions:
+  - condition: state
+    entity_id: input_boolean.shutdown_recorder_watchdog
+    state: 'on'
+  actions:
+  - action: recorder.enable
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.shutdown_recorder_watchdog
+  - action: input_text.set_value
+    target:
+      entity_id: input_text.shutdown_load_result
+    data:
+      value: Shutdown did not complete within two minutes; Recorder was re-enabled.
+  - action: persistent_notification.create
+    data:
+      title: Recorder re-enabled after incomplete shutdown
+      message: Home Assistant remained online two minutes after Recorder was disabled. Verify the host shutdown request.
+  mode: single
+- id: '1746989579040'
+  alias: Router Turn on - Wifi Socket On
+  description: Turns on Router socket powering on the router
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtWifiSocketRightRemote/action
+    payload: single
+    alias: When MQTT received - LivingRoomSocketWifiRight single
+  - alias: When MQTT received - door butt router socket power on
+    trigger: mqtt
+    topic: zigbee2mqtt/ButtDoor/action
+    payload: 'on'
+  conditions: []
+  actions:
+  - action: script.router_poweron
+    metadata: {}
+    data: {}
+  mode: single
+- id: door_closed_morning_router_shutdown
+  alias: Door Closed → Morning Lights Off
+  description: When the front door is closed and stays closed for 3 minutes on weekday mornings, turn off lights. It never changes router power.
+  triggers:
+  - alias: Door stays closed for 3 minutes
+    trigger: state
+    entity_id: binary_sensor.front_door
+    from: 'on'
+    to: 'off'
+    for: 00:03:00
+  conditions:
+  - alias: Morning window weekdays
+    condition: time
+    after: 07:30:00
+    before: '12:00:00'
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id:
+      - input_boolean.hall_entrance_auto_off_flag
+      - input_boolean.hall_main_auto_off_flag
+      - input_boolean.livingroom_auto_off_flag
+      - input_boolean.workroom_auto_off_flag
+      - input_boolean.bathroom_auto_off_flag
+  - alias: Turn off lights
+    action: light.turn_off
+    target:
+      entity_id: all
+    data: {}
+  - delay:
+      seconds: 5
+  - action: input_boolean.turn_off
+    target:
+      entity_id:
+      - input_boolean.hall_entrance_auto_off_flag
+      - input_boolean.hall_main_auto_off_flag
+      - input_boolean.livingroom_auto_off_flag
+      - input_boolean.workroom_auto_off_flag
+      - input_boolean.bathroom_auto_off_flag
+      - input_boolean.hall_entrance_manual_on_flag
+      - input_boolean.hall_main_manual_on_flag
+      - input_boolean.livingroom_manual_on_flag
+      - input_boolean.workroom_manual_on_flag
+      - input_boolean.bathroom_manual_on_flag
+  mode: single
+- id: '1768080854838'
+  alias: Router Power Buttons
+  description: Controls router power via Zigbee buttons (Hall Door)
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtHallDoor
+  conditions:
+  - condition: template
+    value_template: '{{ ''action'' in trigger.payload_json }}'
+  actions:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ trigger.payload_json.action == 'arrow_left_click' or \n   trigger.payload_json.action == 'off_hold' }}"
+      sequence:
+      - action: script.router_shutdown_then_poweroff
+        data: {}
+    - conditions:
+      - condition: template
+        value_template: "{{ trigger.payload_json.action == 'arrow_right_click' or \n   trigger.payload_json.action == 'off_press' }}"
+      sequence:
+      - action: script.ensure_router_power_on_with_retries
+        data: {}
+  mode: single
+- id: '1771626265768'
+  alias: A1a - Hall Entrance - Turn ON
+  description: 'Owns Hall entrance lights for door-open or entrance motion when dark. Dark check priority: HallEntranceIlluminance (G-106Z) checked first if available, HallPIRSensorBedroomAdvanced illuminance
+    also checked independently — each with its own dashboard threshold. Falls back to sunset/sunrise timing only when BOTH sensors are unavailable. HallPIRAdvanced (TS0202) fires on occupancy only. Bulbs
+    and shoes LED have independent cooldowns. HallBulb1 and HallBulb2 are controlled individually because Z2M group 14 does not actuate reliably. Waits for individual bulb state confirmation before clearing
+    auto_on_flag.
+
+    '
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/DoorSensor
+    value_template: '{{ value_json.contact | string | lower }}'
+    payload: 'false'
+  - trigger: mqtt
+    topic: zigbee2mqtt/HallPIRSensorEntrance
+    value_template: '{{ value_json.get(''occupancy'') | string | lower }}'
+    payload: 'true'
+  - trigger: mqtt
+    topic: zigbee2mqtt/HallCabinetPIR
+    value_template: '{{ value_json.get(''presence'') | string | lower }}'
+    payload: 'true'
+  - trigger: mqtt
+    topic: zigbee2mqtt/HallPIRAdvanced
+    value_template: '{{ value_json.get(''occupancy'') | string | lower }}'
+    payload: 'true'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.shutdown_in_progress
+    state: 'off'
+  - condition: template
+    alias: Skip if nothing to turn on (deduplication guard)
+    value_template: "{{ (is_state('timer.hall_entrance_bulbs_manual_off_cooldown', 'idle') and\n    not (is_state('light.hallbulb1', 'on') and is_state('light.hallbulb2', 'on'))) or\n   (is_state('timer.hall_shoesled_manual_off_cooldown',\
+      \ 'idle') and\n    not is_state('light.hallshoesled', 'on')) }}\n"
+  - condition: template
+    value_template: "{# --- HallEntranceIlluminance (G-106Z) --- #} {% set entrance_lux = states('sensor.hallentranceilluminance_illuminance') | float(-1) %} {% set entrance_threshold = states('input_number.hall_entrance_illuminance_threshold_lux')\
+      \ | float(50) %} {% set entrance_available = entrance_lux >= 0 %} {% set entrance_dark = entrance_available and entrance_lux < entrance_threshold %}\n{# --- HallPIRSensorBedroomAdvanced illuminance\
+      \ --- #} {% set bedroom_lux = states('sensor.hallpirsensorbedroomadvanced_illuminance') | float(-1) %} {% set bedroom_threshold = states('input_number.hall_illuminance_threshold_lux') | float(100)\
+      \ %} {% set bedroom_available = bedroom_lux >= 0 %} {% set bedroom_dark = bedroom_available and bedroom_lux < bedroom_threshold %}\n{# --- Timing fallback (only used when both sensors unavailable)\
+      \ --- #} {% set sunset_offset_sec = states('input_number.hall_sunset_offset_min') | float(0) * 60 %} {% set sunrise_offset_sec = states('input_number.hall_sunrise_offset_min') | float(0) * 60 %} {%\
+      \ set now_ts = now().timestamp() %} {% set nextrising_ts = as_timestamp(state_attr('sun.sun', 'next_rising')) %} {% set nextsetting_ts = as_timestamp(state_attr('sun.sun', 'next_setting')) %} {% set\
+      \ is_night = nextrising_ts < nextsetting_ts %} {% if is_night %}\n  {% set last_sunset_ts = nextsetting_ts - 86400 %}\n  {% set past_sunset = now_ts > last_sunset_ts + sunset_offset_sec %}\n  {% set\
+      \ before_sunrise = now_ts < nextrising_ts + sunrise_offset_sec %}\n  {% set time_dark = past_sunset and before_sunrise %}\n{% else %}\n  {% set last_rising_ts = nextrising_ts - 86400 %}\n  {% set\
+      \ in_post_sunrise = sunrise_offset_sec > 0 and now_ts < last_rising_ts + sunrise_offset_sec %}\n  {% set in_pre_sunset = sunset_offset_sec > 0 and now_ts < nextsetting_ts + sunset_offset_sec %}\n\
+      \  {% set time_dark = in_post_sunrise or in_pre_sunset %}\n{% endif %}\n{% if entrance_available or bedroom_available %}\n  {{ entrance_dark or bedroom_dark }}\n{% else %}\n  {{ time_dark }}\n{% endif\
+      \ %}\n"
+  - condition: template
+    value_template: "{{ is_state('timer.hall_entrance_bulbs_manual_off_cooldown', 'idle') or\n   is_state('timer.hall_shoesled_manual_off_cooldown', 'idle') }}\n"
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.hall_entrance_auto_on_flag
+  - if:
+    - condition: state
+      entity_id: timer.hall_entrance_bulbs_manual_off_cooldown
+      state: idle
+    then:
+    - variables:
+        hall_bulb_min_brightness: '{{ [(states(''input_number.hall_bulbs_min_brightness_pct'') | float(50) / 100 * 255) | int(128), 1] | max }}'
+        hall_bulb1_target: '{{ [state_attr(''light.hallbulb1'', ''brightness'') | int(0), hall_bulb_min_brightness] | max }}'
+        hall_bulb2_target: '{{ [state_attr(''light.hallbulb2'', ''brightness'') | int(0), hall_bulb_min_brightness] | max }}'
+    - action: light.turn_on
+      target:
+        entity_id: light.hallbulb1
+      data:
+        brightness: '{{ hall_bulb1_target }}'
+        transition: 1
+    - action: light.turn_on
+      target:
+        entity_id: light.hallbulb2
+      data:
+        brightness: '{{ hall_bulb2_target }}'
+        transition: 1
+  - if:
+    - condition: state
+      entity_id: timer.hall_shoesled_manual_off_cooldown
+      state: idle
+    then:
+    - action: light.turn_on
+      target:
+        entity_id: light.hallshoesled
+      data:
+        transition: 1
+  - wait_template: "{{ (not is_state('timer.hall_entrance_bulbs_manual_off_cooldown', 'idle') or\n    (is_state('light.hallbulb1', 'on') and is_state('light.hallbulb2', 'on'))) and\n   (not is_state('timer.hall_shoesled_manual_off_cooldown',\
+      \ 'idle') or\n    is_state('light.hallshoesled', 'on')) }}\n"
+    timeout:
+      seconds: 5
+  - if:
+    - condition: template
+      value_template: '{% set cur = state_attr(''light.hallbulb1'', ''brightness'') | int(0) %} {% set min255 = (states(''input_number.hall_bulbs_min_brightness_pct'') | float(50) / 100 * 255) | int %}
+        {{ is_state(''light.hallbulb1'', ''on'') and cur < min255 }}'
+    then:
+    - action: light.turn_on
+      target:
+        entity_id: light.hallbulb1
+      data:
+        brightness: '{{ hall_bulb_min_brightness }}'
+        transition: 1
+  - if:
+    - condition: template
+      value_template: '{% set cur = state_attr(''light.hallbulb2'', ''brightness'') | int(0) %} {% set min255 = (states(''input_number.hall_bulbs_min_brightness_pct'') | float(50) / 100 * 255) | int %}
+        {{ is_state(''light.hallbulb2'', ''on'') and cur < min255 }}'
+    then:
+    - action: light.turn_on
+      target:
+        entity_id: light.hallbulb2
+      data:
+        brightness: '{{ hall_bulb_min_brightness }}'
+        transition: 1
+  - if:
+    - condition: template
+      value_template: '{% set cur = state_attr(''light.hallshoesled'', ''brightness'') | int(0) %} {% set min255 = (states(''input_number.hall_shoesled_min_brightness_pct'') | float(30) / 100 * 255) | int
+        %} {{ is_state(''light.hallshoesled'', ''on'') and cur < min255 }}'
+    then:
+    - action: light.turn_on
+      target:
+        entity_id: light.hallshoesled
+      data:
+        brightness_pct: '{{ states(''input_number.hall_shoesled_min_brightness_pct'') | int(30) }}'
+  - if:
+    - condition: template
+      value_template: '{{ is_state(''timer.hall_entrance_bulbs_manual_off_cooldown'', ''idle'') and not is_state(''light.hallbulb1'', ''on'') }}'
+    then:
+    - action: system_log.write
+      data:
+        level: warning
+        logger: automation.a1a
+        message: 'A1a: HallBulb1 did not confirm ON after initial attempt; retrying once.'
+    - action: light.turn_on
+      target:
+        entity_id: light.hallbulb1
+      data:
+        brightness: '{{ hall_bulb_min_brightness }}'
+        transition: 1
+  - if:
+    - condition: template
+      value_template: '{{ is_state(''timer.hall_entrance_bulbs_manual_off_cooldown'', ''idle'') and not is_state(''light.hallbulb2'', ''on'') }}'
+    then:
+    - action: system_log.write
+      data:
+        level: warning
+        logger: automation.a1a
+        message: 'A1a: HallBulb2 did not confirm ON after initial attempt; retrying once.'
+    - action: light.turn_on
+      target:
+        entity_id: light.hallbulb2
+      data:
+        brightness: '{{ hall_bulb_min_brightness }}'
+        transition: 1
+  - wait_template: "{{ not is_state('timer.hall_entrance_bulbs_manual_off_cooldown', 'idle') or
+   (is_state('light.hallbulb1', 'on') and is_state('light.hallbulb2', 'on')) }}"
+    timeout:
+      seconds: 60
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.hall_entrance_auto_on_flag
+  mode: queued
+  max: 3
+- id: manual_on_detection_startup_coordinator
+  alias: Manual-On Detection - Startup Coordinator
+  description: Keeps Manual-On inference disarmed until Z2M is online, each target has reported after this HA boot or reconnect, and its primary state has been quiet for 10 seconds. Disarms the affected zone during individual target unavailable/unknown states.
+  triggers:
+  - trigger: homeassistant
+    event: start
+    id: startup
+  - trigger: state
+    entity_id: binary_sensor.zigbee2mqtt_bridge_online
+    to:
+    - 'off'
+    - 'unknown'
+    - 'unavailable'
+    id: backend_offline
+  - trigger: state
+    entity_id: binary_sensor.zigbee2mqtt_bridge_online
+    to: 'on'
+    id: backend_online
+  - trigger: template
+    value_template: "{{ is_state('input_boolean.manual_on_detection_backend_ready', 'on') and as_timestamp(states.light.hallbulb1.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) and as_timestamp(states.light.hallbulb2.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) }}"
+    id: hall_entrance_seen
+  - trigger: template
+    value_template: "{{ is_state('input_boolean.manual_on_detection_backend_ready', 'on') and as_timestamp(states.light.hallbulb3.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) }}"
+    id: hall_main_seen
+  - trigger: template
+    value_template: "{{ is_state('input_boolean.manual_on_detection_backend_ready', 'on') and as_timestamp(states.light.lr_kitchen_table_bulbs.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) and as_timestamp(states.light.livingroomlineardimmer.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) }}"
+    id: livingroom_seen
+  - trigger: template
+    value_template: "{{ is_state('input_boolean.manual_on_detection_backend_ready', 'on') and as_timestamp(states.light.workroomledmaindimmer.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) }}"
+    id: workroom_seen
+  - trigger: template
+    value_template: "{{ is_state('input_boolean.manual_on_detection_backend_ready', 'on') and as_timestamp(states.switch.bathroomswitchrouter.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) }}"
+    id: bathroom_seen
+  - trigger: state
+    entity_id:
+    - light.hallbulb1
+    - light.hallbulb2
+    - light.hallbulb3
+    - light.lr_kitchen_table_bulbs
+    - light.livingroomlineardimmer
+    - light.workroomledmaindimmer
+    - switch.bathroomswitchrouter
+    id: primary_state_change
+  - trigger: event
+    event_type: timer.finished
+    id: settle_finished
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: backend_offline
+      sequence:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.manual_on_detection_bootstrap_started_at
+        data:
+          datetime: "{{ now().isoformat() }}"
+      - action: input_boolean.turn_off
+        target:
+          entity_id:
+          - input_boolean.manual_on_detection_backend_ready
+          - input_boolean.manual_on_detection_hall_entrance_armed
+          - input_boolean.manual_on_detection_hall_main_armed
+          - input_boolean.manual_on_detection_livingroom_armed
+          - input_boolean.manual_on_detection_workroom_armed
+          - input_boolean.manual_on_detection_bathroom_armed
+      - action: timer.cancel
+        target:
+          entity_id:
+          - timer.manual_on_detection_hall_entrance_settle
+          - timer.manual_on_detection_hall_main_settle
+          - timer.manual_on_detection_livingroom_settle
+          - timer.manual_on_detection_workroom_settle
+          - timer.manual_on_detection_bathroom_settle
+    - conditions:
+      - condition: trigger
+        id: backend_online
+      sequence:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.manual_on_detection_bootstrap_started_at
+        data:
+          datetime: "{{ now().isoformat() }}"
+      - action: input_boolean.turn_off
+        target:
+          entity_id:
+          - input_boolean.manual_on_detection_backend_ready
+          - input_boolean.manual_on_detection_hall_entrance_armed
+          - input_boolean.manual_on_detection_hall_main_armed
+          - input_boolean.manual_on_detection_livingroom_armed
+          - input_boolean.manual_on_detection_workroom_armed
+          - input_boolean.manual_on_detection_bathroom_armed
+      - action: timer.cancel
+        target:
+          entity_id:
+          - timer.manual_on_detection_hall_entrance_settle
+          - timer.manual_on_detection_hall_main_settle
+          - timer.manual_on_detection_livingroom_settle
+          - timer.manual_on_detection_workroom_settle
+          - timer.manual_on_detection_bathroom_settle
+      - action: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.manual_on_detection_backend_ready
+    - conditions:
+      - condition: trigger
+        id: startup
+      sequence:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.manual_on_detection_bootstrap_started_at
+        data:
+          datetime: "{{ now().isoformat() }}"
+      - action: input_boolean.turn_off
+        target:
+          entity_id:
+          - input_boolean.manual_on_detection_backend_ready
+          - input_boolean.manual_on_detection_hall_entrance_armed
+          - input_boolean.manual_on_detection_hall_main_armed
+          - input_boolean.manual_on_detection_livingroom_armed
+          - input_boolean.manual_on_detection_workroom_armed
+          - input_boolean.manual_on_detection_bathroom_armed
+          - input_boolean.hall_entrance_manual_on_flag
+          - input_boolean.hall_main_manual_on_flag
+          - input_boolean.livingroom_manual_on_flag
+          - input_boolean.workroom_manual_on_flag
+          - input_boolean.bathroom_manual_on_flag
+          - input_boolean.restroom_manual_on_flag
+      - wait_template: "{{ is_state('binary_sensor.zigbee2mqtt_bridge_online', 'on') }}"
+      - action: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.manual_on_detection_backend_ready
+    - conditions:
+      - condition: trigger
+        id: hall_entrance_seen
+      - condition: state
+        entity_id: input_boolean.manual_on_detection_hall_entrance_armed
+        state: 'off'
+      sequence:
+      - action: timer.start
+        target:
+          entity_id: timer.manual_on_detection_hall_entrance_settle
+        data:
+          duration: '00:00:10'
+    - conditions:
+      - condition: trigger
+        id: hall_main_seen
+      - condition: state
+        entity_id: input_boolean.manual_on_detection_hall_main_armed
+        state: 'off'
+      sequence:
+      - action: timer.start
+        target:
+          entity_id: timer.manual_on_detection_hall_main_settle
+        data:
+          duration: '00:00:10'
+    - conditions:
+      - condition: trigger
+        id: livingroom_seen
+      - condition: state
+        entity_id: input_boolean.manual_on_detection_livingroom_armed
+        state: 'off'
+      sequence:
+      - action: timer.start
+        target:
+          entity_id: timer.manual_on_detection_livingroom_settle
+        data:
+          duration: '00:00:10'
+    - conditions:
+      - condition: trigger
+        id: workroom_seen
+      - condition: state
+        entity_id: input_boolean.manual_on_detection_workroom_armed
+        state: 'off'
+      sequence:
+      - action: timer.start
+        target:
+          entity_id: timer.manual_on_detection_workroom_settle
+        data:
+          duration: '00:00:10'
+    - conditions:
+      - condition: trigger
+        id: bathroom_seen
+      - condition: state
+        entity_id: input_boolean.manual_on_detection_bathroom_armed
+        state: 'off'
+      sequence:
+      - action: timer.start
+        target:
+          entity_id: timer.manual_on_detection_bathroom_settle
+        data:
+          duration: '00:00:10'
+    - conditions:
+      - condition: trigger
+        id: primary_state_change
+      - condition: template
+        value_template: "{{ trigger.to_state is not none and trigger.to_state.state in ['unknown', 'unavailable'] }}"
+      sequence:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.entity_id in ['light.hallbulb1', 'light.hallbulb2'] }}"
+          sequence:
+          - action: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.manual_on_detection_hall_entrance_armed
+          - action: timer.cancel
+            target:
+              entity_id: timer.manual_on_detection_hall_entrance_settle
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.entity_id == 'light.hallbulb3' }}"
+          sequence:
+          - action: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.manual_on_detection_hall_main_armed
+          - action: timer.cancel
+            target:
+              entity_id: timer.manual_on_detection_hall_main_settle
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.entity_id in ['light.lr_kitchen_table_bulbs', 'light.livingroomlineardimmer'] }}"
+          sequence:
+          - action: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.manual_on_detection_livingroom_armed
+          - action: timer.cancel
+            target:
+              entity_id: timer.manual_on_detection_livingroom_settle
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.entity_id == 'light.workroomledmaindimmer' }}"
+          sequence:
+          - action: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.manual_on_detection_workroom_armed
+          - action: timer.cancel
+            target:
+              entity_id: timer.manual_on_detection_workroom_settle
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.entity_id == 'switch.bathroomswitchrouter' }}"
+          sequence:
+          - action: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.manual_on_detection_bathroom_armed
+          - action: timer.cancel
+            target:
+              entity_id: timer.manual_on_detection_bathroom_settle
+    - conditions:
+      - condition: trigger
+        id: primary_state_change
+      - condition: template
+        value_template: "{{ trigger.from_state is not none and trigger.to_state is not none and trigger.from_state.state != trigger.to_state.state }}"
+      sequence:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.entity_id in ['light.hallbulb1', 'light.hallbulb2'] and is_state('input_boolean.manual_on_detection_hall_entrance_armed', 'off') and is_state('input_boolean.manual_on_detection_backend_ready', 'on') and states('light.hallbulb1') not in ['unknown', 'unavailable'] and states('light.hallbulb2') not in ['unknown', 'unavailable'] }}"
+          sequence:
+          - action: timer.start
+            target:
+              entity_id: timer.manual_on_detection_hall_entrance_settle
+            data:
+              duration: '00:00:10'
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.entity_id == 'light.hallbulb3' and is_state('input_boolean.manual_on_detection_hall_main_armed', 'off') and is_state('input_boolean.manual_on_detection_backend_ready', 'on') and states('light.hallbulb3') not in ['unknown', 'unavailable'] }}"
+          sequence:
+          - action: timer.start
+            target:
+              entity_id: timer.manual_on_detection_hall_main_settle
+            data:
+              duration: '00:00:10'
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.entity_id in ['light.lr_kitchen_table_bulbs', 'light.livingroomlineardimmer'] and is_state('input_boolean.manual_on_detection_livingroom_armed', 'off') and is_state('input_boolean.manual_on_detection_backend_ready', 'on') and states('light.lr_kitchen_table_bulbs') not in ['unknown', 'unavailable'] and states('light.livingroomlineardimmer') not in ['unknown', 'unavailable'] }}"
+          sequence:
+          - action: timer.start
+            target:
+              entity_id: timer.manual_on_detection_livingroom_settle
+            data:
+              duration: '00:00:10'
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.entity_id == 'light.workroomledmaindimmer' and is_state('input_boolean.manual_on_detection_workroom_armed', 'off') and is_state('input_boolean.manual_on_detection_backend_ready', 'on') and states('light.workroomledmaindimmer') not in ['unknown', 'unavailable'] }}"
+          sequence:
+          - action: timer.start
+            target:
+              entity_id: timer.manual_on_detection_workroom_settle
+            data:
+              duration: '00:00:10'
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.entity_id == 'switch.bathroomswitchrouter' and is_state('input_boolean.manual_on_detection_bathroom_armed', 'off') and is_state('input_boolean.manual_on_detection_backend_ready', 'on') and states('switch.bathroomswitchrouter') not in ['unknown', 'unavailable'] }}"
+          sequence:
+          - action: timer.start
+            target:
+              entity_id: timer.manual_on_detection_bathroom_settle
+            data:
+              duration: '00:00:10'
+    - conditions:
+      - condition: trigger
+        id: settle_finished
+      sequence:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.event.data.entity_id == 'timer.manual_on_detection_hall_entrance_settle' }}"
+          - condition: template
+            value_template: "{{ is_state('input_boolean.manual_on_detection_backend_ready', 'on') and states('light.hallbulb1') not in ['unknown', 'unavailable'] and states('light.hallbulb2') not in ['unknown', 'unavailable'] and as_timestamp(states.light.hallbulb1.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) and as_timestamp(states.light.hallbulb2.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) }}"
+          sequence:
+          - action: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.manual_on_detection_hall_entrance_armed
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.event.data.entity_id == 'timer.manual_on_detection_hall_main_settle' }}"
+          - condition: template
+            value_template: "{{ is_state('input_boolean.manual_on_detection_backend_ready', 'on') and states('light.hallbulb3') not in ['unknown', 'unavailable'] and as_timestamp(states.light.hallbulb3.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) }}"
+          sequence:
+          - action: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.manual_on_detection_hall_main_armed
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.event.data.entity_id == 'timer.manual_on_detection_livingroom_settle' }}"
+          - condition: template
+            value_template: "{{ is_state('input_boolean.manual_on_detection_backend_ready', 'on') and states('light.lr_kitchen_table_bulbs') not in ['unknown', 'unavailable'] and states('light.livingroomlineardimmer') not in ['unknown', 'unavailable'] and as_timestamp(states.light.lr_kitchen_table_bulbs.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) and as_timestamp(states.light.livingroomlineardimmer.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) }}"
+          sequence:
+          - action: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.manual_on_detection_livingroom_armed
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.event.data.entity_id == 'timer.manual_on_detection_workroom_settle' }}"
+          - condition: template
+            value_template: "{{ is_state('input_boolean.manual_on_detection_backend_ready', 'on') and states('light.workroomledmaindimmer') not in ['unknown', 'unavailable'] and as_timestamp(states.light.workroomledmaindimmer.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) }}"
+          sequence:
+          - action: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.manual_on_detection_workroom_armed
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger.event.data.entity_id == 'timer.manual_on_detection_bathroom_settle' }}"
+          - condition: template
+            value_template: "{{ is_state('input_boolean.manual_on_detection_backend_ready', 'on') and states('switch.bathroomswitchrouter') not in ['unknown', 'unavailable'] and as_timestamp(states.switch.bathroomswitchrouter.last_reported, 0) >= as_timestamp(states('input_datetime.manual_on_detection_bootstrap_started_at'), 0) }}"
+          sequence:
+          - action: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.manual_on_detection_bathroom_armed
+  mode: parallel
+  max: 10
+- id: hall_entrance_manual_on_detector
+  alias: Hall Entrance - Manual On Detector
+  description: Detects a manual entrance-light turn-on after startup synchronization has settled.
+  triggers:
+  - trigger: state
+    entity_id:
+    - light.hallbulb1
+    - light.hallbulb2
+    from: 'off'
+    to: 'on'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.manual_on_detection_hall_entrance_armed
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.hall_entrance_auto_on_flag
+    state: 'off'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.hall_entrance_manual_on_flag
+  mode: single
+- id: '1772371299481'
+  alias: A2a - Hall Main - Turn ON
+  description: "Sensors: HallPIRSensorMain (occupancy) → MQTT,\n         HallPIRSensorBedroomAdvanced (ZG-204ZM: presence + motion_state + illuminance) → MQTT.\nDark check: (sunset/sunrise window) OR (illuminance\
+    \ below threshold). Cooldown: skips auto-on if manually turned off within cooldown. Color temp managed by hourly automation. Waits for light state confirmation before clearing auto_on_flag."
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/HallPIRSensorMain
+    value_template: '{{ value_json.get(''occupancy'', '''') | string | lower }}'
+    payload: 'true'
+  - trigger: mqtt
+    topic: zigbee2mqtt/HallPIRSensorBedroomAdvanced
+    value_template: "{{ value_json.get('presence', false) == true\n   or value_json.get('motion_state', 'none') in ['large', 'small'] }}"
+    payload: 'True'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.shutdown_in_progress
+    state: 'off'
+  - condition: template
+    alias: Skip if light already on (deduplication guard)
+    value_template: '{{ not is_state(''light.hallbulb3'', ''on'') }}'
+  - condition: template
+    value_template: "{% set lux_now = states('sensor.hallpirsensorbedroomadvanced_illuminance') | float(-1) %} {% set lux_threshold = states('input_number.hall_illuminance_threshold_lux') | float(100) %}\
+      \ {% set lux_dark = lux_now >= 0 and lux_now < lux_threshold %}\n{% set sunset_offset_sec = states('input_number.hall_sunset_offset_min') | float(0) * 60 %} {% set sunrise_offset_sec = states('input_number.hall_sunrise_offset_min')\
+      \ | float(0) * 60 %} {% set now_ts = now().timestamp() %} {% set next_rising_ts = as_timestamp(state_attr('sun.sun', 'next_rising')) %} {% set next_setting_ts = as_timestamp(state_attr('sun.sun',\
+      \ 'next_setting')) %} {% set is_night = next_rising_ts < next_setting_ts %} {% if is_night %}\n  {% set last_sunset_ts = next_setting_ts - 86400 %}\n  {% set past_sunset = now_ts >= (last_sunset_ts\
+      \ + sunset_offset_sec) %}\n  {% set before_sunrise = now_ts < (next_rising_ts + sunrise_offset_sec) %}\n  {% set time_dark = past_sunset and before_sunrise %}\n{% else %}\n  {% set last_rising_ts\
+      \ = next_rising_ts - 86400 %}\n  {% set in_post_sunrise = sunrise_offset_sec > 0 and now_ts < (last_rising_ts + sunrise_offset_sec) %}\n  {% set in_pre_sunset = sunset_offset_sec < 0 and now_ts >=\
+      \ (next_setting_ts + sunset_offset_sec) %}\n  {% set time_dark = in_post_sunrise or in_pre_sunset %}\n{% endif %}\n{{ time_dark or lux_dark }}"
+  - condition: state
+    entity_id: timer.hall_main_manual_off_cooldown
+    state: idle
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.hall_main_auto_on_flag
+  - action: light.turn_on
+    target:
+      entity_id: light.hallbulb3
+    data:
+      transition: 1
+  - wait_template: '{{ is_state(''light.hallbulb3'', ''on'') }}'
+    timeout:
+      seconds: 5
+  - if:
+    - condition: template
+      value_template: '{% set cur = state_attr(''light.hallbulb3'', ''brightness'') | int(0) %} {% set min_255 = (states(''input_number.hall_bulbs_min_brightness_pct'') | float(50) / 100 * 255) | int %}
+        {{ cur < min_255 }}'
+    then:
+    - action: light.turn_on
+      target:
+        entity_id: light.hallbulb3
+      data:
+        brightness_pct: '{{ states(''input_number.hall_bulbs_min_brightness_pct'') | int(50) }}'
+  - wait_template: '{{ is_state(''light.hallbulb3'', ''on'') }}'
+    timeout:
+      seconds: 60
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.hall_main_auto_on_flag
+  mode: queued
+  max: 2
+- id: hall_main_auto_off_timer
+  alias: Hall Main - Auto-Off Countdown
+  description: Starts the visible countdown using the existing automatic or manual timeout. Motion cancels it; the timer is the single source of the normal turn-off deadline.
+  triggers:
+  - trigger: homeassistant
+    event: start
+    id: startup
+  - trigger: template
+    value_template: "{{ is_state('binary_sensor.hallpirsensormain_occupancy', 'off')\n   and is_state('binary_sensor.hallpirsensorbedroomadvanced_presence', 'off')\n   and is_state('sensor.hallpirsensorbedroomadvanced_motion_state',\
+      \ 'none') }}"
+    id: clear
+  - trigger: template
+    value_template: "{{ not (is_state('binary_sensor.hallpirsensormain_occupancy', 'off')\n   and is_state('binary_sensor.hallpirsensorbedroomadvanced_presence', 'off')\n   and is_state('sensor.hallpirsensorbedroomadvanced_motion_state',\
+      \ 'none')) }}"
+    id: occupied
+  - trigger: state
+    entity_id: light.hallbulb3
+    to: 'on'
+    id: light_on
+  - trigger: state
+    entity_id: light.hallbulb3
+    to: 'off'
+    id: light_off
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: occupied
+      sequence:
+      - action: timer.cancel
+        target:
+          entity_id: timer.hall_main_auto_off
+    - conditions:
+      - condition: trigger
+        id: light_off
+      sequence:
+      - action: timer.cancel
+        target:
+          entity_id: timer.hall_main_auto_off
+    - conditions:
+      - condition: state
+        entity_id: light.hallbulb3
+        state: 'on'
+      - condition: template
+        value_template: "{{ is_state('binary_sensor.hallpirsensormain_occupancy', 'off')\n   and is_state('binary_sensor.hallpirsensorbedroomadvanced_presence', 'off')\n   and is_state('sensor.hallpirsensorbedroomadvanced_motion_state',\
+          \ 'none') }}"
+      - condition: template
+        value_template: '{{ not (trigger.id == ''startup'' and is_state(''timer.hall_main_auto_off'', ''active'')) }}'
+      sequence:
+      - action: timer.start
+        target:
+          entity_id: timer.hall_main_auto_off
+        data:
+          duration:
+            minutes: "{{ states('input_number.hall_light_timeout_min') | float(1)\n   if trigger.id == 'startup'\n   else states('input_number.hall_light_manual_timeout_min') | float(30)\n   if is_state('input_boolean.hall_main_manual_on_flag',\
+              \ 'on')\n   else states('input_number.hall_light_timeout_min') | float(1) }}"
+  mode: restart
+- id: '1772372224360'
+  alias: A2b - Hall Main - Turn OFF
+  description: Turns off when the visible Hall Main countdown finishes. The existing zombie failsafe still turns it off if either sensor stays ON for its configured timeout. Auto-off flag is held until
+    light state confirms off.
+  triggers:
+  - trigger: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.hall_main_auto_off
+  - trigger: state
+    entity_id: binary_sensor.hallpirsensormain_occupancy
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.hall_light_zombie_timeout_min'') | float(30) }}'
+  - trigger: state
+    entity_id: binary_sensor.hallpirsensorbedroomadvanced_presence
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.hall_light_zombie_timeout_min'') | float(30) }}'
+  conditions:
+  - condition: template
+    value_template: '{{ is_state(''light.hallbulb3'', ''on'') }}'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.hall_main_auto_off_flag
+  - action: light.turn_off
+    target:
+      entity_id: light.hallbulb3
+    data:
+      transition: 2
+  - wait_template: '{{ is_state(''light.hallbulb3'', ''off'') }}'
+    timeout:
+      seconds: 10
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.hall_main_auto_off_flag
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.hall_main_manual_on_flag
+  mode: single
+- id: hall_main_manual_on_detector
+  alias: Hall Main - Manual On Detector
+  description: Detects when hallbulb3 is turned on manually after startup synchronization has settled.
+  triggers:
+  - trigger: state
+    entity_id: light.hallbulb3
+    from: 'off'
+    to: 'on'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.manual_on_detection_hall_main_armed
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.hall_main_auto_on_flag
+    state: 'off'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.hall_main_manual_on_flag
+  mode: single
+- id: '1772375826834'
+  alias: LR1 - Living Room - Turn ON
+  description: 'Sensors LivingRoomPIRSensorVertical MQTT (presence), LivingRoomPIREntrance MQTT (occupancy). Dark check: max illuminance across available sensors below threshold OR sunset/sunrise timing
+    — either condition is sufficient. If at least one sensor reads above threshold, lux check fails regardless of trigger source. Skip if other lights already on. Cooldown skips auto-on if manually turned
+    off within cooldown. Waits for light state confirmation before clearing auto_on_flag.
+
+    '
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/LivingRoomPIRSensorVertical
+    value_template: '{{ value_json.get(''presence'') | string | lower }}'
+    payload: 'true'
+  - trigger: mqtt
+    topic: zigbee2mqtt/LivingRoomPIREntrance
+    value_template: '{{ value_json.get(''occupancy'') | string | lower }}'
+    payload: 'true'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.shutdown_in_progress
+    state: 'off'
+  - condition: template
+    alias: Skip if lights already on (deduplication guard)
+    value_template: "{{ not is_state('light.lr_kitchen_table_bulbs', 'on') and\n   not is_state('light.livingroomlineardimmer', 'on') }}\n"
+  - condition: template
+    alias: Dark check — max of available sensors below threshold OR timing window
+    value_template: "{# --- Illuminance: max of available sensors only --- #} {% set vertical_available = has_value('sensor.livingroompirsensorvertical_illuminance') %} {% set entrance_available = has_value('sensor.livingroompirentrance_illuminance')\
+      \ %} {% set vertical_lux = states('sensor.livingroompirsensorvertical_illuminance') | float(0) %} {% set entrance_lux = states('sensor.livingroompirentrance_illuminance') | float(0) %}\n{# Build list\
+      \ of available readings only — unavailable sensors excluded entirely #} {% set available_lux = (\n  ([vertical_lux] if vertical_available else []) +\n  ([entrance_lux] if entrance_available else [])\n\
+      ) %} {% set any_available = available_lux | length > 0 %} {% set max_lux = available_lux | max if any_available else 0 %} {% set threshold = states('input_number.livingroom_entrance_illuminance_threshold_lux')\
+      \ | float(50) %} {% set combined_dark = any_available and max_lux < threshold %}\n{# --- Timing --- #} {% set sunset_offset_sec = states('input_number.livingroom_sunset_offset_min') | float(0) * 60\
+      \ %} {% set sunrise_offset_sec = states('input_number.livingroom_sunrise_offset_min') | float(0) * 60 %} {% set now_ts = now().timestamp() %} {% set nextrising_ts = as_timestamp(state_attr('sun.sun',\
+      \ 'next_rising')) %} {% set nextsetting_ts = as_timestamp(state_attr('sun.sun', 'next_setting')) %} {% set is_night = nextrising_ts < nextsetting_ts %} {% if is_night %}\n  {% set last_sunset_ts =\
+      \ nextsetting_ts - 86400 %}\n  {% set past_sunset = now_ts > last_sunset_ts + sunset_offset_sec %}\n  {% set before_sunrise = now_ts < nextrising_ts + sunrise_offset_sec %}\n  {% set time_dark = past_sunset\
+      \ and before_sunrise %}\n{% else %}\n  {% set last_rising_ts = nextrising_ts - 86400 %}\n  {% set in_post_sunrise = sunrise_offset_sec > 0 and now_ts < last_rising_ts + sunrise_offset_sec %}\n  {%\
+      \ set in_pre_sunset = sunset_offset_sec < 0 and now_ts >= nextsetting_ts + sunset_offset_sec %}\n  {% set time_dark = in_post_sunrise or in_pre_sunset %}\n{% endif %}\n{# --- Either condition is sufficient\
+      \ --- #} {{ combined_dark or time_dark }}\n"
+  - condition: template
+    value_template: "{{ not is_state('light.livingroomcirclelightdimmer', 'on') and\n   not is_state('light.livingroombulbtableleft', 'on') and\n   not is_state('light.livingroombulbtablemiddle', 'on')\
+      \ and\n   not is_state('light.livingroomlineardimmer', 'on') }}\n"
+  - condition: state
+    entity_id: timer.livingroom_manual_off_cooldown
+    state: idle
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.livingroom_auto_on_flag
+  - variables:
+      bulbs_were_already_on: '{{ is_state(''light.lr_kitchen_table_bulbs'', ''on'') }}'
+      linear_should_turn_on: '{{ not is_state(''light.lr_kitchen_table_bulbs'', ''on'') }}'
+  - action: light.turn_on
+    target:
+      entity_id: light.lr_kitchen_table_bulbs
+  - if:
+    - condition: template
+      value_template: '{{ linear_should_turn_on }}'
+    then:
+    - action: light.turn_on
+      target:
+        entity_id: light.livingroomlineardimmer
+  - wait_template: "{{ is_state('light.lr_kitchen_table_bulbs', 'on') and\n   (not linear_should_turn_on or is_state('light.livingroomlineardimmer', 'on')) }}\n"
+    timeout:
+      seconds: 5
+  - if:
+    - condition: template
+      value_template: '{% set cur = state_attr(''light.livingroomlineardimmer'', ''brightness'') | int(0) %} {% set min255 = (states(''input_number.livingroom_linear_min_brightness_pct'') | float(30) /
+        100 * 255) | int %} {{ linear_should_turn_on and is_state(''light.livingroomlineardimmer'', ''on'') and cur < min255 }}
+
+        '
+    then:
+    - action: light.turn_on
+      target:
+        entity_id: light.livingroomlineardimmer
+      data:
+        brightness_pct: '{{ states(''input_number.livingroom_linear_min_brightness_pct'') | int(30) }}'
+  - wait_template: "{{ is_state('light.lr_kitchen_table_bulbs', 'on') and
+   (not linear_should_turn_on or is_state('light.livingroomlineardimmer', 'on')) }}"
+    timeout:
+      seconds: 60
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.livingroom_auto_on_flag
+  mode: queued
+  max: 2
+- id: '1772376969321'
+  alias: LR2 - Living Room - Turn OFF
+  description: Turns off lr_kitchen_table_bulbs + livingroomlineardimmer when both sensors quiet. Timeout extended when manually turned on. Zombie failsafe if either sensor gets stuck ON. Auto-off flag
+    held until light state confirms off to prevent false cooldown trigger from Z2M round-trip delay.
+  triggers:
+  - trigger: template
+    value_template: "{{ states('binary_sensor.livingroompirsensorvertical_presence') in ['off', 'unknown', 'unavailable']\n   and states('binary_sensor.livingroompirentrance_occupancy') in ['off', 'unknown',\
+      \ 'unavailable'] }}"
+    for:
+      minutes: "{{ states('input_number.livingroom_light_manual_timeout_min') | float(120)\n   if is_state('input_boolean.livingroom_manual_on_flag', 'on')\n   else states('input_number.livingroom_light_timeout_min')\
+        \ | float(30) }}"
+  - trigger: state
+    entity_id: binary_sensor.livingroompirsensorvertical_presence
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.livingroom_light_zombie_timeout_min'') | float(360) }}'
+  - trigger: state
+    entity_id: binary_sensor.livingroompirentrance_occupancy
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.livingroom_light_zombie_timeout_min'') | float(360) }}'
+  conditions:
+  - condition: template
+    value_template: "{{ is_state('light.lr_kitchen_table_bulbs', 'on')\n   or is_state('light.livingroomlineardimmer', 'on') }}"
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.livingroom_auto_off_flag
+  - action: light.turn_off
+    target:
+      entity_id:
+      - light.lr_kitchen_table_bulbs
+      - light.livingroomlineardimmer
+    data:
+      transition: 2
+  - wait_template: "{{ is_state('light.lr_kitchen_table_bulbs', 'off')\n   and is_state('light.livingroomlineardimmer', 'off') }}"
+    timeout:
+      seconds: 10
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.livingroom_auto_off_flag
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.livingroom_manual_on_flag
+  mode: single
+- id: livingroom_manual_on_detector
+  alias: Living Room - Manual On Detector
+  description: Detects when living room lights are turned on manually after startup synchronization has settled.
+  triggers:
+  - trigger: state
+    entity_id: light.lr_kitchen_table_bulbs
+    from: 'off'
+    to: 'on'
+  - trigger: state
+    entity_id: light.livingroomlineardimmer
+    from: 'off'
+    to: 'on'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.manual_on_detection_livingroom_armed
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.livingroom_auto_on_flag
+    state: 'off'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.livingroom_manual_on_flag
+  mode: single
+- id: '1772380568342'
+  alias: WR1 - Workroom - Turn ON
+  description: 'Sensor: WorkRoomPIREntrance → MQTT (ZG-204ZL). Dark check: sunset+offset / sunrise+offset. Skip if WorkroomTableLeftDimmer is on. Cooldown: skips auto-on if manually turned off within cooldown.
+    Target: light.workroomledmaindimmer. Waits for light state confirmation before clearing auto_on_flag to prevent false manual-on detection from Z2M MQTT round-trip delay.'
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/WorkRoomPIREntrance
+    value_template: '{{ value_json.get(''occupancy'', '''') | string | lower }}'
+    payload: 'true'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.shutdown_in_progress
+    state: 'off'
+  - condition: template
+    value_template: "{% set sunset_offset_sec = states('input_number.workroom_sunset_offset_min') | float(0) * 60 %} {% set sunrise_offset_sec = states('input_number.workroom_sunrise_offset_min') | float(0)\
+      \ * 60 %} {% set now_ts = now().timestamp() %} {% set next_rising_ts = as_timestamp(state_attr('sun.sun', 'next_rising')) %} {% set next_setting_ts = as_timestamp(state_attr('sun.sun', 'next_setting'))\
+      \ %} {% set is_night = next_rising_ts < next_setting_ts %} {% if is_night %}\n  {% set last_sunset_ts = next_setting_ts - 86400 %}\n  {% set past_sunset = now_ts >= (last_sunset_ts + sunset_offset_sec)\
+      \ %}\n  {% set before_sunrise = now_ts < (next_rising_ts + sunrise_offset_sec) %}\n  {{ past_sunset and before_sunrise }}\n{% else %}\n  {% set last_rising_ts = next_rising_ts - 86400 %}\n  {% set\
+      \ in_post_sunrise = sunrise_offset_sec > 0 and now_ts < (last_rising_ts + sunrise_offset_sec) %}\n  {% set in_pre_sunset = sunset_offset_sec < 0 and now_ts >= (next_setting_ts + sunset_offset_sec)\
+      \ %}\n  {{ in_post_sunrise or in_pre_sunset }}\n{% endif %}"
+  - condition: template
+    value_template: '{{ states(''light.workroomtableleftdimmer'') not in [''on''] }}'
+  - condition: state
+    entity_id: timer.workroom_manual_off_cooldown
+    state: idle
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.workroom_auto_on_flag
+  - action: light.turn_on
+    target:
+      entity_id: light.workroomledmaindimmer
+    data: {}
+  - wait_template: '{{ is_state(''light.workroomledmaindimmer'', ''on'') }}'
+    timeout:
+      seconds: 5
+  - if:
+    - condition: template
+      value_template: '{% set cur = state_attr(''light.workroomledmaindimmer'', ''brightness'') | int(0) %} {% set min_255 = (states(''input_number.workroom_dimmer_min_brightness_pct'') | float(50) / 100
+        * 255) | int %} {{ cur < min_255 }}'
+    then:
+    - action: light.turn_on
+      target:
+        entity_id: light.workroomledmaindimmer
+      data:
+        brightness_pct: '{{ states(''input_number.workroom_dimmer_min_brightness_pct'') | int(50) }}'
+  - wait_template: '{{ is_state(''light.workroomledmaindimmer'', ''on'') }}'
+    timeout:
+      seconds: 60
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.workroom_auto_on_flag
+  mode: restart
+- id: '1772380818957'
+  alias: WR2 - Workroom - Turn OFF
+  description: Turns off workroomledmaindimmer when sensor quiet. Timeout extended when manually turned on. Zombie failsafe if sensor gets physically stuck ON. Auto-off flag held until light state confirms
+    off to prevent false cooldown trigger from Z2M round-trip delay.
+  triggers:
+  - trigger: template
+    value_template: '{{ states(''binary_sensor.workroompirentrance_occupancy'') in [''off'', ''unknown'', ''unavailable''] }}'
+    for:
+      minutes: "{{ states('input_number.workroom_light_manual_timeout_min') | float(120)\n   if is_state('input_boolean.workroom_manual_on_flag', 'on')\n   else states('input_number.workroom_light_timeout_min')\
+        \ | float(15) }}"
+  - trigger: state
+    entity_id: binary_sensor.workroompirentrance_occupancy
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.workroom_light_zombie_timeout_min'') | float(240) }}'
+  conditions:
+  - condition: state
+    entity_id: light.workroomledmaindimmer
+    state: 'on'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.workroom_auto_off_flag
+  - action: light.turn_off
+    target:
+      entity_id: light.workroomledmaindimmer
+    data:
+      transition: 2
+  - wait_template: '{{ is_state(''light.workroomledmaindimmer'', ''off'') }}'
+    timeout:
+      seconds: 10
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.workroom_auto_off_flag
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.workroom_manual_on_flag
+  mode: single
+- id: workroom_manual_on_detector
+  alias: Workroom - Manual On Detector
+  description: Detects when workroom main dimmer is turned on manually after startup synchronization has settled.
+  triggers:
+  - trigger: state
+    entity_id: light.workroomledmaindimmer
+    from: 'off'
+    to: 'on'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.manual_on_detection_workroom_armed
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.workroom_auto_on_flag
+    state: 'off'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.workroom_manual_on_flag
+  mode: single
+- id: '1772400941264'
+  alias: BR1 - Bathroom - Turn ON
+  description: 'Sensors BathroomPIR (ZG-204ZL, occupancy) and BathroomPIREntrance (ZG-204ZV, presence) via MQTT. Turns on when EITHER fires. Blocked by cooldown timer OR manual_on_flag (set synchronously
+    by Cooldown to prevent race condition on simultaneous manual-off + sensor fire).
+
+    '
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/BathroomPIR
+    value_template: '{{ value_json.get(''occupancy'') | string | lower }}'
+    payload: 'true'
+  - trigger: mqtt
+    topic: zigbee2mqtt/BathroomPIREntrance
+    value_template: '{{ value_json.get(''presence'') | string | lower }}'
+    payload: 'true'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.shutdown_in_progress
+    state: 'off'
+  - condition: template
+    alias: Skip if switch already on (deduplication guard)
+    value_template: '{{ not is_state(''switch.bathroomswitchrouter'', ''on'') }}'
+  - condition: state
+    entity_id: timer.bathroom_manual_off_cooldown
+    state: idle
+  - condition: state
+    entity_id: input_boolean.bathroom_manual_on_flag
+    state: 'off'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.bathroom_auto_on_flag
+  - action: switch.turn_on
+    target:
+      entity_id: switch.bathroomswitchrouter
+  - wait_template: '{{ is_state(''switch.bathroomswitchrouter'', ''on'') }}'
+    timeout:
+      seconds: 60
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.bathroom_auto_on_flag
+  mode: queued
+  max: 2
+- id: '1772401138973'
+  alias: BR2 - Bathroom - Turn OFF
+  description: Turns off BathroomSwitchRouter when BOTH sensors are simultaneously clear. Timeout extended when manually turned on. Zombie failsafe if either sensor gets physically stuck ON. Auto-off flag
+    held until switch state confirms off to prevent false cooldown trigger from Z2M round-trip delay.
+  triggers:
+  - trigger: template
+    value_template: "{{ states('binary_sensor.bathroompir_occupancy') in ['off', 'unknown', 'unavailable']\n   and states('binary_sensor.bathroompirentrance_presence') in ['off', 'unknown', 'unavailable']\
+      \ }}"
+    for:
+      minutes: "{{ states('input_number.bathroom_light_manual_timeout_min') | float(30)\n   if is_state('input_boolean.bathroom_manual_on_flag', 'on')\n   else states('input_number.bathroom_light_timeout_min')\
+        \ | float(5) }}"
+  - trigger: state
+    entity_id: binary_sensor.bathroompir_occupancy
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.bathroom_light_zombie_timeout_min'') | float(30) }}'
+  - trigger: state
+    entity_id: binary_sensor.bathroompirentrance_presence
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.bathroom_light_zombie_timeout_min'') | float(30) }}'
+  conditions:
+  - condition: state
+    entity_id: switch.bathroomswitchrouter
+    state: 'on'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.bathroom_auto_off_flag
+  - action: switch.turn_off
+    target:
+      entity_id: switch.bathroomswitchrouter
+  - wait_template: '{{ is_state(''switch.bathroomswitchrouter'', ''off'') }}'
+    timeout:
+      seconds: 10
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.bathroom_auto_off_flag
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.bathroom_manual_on_flag
+  mode: single
+- id: bathroom_manual_on_detector
+  alias: Bathroom - Manual On Detector
+  description: Detects when bathroom switch is turned on manually after startup synchronization has settled.
+  triggers:
+  - trigger: state
+    entity_id: switch.bathroomswitchrouter
+    from: 'off'
+    to: 'on'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.manual_on_detection_bathroom_armed
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.bathroom_auto_on_flag
+    state: 'off'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.bathroom_manual_on_flag
+  mode: single
+- id: cooldown_hall_entrance_manual_off
+  alias: Cooldown - Hall Entrance Manual Off
+  description: Detects manual turn-off of hall entrance BULBS (not shoes LED which has its own cooldown). If auto_off_flag is OFF when lights turn off, it was manual. Starts a long blocking timer immediately,
+    waits for all sensors to clear, then restarts with the short cooldown.
+  triggers:
+  - trigger: state
+    entity_id:
+    - light.hallbulb1
+    - light.hallbulb2
+    from: 'on'
+    to: 'off'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.hall_entrance_auto_off_flag
+    state: 'off'
+  actions:
+  - action: timer.start
+    target:
+      entity_id: timer.hall_entrance_bulbs_manual_off_cooldown
+    data:
+      duration: '300'
+  - wait_template: "{{ states('binary_sensor.hallpirsensorentrance_occupancy') in ['off', 'unknown', 'unavailable']\n   and states('binary_sensor.hallcabinetpir_presence') in ['off', 'unknown', 'unavailable']\n\
+      \   and states('binary_sensor.hallpiradvanced_occupancy') in ['off', 'unknown', 'unavailable'] }}"
+    timeout:
+      seconds: 300
+  - action: timer.start
+    target:
+      entity_id: timer.hall_entrance_bulbs_manual_off_cooldown
+    data:
+      duration: '{{ states(''input_number.manual_off_cooldown_sec'') | int(5) }}'
+  mode: single
+- id: battery_low_device_warning
+  alias: System - Low Battery Device Warning
+  description: Sends a persistent and phone notification whenever the list of battery-powered devices below 30% changes.
+  triggers:
+  - trigger: state
+    entity_id: sensor.low_battery_devices
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.low_battery_devices
+    above: 0
+  actions:
+  - action: persistent_notification.create
+    data:
+      notification_id: low_battery_devices
+      title: Battery needs attention
+      message: '{{ states(''sensor.low_battery_devices'') }} device(s) below 30%: {{ state_attr(''sensor.low_battery_devices'', ''devices'') }}'
+  - action: notify.send_message
+    target:
+      device_id:
+      - 28786d3d9f76324d3752d696ff790b47
+      - 7e42f4d1524b847ff17ada7967d6b6b0
+    data:
+      title: Battery needs attention
+      message: '{{ states(''sensor.low_battery_devices'') }} device(s) below 30%: {{ state_attr(''sensor.low_battery_devices'', ''devices'') }}'
+  mode: queued
+  max: 10
+- id: cooldown_hall_main_manual_off
+  alias: Cooldown - Hall Main Manual Off
+  description: Detects manual turn-off of hall main light. If auto_off_flag is OFF when light turns off, it was manual. Starts a long blocking timer immediately, waits for all sensors to clear, then restarts
+    with the short cooldown.
+  triggers:
+  - trigger: state
+    entity_id: light.hallbulb3
+    from: 'on'
+    to: 'off'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.hall_main_auto_off_flag
+    state: 'off'
+  actions:
+  - action: timer.start
+    target:
+      entity_id: timer.hall_main_manual_off_cooldown
+    data:
+      duration: '300'
+  - wait_template: "{{ is_state('binary_sensor.hallpirsensormain_occupancy', 'off')\n   and is_state('binary_sensor.hallpirsensorbedroomadvanced_presence', 'off')\n   and is_state('sensor.hallpirsensorbedroomadvanced_motion_state',\
+      \ 'none') }}"
+    timeout:
+      seconds: 300
+  - action: timer.start
+    target:
+      entity_id: timer.hall_main_manual_off_cooldown
+    data:
+      duration: '{{ states(''input_number.manual_off_cooldown_sec'') | int(5) }}'
+  mode: single
+- id: cooldown_livingroom_manual_off
+  alias: Cooldown - Living Room Manual Off
+  description: Detects manual turn-off of living room lights. If auto_off_flag is OFF when either light turns off, it was manual. Starts a long blocking timer immediately, waits for all sensors to clear,
+    then restarts with the short cooldown.
+  triggers:
+  - trigger: state
+    entity_id: light.lr_kitchen_table_bulbs
+    from: 'on'
+    to: 'off'
+  - trigger: state
+    entity_id: light.livingroomlineardimmer
+    from: 'on'
+    to: 'off'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.livingroom_auto_off_flag
+    state: 'off'
+  actions:
+  - action: timer.start
+    target:
+      entity_id: timer.livingroom_manual_off_cooldown
+    data:
+      duration: '300'
+  - wait_template: "{{ states('binary_sensor.livingroompirsensorvertical_presence') in ['off', 'unknown', 'unavailable']\n   and states('binary_sensor.livingroompirentrance_occupancy') in ['off', 'unknown',\
+      \ 'unavailable'] }}"
+    timeout:
+      seconds: 300
+  - action: timer.start
+    target:
+      entity_id: timer.livingroom_manual_off_cooldown
+    data:
+      duration: '{{ states(''input_number.manual_off_cooldown_sec'') | int(5) }}'
+  mode: single
+- id: cooldown_workroom_manual_off
+  alias: Cooldown - Workroom Manual Off
+  description: Detects manual turn-off of workroom main dimmer. If auto_off_flag is OFF when light turns off, it was manual. Starts a long blocking timer immediately, waits for all sensors to clear, then
+    restarts with the short cooldown.
+  triggers:
+  - trigger: state
+    entity_id: light.workroomledmaindimmer
+    from: 'on'
+    to: 'off'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.workroom_auto_off_flag
+    state: 'off'
+  actions:
+  - action: timer.start
+    target:
+      entity_id: timer.workroom_manual_off_cooldown
+    data:
+      duration: '300'
+  - wait_template: '{{ states(''binary_sensor.workroompirentrance_occupancy'') in [''off'', ''unknown'', ''unavailable''] }}'
+    timeout:
+      seconds: 300
+  - action: timer.start
+    target:
+      entity_id: timer.workroom_manual_off_cooldown
+    data:
+      duration: '{{ states(''input_number.manual_off_cooldown_sec'') | int(5) }}'
+  mode: single
+- id: cooldown_bathroom_manual_off
+  alias: Cooldown - Bathroom Manual Off
+  description: 'Detects manual turn-off of bathroom switch. Sets manual_on_flag synchronously as first action — this is the immediate lock that prevents BR1 from re-firing in the same event cycle due to
+    active sensors. Starts 300s blocking timer, waits for all sensors to clear, restarts with short cooldown, then clears manual_on_flag only after short cooldown fully expires.
+
+    '
+  triggers:
+  - trigger: state
+    entity_id: switch.bathroomswitchrouter
+    from: 'on'
+    to: 'off'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.bathroom_auto_off_flag
+    state: 'off'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.bathroom_manual_on_flag
+  - action: timer.start
+    target:
+      entity_id: timer.bathroom_manual_off_cooldown
+    data:
+      duration: 300
+  - wait_template: "{{ states('binary_sensor.bathroompir_occupancy') in ['off', 'unknown', 'unavailable'] and\n   states('binary_sensor.bathroompirentrance_presence') in ['off', 'unknown', 'unavailable']\
+      \ }}\n"
+    timeout:
+      seconds: 300
+  - action: timer.start
+    target:
+      entity_id: timer.bathroom_manual_off_cooldown
+    data:
+      duration: '{{ states(''input_number.manual_off_cooldown_sec'') | int(5) }}'
+  - wait_template: '{{ is_state(''timer.bathroom_manual_off_cooldown'', ''idle'') }}'
+    timeout:
+      seconds: 60
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.bathroom_manual_on_flag
+  mode: single
+- id: '1772404025223'
+  alias: IKEA RODRET → Kitchen Table Bulbs (Smooth)
+  description: IKEA E2201 RODRET — all 5 confirmed actions. brightness_move rate 83 matched from device action_rate.
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtLivingRoomTableBulbsDimmer/action
+    payload: brightness_move_up
+    id: dim_up
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtLivingRoomTableBulbsDimmer/action
+    payload: brightness_move_down
+    id: dim_down
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtLivingRoomTableBulbsDimmer/action
+    payload: brightness_stop
+    id: dim_stop
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtLivingRoomTableBulbsDimmer/action
+    payload: 'on'
+    id: turn_on
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtLivingRoomTableBulbsDimmer/action
+    payload: 'off'
+    id: turn_off
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: dim_up
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Kitchen Table Bulbs/set
+          payload: '{"brightness_move": 83}'
+          qos: 0
+          retain: false
+    - conditions:
+      - condition: trigger
+        id: dim_down
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Kitchen Table Bulbs/set
+          payload: '{"brightness_move": -83}'
+          qos: 0
+          retain: false
+    - conditions:
+      - condition: trigger
+        id: dim_stop
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Kitchen Table Bulbs/set
+          payload: '{"brightness_move": 0}'
+          qos: 0
+          retain: false
+    - conditions:
+      - condition: trigger
+        id: turn_on
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Kitchen Table Bulbs/set
+          payload: '{"state": "ON"}'
+          qos: 0
+          retain: false
+    - conditions:
+      - condition: trigger
+        id: turn_off
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Kitchen Table Bulbs/set
+          payload: '{"state": "OFF", "transition": 2}'
+          qos: 0
+          retain: false
+  mode: restart
+  max_exceeded: silent
+- id: '1773172018088'
+  alias: Door Open → Afternoon/Evening Router Power On
+  description: When the front door opens after 1 PM (any day), ensure the router is powered on.
+  triggers:
+  - alias: Front door opens
+    trigger: state
+    entity_id: binary_sensor.front_door
+    from: 'off'
+    to: 'on'
+  conditions:
+  - alias: Afternoon/evening window (any day)
+    condition: time
+    after: '13:00:00'
+    before: '23:59:59'
+  actions:
+  - alias: Ensure router is powered on
+    action: script.ensure_router_power_on_with_retries
+    metadata: {}
+    data: {}
+  mode: restart
+- id: '1751837333666'
+  alias: System / Release Supportive Socket Child Locks
+  description: Releases the child-lock group only. It does not change outlet power.
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.button_sockets_supportive
+    from: null
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      device_id: 441068f42159f47be4e6590d2e371fbb
+  mode: single
+- id: '1773473652679'
+  alias: BR Lights | BedroomLightColors Remote
+  description: '4-button remote controlling Bedroom Lights Z2M group. Single press: color temp only. Hold: brightness presets. Button 4 double: Warmest.'
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/BedroomLightColors/action
+    id: remote_action
+  actions:
+  - if:
+    - condition: state
+      entity_id: switch.bedroomdimmer_relay
+      state: 'off'
+    then:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.bedroomdimmer_relay
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 1
+        milliseconds: 300
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''1_single'' }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Bedroom Lights/set
+          payload: '{"color_temp": 250}'
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''2_single'' }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Bedroom Lights/set
+          payload: '{"color_temp": 290}'
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''3_single'' }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Bedroom Lights/set
+          payload: '{"color_temp": 355}'
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''4_single'' }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Bedroom Lights/set
+          payload: '{"color_temp": 410}'
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''4_double'' }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Bedroom Lights/set
+          payload: '{"color_temp": 454}'
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''1_hold'' }}'
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.bedroom_lights
+        data:
+          brightness_pct: 75
+          transition: 0.4
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''2_hold'' }}'
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.bedroom_lights
+        data:
+          brightness_pct: 100
+          transition: 0.4
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''3_hold'' }}'
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.bedroom_lights
+        data:
+          brightness_pct: 50
+          transition: 0.4
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''4_hold'' }}'
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.bedroom_lights
+        data:
+          brightness_pct: 25
+          transition: 0.4
+  mode: single
+  max_exceeded: silent
+- id: butt_bedroom_cabinet_scenes_brightness
+  alias: 'ButtBedroomCabinet: Color Temp + Brightness (Bedroom Lights)'
+  description: 'IKEA E2001/E2002 5-button remote. Left/Right: cycle color temps. On/Off: toggle. Hold Up/Down: smooth brightness. Auto-powers relay if off.'
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/ButtBedroomCabinet/action
+    id: remote_action
+  conditions: []
+  actions:
+  - if:
+    - condition: state
+      entity_id: switch.bedroomdimmer_relay
+      state: 'off'
+    then:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.bedroomdimmer_relay
+    - delay:
+        seconds: 2
+  - variables:
+      scenes:
+      - Cold
+      - Neutral
+      - Semi-Warm
+      - Warm
+      - Warmest
+      scene_mireds:
+        Cold: 250
+        Neutral: 290
+        Semi-Warm: 355
+        Warm: 410
+        Warmest: 454
+      current: '{{ states(''input_select.bedroom_lights_scene'') }}'
+      current_idx: '{{ scenes.index(current) if current in scenes else 0 }}'
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''on'' }}'
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.bedroom_lights
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''off'' }}'
+      sequence:
+      - action: light.turn_off
+        target:
+          entity_id: light.bedroom_lights
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''arrow_right_click'' }}'
+      sequence:
+      - variables:
+          next_idx: '{{ (current_idx + 1) % (scenes | length) }}'
+          next_scene: '{{ scenes[next_idx | int] }}'
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Bedroom Lights/set
+          payload: '{"color_temp": {{ scene_mireds[next_scene] }}}'
+      - action: input_select.select_option
+        target:
+          entity_id: input_select.bedroom_lights_scene
+        data:
+          option: '{{ next_scene }}'
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''arrow_left_click'' }}'
+      sequence:
+      - variables:
+          prev_idx: '{{ (current_idx - 1) % (scenes | length) }}'
+          prev_scene: '{{ scenes[prev_idx | int] }}'
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Bedroom Lights/set
+          payload: '{"color_temp": {{ scene_mireds[prev_scene] }}}'
+      - action: input_select.select_option
+        target:
+          entity_id: input_select.bedroom_lights_scene
+        data:
+          option: '{{ prev_scene }}'
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''brightness_move_up'' }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Bedroom Lights/set
+          payload: '{"brightness_move": 83}'
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''brightness_move_down'' }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Bedroom Lights/set
+          payload: '{"brightness_move": -83}'
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == ''brightness_stop'' }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Bedroom Lights/set
+          payload: '{"brightness_move": 0}'
+  mode: restart
+  max_exceeded: silent
+- id: '1773515703152'
+  alias: Hall Bulbs - Scheduled Color Temperature
+  description: 'Sets Hall bulbs at schedule boundaries and when a Hall bulb turns on. Schedule: coolest at midday (153), warmest at night (500).'
+  triggers:
+  - trigger: time
+    at:
+    - 05:00:00
+    - 08:00:00
+    - '15:00:00'
+    - '17:00:00'
+    - '19:00:00'
+    - '20:00:00'
+  - trigger: state
+    entity_id:
+    - light.hallbulb1
+    - light.hallbulb2
+    - light.hallbulb3
+    to: 'on'
+  actions:
+  - variables:
+      h: '{{ now().hour }}'
+      target_mireds: "{% if h >= 20 or h <= 4 %}\n  500\n{% elif h == 5 %}\n  370\n{% elif h <= 7 %}\n  250\n{% elif h <= 14 %}\n  153\n{% elif h <= 16 %}\n  250\n{% elif h <= 18 %}\n  370\n{% elif h ==\
+        \ 19 %}\n  454\n{% endif %}\n"
+  - action: mqtt.publish
+    data:
+      topic: zigbee2mqtt/HallBulb1/set
+      payload: '{"color_temp": {{ target_mireds }}}'
+  - action: mqtt.publish
+    data:
+      topic: zigbee2mqtt/HallBulb2/set
+      payload: '{"color_temp": {{ target_mireds }}}'
+  - action: mqtt.publish
+    data:
+      topic: zigbee2mqtt/HallBulb3/set
+      payload: '{"color_temp": {{ target_mireds }}}'
+  mode: single
+- id: '1769552351275'
+  alias: Boot - deterministic EMQX then Zigbee2MQTT
+  description: Starting zigbee2mqtt once emqx is ready
+  triggers:
+  - event: start
+    trigger: homeassistant
+  actions:
+  - wait_template: "{{ states(emqx_running) not in ['unknown','unavailable','none']\n   and states(z2m_running) not in ['unknown','unavailable','none'] }}\n"
+    timeout: 00:05:00
+    continue_on_timeout: false
+  - choose:
+    - conditions: '{{ is_state(emqx_running, ''off'') }}'
+      sequence:
+      - data:
+          addon: '{{ emqx_slug }}'
+        action: hassio.addon_start
+      - wait_template: '{{ is_state(emqx_running, ''on'') }}'
+        timeout: 00:02:00
+        continue_on_timeout: false
+  - data:
+      topic: '{{ mqtt_ok_topic }}'
+      payload: ok
+      retain: true
+    action: mqtt.publish
+  - wait_template: '{{ is_state(mqtt_ok_sensor, ''ok'') }}'
+    timeout: 00:01:00
+    continue_on_timeout: false
+  - repeat:
+      count: 3
+      sequence:
+      - data:
+          addon: '{{ z2m_slug }}'
+        action: hassio.addon_start
+      - wait_template: '{{ is_state(z2m_running, ''on'') }}'
+        timeout: 00:02:00
+        continue_on_timeout: true
+      - choose:
+        - conditions: '{{ is_state(z2m_running, ''on'') }}'
+          sequence:
+          - stop: Zigbee2MQTT is running
+      - data:
+          addon: '{{ z2m_slug }}'
+        action: hassio.addon_restart
+  mode: single
+  variables:
+    emqx_slug: a0d7b954_emqx
+    z2m_slug: 45df7312_zigbee2mqtt
+    emqx_running: binary_sensor.emqx_running
+    z2m_running: binary_sensor.zigbee2mqtt_running
+    mqtt_ok_sensor: sensor.mqtt_healthcheck
+    mqtt_ok_topic: ha/healthcheck
+- id: security_entry_door_open_audible_alert
+  alias: Security / Entry / Door Open Audible Alert
+  description: Plays the selected Doorbell on every door-open transition, then a separate reminder after the configured delay and each further minute while it remains open. A close cancels the reminder
+    immediately.
+  triggers:
+  - trigger: state
+    entity_id: binary_sensor.doorsensor_contact
+    from: 'off'
+    to: 'on'
+    id: opened
+  - trigger: state
+    entity_id: binary_sensor.doorsensor_contact
+    from: 'on'
+    to: 'off'
+    id: closed
+  conditions: []
+  actions:
+  - choose:
+    - conditions: '{{ trigger.id == ''closed'' }}'
+      sequence:
+      - stop: Door closed; cancel the open-door reminder.
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.hall_door_alerts_enabled
+        state: 'on'
+      sequence:
+      - action: script.audio_play_sound
+        data:
+          path: '{{ states(''input_select.hall_door_initial_sound'') }}'
+          volume: '{{ states(''input_number.hall_door_alert_volume'') | float(0.7) }}'
+      - delay:
+          seconds: '{{ states(''input_number.hall_door_reminder_delay_sec'') | int(60) }}'
+      - repeat:
+          while:
+          - condition: state
+            entity_id: binary_sensor.doorsensor_contact
+            state: 'on'
+          - condition: state
+            entity_id: input_boolean.hall_door_alerts_enabled
+            state: 'on'
+          sequence:
+          - action: script.audio_alert
+            data:
+              sound: '{{ states(''input_select.hall_door_reminder_sound'') }}'
+              volume: '{{ states(''input_number.hall_door_alert_volume'') | float(0.7) }}'
+              message: '{{ states(''input_text.hall_door_reminder_tts_text'') | trim or ''The hall door is still open.'' }}'
+          - wait_template: '{{ is_state(''binary_sensor.doorsensor_contact'', ''off'') or is_state(''input_boolean.hall_door_alerts_enabled'', ''off'') }}'
+            timeout: 00:01:00
+            continue_on_timeout: true
+  mode: restart
+- id: router_shutdown_resume_after_core_restart
+  alias: Router Shutdown / Resume After Core Restart
+  description: Completes a router shutdown interrupted by a Core restart, but only for a shutdown requested in the previous 15 minutes.
+  triggers:
+  - trigger: homeassistant
+    event: start
+  conditions:
+  - condition: state
+    entity_id: input_boolean.router_shutdown_pending
+    state: 'on'
+  actions:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ as_timestamp(now()) - as_timestamp(states(''input_datetime.router_shutdown_requested_at''), 0) <= 900 }}'
+      sequence:
+      - action: script.router_shutdown_then_poweroff
+    default:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.router_shutdown_pending
+    - action: input_text.set_value
+      target:
+        entity_id: input_text.router_shutdown_result
+      data:
+        value: Interrupted router shutdown expired after 15 minutes; no outlet action was taken.
+  mode: single
+- id: shutdown_clear_in_progress_on_start
+  alias: System / Shutdown / Clear In-Progress Flag on Start
+  description: Clears the shutdown guard after Home Assistant returns. It never restores lights or sockets.
+  triggers:
+  - trigger: homeassistant
+    event: start
+  actions:
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.shutdown_in_progress
+  mode: single
+- id: security_enable_door_open_audible_alert_on_start
+  alias: Security / Entry / Enable Door Open Audible Alert on Start
+  description: Re-enables the versioned door-open audible alert after every Home Assistant start.
+  triggers:
+  - trigger: homeassistant
+    event: start
+  actions:
+  - action: automation.turn_on
+    target:
+      entity_id: automation.security_entry_door_open_audible_alert
+  mode: single
+- id: hall_entrance_auto_off_timer
+  alias: Hall Entrance - Auto-Off Countdown
+  description: Starts the visible countdown using the existing automatic or manual timeout. Any entrance motion cancels it; the timer is the single source of the normal turn-off deadline.
+  triggers:
+  - trigger: homeassistant
+    event: start
+    id: startup
+  - trigger: template
+    value_template: "{{ states('binary_sensor.hallpirsensorentrance_occupancy') in ['off', 'unknown', 'unavailable']\n   and states('binary_sensor.hallcabinetpir_presence') in ['off', 'unknown', 'unavailable']\n\
+      \   and states('binary_sensor.hallpiradvanced_occupancy') in ['off', 'unknown', 'unavailable'] }}"
+    id: clear
+  - trigger: template
+    value_template: "{{ not (states('binary_sensor.hallpirsensorentrance_occupancy') in ['off', 'unknown', 'unavailable']\n   and states('binary_sensor.hallcabinetpir_presence') in ['off', 'unknown', 'unavailable']\n\
+      \   and states('binary_sensor.hallpiradvanced_occupancy') in ['off', 'unknown', 'unavailable']) }}"
+    id: occupied
+  - trigger: state
+    entity_id:
+    - light.hallbulb1
+    - light.hallbulb2
+    - light.hallshoesled
+    to: 'on'
+    id: light_on
+  - trigger: state
+    entity_id:
+    - light.hallbulb1
+    - light.hallbulb2
+    - light.hallshoesled
+    to: 'off'
+    id: light_off
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: occupied
+      sequence:
+      - action: timer.cancel
+        target:
+          entity_id: timer.hall_entrance_auto_off
+    - conditions:
+      - condition: trigger
+        id: light_off
+      - condition: template
+        value_template: '{{ not is_state(''light.hallbulb1'', ''on'') and not is_state(''light.hallbulb2'', ''on'') and not is_state(''light.hallshoesled'', ''on'') }}'
+      sequence:
+      - action: timer.cancel
+        target:
+          entity_id: timer.hall_entrance_auto_off
+    - conditions:
+      - condition: template
+        value_template: '{{ is_state(''light.hallbulb1'', ''on'') or is_state(''light.hallbulb2'', ''on'') or is_state(''light.hallshoesled'', ''on'') }}'
+      - condition: template
+        value_template: "{{ states('binary_sensor.hallpirsensorentrance_occupancy') in ['off', 'unknown', 'unavailable']\n   and states('binary_sensor.hallcabinetpir_presence') in ['off', 'unknown', 'unavailable']\n\
+          \   and states('binary_sensor.hallpiradvanced_occupancy') in ['off', 'unknown', 'unavailable'] }}"
+      - condition: template
+        value_template: '{{ not (trigger.id == ''startup'' and is_state(''timer.hall_entrance_auto_off'', ''active'')) }}'
+      sequence:
+      - action: timer.start
+        target:
+          entity_id: timer.hall_entrance_auto_off
+        data:
+          duration:
+            minutes: "{{ states('input_number.hall_light_timeout_min') | float(1)\n   if trigger.id == 'startup'\n   else states('input_number.hall_light_manual_timeout_min') | float(30)\n   if is_state('input_boolean.hall_entrance_manual_on_flag',\
+              \ 'on')\n   else states('input_number.hall_light_timeout_min') | float(1) }}"
+  mode: restart
+- id: '1773866197463'
+  alias: A1b - Hall Entrance - Turn OFF
+  description: Turns off when the visible Hall Entrance countdown finishes. Unavailable or unknown sensors count as clear. The existing zombie failsafe still turns it off if any sensor stays ON for its
+    configured timeout. Auto-off flag is held until light state confirms off to prevent a false cooldown trigger from Z2M round-trip delay.
+  triggers:
+  - trigger: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.hall_entrance_auto_off
+  - trigger: state
+    entity_id: binary_sensor.hallpirsensorentrance_occupancy
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.hall_light_zombie_timeout_min'') | float(30) }}'
+  - trigger: state
+    entity_id: binary_sensor.hallcabinetpir_presence
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.hall_light_zombie_timeout_min'') | float(30) }}'
+  - trigger: state
+    entity_id: binary_sensor.hallpiradvanced_occupancy
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.hall_light_zombie_timeout_min'') | float(30) }}'
+  conditions: []
+  actions:
+  - condition: template
+    value_template: "{{ is_state('light.hallbulb1', 'on') or is_state('light.hallbulb2', 'on')\n   or is_state('light.hallshoesled', 'on') }}"
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.hall_entrance_auto_off_flag
+  - action: light.turn_off
+    target:
+      entity_id:
+      - light.hallbulb1
+      - light.hallbulb2
+      - light.hallshoesled
+    data:
+      transition: 2
+  - wait_template: "{{ (is_state('light.hallbulb1', 'off') and is_state('light.hallbulb2', 'off'))\n   and is_state('light.hallshoesled', 'off') }}"
+    timeout:
+      seconds: 10
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.hall_entrance_auto_off_flag
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.hall_entrance_manual_on_flag
+  mode: single
+- id: rr1_restroom_turn_on
+  alias: RR1 - Restroom - Turn ON
+  description: 'Sensor RestroomPIR (ZG-204Z, occupancy only). No illuminance or timing  — restroom turns on any time of day. Cooldown blocks auto-on if manually turned off within cooldown. Waits for switch
+    state confirmation before clearing auto_on_flag.
+
+    '
+  triggers:
+  - trigger: mqtt
+    topic: zigbee2mqtt/RestroomPIR
+    value_template: '{{ value_json.get(''occupancy'') | string | lower }}'
+    payload: 'true'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.shutdown_in_progress
+    state: 'off'
+  - condition: state
+    entity_id: timer.restroom_manual_off_cooldown
+    state: idle
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.restroom_auto_on_flag
+    data: {}
+  - action: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.restroomswitch
+  - wait_template: '{{ is_state(''switch.restroomswitch'', ''on'') }}'
+    timeout:
+      seconds: 5
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.restroom_auto_on_flag
+  mode: restart
+- id: rr2_restroom_turn_off
+  alias: RR2 - Restroom - Turn OFF
+  description: 'Turns off restroomswitch when RestroomPIR clears. Timeout extended when manually turned on. Zombie failsafe if sensor gets physically stuck ON. Auto-off flag held until switch state confirms
+    off.
+
+    '
+  triggers:
+  - trigger: template
+    value_template: '{{ states(''binary_sensor.restroompir_occupancy'') in [''off'', ''unknown'', ''unavailable''] }}
+
+      '
+    for:
+      minutes: "{{ states('input_number.restroom_light_manual_timeout_min') | float(30)\n   if is_state('input_boolean.restroom_manual_on_flag', 'on')\n   else states('input_number.restroom_light_timeout_min')\
+        \ | float(5) }}\n"
+  - trigger: state
+    entity_id: binary_sensor.restroompir_occupancy
+    to: 'on'
+    for:
+      minutes: '{{ states(''input_number.restroom_light_zombie_timeout_min'') | float(30) }}'
+  conditions:
+  - condition: state
+    entity_id: switch.restroomswitch
+    state: 'on'
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.restroom_auto_off_flag
+  - action: switch.turn_off
+    target:
+      entity_id: switch.restroomswitch
+  - wait_template: '{{ is_state(''switch.restroomswitch'', ''off'') }}'
+    timeout:
+      seconds: 10
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.restroom_auto_off_flag
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.restroom_manual_on_flag
+  mode: single
+- id: cooldownrestroommanualoff
+  alias: Cooldown - Restroom Manual Off
+  description: 'Detects manual turn-off of restroom switch. If auto_off_flag is OFF when switch turns off, it was manual. Starts a long blocking timer immediately, waits for sensor to clear, then restarts
+    with the short cooldown.
+
+    '
+  triggers:
+  - trigger: state
+    entity_id: switch.restroomswitch
+    from: 'on'
+    to: 'off'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.restroom_auto_off_flag
+    state: 'off'
+  actions:
+  - action: timer.start
+    target:
+      entity_id: timer.restroom_manual_off_cooldown
+    data:
+      duration: 300
+  - wait_template: '{{ states(''binary_sensor.restroompir_occupancy'') in [''off'', ''unknown'', ''unavailable''] }}
+
+      '
+    timeout:
+      seconds: 300
+  - action: timer.start
+    target:
+      entity_id: timer.restroom_manual_off_cooldown
+    data:
+      duration: '{{ states(''input_number.manual_off_cooldown_sec'') | int(5) }}'
+  mode: single
+- id: '1774303606092'
+  alias: Cooldown - Hall Shoes LED Manual Off
+  description: Detects manual turn-off of hall shoes LED. If auto_off_flag is OFF when LED turns off, it was manual. Starts a long blocking timer immediately, waits for all sensors to clear, then restarts
+    with the short cooldown. Independent from hall entrance bulbs cooldown.
+  triggers:
+  - trigger: state
+    entity_id: light.hallshoesled
+    from: 'on'
+    to: 'off'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.hall_entrance_auto_off_flag
+    state: 'off'
+  actions:
+  - action: timer.start
+    target:
+      entity_id: timer.hall_shoesled_manual_off_cooldown
+    data:
+      duration: '300'
+  - wait_template: "{{ states('binary_sensor.hallpirsensorentrance_occupancy') in ['off', 'unknown', 'unavailable']\n   and states('binary_sensor.hallcabinetpir_presence') in ['off', 'unknown', 'unavailable']\n\
+      \   and states('binary_sensor.hallpiradvanced_occupancy') in ['off', 'unknown', 'unavailable'] }}"
+    timeout:
+      seconds: 300
+  - action: timer.start
+    target:
+      entity_id: timer.hall_shoesled_manual_off_cooldown
+    data:
+      duration: '{{ states(''input_number.manual_off_cooldown_sec'') | int(5) }}'
+  mode: single
+- id: "1776711056902"
+  alias: LR - MainDimmer v5 Target State Reconciliation
+  description: >-
+    Corrective synchronization for the two permanent-power smart-light channels
+    only. LEFT and MIDDLE normally update Bound light (tracked) locally in
+    firmware when their direct-binding command is accepted; Home Assistant
+    corrects those trackers only when the real target later disagrees. RIGHT is
+    intentionally excluded because it is a hard-power channel: its logical
+    state directly controls mains and its panel LED follows Physical output.
+    The automation is fail-closed until the complete accepted v5 channel profile
+    is present.
+  triggers:
+    - trigger: state
+      entity_id: light.livingroomlineardimmer
+      id: left
+    - trigger: state
+      entity_id: light.lr_kitchen_table_bulbs
+      id: middle
+    - trigger: homeassistant
+      event: start
+      id: startup
+    - trigger: state
+      entity_id:
+        - select.livingroommaindimmer_relay_left_physical_mode
+        - select.livingroommaindimmer_relay_middle_physical_mode
+        - select.livingroommaindimmer_relay_right_physical_mode
+      id: policy_ready
+    - trigger: state
+      entity_id:
+        - select.livingroommaindimmer_relay_left_indicator_mode_relay_left
+        - select.livingroommaindimmer_relay_middle_indicator_mode_relay_middle
+        - select.livingroommaindimmer_relay_right_indicator_mode_relay_right
+      id: indicator_ready
+  conditions:
+    - condition: template
+      alias: Accepted LEFT/MIDDLE permanent-power and RIGHT hard-power profile is active
+      value_template: >-
+        {{
+          states('select.livingroommaindimmer_relay_left_physical_mode') == 'Always on'
+          and states('select.livingroommaindimmer_relay_middle_physical_mode') == 'Always on'
+          and states('select.livingroommaindimmer_relay_right_physical_mode') == 'Follow logical state'
+        }}
+    - condition: template
+      alias: Accepted LED source profile is active
+      value_template: >-
+        {{
+          states('select.livingroommaindimmer_relay_left_indicator_mode_relay_left') == 'Binding status'
+          and states('select.livingroommaindimmer_relay_middle_indicator_mode_relay_middle') == 'Binding status'
+          and states('select.livingroommaindimmer_relay_right_indicator_mode_relay_right') == 'Physical output'
+        }}
+  actions:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: left
+            - condition: template
+              value_template: "{{ trigger.to_state is not none and trigger.to_state.state in ['on', 'off'] }}"
+          sequence:
+            - action: mqtt.publish
+              data:
+                topic: zigbee2mqtt/LivingRoomMainDimmer/set
+                payload: >-
+                  {
+                    "state_relay_left":"{{ 'ON' if is_state('light.livingroomlineardimmer', 'on') else 'OFF' }}",
+                    "relay_left_binding_intent":"{{ 'ON' if is_state('light.livingroomlineardimmer', 'on') else 'OFF' }}"
+                  }
+        - conditions:
+            - condition: trigger
+              id: middle
+            - condition: template
+              value_template: "{{ trigger.to_state is not none and trigger.to_state.state in ['on', 'off'] }}"
+          sequence:
+            - action: mqtt.publish
+              data:
+                topic: zigbee2mqtt/LivingRoomMainDimmer/set
+                payload: >-
+                  {
+                    "state_relay_middle":"{{ 'ON' if is_state('light.lr_kitchen_table_bulbs', 'on') else 'OFF' }}",
+                    "relay_middle_binding_intent":"{{ 'ON' if is_state('light.lr_kitchen_table_bulbs', 'on') else 'OFF' }}"
+                  }
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.id in ['startup', 'policy_ready', 'indicator_ready'] }}"
+          sequence:
+            - wait_template: >-
+                {{
+                  states('light.livingroomlineardimmer') in ['on', 'off']
+                  and states('light.lr_kitchen_table_bulbs') in ['on', 'off']
+                }}
+              timeout: "00:01:30"
+              continue_on_timeout: false
+            - action: mqtt.publish
+              data:
+                topic: zigbee2mqtt/LivingRoomMainDimmer/set
+                payload: >-
+                  {
+                    "state_relay_left":"{{ 'ON' if is_state('light.livingroomlineardimmer', 'on') else 'OFF' }}",
+                    "relay_left_binding_intent":"{{ 'ON' if is_state('light.livingroomlineardimmer', 'on') else 'OFF' }}",
+                    "state_relay_middle":"{{ 'ON' if is_state('light.lr_kitchen_table_bulbs', 'on') else 'OFF' }}",
+                    "relay_middle_binding_intent":"{{ 'ON' if is_state('light.lr_kitchen_table_bulbs', 'on') else 'OFF' }}"
+                  }
+  mode: queued
+  max: 10
+- id: '1778610265321'
+  alias: Bedroom Entrance USB Button - BedroomSocketDoorR
+  description: 1 short release turns socket on, 2 short release turns socket off
+  triggers:
+  - topic: zigbee2mqtt/buttBedroomEntranceUSB/action
+    payload: 1_short_release
+    id: on_press
+    trigger: mqtt
+  - topic: zigbee2mqtt/buttBedroomEntranceUSB/action
+    payload: 2_short_release
+    id: off_press
+    trigger: mqtt
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: on_press
+      sequence:
+      - target:
+          entity_id: switch.bedroomsocketdoorr
+        action: switch.turn_on
+    - conditions:
+      - condition: trigger
+        id: off_press
+      sequence:
+      - target:
+          entity_id: switch.bedroomsocketdoorr
+        action: switch.turn_off
+  mode: single
+- id: zigbee2mqtt_mesh_communication_outage_alert
+  alias: Zigbee2MQTT - Mesh Communication Outage Alert
+  description: >-
+    Recovers a stalled Zigbee2MQTT session on the SONOFF Dongle-M (EmberZNet). A
+    Zigbee2MQTT restart clears host-side wedges only; a stalled EFR32MG24 needs a
+    reboot from its own Web Console, which cannot be reached remotely on this
+    PoE-power-only topology, so the final stage alerts the operator instead.
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.zigbee2mqtt_mesh_communication_outage
+      to: 'on'
+      for: 00:05:00
+      id: mesh_outage
+    - trigger: mqtt
+      topic: zigbee2mqtt/bridge/response/permit_join
+      value_template: >-
+        {% set error = value_json.error | default('') %} {{ 'radio_timeout' if
+        value_json.status | default('') == 'error' and ('SRSP -' in error or
+        'HOST_FATAL_ERROR' in error or 'no more system responses' in error) else
+        'ignore' }}
+      payload: radio_timeout
+      id: radio_timeout
+  actions:
+    - action: logbook.log
+      data:
+        name: Zigbee watchdog
+        entity_id: binary_sensor.zigbee2mqtt_mesh_communication_outage
+        message: >-
+          Detekován {{ 'plošný výpadek komunikace' if trigger.id == 'mesh_outage'
+          else 'ztráta komunikace s Dongle-M' }}; offline zařízení:
+          {{ states('sensor.zigbee2mqtt_unavailable_device_count') }}.
+    - action: system_log.write
+      data:
+        logger: zigbee_watchdog
+        level: warning
+        message: >-
+          Zigbee recovery triggered by {{ trigger.id }}; unavailable devices:
+          {{ states('sensor.zigbee2mqtt_unavailable_device_count') }}.
+    - action: notify.mobile_app_xiaomi_15
+      data:
+        title: Zigbee watchdog zasahuje
+        message: >-
+          Důvod: {{ trigger.id }}; offline zařízení:
+          {{ states('sensor.zigbee2mqtt_unavailable_device_count') }}. Restartuji
+          Zigbee2MQTT. Pokud to nepomůže, musí se rebootovat EFR32MG24 ve Web
+          Console Dongle-M.
+        data:
+          channel: alarm_stream_max
+          priority: high
+          ttl: 0
+          tag: zigbee-mesh-outage
+    - action: hassio.addon_stop
+      data:
+        addon: 45df7312_zigbee2mqtt
+      continue_on_error: true
+    - delay: 00:00:03
+    - action: hassio.addon_start
+      data:
+        addon: 45df7312_zigbee2mqtt
+      continue_on_error: true
+    - wait_template: >-
+        {{ is_state('binary_sensor.zigbee2mqtt_bridge_connection_state', 'on') }}
+      timeout: 00:02:00
+      continue_on_timeout: true
+    - action: mqtt.publish
+      data:
+        topic: zigbee2mqtt/bridge/request/permit_join
+        payload: '{"time":0,"transaction":"ha-donglem-watchdog"}'
+    - wait_for_trigger:
+        - trigger: mqtt
+          topic: zigbee2mqtt/bridge/response/permit_join
+          value_template: >-
+            {{ (value_json.status | default('')) ~ ':' ~ (value_json.transaction |
+            default('')) }}
+          payload: ok:ha-donglem-watchdog
+      timeout: 00:00:15
+      continue_on_timeout: true
+    - choose:
+        - conditions: "{{ wait.completed }}"
+          sequence:
+            - action: logbook.log
+              data:
+                name: Zigbee watchdog
+                entity_id: binary_sensor.zigbee2mqtt_mesh_communication_outage
+                message: >-
+                  Automatická obnova uspěla po restartu Zigbee2MQTT; Dongle-M
+                  odpověděl na ZDO ověření. Offline zařízení:
+                  {{ states('sensor.zigbee2mqtt_unavailable_device_count') }}.
+            - action: system_log.write
+              data:
+                logger: zigbee_watchdog
+                level: warning
+                message: >-
+                  Dongle-M recovery succeeded after one Zigbee2MQTT restart; ZDO
+                  verification passed.
+            - action: notify.mobile_app_xiaomi_15
+              data:
+                title: Zigbee plně obnoveno
+                message: >-
+                  Dongle-M odpověděl na ZDO ověření po restartu Zigbee2MQTT.
+                  Offline zařízení:
+                  {{ states('sensor.zigbee2mqtt_unavailable_device_count') }}.
+                data:
+                  tag: zigbee-mesh-outage
+      default:
+        - action: logbook.log
+          data:
+            name: Zigbee watchdog
+            entity_id: binary_sensor.zigbee2mqtt_mesh_communication_outage
+            message: >-
+              Automatická obnova selhala; Dongle-M nepotvrdil ZDO ověření.
+              Vyžadován reboot EFR32MG24.
+        - action: system_log.write
+          data:
+            logger: zigbee_watchdog
+            level: error
+            message: >-
+              Dongle-M did not answer ZDO verification after a Zigbee2MQTT
+              restart; an EFR32MG24 reboot is required.
+        - action: notify.mobile_app_xiaomi_15
+          data:
+            title: Zigbee vyžaduje zásah
+            message: >-
+              Restart Zigbee2MQTT nepomohl a Dongle-M neodpověděl na ZDO ověření.
+              Otevři Web Console Dongle-M přes jeho Wi-Fi hotspot a proveď
+              Settings -> Reboot Options -> Reboot EFR32MG24.
+            data:
+              channel: alarm_stream_max
+              priority: high
+              ttl: 0
+              tag: zigbee-mesh-outage
+  mode: single
+  max_exceeded: silent
+- id: zigbee2mqtt_mesh_communication_outage_recovery_log
+  alias: Zigbee2MQTT - Mesh Communication Outage Recovery Log
+  description: Records when a previously detected Zigbee mesh outage recovers.
+  triggers:
+  - trigger: state
+    entity_id: binary_sensor.zigbee2mqtt_mesh_communication_outage
+    from: 'on'
+    to: 'off'
+  actions:
+  - action: logbook.log
+    data:
+      name: Zigbee watchdog
+      entity_id: binary_sensor.zigbee2mqtt_mesh_communication_outage
+      message: 'Komunikace obnovena po {{ ((as_timestamp(trigger.to_state.last_changed) - as_timestamp(trigger.from_state.last_changed)) / 60) | round(1) }} min; offline zařízení nyní: {{ states(''sensor.zigbee2mqtt_unavailable_device_count'')
+        }}.'
+  - action: system_log.write
+    data:
+      logger: zigbee_watchdog
+      level: warning
+      message: 'Zigbee mesh communication recovered after {{ ((as_timestamp(trigger.to_state.last_changed) - as_timestamp(trigger.from_state.last_changed)) / 60) | round(1) }} min; unavailable devices:
+        {{ states(''sensor.zigbee2mqtt_unavailable_device_count'') }}.'
+  mode: single
+- id: voice_autodestruct_countdown_fired
+  alias: Autodestruct countdown expired - run night shutdown stub
+  description: Timer-driven execution of the delayed autodestruct alias. Runs the same parser-only voice_night_shutdown stub — never a real shutdown.
+  triggers:
+  - trigger: event
+    event_type: timer_finished
+    event_data:
+      entity_id: timer.voice_autodestruct
+  actions:
+  - action: script.voice_night_shutdown
+  mode: single
+- id: reauth_tripwire
+  alias: Any integration needs re-authentication - notify
+  description: Watches the repair-issue registry and pushes an alarm to the phone whenever ANY integration/config entry needs re-authentication or reconfiguration (OAuth token revoked/expired, e.g. OneDrive).
+    Catches silent auth rot on day 1 instead of after days of failing backups/alerts.
+  triggers:
+  - trigger: event
+    event_type: repairs_issue_registry_updated
+  conditions:
+  - condition: template
+    value_template: "{{ trigger.event.data.action in ['create', 'update']\n   and ( 'reauth' in (trigger.event.data.translation_key | default(''))\n         or 'reconfigure' in (trigger.event.data.translation_key\
+      \ | default(''))\n         or 'reauth' in (trigger.event.data.issue_id | default(''))\n         or (trigger.event.data.domain | default('')) in ['onedrive','google_drive','mobile_app','mqtt','shelly','roborock','netatmo']\n\
+      \         or (trigger.event.data.domain | default('')) == 'homeassistant' ) }}"
+  actions:
+  - action: logbook.log
+    data:
+      name: Re-auth tripwire
+      message: Repair issue {{ trigger.event.data.action }} on {{ trigger.event.data.domain }} / {{ trigger.event.data.issue_id }} - check Settings > Notifications; an integration likely needs re-authentication.
+  - action: notify.mobile_app_xiaomi_15
+    data:
+      title: HA needs re-auth
+      message: '{{ trigger.event.data.domain }} - {{ trigger.event.data.issue_id }}. Open Settings > Notifications to relink.'
+      data:
+        channel: default
+        tag: reauth-tripwire
+  mode: queued

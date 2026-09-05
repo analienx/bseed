@@ -1,0 +1,863 @@
+router_poweroff:
+  alias: "Router: Power Off"
+  description: Cuts power to the router smart plug (hard off).
+  mode: single
+  sequence:
+    - alias: Log intent
+      action: system_log.write
+      data:
+        level: warning
+        message: "Router: Turning OFF power via switch.livingroomsocketwifiright"
+    - alias: Cut power
+      action: switch.turn_off
+      target:
+        entity_id: switch.livingroomsocketwifiright
+router_poweron:
+  alias: "Router: Power On"
+  description: Restores power to the router smart plug (hard on).
+  mode: single
+  sequence:
+    - alias: Cancel any interrupted shutdown recovery
+      action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.router_shutdown_pending
+    - alias: Restore power
+      action: switch.turn_on
+      target:
+        entity_id: switch.livingroomsocketwifiright
+    - alias: Log intent
+      action: system_log.write
+      data:
+        level: info
+        message: "Router: Turning ON power via switch.livingroomsocketwifiright"
+router_shutdown_then_poweroff:
+  alias: "Router: Graceful Shutdown → Power Off"
+  description: SSH halt ASUS router gracefully, then cut outlet power only after a direct LAN ping confirms it is offline.
+  mode: single
+  sequence:
+    - alias: Log shutdown start
+      action: system_log.write
+      data:
+        level: info
+        message: "Router: Initiating graceful shutdown via SSH"
+    - alias: Notify user
+      action: persistent_notification.create
+      data:
+        title: Router shutdown
+        message: Router is being shut down gracefully, then power will be cut.
+    - alias: Persist shutdown intent before the router is halted
+      action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.router_shutdown_pending
+    - action: input_datetime.set_datetime
+      target:
+        entity_id: input_datetime.router_shutdown_requested_at
+      data:
+        datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+    - alias: Graceful shutdown via SSH
+      continue_on_error: true
+      action: shell_command.router_shutdown
+    - alias: Confirm router is offline by direct LAN ping
+      action: shell_command.router_wait_off
+      response_variable: router_off_response
+      continue_on_error: true
+    - variables:
+        router_off_confirmed: >-
+          {{ router_off_response is defined
+             and router_off_response.get('returncode', 1) | int(1) == 0 }}
+    - choose:
+        - conditions: "{{ router_off_confirmed | bool }}"
+          sequence:
+            - alias: Cut power after LAN-confirmed router shutdown
+              action: switch.turn_off
+              target:
+                entity_id: switch.livingroomsocketwifiright
+            - alias: Wait for router outlet to report off
+              wait_template: "{{ is_state('switch.livingroomsocketwifiright', 'off') }}"
+              timeout: "00:00:20"
+              continue_on_timeout: true
+            - variables:
+                socket_off_confirmed: "{{ wait.completed }}"
+            - if: "{{ socket_off_confirmed | bool }}"
+              then:
+                - action: input_boolean.turn_off
+                  target:
+                    entity_id: input_boolean.router_shutdown_pending
+            - action: input_text.set_value
+              target: {entity_id: input_text.router_shutdown_result}
+              data:
+                value: >-
+                  {{ 'Router shutdown confirmed; outlet off confirmed.' if socket_off_confirmed | bool
+                     else 'Router shutdown confirmed, but outlet off was not confirmed.' }}
+            - action: system_log.write
+              data:
+                level: warning
+                message: "Router: LAN ping confirmed router offline; outlet_off={{ socket_off_confirmed }}"
+      default:
+        - action: input_boolean.turn_off
+          target:
+            entity_id: input_boolean.router_shutdown_pending
+        - action: input_text.set_value
+          target: {entity_id: input_text.router_shutdown_result}
+          data:
+            value: "Router LAN ping did not confirm shutdown; outlet power was left on."
+        - action: persistent_notification.create
+          data:
+            title: Router shutdown not confirmed
+            message: Router still replied to LAN ping after the graceful shutdown request. Outlet power was not cut.
+        - action: system_log.write
+          data:
+            level: error
+            message: "Router: LAN ping did not confirm shutdown; refusing outlet power cut"
+configure_shutdown_socket_group:
+  alias: "System: Configure Nonessential Socket Shutdown Group"
+  description: Creates Zigbee2MQTT group 31 and enrolls only the versioned nonessential outlet endpoints. It never changes outlet power.
+  mode: single
+  sequence:
+    - action: mqtt.publish
+      data:
+        topic: zigbee2mqtt/bridge/request/group/add
+        payload: '{"id":31,"friendly_name":"Sockets Nonessential Shutdown"}'
+    - delay:
+        seconds: 2
+    - action: mqtt.publish
+      data:
+        topic: zigbee2mqtt/bridge/request/group/options
+        payload: '{"id":"Sockets Nonessential Shutdown","options":{"retain":false,"optimistic":true,"off_state":"all_members_off"}}'
+    - repeat:
+        for_each:
+          - KitchenSocketLeft
+          - KitchenSocketRight
+          - LivingRoomSocketEntrance
+          - LivingRoomSocketHifiLeft
+          - LivingRoomSocketHifiRight
+          - LivingRoomSocketTableLeft
+          - LivingRoomSocketTableRight
+          - HALLSocketMain
+          - HallSocketBedroom
+          - BedroomSocketCabinetL
+          - BedroomSocketDoorL
+          - BedroomSocketDoorR
+          - BedroomSocketWindowL
+          - BedroomSocketWindowR
+          - WRSocketWindowLeft
+          - WRSocketWindowRightL
+          - WRSocketWindowRightR
+        sequence:
+          - action: mqtt.publish
+            data:
+              topic: zigbee2mqtt/bridge/request/group/members/add
+              payload: >-
+                {"group":"Sockets Nonessential Shutdown","device":"{{ repeat.item }}"}
+unified_shutdown:
+  alias: Unified Shutdown Handler with Flexible Wake Mode
+  description: Unified shutdown (router + HA), router-only, or HA-only. Calculates wake time based on chosen mode, gracefully halts ASUS router if requested, then schedules Pi shutdown with RTC wakealarm. Recorder flush delay is handled here.
+  mode: single
+  fields:
+    shutdown_type:
+      description: unified | router | ha
+      example: unified
+      default: unified
+      required: false
+    trigger_source:
+      description: manual | scheduled | other context string
+      example: manual
+      default: manual
+      required: false
+  sequence:
+    - alias: Solar safe carry-over before shutdown
+      continue_on_error: true
+      action: script.solar_prepare_safe_carryover
+      data:
+        reason: pre-shutdown guard
+    - variables:
+        actual_shutdown_type: "{{ shutdown_type | default('unified') }}"
+        actual_trigger_source: "{{ trigger_source | default('manual') }}"
+        recorder_flush_seconds: 45
+        nonessential_socket_entities:
+          - switch.kitchensocketleft
+          - switch.kitchensocketright
+          - switch.livingroomsocketentrance
+          - switch.livingroomsockethifileft
+          - switch.livingroomsockethifiright
+          - switch.livingroomsockettableleft
+          - switch.livingroomsockettableright
+          - switch.livingroomsocketwifileft_relay
+          - switch.hallsocketmain
+          - switch.hallsocketbedroom
+          - switch.bedroomsocketcabinetl
+          - switch.0xa4c13824a7005afb_relay
+          - switch.bedroomsocketdoorl
+          - switch.bedroomsocketdoorr
+          - switch.bedroomsocketwindowl
+          - switch.bedroomsocketwindowr
+          - switch.bedroomsocketbalcony_relay
+          - switch.wrsocketwindowleft
+          - switch.wrsocketwindowrightl
+          - switch.wrsocketwindowrightr
+          - switch.wrsocketentrance_relay
+        lighting_relay_entities:
+          # switch.workroomswitchledmain is protected and intentionally absent:
+          # it powers the Work Room main LED circuit.
+          - switch.bedroomdimmer_relay
+          - switch.workroommainswitchdimmer_relay_left
+          - switch.workroommainswitchdimmer_relay_right
+          - switch.bathroomswitchrouter
+          - switch.restroomswitch
+        shutdown_group_ready: "{{ is_state('sensor.zigbee2mqtt_shutdown_group_integrity', 'valid') }}"
+        wake_mode_entity: "{% if actual_shutdown_type == 'unified' %}\n  input_select.wake_mode_unified\n{% elif actual_shutdown_type == 'router' %}\n  input_select.wake_mode_router\n{% else %}\n  input_select.wake_mode_ha\n{% endif %}"
+        custom_wake_entity: "{% if actual_shutdown_type == 'unified' %}\n  input_datetime.wake_time_unified_custom\n{% elif actual_shutdown_type == 'router' %}\n  input_datetime.wake_time_router_custom\n{% else %}\n  input_datetime.wake_time_ha_custom\n{% endif %}"
+        auto_wake_entity: "{% if actual_shutdown_type == 'unified' %}\n  {% set current_hour = now().hour %}\n  {% if current_hour >= 18 %}\n    input_datetime.wake_time_automatic_am\n  {% elif current_hour >= 7 %}\n    input_datetime.wake_time_automatic_pm\n  {% else %}\n    input_datetime.wake_time_automatic_am\n  {% endif %}\n{% elif actual_shutdown_type == 'router' %}\n  input_datetime.wake_time_router_automatic\n{% else %}\n  input_datetime.wake_time_ha_automatic\n{% endif %}"
+        calculated_wake_time: "{% set mode = states(wake_mode_entity) %} {% if mode == 'Custom DateTime' %}\n  {{ states(custom_wake_entity) }}\n{% else %}\n  {% set raw_time = states(auto_wake_entity) %}\n  {% set wake_time_str = raw_time ~ ':00' if raw_time | length == 5 else raw_time %}\n  {% set today_date = now().strftime('%Y-%m-%d') %}\n  {% set wake_datetime_today = today_date ~ ' ' ~ wake_time_str %}\n  {% set wake_ts = as_timestamp(wake_datetime_today, as_timestamp(now())) %}\n  {% set now_ts = as_timestamp(now()) %}\n  {% if wake_ts > now_ts %}\n    {{ wake_datetime_today }}\n  {% else %}\n    {% set tomorrow = (now() + timedelta(days=1)).strftime('%Y-%m-%d') %}\n    {{ tomorrow ~ ' ' ~ wake_time_str }}\n  {% endif %}\n{% endif %}"
+    - if: "{{ actual_shutdown_type in ['unified', 'ha'] }}"
+      then:
+        - alias: Play selected shutdown cue and English TTS
+          action: script.audio_alert
+          data:
+            sound: "{{ states('input_select.ha_shutdown_sound') }}"
+            message: "{{ states('input_text.ha_shutdown_tts_text') | trim or 'Home Assistant is shutting down now.' }}"
+            language: English
+        - delay: "00:00:04"
+    - alias: Notify shutdown plan
+      action: persistent_notification.create
+      data:
+        title: "{{ actual_shutdown_type.title() }} Shutdown"
+        message: "Trigger: {{ actual_trigger_source }} Wake Mode: {{ states(wake_mode_entity) }} Wake Time: {{ calculated_wake_time }}"
+    - alias: Log shutdown plan
+      action: system_log.write
+      data:
+        level: warning
+        message: "{{ actual_shutdown_type.title() }} Shutdown: trigger={{ actual_trigger_source }}, wake={{ calculated_wake_time }}, mode={{ states(wake_mode_entity) }}"
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ actual_shutdown_type == 'unified' }}"
+          sequence:
+            - action: system_log.write
+              data:
+                level: info
+                message: "Router: Initiating graceful shutdown (type=unified)"
+            - action: script.router_shutdown_then_poweroff
+            - alias: Refuse HA suspend until router power-off is confirmed
+              if: "{{ not is_state('switch.livingroomsocketwifiright', 'off') }}"
+              then:
+                - action: persistent_notification.create
+                  data:
+                    title: Unified shutdown paused
+                    message: >-
+                      Router shutdown did not finish with its outlet off. Home Assistant remains online;
+                      investigate the router, then retry the unified shutdown.
+                - action: system_log.write
+                  data:
+                    level: error
+                    message: >-
+                      Unified shutdown stopped: router outlet state is
+                      {{ states('switch.livingroomsocketwifiright') }} instead of off.
+                - stop: Router shutdown was not confirmed; refusing Home Assistant suspend.
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ actual_shutdown_type in ['unified','ha'] }}"
+          sequence:
+            - alias: Prevent automatic lights from restarting during shutdown
+              action: input_boolean.turn_on
+              target:
+                entity_id: input_boolean.shutdown_in_progress
+            - choose:
+                - conditions:
+                    - condition: template
+                      value_template: "{{ shutdown_group_ready }}"
+                  sequence:
+                    - alias: Turn off nonessential sockets by Zigbee group broadcast
+                      action: mqtt.publish
+                      data:
+                        topic: zigbee2mqtt/Sockets Nonessential Shutdown/set
+                        payload: '{"state":"OFF"}'
+                    - delay:
+                        seconds: 4
+                    - alias: Turn off any confirmed socket still on after broadcast
+                      repeat:
+                        for_each: "{{ nonessential_socket_entities }}"
+                        sequence:
+                          - if:
+                              - condition: template
+                                value_template: "{{ states(repeat.item) == 'on' }}"
+                            then:
+                              - action: switch.turn_off
+                                target:
+                                  entity_id: "{{ repeat.item }}"
+              default:
+                - alias: Refuse unsafe socket action when group membership is not exact
+                  action: persistent_notification.create
+                  data:
+                    title: Shutdown socket action blocked
+                    message: >-
+                      Zigbee2MQTT shutdown group integrity is {{ states('sensor.zigbee2mqtt_shutdown_group_integrity') }}.
+                      No nonessential sockets were changed.
+                - action: system_log.write
+                  data:
+                    level: error
+                    message: >-
+                      Shutdown refused nonessential socket control: Zigbee2MQTT group integrity is
+                      {{ states('sensor.zigbee2mqtt_shutdown_group_integrity') }}.
+            - alias: Turn off lighting relays by Zigbee group broadcast
+              action: mqtt.publish
+              data:
+                topic: zigbee2mqtt/Lights  All/set
+                payload: '{"state":"OFF"}'
+            - alias: Turn off relay-driven lighting circuits
+              repeat:
+                for_each: "{{ lighting_relay_entities }}"
+                sequence:
+                  - if:
+                      - condition: template
+                        value_template: "{{ states(repeat.item) == 'on' }}"
+                    then:
+                      - action: switch.turn_off
+                        target:
+                          entity_id: "{{ repeat.item }}"
+            - action: input_text.set_value
+              target:
+                entity_id: input_text.shutdown_load_result
+              data:
+                value: >-
+                  {{ now().strftime('%Y-%m-%d %H:%M') }} {{ actual_shutdown_type }}: lights off;
+                  sockets {{ 'group and fallback off' if shutdown_group_ready else 'blocked - group integrity ' ~ states('sensor.zigbee2mqtt_shutdown_group_integrity') }}.
+            - action: system_log.write
+              data:
+                level: warning
+                message: >-
+                  Shutdown load sequence complete: type={{ actual_shutdown_type }}, group_ready={{ shutdown_group_ready }},
+                  sockets={{ nonessential_socket_entities | length }}, lighting_relays={{ lighting_relay_entities | length }}.
+            - alias: Disable recorder (stop DB writes)
+              action: recorder.disable
+            - alias: Arm recorder recovery watchdog
+              action: input_boolean.turn_on
+              target: {entity_id: input_boolean.shutdown_recorder_watchdog}
+            - action: input_datetime.set_datetime
+              target: {entity_id: input_datetime.shutdown_recorder_disabled_at}
+              data: {datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"}
+            - alias: Wait for DB flush window
+              delay:
+                seconds: "{{ recorder_flush_seconds }}"
+            - alias: Log Pi shutdown request
+              action: system_log.write
+              data:
+                level: warning
+                message: "Pi: Graceful shutdown with wake at {{ calculated_wake_time }} (type={{ actual_shutdown_type }})"
+            - alias: Set wakealarm (best effort) and request host shutdown
+              action: shell_command.pi_schedule_power_cycle
+              data:
+                shutdown_time: now
+                wake_time: "{{ calculated_wake_time }}"
+smart_startup_sequence:
+  alias: Smart Startup Sequence
+  description: Startup sequence that brings router up in the morning, otherwise keeps power-save logic. Uses wait_template so it starts as soon as required entities are ready (no fixed delay). [page:776]
+  mode: restart
+  sequence:
+    - alias: Wait for router entities (max 2 minutes)
+      wait_template: "{{ states('switch.livingroomsocketwifiright') not in ['unknown','unavailable','none'] and\n   states('sensor.livingroomsocketwifiright_power') not in ['unknown','unavailable','none'] }}"
+      timeout: 00:02:00
+      continue_on_timeout: true
+    - action: system_log.write
+      data:
+        message: "[SmartStartup] Script started at {{ now().strftime('%H:%M:%S') }}"
+        level: info
+    - variables:
+        router_cutoff_hour: 11
+        current_hour: "{{ now().hour }}"
+    - if:
+        - condition: template
+          value_template: "{{ current_hour < router_cutoff_hour }}"
+      then:
+        - action: system_log.write
+          data:
+            message: "[SmartStartup] MORNING ({{ current_hour }}:xx < {{ router_cutoff_hour }}:00) → Router ON"
+            level: info
+        - action: script.ensure_router_power_on_with_retries
+      else:
+        - action: system_log.write
+          data:
+            message: "[SmartStartup] AFTERNOON ({{ current_hour }}:xx ≥ {{ router_cutoff_hour }}:00) → Power save"
+            level: warning
+    - action: system_log.write
+      data:
+        message: "[SmartStartup] Script completed"
+        level: info
+ensure_router_power_on_with_retries:
+  alias: Ensure Router Power ON (with retries)
+  description: Keeps restoring router power until WAN, direct LAN ping, or outlet draw over 3 W confirms it is operational; power-cycles once after 40 attempts. [page:776]
+  mode: restart
+  sequence:
+    - variables:
+        max_attempts: 40
+        delay_between_attempts: 15
+        power_cycle_delay: 10
+        power_cycle_trigger: "{{ max_attempts }}"
+        min_power_threshold: 3
+    - repeat:
+        while:
+          - condition: template
+            value_template: "{{ true }}"
+        sequence:
+          - action: shell_command.router_ping
+            response_variable: router_ping_response
+            continue_on_error: true
+          - variables:
+              router_reachable: >-
+                {{ router_ping_response is defined
+                   and router_ping_response.get('returncode', 1) | int(1) == 0 }}
+              router_has_load: >-
+                {{ states('sensor.livingroomsocketwifiright_power') | float(0) > min_power_threshold }}
+          - if:
+              - condition: and
+                conditions:
+                  - condition: state
+                    entity_id: switch.livingroomsocketwifiright
+                    state: "on"
+                  - condition: template
+                    value_template: >-
+                      {{ is_state('binary_sensor.rt_ax52_pro_cb8e_wan_status', 'on')
+                         or router_reachable | bool
+                         or router_has_load | bool }}
+            then:
+              - action: system_log.write
+                data:
+                  message: "[SmartStartup] Router VERIFIED ON: Switch=on, WAN={{ states('binary_sensor.rt_ax52_pro_cb8e_wan_status') }}, LAN ping={{ 'ok' if router_reachable else 'failed' }}, Power={{ states('sensor.livingroomsocketwifiright_power') }}W"
+                  level: info
+              - stop: Router powered and operational
+            else:
+              - action: system_log.write
+                data:
+                  message: "[SmartStartup] Attempt {{ repeat.index }}: Router not ready. Switch={{ states('switch.livingroomsocketwifiright') }}, WAN={{ states('binary_sensor.rt_ax52_pro_cb8e_wan_status') }}, LAN ping={{ 'ok' if router_reachable else 'failed' }}, Power={{ states('sensor.livingroomsocketwifiright_power') }}W"
+                  level: warning
+              - if:
+                  - condition: template
+                    value_template: "{{ repeat.index == power_cycle_trigger }}"
+                then:
+                  - action: system_log.write
+                    data:
+                      message: "[SmartStartup] Performing power cycle (attempt {{ repeat.index }})"
+                      level: warning
+                  - action: switch.turn_off
+                    target:
+                      entity_id: switch.livingroomsocketwifiright
+                  - delay:
+                      seconds: "{{ power_cycle_delay }}"
+              - action: switch.turn_on
+                target:
+                  entity_id: switch.livingroomsocketwifiright
+              - delay:
+                  seconds: "{{ delay_between_attempts }}"
+
+voice_group_on:
+  alias: "Voice: Group light on"
+  description: Group-first light ON with bounded member verification and fallback.
+  mode: queued
+  fields:
+    group:
+      required: true
+    members:
+      required: true
+    fallback_members:
+      required: true
+    fallback_brightness_pct:
+      required: false
+  sequence:
+    - action: light.turn_on
+      target:
+        entity_id: "{{ group }}"
+    - wait_template: >-
+        {% set ns = namespace(ok=true) %}
+        {% for entity in members %}
+          {% if not is_state(entity, 'on') %}{% set ns.ok = false %}{% endif %}
+        {% endfor %}
+        {{ ns.ok }}
+      timeout: "00:00:10"
+      continue_on_timeout: true
+    - if:
+        - condition: template
+          value_template: "{{ not wait.completed }}"
+      then:
+        - action: system_log.write
+          data:
+            level: warning
+            message: "Voice group ON verification failed for {{ group }}; using member fallback."
+        - repeat:
+            for_each: "{{ fallback_members }}"
+            sequence:
+              - choose:
+                  - conditions: "{{ fallback_brightness_pct is defined and fallback_brightness_pct | int(0) > 0 }}"
+                    sequence:
+                      - action: light.turn_on
+                        target:
+                          entity_id: "{{ repeat.item }}"
+                        data:
+                          brightness_pct: "{{ fallback_brightness_pct | int }}"
+                default:
+                  - action: light.turn_on
+                    target:
+                      entity_id: "{{ repeat.item }}"
+
+voice_group_off:
+  alias: "Voice: Group light off"
+  description: Group-first light OFF with bounded member verification and fallback.
+  mode: queued
+  fields:
+    group:
+      required: true
+    members:
+      required: true
+    fallback_members:
+      required: true
+  sequence:
+    - action: light.turn_off
+      target:
+        entity_id: "{{ group }}"
+    - wait_template: >-
+        {% set ns = namespace(ok=true) %}
+        {% for entity in members %}
+          {% if not is_state(entity, 'off') %}{% set ns.ok = false %}{% endif %}
+        {% endfor %}
+        {{ ns.ok }}
+      timeout: "00:00:10"
+      continue_on_timeout: true
+    - if:
+        - condition: template
+          value_template: "{{ not wait.completed }}"
+      then:
+        - action: system_log.write
+          data:
+            level: warning
+            message: "Voice group OFF verification failed for {{ group }}; using member fallback."
+        - repeat:
+            for_each: "{{ fallback_members }}"
+            sequence:
+              - action: light.turn_off
+                target:
+                  entity_id: "{{ repeat.item }}"
+
+voice_hall_light_on:
+  alias: "Voice: Hall light on"
+  mode: restart
+  sequence:
+    - action: light.turn_on
+      target: {entity_id: light.hallbulb3}
+
+voice_hall_light_off:
+  alias: "Voice: Hall light off"
+  mode: restart
+  sequence:
+    - action: light.turn_off
+      target: {entity_id: light.hallbulb3}
+
+voice_entrance_lights_on:
+  alias: "Voice: Entrance lights on"
+  mode: restart
+  sequence:
+    - action: script.voice_group_on
+      data:
+        group: light.lights_hall_entrance
+        members: [light.hallbulb1, light.hallbulb2, light.hallshoesled]
+        fallback_members: [light.hallbulb1, light.hallbulb2, light.hallshoesled]
+        fallback_brightness_pct: 100
+
+voice_entrance_lights_off:
+  alias: "Voice: Entrance lights off"
+  mode: restart
+  sequence:
+    - action: script.voice_group_off
+      data:
+        group: light.lights_hall_entrance
+        members: [light.hallbulb1, light.hallbulb2, light.hallshoesled]
+        fallback_members: [light.hallbulb1, light.hallbulb2, light.hallshoesled]
+
+voice_hall_lights_on:
+  alias: "Voice: Hall lights on"
+  mode: restart
+  sequence:
+    - action: script.voice_group_on
+      data:
+        group: light.lights_hall_all
+        members: [light.hallbulb1, light.hallbulb2, light.hallbulb3, light.hallshoesled]
+        fallback_members: [light.hallbulb1, light.hallbulb2, light.hallbulb3, light.hallshoesled]
+        fallback_brightness_pct: 100
+
+voice_hall_lights_off:
+  alias: "Voice: Hall lights off"
+  mode: restart
+  sequence:
+    - action: script.voice_group_off
+      data:
+        group: light.lights_hall_all
+        members: [light.hallbulb1, light.hallbulb2, light.hallbulb3, light.hallshoesled]
+        fallback_members: [light.hallbulb1, light.hallbulb2, light.hallbulb3, light.hallshoesled]
+
+voice_bedroom_lights_on:
+  alias: "Voice: Bedroom lights on"
+  mode: restart
+  sequence:
+    - if: "{{ is_state('switch.bedroomdimmer_relay', 'off') }}"
+      then:
+        - action: switch.turn_on
+          target: {entity_id: switch.bedroomdimmer_relay}
+        - wait_template: "{{ is_state('switch.bedroomdimmer_relay', 'on') }}"
+          timeout: "00:00:15"
+          continue_on_timeout: true
+    - wait_template: "{{ states('light.bedroom_lights') not in ['unknown', 'unavailable'] }}"
+      timeout: "00:00:20"
+      continue_on_timeout: true
+    - action: script.voice_group_on
+      data:
+        group: light.bedroom_lights
+        members: [light.bedroombulb1, light.bedroombulb2, light.bedroombulb3]
+        fallback_members: [light.bedroombulb1, light.bedroombulb2, light.bedroombulb3]
+
+voice_bedroom_lights_off:
+  alias: "Voice: Bedroom lights off"
+  mode: restart
+  sequence:
+    - action: switch.turn_off
+      target: {entity_id: switch.bedroomdimmer_relay}
+
+voice_workroom_main_on:
+  alias: "Voice: Work Room main light on"
+  mode: restart
+  sequence:
+    - action: light.turn_on
+      target: {entity_id: light.workroomledmaindimmer}
+
+voice_workroom_main_off:
+  alias: "Voice: Work Room main light off"
+  mode: restart
+  sequence:
+    - action: light.turn_off
+      target: {entity_id: light.workroomledmaindimmer}
+
+voice_workroom_table_on:
+  alias: "Voice: Work Room table lights on"
+  mode: restart
+  sequence:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.workroomswitchledstable
+    - wait_template: "{{ is_state('switch.workroomswitchledstable', 'on') }}"
+      timeout: "00:00:15"
+      continue_on_timeout: true
+    - wait_template: "{{ states('light.work_room_table_lights') not in ['unknown', 'unavailable'] }}"
+      timeout: "00:00:20"
+      continue_on_timeout: true
+    - action: script.voice_group_on
+      data:
+        group: light.work_room_table_lights
+        members: [light.workroomtableleftdimmer, light.workroomtablerightdimmer]
+        fallback_members: [light.workroomtableleftdimmer, light.workroomtablerightdimmer]
+
+voice_workroom_table_off:
+  alias: "Voice: Work Room table lights off"
+  mode: restart
+  sequence:
+    - action: switch.turn_off
+      target: {entity_id: switch.workroomswitchledstable}
+
+voice_workroom_lights_on:
+  alias: "Voice: Work Room lights on"
+  mode: restart
+  sequence:
+    - action: script.voice_workroom_main_on
+    - action: script.voice_workroom_table_on
+
+voice_workroom_lights_off:
+  alias: "Voice: Work Room lights off"
+  mode: restart
+  sequence:
+    - action: script.voice_workroom_main_off
+    - action: script.voice_workroom_table_off
+
+voice_livingroom_lights_on:
+  alias: "Voice: Living Room lights on"
+  mode: restart
+  sequence:
+    # Living room lights = ALL Living Room lighting INCLUDING Circle (#3 correction 5381189810)
+    - action: script.voice_group_on
+      data:
+        group: light.lr_kitchenbulbsandliner
+        members: [light.livingroombulbtableleft, light.livingroombulbtablemiddle, light.livingroombulbtableright, light.livingroomlineardimmer]
+        fallback_members: [light.livingroombulbtableleft, light.livingroombulbtablemiddle, light.livingroombulbtableright, light.livingroomlineardimmer]
+    - action: script.voice_circle_light_on
+
+voice_livingroom_lights_off:
+  alias: "Voice: Living Room lights off"
+  mode: restart
+  sequence:
+    # Living room lights = ALL Living Room lighting INCLUDING Circle (#3 correction 5381189810)
+    - action: script.voice_group_off
+      data:
+        group: light.lr_kitchenbulbsandliner
+        members: [light.livingroombulbtableleft, light.livingroombulbtablemiddle, light.livingroombulbtableright, light.livingroomlineardimmer]
+        fallback_members: [light.livingroombulbtableleft, light.livingroombulbtablemiddle, light.livingroombulbtableright, light.livingroomlineardimmer]
+    - action: script.voice_circle_light_off
+
+voice_circle_light_on:
+  alias: "Voice: Circle light on"
+  mode: restart
+  sequence:
+    - action: light.turn_on
+      target: {entity_id: light.livingroomcirclelightdimmer}
+    - wait_template: "{{ is_state('light.livingroomcirclelightdimmer', 'on') }}"
+      timeout: "00:00:10"
+      continue_on_timeout: true
+    - if: "{{ not is_state('light.livingroomcirclelightdimmer', 'on') }}"
+      then:
+        - action: system_log.write
+          data:
+            level: error
+            message: "Voice circle light ON failed: smart dimmer did not reach ON."
+
+voice_circle_light_off:
+  alias: "Voice: Circle light off"
+  mode: restart
+  sequence:
+    - action: light.turn_off
+      target: {entity_id: light.livingroomcirclelightdimmer}
+    - wait_template: "{{ is_state('light.livingroomcirclelightdimmer', 'off') }}"
+      timeout: "00:00:10"
+      continue_on_timeout: true
+    - if: "{{ not is_state('light.livingroomcirclelightdimmer', 'off') }}"
+      then:
+        - action: system_log.write
+          data:
+            level: error
+            message: "Voice circle light OFF failed: smart dimmer did not reach OFF."
+
+voice_bathroom_on:
+  alias: "Voice: Bathroom light on"
+  mode: restart
+  sequence:
+    - action: switch.turn_on
+      target: {entity_id: switch.bathroomswitchrouter}
+
+voice_bathroom_off:
+  alias: "Voice: Bathroom light off"
+  mode: restart
+  sequence:
+    - action: switch.turn_off
+      target: {entity_id: switch.bathroomswitchrouter}
+
+voice_restroom_on:
+  alias: "Voice: Restroom light on"
+  mode: restart
+  sequence:
+    - action: switch.turn_on
+      target: {entity_id: switch.restroomswitch}
+
+voice_restroom_off:
+  alias: "Voice: Restroom light off"
+  mode: restart
+  sequence:
+    - action: switch.turn_off
+      target: {entity_id: switch.restroomswitch}
+
+voice_all_lights_on:
+  alias: "Voice: All lights on"
+  mode: restart
+  sequence:
+    # Circle is included via voice_livingroom_lights_on (no separate call — avoids double actuation)
+    - action: script.voice_hall_lights_on
+    - action: script.voice_livingroom_lights_on
+    - action: script.voice_bedroom_lights_on
+    - action: script.voice_workroom_lights_on
+    - action: script.voice_bathroom_on
+    - action: script.voice_restroom_on
+
+voice_all_lights_off:
+  alias: "Voice: All lights off"
+  mode: restart
+  sequence:
+    # Circle is included via voice_livingroom_lights_off (no separate call — avoids double actuation)
+    - action: script.voice_hall_lights_off
+    - action: script.voice_livingroom_lights_off
+    - action: script.voice_bedroom_lights_off
+    - action: script.voice_workroom_lights_off
+    - action: script.voice_bathroom_off
+    - action: script.voice_restroom_off
+
+
+main_dimmer_finalize_v5_indicators:
+  alias: "MainDimmer v5: Finalize accepted LED profile"
+  description: >-
+    Manual post-canary finalization only. LEFT and MIDDLE are permanent-power
+    smart-light channels and use Binding status. RIGHT is intentionally a
+    hard-power channel and uses Physical output. This script seeds the two
+    tracked smart-light states before selecting their LED source. It never
+    changes Mains power, device_config, bindings or groups.
+  mode: single
+  fields:
+    operator_continuity_confirmed:
+      name: Physical behavior confirmed
+      description: >-
+        Enable only after the operator has verified that LEFT and MIDDLE remain
+        continuously powered through button tests and that RIGHT intentionally
+        cuts/restores the Circle-dimmer mains exactly once with its logical
+        state.
+      required: true
+      selector:
+        boolean:
+  sequence:
+    - condition: template
+      value_template: >-
+        {{ operator_continuity_confirmed | default(false) | bool }}
+    - condition: template
+      alias: Accepted mains-power profile is already active
+      value_template: >-
+        {{
+          states('select.livingroommaindimmer_relay_left_physical_mode') == 'Always on'
+          and states('select.livingroommaindimmer_relay_middle_physical_mode') == 'Always on'
+          and states('select.livingroommaindimmer_relay_right_physical_mode') == 'Follow logical state'
+        }}
+    - condition: template
+      alias: Required v5 LED choices are available
+      value_template: >-
+        {{
+          'Binding status' in (state_attr('select.livingroommaindimmer_relay_left_indicator_mode_relay_left', 'options') | default([], true))
+          and 'Binding status' in (state_attr('select.livingroommaindimmer_relay_middle_indicator_mode_relay_middle', 'options') | default([], true))
+          and 'Physical output' in (state_attr('select.livingroommaindimmer_relay_right_indicator_mode_relay_right', 'options') | default([], true))
+        }}
+    - condition: template
+      alias: Real LEFT and MIDDLE target states are known
+      value_template: >-
+        {{
+          states('light.livingroomlineardimmer') in ['on', 'off']
+          and states('light.lr_kitchen_table_bulbs') in ['on', 'off']
+        }}
+    - action: mqtt.publish
+      data:
+        topic: zigbee2mqtt/LivingRoomMainDimmer/set
+        payload: >-
+          {
+            "state_relay_left":"{{ 'ON' if is_state('light.livingroomlineardimmer', 'on') else 'OFF' }}",
+            "relay_left_binding_intent":"{{ 'ON' if is_state('light.livingroomlineardimmer', 'on') else 'OFF' }}",
+            "state_relay_middle":"{{ 'ON' if is_state('light.lr_kitchen_table_bulbs', 'on') else 'OFF' }}",
+            "relay_middle_binding_intent":"{{ 'ON' if is_state('light.lr_kitchen_table_bulbs', 'on') else 'OFF' }}"
+          }
+    - delay: "00:00:02"
+    - action: select.select_option
+      target:
+        entity_id:
+          - select.livingroommaindimmer_relay_left_indicator_mode_relay_left
+          - select.livingroommaindimmer_relay_middle_indicator_mode_relay_middle
+      data:
+        option: Binding status
+    - action: select.select_option
+      target:
+        entity_id: select.livingroommaindimmer_relay_right_indicator_mode_relay_right
+      data:
+        option: Physical output
+    - wait_template: >-
+        {{
+          states('select.livingroommaindimmer_relay_left_indicator_mode_relay_left') == 'Binding status'
+          and states('select.livingroommaindimmer_relay_middle_indicator_mode_relay_middle') == 'Binding status'
+          and states('select.livingroommaindimmer_relay_right_indicator_mode_relay_right') == 'Physical output'
+        }}
+      timeout: "00:00:30"
+      continue_on_timeout: false

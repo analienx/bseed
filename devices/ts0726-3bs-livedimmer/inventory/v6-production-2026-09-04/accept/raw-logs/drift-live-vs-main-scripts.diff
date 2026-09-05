@@ -1,0 +1,52 @@
+diff --git a/repo-main-scripts.yaml b/live-scripts.yaml
+index 7387fcf..3e2d8aa 100644
+--- a/repo-main-scripts.yaml
++++ b/live-scripts.yaml
+@@ -678,21 +678,25 @@ voice_livingroom_lights_on:
+   alias: "Voice: Living Room lights on"
+   mode: restart
+   sequence:
++    # Living room lights = ALL Living Room lighting INCLUDING Circle (#3 correction 5381189810)
+     - action: script.voice_group_on
+       data:
+         group: light.lr_kitchenbulbsandliner
+         members: [light.livingroombulbtableleft, light.livingroombulbtablemiddle, light.livingroombulbtableright, light.livingroomlineardimmer]
+         fallback_members: [light.livingroombulbtableleft, light.livingroombulbtablemiddle, light.livingroombulbtableright, light.livingroomlineardimmer]
++    - action: script.voice_circle_light_on
+ 
+ voice_livingroom_lights_off:
+   alias: "Voice: Living Room lights off"
+   mode: restart
+   sequence:
++    # Living room lights = ALL Living Room lighting INCLUDING Circle (#3 correction 5381189810)
+     - action: script.voice_group_off
+       data:
+         group: light.lr_kitchenbulbsandliner
+         members: [light.livingroombulbtableleft, light.livingroombulbtablemiddle, light.livingroombulbtableright, light.livingroomlineardimmer]
+         fallback_members: [light.livingroombulbtableleft, light.livingroombulbtablemiddle, light.livingroombulbtableright, light.livingroomlineardimmer]
++    - action: script.voice_circle_light_off
+ 
+ voice_circle_light_on:
+   alias: "Voice: Circle light on"
+@@ -760,9 +764,9 @@ voice_all_lights_on:
+   alias: "Voice: All lights on"
+   mode: restart
+   sequence:
++    # Circle is included via voice_livingroom_lights_on (no separate call — avoids double actuation)
+     - action: script.voice_hall_lights_on
+     - action: script.voice_livingroom_lights_on
+-    - action: script.voice_circle_light_on
+     - action: script.voice_bedroom_lights_on
+     - action: script.voice_workroom_lights_on
+     - action: script.voice_bathroom_on
+@@ -772,9 +776,9 @@ voice_all_lights_off:
+   alias: "Voice: All lights off"
+   mode: restart
+   sequence:
++    # Circle is included via voice_livingroom_lights_off (no separate call — avoids double actuation)
+     - action: script.voice_hall_lights_off
+     - action: script.voice_livingroom_lights_off
+-    - action: script.voice_circle_light_off
+     - action: script.voice_bedroom_lights_off
+     - action: script.voice_workroom_lights_off
+     - action: script.voice_bathroom_off
