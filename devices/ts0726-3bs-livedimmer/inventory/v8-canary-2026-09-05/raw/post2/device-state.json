@@ -1,0 +1,751 @@
+{
+ "a_ep1_ff05_switch_left": {
+  "65285": 3
+ },
+ "a_ep1_ff06_switch_left": {
+  "65286": 3
+ },
+ "a_ep1_std0010_switch_left": {
+  "switchActions": 2
+ },
+ "a_ep1_swbuild_switch_left": {
+  "swBuildId": "1.1.6-bseedv6"
+ },
+ "a_ep2_ff05_switch_middle": {
+  "65285": 3
+ },
+ "a_ep2_ff06_switch_middle": {
+  "65286": 3
+ },
+ "a_ep2_std0010_switch_middle": {
+  "switchActions": 2
+ },
+ "a_ep3_ff05_switch_right": {
+  "65285": 0
+ },
+ "a_ep3_ff06_switch_right": {
+  "65286": 2
+ },
+ "a_ep3_std0010_switch_right": {
+  "switchActions": 2
+ },
+ "abbase_ff05_l_switch_left": {
+  "65285": 3
+ },
+ "abbase_ff05_m_switch_middle": {
+  "65285": 3
+ },
+ "abbase_ff05_r_switch_right": {
+  "65285": 0
+ },
+ "abbase_on4_relay_left": {
+  "onOff": 1
+ },
+ "abbase_on5_relay_middle": {
+  "onOff": 0
+ },
+ "abbase_on6_relay_right": {
+  "onOff": 1
+ },
+ "abfin_ff05_l_switch_left": {
+  "65285": 3
+ },
+ "abfin_ff05_m_switch_middle": {
+  "65285": 3
+ },
+ "abfin_ff05_r_switch_right": {
+  "65285": 0
+ },
+ "abfin_on4_relay_left": {
+  "onOff": 0
+ },
+ "abfin_on5_relay_middle": {
+  "onOff": 1
+ },
+ "abfin_on6_relay_right": {
+  "onOff": 1
+ },
+ "abi_swbuild": {
+  "swBuildId": "1.1.6-bseedv6"
+ },
+ "abi_switchactions_left": {
+  "switchActions": 2
+ },
+ "abi_switchactions_left_switch_left": {
+  "switchActions": 2
+ },
+ "abi_switchactions_middle": {
+  "switchActions": 2
+ },
+ "abi_switchactions_middle_switch_middle": {
+  "switchActions": 2
+ },
+ "abi_switchactions_right": {
+  "switchActions": 2
+ },
+ "abi_switchactions_right_switch_right": {
+  "switchActions": 2
+ },
+ "abr1_ff05_l_switch_left": {
+  "65285": 3
+ },
+ "abr1_ff05_m_switch_middle": {
+  "65285": 3
+ },
+ "abr1_ff05_r_switch_right": {
+  "65285": 0
+ },
+ "abr1_on4_relay_left": {
+  "onOff": 1
+ },
+ "abr1_on5_relay_middle": {
+  "onOff": 0
+ },
+ "abr1_on6_relay_right": {
+  "onOff": 0
+ },
+ "b2check_on4_relay_left": {
+  "onOff": 0
+ },
+ "b2check_on5_relay_middle": {
+  "onOff": 0
+ },
+ "b2check_on6_relay_right": {
+  "onOff": 1
+ },
+ "b2check_sw1_switch_left": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2check_sw2_switch_middle": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2check_sw3_switch_right": {
+  "65280": 1,
+  "65285": 0,
+  "65286": 2
+ },
+ "b2final_on4_relay_left": {
+  "onOff": 0
+ },
+ "b2final_on5_relay_middle": {
+  "onOff": 0
+ },
+ "b2final_on6_relay_right": {
+  "onOff": 1
+ },
+ "b2final_sw1_switch_left": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2final_sw2_switch_middle": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2final_sw3_switch_right": {
+  "65280": 1,
+  "65285": 0,
+  "65286": 2
+ },
+ "b2finala_on4_relay_left": {
+  "onOff": 0
+ },
+ "b2finala_on5_relay_middle": {
+  "onOff": 0
+ },
+ "b2finala_on6_relay_right": {
+  "onOff": 1
+ },
+ "b2finala_sw1_switch_left": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2finala_sw2_switch_middle": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2finala_sw3_switch_right": {
+  "65280": 1,
+  "65285": 0,
+  "65286": 2
+ },
+ "b2noise_on4_relay_left": {
+  "onOff": 0
+ },
+ "b2noise_on5_relay_middle": {
+  "onOff": 0
+ },
+ "b2noise_on6_relay_right": {
+  "onOff": 1
+ },
+ "b2noise_sw1_switch_left": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2noise_sw2_switch_middle": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2noise_sw3_switch_right": {
+  "65280": 1,
+  "65285": 0,
+  "65286": 2
+ },
+ "b2post_on4_relay_left": {
+  "onOff": 0
+ },
+ "b2post_on5_relay_middle": {
+  "onOff": 0
+ },
+ "b2post_on6_relay_right": {
+  "onOff": 1
+ },
+ "b2post_sw1_switch_left": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2post_sw3_switch_right": {
+  "65280": 1,
+  "65285": 0,
+  "65286": 2
+ },
+ "b2posthav2_on4_relay_left": {
+  "onOff": 0
+ },
+ "b2posthav2_on5_relay_middle": {
+  "onOff": 0
+ },
+ "b2posthav2_on6_relay_right": {
+  "onOff": 1
+ },
+ "b2posthav2_sw1_switch_left": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2posthav2_sw2_switch_middle": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2posthav2_sw3_switch_right": {
+  "65280": 1,
+  "65285": 0,
+  "65286": 2
+ },
+ "b2pre_on4_relay_left": {
+  "onOff": 0
+ },
+ "b2pre_on5_relay_middle": {
+  "onOff": 0
+ },
+ "b2pre_on6_relay_right": {
+  "onOff": 1
+ },
+ "b2pre_sw1_switch_left": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2pre_sw2_switch_middle": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "b2pre_sw3_switch_right": {
+  "65280": 1,
+  "65285": 0,
+  "65286": 2
+ },
+ "ck_ep1_ff00_switch_left": {
+  "65280": 1
+ },
+ "ck_ep1_ff05_switch_left": {
+  "65285": 3
+ },
+ "ck_ep1_ff06_switch_left": {
+  "65286": 3
+ },
+ "ck_ep1_std_switch_left": {
+  "switchActions": 2
+ },
+ "ck_ep2_ff00_switch_middle": {
+  "65280": 1
+ },
+ "ck_ep2_ff05_switch_middle": {
+  "65285": 3
+ },
+ "ck_ep2_ff06_switch_middle": {
+  "65286": 3
+ },
+ "ck_ep2_std_switch_middle": {
+  "switchActions": 2
+ },
+ "ck_ep3_ff00_switch_right": {
+  "65280": 1
+ },
+ "ck_ep3_ff05_switch_right": {
+  "65285": 0
+ },
+ "ck_ep3_ff06_switch_right": {
+  "65286": 2
+ },
+ "ck_ep3_std_switch_right": {
+  "switchActions": 2
+ },
+ "ck_ep4_led_relay_left": {
+  "65282": 0
+ },
+ "ck_ep4_onoff_relay_left": {
+  "onOff": 0
+ },
+ "ck_ep4_policy_relay_left": {
+  "65283": 1
+ },
+ "ck_ep5_led_relay_middle": {
+  "65282": 0
+ },
+ "ck_ep5_onoff_relay_middle": {
+  "onOff": 0
+ },
+ "ck_ep5_policy_relay_middle": {
+  "65283": 1
+ },
+ "ck_ep6_led_relay_right": {
+  "65282": 1
+ },
+ "ck_ep6_policy_relay_right": {
+  "65283": 1
+ },
+ "conv2_ff05": {
+  "65285": 3
+ },
+ "conv_ff05": {
+  "65285": 3
+ },
+ "dc1_ff05": {
+  "65285": 3
+ },
+ "dc2_ff05": {
+  "65285": 3
+ },
+ "dc3_ff05": {
+  "65285": 3
+ },
+ "dc4_ff05": {
+  "65285": 3
+ },
+ "dc5_ff05": {
+  "65285": 3
+ },
+ "device": {
+  "applicationVersion": 3,
+  "dateCode": "20260905",
+  "friendlyName": "LivingRoomMainDimmer",
+  "hardwareVersion": 0,
+  "ieeeAddr": "0xa4c13843a9d40f85",
+  "manufacturerID": 4417,
+  "manufacturerName": "iedhxgyi",
+  "model": "EC-GL86ZPCS31",
+  "networkAddress": 17007,
+  "powerSource": "Mains (single phase)",
+  "softwareBuildID": "1.1.8-bseedv8",
+  "stackVersion": 2,
+  "type": "Router",
+  "zclVersion": 3
+ },
+ "device_config": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;",
+ "device_config_switch_left": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;",
+ "device_config_unlock": null,
+ "fin_left_policy_relay_left": {
+  "65283": 1
+ },
+ "fin_mid_policy_relay_middle": {
+  "65283": 1
+ },
+ "fin_post_logical_relay_right": {
+  "onOff": 0
+ },
+ "fin_post_policy_relay_right": {
+  "65283": 0
+ },
+ "fin_pre_logical_relay_right": {
+  "onOff": 0
+ },
+ "fin_pre_policy_relay_right": {
+  "65283": 1
+ },
+ "fresh_ff05_left": {
+  "65285": 3
+ },
+ "fresh_ff05_middle": {
+  "65285": 3
+ },
+ "fresh_ff05_right": {
+  "65285": 3
+ },
+ "fresh_std_right": {
+  "switchActions": 2
+ },
+ "gf_devcfg_ep1_switch_left": {
+  "deviceConfig": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;"
+ },
+ "gf_swbuild_switch_left": {
+  "swBuildId": "1.1.7-bseedv7"
+ },
+ "gk_ep6_onoff_relay_right": {
+  "onOff": 0
+ },
+ "gk_ep6_policy_relay_right": {
+  "65283": 1
+ },
+ "linkquality": 68,
+ "lv_post_ms1_switch_left": {
+  "presentValue": 0
+ },
+ "lv_post_ms2_switch_middle": {
+  "presentValue": 0
+ },
+ "lv_post_ms3_switch_right": {
+  "presentValue": 0
+ },
+ "lv_post_onoff4_relay_left": {
+  "onOff": 1
+ },
+ "lv_post_onoff5_relay_middle": {
+  "onOff": 0
+ },
+ "lv_post_onoff6_relay_right": {
+  "onOff": 1
+ },
+ "lv_pre_ms1_switch_left": {
+  "presentValue": 0
+ },
+ "lv_pre_ms2_switch_middle": {
+  "presentValue": 0
+ },
+ "lv_pre_ms3_switch_right": {
+  "presentValue": 0
+ },
+ "lv_pre_onoff4_relay_left": {
+  "onOff": 0
+ },
+ "lv_pre_onoff5_relay_middle": {
+  "onOff": 0
+ },
+ "lv_pre_onoff6_relay_right": {
+  "onOff": 1
+ },
+ "multi_press_reset_count": 40,
+ "multi_press_reset_count_switch_left": 10,
+ "network_led": null,
+ "network_led_switch_left": "ON",
+ "pk_ep1_ff00_switch_left": {
+  "65280": 1
+ },
+ "pk_ep1_ff05_switch_left": {
+  "65285": 3
+ },
+ "pk_ep2_ff00_switch_middle": {
+  "65280": 1
+ },
+ "pk_ep2_ff05_switch_middle": {
+  "65285": 3
+ },
+ "pk_ep3_ff00_switch_right": {
+  "65280": 1
+ },
+ "pk_ep3_ff05_switch_right": {
+  "65285": 0
+ },
+ "pk_ep4_policy_relay_left": {
+  "65283": 1
+ },
+ "pk_ep5_policy_relay_middle": {
+  "65283": 1
+ },
+ "pk_ep6_onoff_relay_right": {
+  "onOff": 0
+ },
+ "pk_ep6_policy_relay_right": {
+  "65283": 1
+ },
+ "po_ep1_ff00_switch_left": {
+  "65280": 1
+ },
+ "po_ep1_ff05_switch_left": {
+  "65285": 3
+ },
+ "po_ep1_std_switch_left": {
+  "switchActions": 2
+ },
+ "po_ep2_ff00_switch_middle": {
+  "65280": 1
+ },
+ "po_ep2_ff05_switch_middle": {
+  "65285": 3
+ },
+ "po_ep2_std_switch_middle": {
+  "switchActions": 2
+ },
+ "po_ep3_ff00_switch_right": {
+  "65280": 1
+ },
+ "po_ep3_ff05_switch_right": {
+  "65285": 0
+ },
+ "po_ep3_std_switch_right": {
+  "switchActions": 2
+ },
+ "po_ep4_policy_relay_left": {
+  "65283": 1
+ },
+ "po_ep5_policy_relay_middle": {
+  "65283": 1
+ },
+ "po_ep6_onoff_relay_right": {
+  "onOff": 0
+ },
+ "po_ep6_policy_relay_right": {
+  "65283": 1
+ },
+ "po_swbuild_switch_left": {
+  "swBuildId": "1.1.7-bseedv7"
+ },
+ "power_on_behavior_relay_left": "previous",
+ "power_on_behavior_relay_middle": "previous",
+ "power_on_behavior_relay_right": "previous",
+ "probe_ff05_after1": {
+  "65285": 3
+ },
+ "probe_ff05_after2": {
+  "65285": 3
+ },
+ "probe_ff05_base": {
+  "65285": 3
+ },
+ "raw_ep4_onoff_physical_relay_left": {
+  "65283": 1,
+  "onOff": 0
+ },
+ "raw_ep5_onoff_physical_relay_middle": {
+  "65283": 1,
+  "onOff": 0
+ },
+ "raw_ep6_onoff_physical_relay_right": {
+  "65283": 1,
+  "onOff": 0
+ },
+ "relay_left_binding_intent": "OFF",
+ "relay_left_binding_intent_relay_left": "OFF",
+ "relay_left_indicator": "OFF",
+ "relay_left_indicator_mode": "Binding status",
+ "relay_left_indicator_mode_relay_left": "Binding status",
+ "relay_left_indicator_relay_left": "OFF",
+ "relay_left_physical_mode": "always_on",
+ "relay_left_physical_mode_relay_left": "Always on",
+ "relay_middle_binding_intent": "OFF",
+ "relay_middle_binding_intent_relay_middle": "OFF",
+ "relay_middle_indicator": "OFF",
+ "relay_middle_indicator_mode": "Binding status",
+ "relay_middle_indicator_mode_relay_middle": "Binding status",
+ "relay_middle_indicator_relay_middle": "OFF",
+ "relay_middle_physical_mode": "always_on",
+ "relay_middle_physical_mode_relay_middle": "Always on",
+ "relay_right_binding_intent": "ON",
+ "relay_right_binding_intent_relay_right": "ON",
+ "relay_right_indicator": "ON",
+ "relay_right_indicator_mode": "Physical output",
+ "relay_right_indicator_mode_relay_right": "Physical output",
+ "relay_right_indicator_relay_right": "ON",
+ "relay_right_physical_mode": "follow_state",
+ "relay_right_physical_mode_relay_right": "Always off",
+ "rprobe_ff05": {
+  "65285": 3
+ },
+ "rv1_base": {
+  "65285": 3
+ },
+ "rv2_base": {
+  "65285": 3
+ },
+ "rv3_p": {
+  "65285": 3
+ },
+ "state_relay_left": "OFF",
+ "state_relay_middle": "OFF",
+ "state_relay_right": "ON",
+ "sw_ep1_0xff00": {
+  "65280": 1
+ },
+ "sw_ep2_0xff00": {
+  "65280": 1
+ },
+ "sw_ep3_0xff00": {
+  "65280": 1
+ },
+ "switch_left_action_mode": "Match local state",
+ "switch_left_action_mode_switch_left": "Match local state",
+ "switch_left_binded_mode": "Short press",
+ "switch_left_binded_mode_switch_left": "short_press",
+ "switch_left_level_move_rate": null,
+ "switch_left_level_move_rate_switch_left": 42,
+ "switch_left_long_press_duration": null,
+ "switch_left_long_press_duration_switch_left": 783,
+ "switch_left_mode": "Push button",
+ "switch_left_mode_switch_left": "momentary",
+ "switch_left_press_action": "Press",
+ "switch_left_press_action_switch_left": "released",
+ "switch_left_relay_index": "Left",
+ "switch_left_relay_index_switch_left": "relay_1",
+ "switch_left_relay_mode": "Short press",
+ "switch_left_relay_mode_switch_left": "Short press",
+ "switch_middle_action_mode": "Match local state",
+ "switch_middle_action_mode_switch_middle": "Match local state",
+ "switch_middle_binded_mode": "Short press",
+ "switch_middle_binded_mode_switch_middle": "short_press",
+ "switch_middle_level_move_rate": null,
+ "switch_middle_level_move_rate_switch_middle": 44,
+ "switch_middle_long_press_duration": null,
+ "switch_middle_long_press_duration_switch_middle": 974,
+ "switch_middle_mode": "Push button",
+ "switch_middle_mode_switch_middle": "momentary",
+ "switch_middle_press_action": "Released",
+ "switch_middle_press_action_switch_middle": "released",
+ "switch_middle_relay_index": "Middle",
+ "switch_middle_relay_index_switch_middle": "relay_2",
+ "switch_middle_relay_mode": "Short press",
+ "switch_middle_relay_mode_switch_middle": "Short press",
+ "switch_right_action_mode": "Toggle",
+ "switch_right_action_mode_switch_right": "Toggle",
+ "switch_right_binded_mode": "Never (disabled)",
+ "switch_right_binded_mode_switch_right": "Never (disabled)",
+ "switch_right_level_move_rate": null,
+ "switch_right_level_move_rate_switch_right": 50,
+ "switch_right_long_press_duration": null,
+ "switch_right_long_press_duration_switch_right": 829,
+ "switch_right_mode": "Push button",
+ "switch_right_mode_switch_right": "momentary",
+ "switch_right_press_action": "Released",
+ "switch_right_press_action_switch_right": "released",
+ "switch_right_relay_index": "Right",
+ "switch_right_relay_index_switch_right": "relay_3",
+ "switch_right_relay_mode": "Short press",
+ "switch_right_relay_mode_switch_right": "Short press",
+ "update": {
+  "installed_version": 285356042,
+  "latest_release_notes": null,
+  "latest_source": null,
+  "latest_version": 285356042,
+  "state": "idle"
+ },
+ "v5_pre_raw_ep4_relay_left": {
+  "65283": 1,
+  "onOff": 0
+ },
+ "v5_pre_raw_ep5_relay_middle": {
+  "65283": 1,
+  "onOff": 0
+ },
+ "v5_pre_raw_ep6_relay_right": {
+  "65283": 1,
+  "onOff": 0
+ },
+ "v8post_raw1_switch_left": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "v8post_raw2_switch_middle": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "v8post_raw3_switch_right": {
+  "65280": 1,
+  "65285": 0,
+  "65286": 2
+ },
+ "v8pre_raw1_switch_left": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "v8pre_raw2_switch_middle": {
+  "65280": 1,
+  "65285": 3,
+  "65286": 3
+ },
+ "v8pre_raw3_switch_right": {
+  "65280": 1,
+  "65285": 0,
+  "65286": 2
+ },
+ "v_devconfig": {
+  "deviceConfig": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;"
+ },
+ "v_ff05_left": {
+  "65285": 3
+ },
+ "v_ff05_middle": {
+  "65285": 3
+ },
+ "v_ff05_right": {
+  "65285": 3
+ },
+ "v_ff06_left": {
+  "65286": 3
+ },
+ "v_ff06_middle": {
+  "65286": 3
+ },
+ "v_ff06_right": {
+  "65286": 3
+ },
+ "v_std_left": {
+  "switchActions": 2
+ },
+ "v_std_middle": {
+  "switchActions": 2
+ },
+ "v_std_right": {
+  "switchActions": 2
+ },
+ "v_swbuild": {
+  "swBuildId": "1.1.6-bseedv6"
+ },
+ "vmpost_ep4_relay_left": {
+  "65283": 1,
+  "onOff": 0
+ },
+ "vmpost_ep5_relay_middle": {
+  "65283": 1,
+  "onOff": 0
+ },
+ "vmpost_ep6_relay_right": {
+  "65283": 0,
+  "onOff": 1
+ },
+ "x_ep1_ref": {
+  "65285": 3
+ },
+ "x_ep3_a_switch_right": {
+  "65285": 0
+ },
+ "x_ep3_b_switch_right": {
+  "65285": 0
+ },
+ "x_ep3_c_switch_right": {
+  "65285": 0
+ }
+}

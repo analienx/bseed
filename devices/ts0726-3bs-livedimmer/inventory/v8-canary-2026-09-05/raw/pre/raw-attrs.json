@@ -1,0 +1,23 @@
+{
+ "at_utc": "2026-09-05T16:08:25.874Z",
+ "reads": {
+  "v8pre_raw1_switch_left": {
+   "65280": 1,
+   "65285": 3,
+   "65286": 3
+  },
+  "v8pre_raw2_switch_middle": {
+   "65280": 1,
+   "65285": 3,
+   "65286": 3
+  },
+  "v8pre_raw3_switch_right": {
+   "65280": 1,
+   "65285": 0,
+   "65286": 2
+  },
+  "v8pre_rawbasic": {
+   "__timeout": true
+  }
+ }
+}

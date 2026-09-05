@@ -1,0 +1,18 @@
+{
+ "at_utc": "2026-09-05T17:35:51.224Z",
+ "reads": {
+  "rw9_devcfg_ep1_switch_left": {
+   "65281": 1,
+   "deviceConfig": "iedhxgyi;TS0726-3-BS;LC4;SB1u;RC2;IC0;SB7u;RC3;ID7;SB4u;RD2;IB5;M;"
+  },
+  "rw9_led_ep4": {
+   "__timeout": true
+  },
+  "rw9_led_ep5": {
+   "__timeout": true
+  },
+  "rw9_led_ep6": {
+   "__timeout": true
+  }
+ }
+}

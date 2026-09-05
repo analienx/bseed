@@ -1,0 +1,37 @@
+16:14:42 request sent zigbee2mqtt/bridge/request/device/ota_update/update {"id":"LivingRoomMainDimmer","url":"http://127.0.0.1:8899/index-forward.json"}
+16:15:41 waiting... progress=5 responses=1
+16:16:41 waiting... progress=9 responses=1
+16:17:41 waiting... progress=13 responses=1
+16:18:41 waiting... progress=18 responses=1
+16:19:41 waiting... progress=23 responses=1
+16:20:41 waiting... progress=27 responses=1
+16:21:41 waiting... progress=31 responses=1
+16:22:41 waiting... progress=35 responses=1
+16:23:41 waiting... progress=40 responses=1
+16:24:41 waiting... progress=45 responses=1
+16:25:41 waiting... progress=49 responses=1
+16:26:41 waiting... progress=53 responses=1
+16:27:41 waiting... progress=57 responses=1
+16:28:41 waiting... progress=62 responses=1
+16:29:41 waiting... progress=66 responses=1
+16:30:41 waiting... progress=70 responses=1
+16:31:41 waiting... progress=74 responses=1
+16:32:41 waiting... progress=78 responses=1
+16:33:41 waiting... progress=83 responses=1
+16:34:41 waiting... progress=88 responses=1
+16:35:41 waiting... progress=92 responses=1
+16:36:41 waiting... progress=96 responses=1
+16:37:41 waiting... progress=100 responses=1
+16:37:42 RESP {"data":{"from":{"date_code":"20260904","file_version":285356041,"software_build_id":"1.1.7-bseedv7"},"id":"LivingRoomMainDimmer","to":{"date_code":"20260905","file_version":285356042,"software_build_id":"1.1.8-bseedv8"}},"status":"ok"}
+16:38:41 waiting... progress=102 responses=2
+16:39:41 waiting... progress=102 responses=2
+16:40:41 waiting... progress=102 responses=2
+16:41:41 waiting... progress=102 responses=2
+16:42:41 waiting... progress=102 responses=2
+16:43:41 waiting... progress=102 responses=2
+16:44:41 waiting... progress=102 responses=2
+16:45:41 waiting... progress=102 responses=2
+16:46:41 waiting... progress=102 responses=2
+16:47:41 waiting... progress=103 responses=2
+16:48:41 waiting... progress=103 responses=2
+RUNNER-DONE events=2 progress=103

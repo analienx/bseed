@@ -1,0 +1,26 @@
+{
+ "at_utc": "2026-09-05T16:47:09.925Z",
+ "reads": {
+  "vmpost_ep4_relay_left": {
+   "65283": 1,
+   "onOff": 0
+  },
+  "vmpost_ep4": {
+   "__timeout": true
+  },
+  "vmpost_ep5_relay_middle": {
+   "65283": 1,
+   "onOff": 0
+  },
+  "vmpost_ep5": {
+   "__timeout": true
+  },
+  "vmpost_ep6_relay_right": {
+   "65283": 0,
+   "onOff": 1
+  },
+  "vmpost_ep6": {
+   "__timeout": true
+  }
+ }
+}

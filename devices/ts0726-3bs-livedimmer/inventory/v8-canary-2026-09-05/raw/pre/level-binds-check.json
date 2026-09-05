@@ -1,0 +1,49 @@
+{
+ "level_binds": [
+  {
+   "endpoint": "1",
+   "cluster": "genLevelCtrl",
+   "target": {
+    "endpoint": 1,
+    "ieee_address": "0xfdb1122d004b1200",
+    "type": "endpoint"
+   }
+  },
+  {
+   "endpoint": "1",
+   "cluster": "genLevelCtrl",
+   "target": {
+    "endpoint": 11,
+    "ieee_address": "0xa4c1388b709b209c",
+    "type": "endpoint"
+   }
+  },
+  {
+   "endpoint": "2",
+   "cluster": "genLevelCtrl",
+   "target": {
+    "endpoint": 1,
+    "ieee_address": "0xfdb1122d004b1200",
+    "type": "endpoint"
+   }
+  },
+  {
+   "endpoint": "2",
+   "cluster": "genLevelCtrl",
+   "target": {
+    "id": 25,
+    "type": "group"
+   }
+  },
+  {
+   "endpoint": "3",
+   "cluster": "genLevelCtrl",
+   "target": {
+    "endpoint": 1,
+    "ieee_address": "0xfdb1122d004b1200",
+    "type": "endpoint"
+   }
+  }
+ ],
+ "expect_absent_eps45_genLevelCtrl_coordinator": true
+}

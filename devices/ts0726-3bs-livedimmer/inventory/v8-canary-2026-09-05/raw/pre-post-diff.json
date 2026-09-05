@@ -1,0 +1,34 @@
+{
+ "at_utc": "2026-09-05T17:33:47.998Z",
+ "binding_total": {
+  "pre": 18,
+  "post": 18
+ },
+ "endpoint_diffs": [],
+ "endpoint_diff_detail": {},
+ "groups_count": {
+  "pre": 21,
+  "post": 21
+ },
+ "group_diffs": [],
+ "fleet_count": {
+  "pre": 103,
+  "post": 103
+ },
+ "fleet_diffs": [
+  {
+   "ieee": "0xa4c13843a9d40f85",
+   "pre": {
+    "ieee": "0xa4c13843a9d40f85",
+    "sw": "1.1.7-bseedv7",
+    "model": "EC-GL86ZPCS31"
+   },
+   "post": {
+    "ieee": "0xa4c13843a9d40f85",
+    "sw": "1.1.8-bseedv8",
+    "model": "EC-GL86ZPCS31"
+   }
+  }
+ ],
+ "identical": true
+}

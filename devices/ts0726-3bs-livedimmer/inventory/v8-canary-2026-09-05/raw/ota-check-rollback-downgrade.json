@@ -1,0 +1,51 @@
+{
+ "mode": "check",
+ "image": "rollback",
+ "downgrade": true,
+ "index": "http://127.0.0.1:8899/index-recovery.json",
+ "target_ieee": "0xa4c13843a9d40f85",
+ "at": "2026-09-05T17:37:58.195Z",
+ "progress": [
+  {
+   "at": "17:37:59",
+   "line": "{\"level\":\"info\",\"message\":\"z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/BedroomBulb2', payload '{\\\"brightness\\\":254,\\\"color_mode\\\":\\\"color_temp\\\",\\\"color_options\\\":null,\\\"color_temp\\\":290,\\\"device\\\":{\\\"applicationVersion\\\":16,\\\"dateCode\\\":\\\"2"
+  },
+  {
+   "at": "17:37:59",
+   "line": "{\"level\":\"info\",\"message\":\"z2m: Checking if OTA update available for 'LivingRoomMainDimmer'\"}"
+  },
+  {
+   "at": "17:37:59",
+   "line": "{\"level\":\"info\",\"message\":\"z2m: OTA update available for 'LivingRoomMainDimmer'\"}"
+  },
+  {
+   "at": "17:37:59",
+   "line": "{\"level\":\"info\",\"message\":\"z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\\\"a_ep1_ff05_switch_left\\\":{\\\"65285\\\":3},\\\"a_ep1_ff06_switch_left\\\":{\\\"65286\\\":3},\\\"a_ep1_std0010_switch_left\\\":{\\\"switchActions\\\":2},\\\"a"
+  },
+  {
+   "at": "17:37:59",
+   "line": "{\"level\":\"info\",\"message\":\"z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/ota_update/check', payload '{\\\"data\\\":{\\\"downgrade\\\":true,\\\"id\\\":\\\"LivingRoomMainDimmer\\\",\\\"source\\\":\\\"http://127.0.0.1:8899/v7-recovery.ota\\\",\\\"up"
+  },
+  {
+   "at": "17:38:01",
+   "line": "{\"level\":\"info\",\"message\":\"z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/BedroomBulb1', payload '{\\\"brightness\\\":254,\\\"color_mode\\\":\\\"color_temp\\\",\\\"color_options\\\":null,\\\"color_temp\\\":290,\\\"device\\\":{\\\"applicationVersion\\\":16,\\\"dateCode\\\":\\\"2"
+  },
+  {
+   "at": "17:38:12",
+   "line": "{\"level\":\"info\",\"message\":\"z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/BedroomBulb1', payload '{\\\"brightness\\\":254,\\\"color_mode\\\":\\\"color_temp\\\",\\\"color_options\\\":null,\\\"color_temp\\\":290,\\\"device\\\":{\\\"applicationVersion\\\":16,\\\"dateCode\\\":\\\"2"
+  }
+ ],
+ "events": [
+  {
+   "at": "17:37:58",
+   "topic": "zigbee2mqtt/LivingRoomMainDimmer/availability",
+   "data": "{\"state\":\"online\"}"
+  },
+  {
+   "at": "17:37:59",
+   "topic": "zigbee2mqtt/bridge/response/device/ota_update/check",
+   "data": "{\"data\":{\"downgrade\":true,\"id\":\"LivingRoomMainDimmer\",\"source\":\"http://127.0.0.1:8899/v7-recovery.ota\",\"update_available\":true},\"status\":\"ok\"}"
+  }
+ ],
+ "finished": "2026-09-05T17:38:38.197Z"
+}
