@@ -152,3 +152,70 @@ STATUS not finalized. Tools + raw outputs banked alongside this note (`deploy.sh
 `cmp_bindings.py`, `raw-logs/*`). In `raw-logs/device-readback-and-refcheck.txt` the three
 `MISSING light.turn_on|light.turn_off|select.select_option` lines are my regex catching **service**
 names, not entities — only the three `*_indicator_mode_*` lines are genuine.
+
+---
+
+# ADDENDUM — Option A executed after ruling `5551014414` thread: correction deployed, all gates green
+
+## A1. Content correction
+
+Commit **`3c003bc`** = child of `76bbecd` (chain `bf41dc3` → `76bbecd` → `3c003bc`), pushed to
+`integration/ts0726-ha-v2-on-main-2026-09-05`. 15 references corrected (automations ×6, scripts ×9);
+`physical_mode` and `..._binding_intent_relay_<x>` ids left untouched — both verified present live.
+
+`tools/tests/test_main_dimmer_v5.py` corrected in lockstep (3 literals). **The test's sensitivity is
+now demonstrated, not assumed:** applying only the YAML fix produced `FAILED (failures=1)` on
+`test_reconciliation_is_fail_closed_on_final_mains_and_led_profile`, and only after the test literals
+were corrected did the suite return `Ran 40 tests ... OK`. The test had previously been validating the
+file against its own wrong strings; it now asserts the ids that actually exist on the device surface.
+
+## A2. Redeploy record
+
+```
+diff vs first install = exactly the 15 id lines, nothing else (git diff --no-index, see raw-logs/*)
+backup /config/automations.yaml.pre-hav2r2-20260905 sha256 c2457fd0...  (defective first install)
+backup /config/scripts.yaml.pre-hav2r2-20260905     sha256 79a75fa1...
+install /config/automations.yaml                    sha256 e1cb0e8ea02e45354dcc9ed4e2756d05b687ac31707b32bb86297c8d3b65aaf3
+install /config/scripts.yaml                        sha256 cf4c3af78d5fa02d1d46c20ff8242a5b9da3f7cb09b9975de00572467634686c
+stale-id scan on loaded files: automations.yaml:0  scripts.yaml:0
+parsed: 55 automation entries | 34 script keys | indicator ids resolved to the unsuffixed V7 form
+        | 'state_relay_right' present: False
+ha core check (after install, immediately before activation) -> Command completed successfully.
+remote main re-checked immediately before activation          -> bf41dc3b71f7... (unchanged)
+activation -> POST automation/reload [] ; POST script/reload []  (no core restart, ~12:05-12:07 CEST)
+```
+
+## A3. Post-activation proof (all green)
+
+| Required proof | Result |
+|---|---|
+| Entity resolution gate (new, permanent) | **9/9 real entity references resolve live.** `select...relay_{left,middle}_indicator_mode` = `Binding status`, `..._right_indicator_mode` = `Physical output`, all three `physical_mode` = accepted values, both tracked lights + circle present. (`refcheck.sh`; the 3 `MISSING` lines are service names caught by my regex, not entities.) This gate is what §5's defect needed, and it is now part of the deploy procedure. |
+| Gate satisfiable by substitution | gate1 = `Always on ∧ Always on ∧ Follow logical state` over three entities confirmed resolving with exactly those values → True; gate2 likewise. So the automation is **no longer permanently fail-closed**; `state: on`, enabled. |
+| Zero device write | HA `last_triggered` unchanged at `2026-09-05T06:42:37Z` (pre-deploy legacy run) → neither reconcile run has fired; both tracked lights `off` and untransitioned in the window. Final device readback `10:13:59Z`: `0xff00=1/1/1`, `0xff05=3/3/0`, `0xff06=3/3/2`, EP4=0, EP5=0, EP6=1 — byte-identical to the pre-deploy reads. |
+| Binding count / set | **18, exact set match** vs `readback_after_ep5` (`missing=[] extra=[]`) after activation. |
+| V7 / fileVersion | `installed_version=285356041`, `latest=285356041`, update `off`; definition `EC-GL86ZPCS31`, nwk 17007. |
+| Retired poll pattern | `56` total, `LAST 08:42:43`, **0 after the 10:24:59 unbind** — re-scanned 12:14 CEST, ~1 h after the HA activation. |
+| HA + Z2M health | HA `RUNNING`, `safe_mode false`; Z2M `running / healthy`. |
+
+**Evidence caveat worth carrying forward (control-tested):** at `log_level=info` Z2M does **not** log
+inbound `.../set` traffic — the `Received MQTT message on 'zigbee2mqtt/.../set'` lines exist only in
+the Sep-4 *debug* windows, and today's info windows show zero such lines even though HA's own
+`last_triggered=08:42:37` proves a write occurred this morning. So "absence of set log lines" is **not**
+evidence of absence of writes; only readback comparison and `last_triggered` are. (`raw-logs/setcheck`
+output in `final-proof-device-and-refs.txt`.)
+
+## A4. Not done / open
+
+* First natural LEFT/MIDDLE transition has not occurred yet, so the very first v5 publish is unobserved
+  by design (forcing it writes to the device and, with `trigger.id` absent, proves nothing). It will be
+  visible in `last_triggered` + the automation trace whenever the operator next changes the Linear
+  dimmer or the kitchen-bulb group.
+* Orphaned registry entry `automation.lr_livingroommaindimmer_indicator_sync_off` (`unavailable`,
+  friendly name still the deleted legacy alias) left in place — pruning it is a `.storage` write nobody
+  authorized. Cosmetic only; it cannot execute.
+* Repo `home-assistant/` vs live `/config` drift (§2) is **still unresolved** and is a separate defect
+  in the repo's stated invariant: 4 automations in repo-not-live, 3 in live-not-repo (including the
+  un-banked `#3 correction 5381189810` scripts work). Reconciling that is a supervisor-level scope call
+  — my deploy deliberately did not touch it.
+* The `main_dimmer_finalize_v5_indicators` script is now addressable but remains **operator-run**: it
+  writes LED indicator modes and requires `operator_continuity_confirmed`. I did not run it.

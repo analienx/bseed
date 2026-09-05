@@ -27,6 +27,23 @@ stream.**
 > `accept/raw-logs/unbind-result.json`. Everything else — switch EP1/EP2 direct-dim binds,
 > self-binds, group 25, LinearDimmer/11, EP3, EP4/EP5 `genOnOff→coordinator`, EP6, all reporting —
 > is unchanged and re-verified.
+>
+> **HA-side v5/v2 reconciliation is DEPLOYED LIVE (2026-09-05, Supervisor `5550783700` + Option-A
+> ruling).** Branch `integration/ts0726-ha-v2-on-main-2026-09-05` = `bf41dc3`(main) → `76bbecd` →
+> **`3c003bc`** (correction); installed `/config` digests automations `e1cb0e8e…`, scripts `cf4c3af7…`,
+> activated by `automation` + `script` reload only (no core restart, no device write). Live effect: the
+> two legacy *Swapped Output Sync* automations are replaced by **`LR - MainDimmer v5 Target State
+> Reconciliation`** (LEFT/MIDDLE only, fail-closed on the accepted profile; it runs under the retained
+> entity id `automation.lr_livingroommaindimmer_indicator_sync_on`, because HA keeps entity ids and only
+> re-reads the alias), `main_dimmer_finalize_v5_indicators` is added for operator-run finalization, and
+> `voice_circle_light_{on,off}` no longer address the RIGHT relay. Full record:
+> [`accept/HA-V2-DEPLOY-RETURN.md`](./inventory/v6-production-2026-09-04/accept/HA-V2-DEPLOY-RETURN.md).
+> Two durable lessons from that deploy: (1) **`home-assistant/` in the HA repo is NOT a mirror of live
+> `/config`** despite README's claim — the drift is bidirectional, so deploys must be applied at
+> YAML-entry granularity behind a semantic merge-base gate, never by file copy; (2) the first install
+> shipped 15 references to `*_indicator_mode_relay_<x>` entities that **do not exist** on the V7 surface
+> and nothing caught it — `ha core check` does not resolve entity ids, and the contract test asserted the
+> same wrong literals — so an **entity-resolution gate is now mandatory** before any HA deploy.
 
 ## Gate board — per re-review `5492467354` (supersedes the numbered 1–5 board)
 
