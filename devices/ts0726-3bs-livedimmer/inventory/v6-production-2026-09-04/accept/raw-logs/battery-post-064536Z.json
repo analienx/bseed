@@ -1,0 +1,31 @@
+{
+ "tag": "post",
+ "at_utc": "2026-09-05T06:45:36.129Z",
+ "reads": {
+  "b2post_sw1_switch_left": {
+   "65280": 1,
+   "65285": 3,
+   "65286": 3
+  },
+  "b2post_sw2": {
+   "__timeout": true
+  },
+  "b2post_sw3_switch_right": {
+   "65280": 1,
+   "65285": 0,
+   "65286": 2
+  },
+  "b2post_swbuild": {
+   "__timeout": true
+  },
+  "b2post_on4_relay_left": {
+   "onOff": 0
+  },
+  "b2post_on5_relay_middle": {
+   "onOff": 0
+  },
+  "b2post_on6_relay_right": {
+   "onOff": 1
+  }
+ }
+}
