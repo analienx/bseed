@@ -1,0 +1,97 @@
+[
+ {
+  "stage": "pre",
+  "total": 20,
+  "bindings": [
+   "1:genLevelCtrl->0xa4c1388b709b209c/11",
+   "1:genLevelCtrl->0xfdb1122d004b1200/1",
+   "1:genMultistateInput->0xfdb1122d004b1200/1",
+   "1:genOnOff->0xa4c13843a9d40f85/4",
+   "1:genOnOff->0xa4c1388b709b209c/11",
+   "1:genOnOff->0xfdb1122d004b1200/1",
+   "2:genLevelCtrl->0xfdb1122d004b1200/1",
+   "2:genLevelCtrl->grp25",
+   "2:genMultistateInput->0xfdb1122d004b1200/1",
+   "2:genOnOff->0xa4c13843a9d40f85/5",
+   "2:genOnOff->0xfdb1122d004b1200/1",
+   "2:genOnOff->grp25",
+   "3:genLevelCtrl->0xfdb1122d004b1200/1",
+   "3:genMultistateInput->0xfdb1122d004b1200/1",
+   "3:genOnOff->0xfdb1122d004b1200/1",
+   "4:genLevelCtrl->0xfdb1122d004b1200/1",
+   "4:genOnOff->0xfdb1122d004b1200/1",
+   "5:genLevelCtrl->0xfdb1122d004b1200/1",
+   "5:genOnOff->0xfdb1122d004b1200/1",
+   "6:genOnOff->0xfdb1122d004b1200/1"
+  ]
+ },
+ {
+  "stage": "unbind_ep4",
+  "status": "ok",
+  "error": null,
+  "sent": {
+   "ep": 4,
+   "cluster": "genLevelCtrl",
+   "to": "coordinator/1"
+  }
+ },
+ {
+  "stage": "readback_after_ep4",
+  "total": 19,
+  "bindings": [
+   "1:genLevelCtrl->0xa4c1388b709b209c/11",
+   "1:genLevelCtrl->0xfdb1122d004b1200/1",
+   "1:genMultistateInput->0xfdb1122d004b1200/1",
+   "1:genOnOff->0xa4c13843a9d40f85/4",
+   "1:genOnOff->0xa4c1388b709b209c/11",
+   "1:genOnOff->0xfdb1122d004b1200/1",
+   "2:genLevelCtrl->0xfdb1122d004b1200/1",
+   "2:genLevelCtrl->grp25",
+   "2:genMultistateInput->0xfdb1122d004b1200/1",
+   "2:genOnOff->0xa4c13843a9d40f85/5",
+   "2:genOnOff->0xfdb1122d004b1200/1",
+   "2:genOnOff->grp25",
+   "3:genLevelCtrl->0xfdb1122d004b1200/1",
+   "3:genMultistateInput->0xfdb1122d004b1200/1",
+   "3:genOnOff->0xfdb1122d004b1200/1",
+   "4:genOnOff->0xfdb1122d004b1200/1",
+   "5:genLevelCtrl->0xfdb1122d004b1200/1",
+   "5:genOnOff->0xfdb1122d004b1200/1",
+   "6:genOnOff->0xfdb1122d004b1200/1"
+  ]
+ },
+ {
+  "stage": "unbind_ep5",
+  "status": "ok",
+  "error": null,
+  "sent": {
+   "ep": 5,
+   "cluster": "genLevelCtrl",
+   "to": "coordinator/1"
+  }
+ },
+ {
+  "stage": "readback_after_ep5",
+  "total": 18,
+  "bindings": [
+   "1:genLevelCtrl->0xa4c1388b709b209c/11",
+   "1:genLevelCtrl->0xfdb1122d004b1200/1",
+   "1:genMultistateInput->0xfdb1122d004b1200/1",
+   "1:genOnOff->0xa4c13843a9d40f85/4",
+   "1:genOnOff->0xa4c1388b709b209c/11",
+   "1:genOnOff->0xfdb1122d004b1200/1",
+   "2:genLevelCtrl->0xfdb1122d004b1200/1",
+   "2:genLevelCtrl->grp25",
+   "2:genMultistateInput->0xfdb1122d004b1200/1",
+   "2:genOnOff->0xa4c13843a9d40f85/5",
+   "2:genOnOff->0xfdb1122d004b1200/1",
+   "2:genOnOff->grp25",
+   "3:genLevelCtrl->0xfdb1122d004b1200/1",
+   "3:genMultistateInput->0xfdb1122d004b1200/1",
+   "3:genOnOff->0xfdb1122d004b1200/1",
+   "4:genOnOff->0xfdb1122d004b1200/1",
+   "5:genOnOff->0xfdb1122d004b1200/1",
+   "6:genOnOff->0xfdb1122d004b1200/1"
+  ]
+ }
+]

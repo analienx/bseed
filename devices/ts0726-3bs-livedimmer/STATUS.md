@@ -7,6 +7,27 @@ Safety invariants: [`docs/LR_MAINDIMMER_SWAPPED_PINS.md`](./docs/LR_MAINDIMMER_S
 **Nothing has been flashed. No OTA, no reset, no re-pair, no bind or group change by this
 stream.**
 
+> **SUPERSEDED by the V6→V7 production stream (2026-09-04/05) — read this box first.**
+> The device now runs **V7** (`1.1.7-bseedv7`, fileVersion `285356041`, OTA-flashed, canary
+> ACCEPTED per `5545406942`, re-verified after the unplanned 2026-09-05 host restart;
+> `update.installed_version=285356041`). The banner above describes the canary-era pre-state and
+> is retained only for the historical record. Full production evidence:
+> [`inventory/v6-production-2026-09-04/`](./inventory/v6-production-2026-09-04/).
+>
+> **Accepted topology = 18 bindings (2026-09-05, Supervisor `5550531593`).** After the
+> 2026-09-03/4 rejoin wiped the table, the operator-authorized restore rebuilt the documented
+> pre-rejoin set (20 bindings + 6/9 reportings — see
+> `accept/TOPOLOGY-ACCOUNTING-CORRECTION.md` for the `attr0`=vendor-`0xFF02` semantics). Supervisor
+> then **intentionally retired the two legacy `EP4/EP5 genLevelCtrl→coordinator` bindings**
+> (20→**18**): the relay endpoints advertise `genLevelCtrl` but do not implement `currentLevel`,
+> so those entries armed Z2M core's `POLL_ON_MESSAGE` against a permanently-unsupported attribute
+> and produced only recurring `UNSUPPORTED_ATTRIBUTE` error noise with zero functional benefit.
+> Before/after dumps + exact set-diff + pattern-stop verification:
+> `accept/UNBIND-LEGACY-LEVEL-VERIFY.md`, `accept/raw-logs/bindings-pre-unbind-legacy.json`,
+> `accept/raw-logs/unbind-result.json`. Everything else — switch EP1/EP2 direct-dim binds,
+> self-binds, group 25, LinearDimmer/11, EP3, EP4/EP5 `genOnOff→coordinator`, EP6, all reporting —
+> is unchanged and re-verified.
+
 ## Gate board — per re-review `5492467354` (supersedes the numbered 1–5 board)
 
 | gate | item | status |
