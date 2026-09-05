@@ -1,0 +1,33 @@
+{
+ "tag": "final",
+ "at_utc": "2026-09-05T07:04:02.205Z",
+ "reads": {
+  "b2final_sw1_switch_left": {
+   "65280": 1,
+   "65285": 3,
+   "65286": 3
+  },
+  "b2final_sw2_switch_middle": {
+   "65280": 1,
+   "65285": 3,
+   "65286": 3
+  },
+  "b2final_sw3_switch_right": {
+   "65280": 1,
+   "65285": 0,
+   "65286": 2
+  },
+  "b2final_swbuild": {
+   "__timeout": true
+  },
+  "b2final_on4_relay_left": {
+   "onOff": 0
+  },
+  "b2final_on5_relay_middle": {
+   "onOff": 0
+  },
+  "b2final_on6_relay_right": {
+   "onOff": 1
+  }
+ }
+}

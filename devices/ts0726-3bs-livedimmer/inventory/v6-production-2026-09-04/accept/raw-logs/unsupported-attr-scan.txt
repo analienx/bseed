@@ -1,0 +1,50 @@
+windows scanned: 2026-09-05.06-17-16, 2026-09-05.06-12-34, 2026-09-05.06-09-23, 2026-09-05.06-07-11, 2026-09-04.20-07-13, 2026-09-04.17-03-27, 2026-09-04.12-01-40, 2026-09-04.06-16-01, 2026-09-04.06-12-42, 2026-09-04.06-09-32
+raw matching lines: 122 | distinct patterns: 16
+
+### x3  first@2026-09-05 08:39:50
+error: 	z2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/1 genBasic.read([65534], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0
+
+### x27  first@2026-09-05 08:42:39
+error: 	z2m: Failed to poll currentLevel from LivingRoomMainDimmer (ZCL command 0xa4c13843a9d40f85/4 genLevelCtrl.read(["currentLevel"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"directi
+
+### x27  first@2026-09-05 08:42:40
+error: 	z2m: Failed to poll currentLevel from LivingRoomMainDimmer (ZCL command 0xa4c13843a9d40f85/5 genLevelCtrl.read(["currentLevel"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"directi
+
+### x3  first@2026-09-05 06:08:52
+error: 	z2m: Failed to read state of 'LivingRoomMainDimmer' after reconnect (ZCL command 0xa4c13843a9d40f85/1 genOnOff.read(["onOff"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction
+
+### x1  first@2026-09-04 23:20:25
+debug: 	zh:controller:endpoint: Error: ZCL command 0xa4c13843a9d40f85/4 genOnOffSwitchCfg.read([65283], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndi
+
+### x1  first@2026-09-04 23:20:25
+error: 	z2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/4 genOnOffSwitchCfg.read([65283], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"dir
+
+### x1  first@2026-09-04 23:20:25
+debug: 	z2m: Error: ZCL command 0xa4c13843a9d40f85/4 genOnOffSwitchCfg.read([65283], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false}) failed (
+
+### x1  first@2026-09-04 23:20:39
+debug: 	zh:controller:endpoint: Error: ZCL command 0xa4c13843a9d40f85/5 genOnOffSwitchCfg.read([65283], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndi
+
+### x1  first@2026-09-04 23:20:39
+error: 	z2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/5 genOnOffSwitchCfg.read([65283], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"dir
+
+### x1  first@2026-09-04 23:20:39
+debug: 	z2m: Error: ZCL command 0xa4c13843a9d40f85/5 genOnOffSwitchCfg.read([65283], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false}) failed (
+
+### x1  first@2026-09-04 23:20:53
+debug: 	zh:controller:endpoint: Error: ZCL command 0xa4c13843a9d40f85/6 genOnOffSwitchCfg.read([65283], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndi
+
+### x1  first@2026-09-04 23:20:53
+error: 	z2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/6 genOnOffSwitchCfg.read([65283], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"dir
+
+### x1  first@2026-09-04 23:20:53
+debug: 	z2m: Error: ZCL command 0xa4c13843a9d40f85/6 genOnOffSwitchCfg.read([65283], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false}) failed (
+
+### x25  first@2026-09-04 23:04:25
+debug: 	zh:controller:endpoint: Error: ZCL command 0xa4c13843a9d40f85/4 genLevelCtrl.read(["currentLevel"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"write
+
+### x25  first@2026-09-04 23:04:25
+debug: 	zh:controller:endpoint: Error: ZCL command 0xa4c13843a9d40f85/5 genLevelCtrl.read(["currentLevel"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"write
+
+### x3  first@2026-09-04 12:26:25
+error: 	z2m: Publish 'set' 'read' to 'LivingRoomMainDimmer' failed: 'Error: ZCL command 0xa4c13843a9d40f85/1 genOnOff.read([65283], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0
