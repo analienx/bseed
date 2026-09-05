@@ -1,0 +1,33 @@
+{
+ "tag": "check",
+ "at_utc": "2026-09-05T07:51:59.909Z",
+ "reads": {
+  "b2check_sw1_switch_left": {
+   "65280": 1,
+   "65285": 3,
+   "65286": 3
+  },
+  "b2check_sw2_switch_middle": {
+   "65280": 1,
+   "65285": 3,
+   "65286": 3
+  },
+  "b2check_sw3_switch_right": {
+   "65280": 1,
+   "65285": 0,
+   "65286": 2
+  },
+  "b2check_swbuild": {
+   "__timeout": true
+  },
+  "b2check_on4_relay_left": {
+   "onOff": 0
+  },
+  "b2check_on5_relay_middle": {
+   "onOff": 0
+  },
+  "b2check_on6_relay_right": {
+   "onOff": 1
+  }
+ }
+}
