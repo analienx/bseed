@@ -1,0 +1,21 @@
+$ Raw herdsman configuredReportings for LivingRoomMainDimmer (0xa4c13843a9d40f85)
+$ Source: /config/zigbee2mqtt/database.db.backup  (device nwkAddr 24677 = ORIGINAL pre-rejoin state, captured Aug-29)
+$ These are the RAW store entries (attrId/manufacturerCode) that the Z2M bridge view collapses to labels.
+
+EP1 cluster=18(0x0012 genMultistateInput) attrId=85 (0x0055 presentValue) manuf=undefined min=0 max=65000 chg=1
+EP2 cluster=18(0x0012 genMultistateInput) attrId=85 (0x0055 presentValue) manuf=undefined min=0 max=65000 chg=1
+EP3 cluster=18(0x0012 genMultistateInput) attrId=85 (0x0055 presentValue) manuf=undefined min=0 max=65000 chg=1
+EP4 cluster=6 (0x0006 genOnOff)          attrId=65282(0xFF02 VENDOR indicator-led-mode) manuf=undefined min=0 max=65000 chg=1
+EP4 cluster=6 (0x0006 genOnOff)          attrId=0     (0x0000 onOff)                    manuf=undefined min=0 max=65000 chg=1
+EP5 cluster=6 (0x0006 genOnOff)          attrId=65282(0xFF02 VENDOR indicator-led-mode) manuf=undefined min=0 max=65000 chg=1
+EP5 cluster=6 (0x0006 genOnOff)          attrId=0     (0x0000 onOff)                    manuf=undefined min=0 max=65000 chg=1
+EP6 cluster=6 (0x0006 genOnOff)          attrId=65282(0xFF02 VENDOR indicator-led-mode) manuf=undefined min=0 max=65000 chg=1
+EP6 cluster=6 (0x0006 genOnOff)          attrId=0     (0x0000 onOff)                    manuf=undefined min=0 max=65000 chg=1
+TOTAL = 9 reporting records (3 switch multistate + 3 relay onOff + 3 relay vendor-0xFF02)
+
+# Label-minting proof (zigbee-herdsman 10.9.1 dist/controller/model/endpoint.js:83-95):
+#   const attribute = Zcl.Utils.getClusterAttribute(cluster, entry.attrId, entry.manufacturerCode)
+#       ?? { ID: entry.attrId, name: `attr${index}`, type: UNKNOWN, ... };
+# genOnOff's attribute table has no 0xFF02 => getClusterAttribute returns null => fallback name
+# is `attr${arrayIndex}`. On each relay EP the 0xFF02 record is at array index 0, hence the
+# bridge-view label "attr0". "attr0" therefore denotes VENDOR ATTRIBUTE 0xFF02, NOT 0x0000/onOff.
