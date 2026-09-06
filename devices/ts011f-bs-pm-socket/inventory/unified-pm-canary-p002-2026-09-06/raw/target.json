@@ -1,0 +1,40 @@
+{
+ "friendly_name": "LivingRoomSocketWifiLeft",
+ "ieee": "0xa4c138ba60b92c5f",
+ "manufacturer": "b28wrpvx",
+ "model_id": "TS011F-BS-PM",
+ "model_def": "TS011F_plug_1_2",
+ "type": "Router",
+ "network_address": 12047,
+ "software_build_id": "1.2.5-8b8cc492",
+ "date_code": "20260822",
+ "update": {
+  "installed_version": 302329856,
+  "latest_release_notes": null,
+  "latest_source": null,
+  "latest_version": 302329856,
+  "state": "available"
+ },
+ "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+ "availability": {
+  "state": "online"
+ },
+ "relay": "OFF",
+ "metering": {
+  "voltage": 245.06,
+  "current": 0.1,
+  "power": 2,
+  "apparent_power": 24,
+  "reactive_power": 23,
+  "power_factor": 4,
+  "energy": 0.26,
+  "overload_alarm_switch": "none"
+ },
+ "calibration_exposed": false,
+ "other": {
+  "multi_press_reset_count": 10,
+  "network_led": "OFF",
+  "power_on_behavior": "previous",
+  "indicator": "same"
+ }
+}

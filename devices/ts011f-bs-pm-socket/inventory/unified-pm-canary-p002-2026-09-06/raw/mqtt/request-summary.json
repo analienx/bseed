@@ -1,0 +1,19 @@
+{
+ "timestamp": "2026-09-06T11:47:12.364Z",
+ "topic": "zigbee2mqtt/bridge/request/device/ota_update/schedule",
+ "target": "LivingRoomSocketWifiLeft",
+ "file_name": "bseed-ts011f-pm-v8-ded91a1.ota",
+ "bytes": 195394,
+ "sha256": "c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c",
+ "header": {
+  "identifier": "0xBEEF11E",
+  "headerVersion": 256,
+  "headerLength": 56,
+  "manufacturerCode": 4417,
+  "imageType": 43556,
+  "fileVersion": 302329858,
+  "stackVersion": 2,
+  "totalImageSize": 195394
+ },
+ "payload_hex_stored": false
+}

@@ -1,0 +1,19 @@
+{
+ "startedAt": "2026-09-06T11:47:24.005Z",
+ "windowSeconds": 900,
+ "clientQueryObserved": false,
+ "clientQueryAt": null,
+ "imageOffered": false,
+ "imageIdentityMatched": null,
+ "firstBlockObserved": false,
+ "firstBlockAt": null,
+ "blockRequestCount": 0,
+ "maxProgress": 0,
+ "progressSamples": [],
+ "stateTransitions": [],
+ "availabilityFlips": [],
+ "errors": [],
+ "terminalOtaState": null,
+ "terminalAt": null,
+ "finishedAt": "2026-09-06T12:02:24.137Z"
+}

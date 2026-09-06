@@ -1,0 +1,74 @@
+{
+ "timestamp": "2026-09-06T11:46:56.551Z",
+ "mode": "DIRECT_LOCAL_TOOLKIT",
+ "proposal": "P002",
+ "artifact": {
+  "file_name": "bseed-ts011f-pm-v8-ded91a1.ota",
+  "bytes": 195394,
+  "sha256": "c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c",
+  "header": {
+   "identifier": "0xBEEF11E",
+   "headerVersion": 256,
+   "headerLength": 56,
+   "manufacturerCode": 4417,
+   "imageType": 43556,
+   "fileVersion": 302329858,
+   "stackVersion": 2,
+   "totalImageSize": 195394
+  },
+  "source_run": "34015243265",
+  "artifact": "bseed-pm-v8-reproducibility",
+  "source_SHA": "ded91a1fb1cdeb320d0858c8f4bcabab32bf5564"
+ },
+ "z2m": {
+  "version": "2.14.0",
+  "ota_config": {
+   "block_size": 192,
+   "default_maximum_data_size": 100,
+   "image_block_request_timeout": 150000,
+   "image_block_response_delay": 250,
+   "disable_automatic_update_check": false,
+   "update_check_interval": "default(1440min)"
+  }
+ },
+ "target": {
+  "friendly_name": "LivingRoomSocketWifiLeft",
+  "ieee": "0xa4c138ba60b92c5f",
+  "manufacturer": "b28wrpvx",
+  "model_id": "TS011F-BS-PM",
+  "model_def": "TS011F_plug_1_2",
+  "type": "Router",
+  "network_address": 12047,
+  "software_build_id": "1.2.5-8b8cc492",
+  "date_code": "20260822",
+  "update": {
+   "installed_version": 302329856,
+   "latest_release_notes": null,
+   "latest_source": null,
+   "latest_version": 302329856,
+   "state": "available"
+  },
+  "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+  "availability": {
+   "state": "online"
+  },
+  "relay": "OFF",
+  "metering": {
+   "voltage": 245.06,
+   "current": 0.1,
+   "power": 2,
+   "apparent_power": 24,
+   "reactive_power": 23,
+   "power_factor": 4,
+   "energy": 0.26,
+   "overload_alarm_switch": "none"
+  },
+  "calibration_exposed": false,
+  "other": {
+   "multi_press_reset_count": 10,
+   "network_led": "OFF",
+   "power_on_behavior": "previous",
+   "indicator": "same"
+  }
+ }
+}

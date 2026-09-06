@@ -1,0 +1,12 @@
+{"timestamp":"2026-09-06T11:46:13.781Z","step":"artifact","action_class":"gate","result":"PASS","detail":"bytes=195394 sha256=c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c mfr=4417 img=43556 fv=302329858 total=195394"}
+{"timestamp":"2026-09-06T11:46:22.981Z","step":"target","action_class":"gate","result":"FAIL","detail":"no device state received"}
+{"timestamp":"2026-09-06T11:46:47.359Z","step":"artifact","action_class":"gate","result":"PASS","detail":"bytes=195394 sha256=c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c mfr=4417 img=43556 fv=302329858 total=195394"}
+{"timestamp":"2026-09-06T11:46:56.550Z","step":"target","action_class":"gate","result":"PASS","detail":"identity+device_config exact: LivingRoomSocketWifiLeft / 0xa4c138ba60b92c5f"}
+{"timestamp":"2026-09-06T11:46:56.552Z","step":"preflight","action_class":"read","result":"PASS","detail":"online=true relay=OFF"}
+{"timestamp":"2026-09-06T11:47:03.178Z","step":"artifact","action_class":"gate","result":"PASS","detail":"bytes=195394 sha256=c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c mfr=4417 img=43556 fv=302329858 total=195394"}
+{"timestamp":"2026-09-06T11:47:12.363Z","step":"target","action_class":"gate","result":"PASS","detail":"identity+device_config exact: LivingRoomSocketWifiLeft / 0xa4c138ba60b92c5f"}
+{"timestamp":"2026-09-06T11:47:13.370Z","step":"schedule","action_class":"mutation","result":"SENT","detail":"schedule request published for LivingRoomSocketWifiLeft (hex 195394B, sha c3ccb484c28d...)"}
+{"timestamp":"2026-09-06T11:47:18.377Z","step":"schedule","action_class":"mutation","result":"PASS","detail":"response ok; update.state=scheduled"}
+{"timestamp":"2026-09-06T12:02:24.138Z","step":"observe","action_class":"read","result":"DONE","detail":"query=false imgOffered=false firstBlock=false maxProgress=0 terminal=null"}
+{"timestamp":"2026-09-06T13:09:01.582Z","step":"unschedule","action_class":"mutation","result":"SENT","detail":"unschedule request for LivingRoomSocketWifiLeft"}
+{"timestamp":"2026-09-06T13:09:06.589Z","step":"unschedule","action_class":"mutation","result":"PASS","detail":"response={\"data\":{\"id\":\"LivingRoomSocketWifiLeft\"},\"status\":\"ok\"} update.state=idle"}
