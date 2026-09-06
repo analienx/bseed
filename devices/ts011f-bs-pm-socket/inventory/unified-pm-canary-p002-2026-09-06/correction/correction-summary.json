@@ -1,0 +1,54 @@
+{
+  "correction_of": "P002 evidence commit 0a82469 (RESULT / P002, OTA_CLIENT_QUERY_NOT_OBSERVED)",
+  "authorization": "CORRECTION / P002, issue 11 comment 5560298969 — read-only evidence analysis only",
+  "classification": "P002_NO_QUERY_CONFIRMED_IN_FULL_SCHEDULED_WINDOW",
+  "scheduled_window_utc": {"start": "2026-09-06T11:47:13Z", "end": "2026-09-06T13:09:01Z"},
+  "unobserved_gap_utc": {"start": "2026-09-06T12:02:24Z", "end": "2026-09-06T13:09:01Z"},
+  "source_log": {
+    "path_in_container": "/config/zigbee2mqtt/log/2026-09-05.06-17-16/log2.log",
+    "bytes": 10000679,
+    "sha256": "842fc678fa35787b9daa199afdecbcede42f2ef98f1af850a1aa46dfe50336d3",
+    "span_utc": "2026-09-06T11:43:37Z .. 2026-09-06T13:59:44Z (file clock UTC+2)",
+    "covers_scheduled_window": true
+  },
+  "committed_log_correction": {
+    "committed_file": "raw/z2m/target-bounded.log @ 0a82469",
+    "bytes": 10000500,
+    "sha256": "9360ea3a85469e252642b33213460b4a8297907769f936613eca961d2a8bad69",
+    "span_utc": "2026-09-06T07:41:08Z .. 2026-09-06T09:42:54Z",
+    "note": "covers the FIRST canary window, not P002; P002-window analysis above uses the original source log instead"
+  },
+  "gap_scan": {
+    "keywords": ["LivingRoomSocketWifiLeft", "0xa4c138ba60b92c5f", "OTA", "Updating", "Query Next Image", "queryNextImage", "image block", "image page", "scheduled", "update"],
+    "window_matched_lines": 53,
+    "gap_matched_lines": 34,
+    "gap_first_match_utc": "2026-09-06T12:03:34Z",
+    "gap_last_match_utc": "2026-09-06T13:09:01Z",
+    "gap_matches_all_benign": true,
+    "benign_categories": ["periodic state publishes of unrelated devices (matched only on generic \"updating\":false key)", "bridge/health publishes", "unschedule response triplet at 13:09:01Z"],
+    "counts_full_log2": {
+      "scheduled_target": 1, "cancelled_target": 1,
+      "updating_target_info": 0, "requested_ota_any_level": 0,
+      "query_next_image_any_form": 0, "debug_lines": 0, "z2m_restart_markers": 0
+    }
+  },
+  "logging_visibility": {
+    "z2m_version": "2.14.0",
+    "effective_log_level": "info (no log: section in configuration.yaml; default log_level=info, DEBUG env unset — proven by 0 debug lines in 10 MB file log)",
+    "debug_to_mqtt_frontend": false,
+    "bridge_logging_mqtt": "published for non-debug levels via EventTransport (bridge.js: info/warning/error); debug filtered out",
+    "device_query_debug_line": "otaUpdate.js:108 logs 'Device X requested OTA' at DEBUG only -> invisible in this installation (both MQTT and file)",
+    "deterministic_info_consequence": "with scheduledOta armed, any processed commandQueryNextImageRequest logs INFO 'Updating X to latest firmware' BEFORE any other action (otaUpdate.js onZigbeeEvent); failure path also logs this INFO first",
+    "info_would_have_been_visible_to_pm002": true,
+    "pm002_detection_notes": "pm002.js clientQueryObserved keyed on debug-only /requested OTA/ (blind); but imageOffered keyed on INFO /Updating 'LivingRoomSocketWifiLeft'/ (visible via bridge/logging) and was false; authoritative file log independently shows 0 such lines",
+    "silent_paths_ruled_out": "no Z2M restart in window (uptime monotonic 114305s->120605s, 8 samples, 0 restart markers) so scheduledOta stayed armed; device definition existed; inProgress-concurrency requires a prior logged query",
+    "extra_observation": "error 'No converter available for update on LivingRoomSocketWifiLeft' at schedule/cancel moments — Z2M presentation-layer, consistent with known V8-canary finding on converter coverage"
+  },
+  "derived_extract": {
+    "file": "gap-extract.log",
+    "bytes": 12540,
+    "lines": 53,
+    "sha256": "49dc2eb8a0590ac69267ca4b9b9a689e10255ea72e07b400c2e790d7e4510f8b"
+  },
+  "conclusion": "Evidence now covers the ENTIRE scheduled interval through a logging path proven capable of detecting the scheduled-query transition (INFO level, file + MQTT). The deterministic INFO 'Updating' event is absent for the whole window, so no device-originated Query Next Image occurred while scheduled. Prior OTA_CLIENT_QUERY_NOT_OBSERVED (15-min window) is upgraded to full-scheduled-window confirmation."
+}
