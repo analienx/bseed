@@ -1,0 +1,130 @@
+{
+ "at": "2026-09-06T19:10:13.033Z",
+ "custom": [
+  {
+   "friendly_name": "LivingRoomSocketWifiLeft",
+   "ieee": "0xa4c138ba60b92c5f",
+   "manufacturer": "b28wrpvx",
+   "model_id": "TS011F-BS-PM",
+   "definition_model": "TS011F_plug_1_2",
+   "supported": true,
+   "type": "Router",
+   "endpoints": [
+    "1",
+    "2"
+   ],
+   "software_build_id": "1.2.5-8b8cc492",
+   "date_code": "20260822",
+   "application_version": null,
+   "file_version": null,
+   "hardware_version": null,
+   "zcl_version": null,
+   "device_config": null,
+   "update": null,
+   "relay_state": null,
+   "power": null,
+   "energy": null,
+   "linkquality": null
+  },
+  {
+   "friendly_name": "BedroomSocketBalcony",
+   "ieee": "0xa4c138ac993cc245",
+   "manufacturer": "o1jzcxou",
+   "model_id": "TS011F-BS",
+   "definition_model": "_TZ3000_o1jzcxou",
+   "supported": true,
+   "type": "Router",
+   "endpoints": [
+    "1",
+    "2"
+   ],
+   "software_build_id": "1.1.2-8542fc05",
+   "date_code": "20260612",
+   "application_version": null,
+   "file_version": null,
+   "hardware_version": null,
+   "zcl_version": null,
+   "device_config": null,
+   "update": null,
+   "relay_state": null,
+   "power": null,
+   "energy": null,
+   "linkquality": null
+  },
+  {
+   "friendly_name": "WRSocketEntrance",
+   "ieee": "0xa4c1387b13e9436d",
+   "manufacturer": "o1jzcxou",
+   "model_id": "TS011F-BS",
+   "definition_model": "_TZ3000_o1jzcxou",
+   "supported": true,
+   "type": "Router",
+   "endpoints": [
+    "1",
+    "2"
+   ],
+   "software_build_id": "1.1.2-8542fc05",
+   "date_code": "20260612",
+   "application_version": null,
+   "file_version": null,
+   "hardware_version": null,
+   "zcl_version": null,
+   "device_config": null,
+   "update": null,
+   "relay_state": null,
+   "power": null,
+   "energy": null,
+   "linkquality": null
+  },
+  {
+   "friendly_name": "BedroomSocketCabinetRight",
+   "ieee": "0xa4c13824a7005afb",
+   "manufacturer": "o1jzcxou",
+   "model_id": "TS011F-BS",
+   "definition_model": "_TZ3000_o1jzcxou",
+   "supported": true,
+   "type": "Router",
+   "endpoints": [
+    "1",
+    "2"
+   ],
+   "software_build_id": "1.1.2-2289bf4d",
+   "date_code": "20260309",
+   "application_version": null,
+   "file_version": null,
+   "hardware_version": null,
+   "zcl_version": null,
+   "device_config": null,
+   "update": null,
+   "relay_state": null,
+   "power": null,
+   "energy": null,
+   "linkquality": null
+  },
+  {
+   "friendly_name": "WorkroomSocketCabinet",
+   "ieee": "0xa4c138c5f07ee732",
+   "manufacturer": "b28wrpvx",
+   "model_id": "TS011F-BS-PM",
+   "definition_model": "TS011F_plug_1_2",
+   "supported": true,
+   "type": "Router",
+   "endpoints": [
+    "1",
+    "2"
+   ],
+   "software_build_id": "1.2.5-8b8cc492",
+   "date_code": "20260822",
+   "application_version": null,
+   "file_version": null,
+   "hardware_version": null,
+   "zcl_version": null,
+   "device_config": null,
+   "update": null,
+   "relay_state": null,
+   "power": null,
+   "energy": null,
+   "linkquality": null
+  }
+ ]
+}

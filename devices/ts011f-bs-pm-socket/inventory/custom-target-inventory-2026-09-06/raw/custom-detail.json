@@ -1,0 +1,80 @@
+{
+ "at": "2026-09-06T19:10:56.673Z",
+ "detail": {
+  "LivingRoomSocketWifiLeft": {
+   "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+   "relay": "OFF",
+   "power": 2,
+   "energy": 0.26,
+   "voltage": 245.06,
+   "update": {
+    "installed_version": 302329856,
+    "latest_release_notes": null,
+    "latest_source": null,
+    "latest_version": 302329856,
+    "state": "idle"
+   },
+   "linkquality": 148
+  },
+  "WorkroomSocketCabinet": {
+   "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+   "relay": "OFF",
+   "power": 0,
+   "energy": 0.04,
+   "voltage": 242.72,
+   "update": {
+    "installed_version": 302329856,
+    "latest_release_notes": null,
+    "latest_source": null,
+    "latest_version": 302329856,
+    "state": "idle"
+   },
+   "linkquality": 100
+  },
+  "BedroomSocketBalcony": {
+   "device_config": "o1jzcxou;TS011F-BS;LC2;SB4u;RC3;ID2;M;",
+   "relay": "ON",
+   "power": null,
+   "energy": null,
+   "voltage": null,
+   "update": {
+    "installed_version": 285356032,
+    "latest_release_notes": null,
+    "latest_source": null,
+    "latest_version": 285356032,
+    "state": "idle"
+   },
+   "linkquality": 120
+  },
+  "WRSocketEntrance": {
+   "device_config": "o1jzcxou;TS011F-BS;LC2;SB4u;RC3;ID2;M;",
+   "relay": "OFF",
+   "power": null,
+   "energy": null,
+   "voltage": null,
+   "update": {
+    "installed_version": 285356032,
+    "latest_release_notes": null,
+    "latest_source": null,
+    "latest_version": 285356032,
+    "state": "idle"
+   },
+   "linkquality": 192
+  },
+  "BedroomSocketCabinetRight": {
+   "device_config": "o1jzcxou;TS011F-BS;LC2;SB4u;RC3;ID2;M;",
+   "relay": "OFF",
+   "power": null,
+   "energy": null,
+   "voltage": null,
+   "update": {
+    "installed_version": 285356032,
+    "latest_release_notes": null,
+    "latest_source": null,
+    "latest_version": 285356032,
+    "state": "idle"
+   },
+   "linkquality": 132
+  }
+ }
+}
