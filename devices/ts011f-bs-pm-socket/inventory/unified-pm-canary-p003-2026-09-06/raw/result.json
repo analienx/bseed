@@ -1,0 +1,9 @@
+{
+ "result": "P003_POWER_CYCLE_UNAVAILABLE",
+ "unschedule": {
+  "ok": true,
+  "resp": "{\"data\":{\"id\":\"LivingRoomSocketWifiLeft\"},\"status\":\"ok\"}",
+  "sched": "idle"
+ },
+ "finishedAt": "2026-09-06T18:46:41.403Z"
+}

@@ -1,0 +1,16 @@
+{"timestamp":"2026-09-06T16:52:49.228Z","step":"artifact","action_class":"gate","result":"PASS","detail":"bytes=195394 sha256=c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c mfr=4417 img=43556 fv=302329858 total=195394"}
+{"timestamp":"2026-09-06T16:52:58.424Z","step":"target","action_class":"gate","result":"PASS","detail":"identity+device_config exact: LivingRoomSocketWifiLeft / 0xa4c138ba60b92c5f"}
+{"timestamp":"2026-09-06T16:52:58.425Z","step":"preflight","action_class":"read","result":"FAIL","detail":"{\"online\":true,\"relay_off\":false,\"no_load\":true,\"idle\":true}"}
+{"timestamp":"2026-09-06T16:53:40.313Z","step":"relay_off_precondition","action_class":"mutation","result":"PASS","detail":"relay=OFF"}
+{"timestamp":"2026-09-06T18:00:57.195Z","step":"artifact","action_class":"gate","result":"PASS","detail":"bytes=195394 sha256=c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c mfr=4417 img=43556 fv=302329858 total=195394"}
+{"timestamp":"2026-09-06T18:01:06.394Z","step":"target","action_class":"gate","result":"PASS","detail":"identity+device_config exact: LivingRoomSocketWifiLeft / 0xa4c138ba60b92c5f"}
+{"timestamp":"2026-09-06T18:01:06.395Z","step":"preflight","action_class":"read","result":"PASS","detail":"{\"online\":true,\"relay_off\":true,\"no_load\":true,\"idle\":true}"}
+{"timestamp":"2026-09-06T18:01:15.763Z","step":"artifact","action_class":"gate","result":"PASS","detail":"bytes=195394 sha256=c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c mfr=4417 img=43556 fv=302329858 total=195394"}
+{"timestamp":"2026-09-06T18:01:24.947Z","step":"target","action_class":"gate","result":"PASS","detail":"identity+device_config exact: LivingRoomSocketWifiLeft / 0xa4c138ba60b92c5f"}
+{"timestamp":"2026-09-06T18:01:25.122Z","step":"log_source","action_class":"read","result":"PASS","detail":"files=log.log:2026-09-06 19:59:46..2026-09-06 20:01:24 | log1.log:2026-09-06 18:00:29..2026-09-06 19:59:45 | log2.log:2026-09-06 15:59:44..2026-09-06 18:00:29"}
+{"timestamp":"2026-09-06T18:01:26.129Z","step":"schedule","action_class":"mutation","result":"SENT","detail":"hex 195394B sha c3ccb484c28d... at 2026-09-06T18:01:26.129Z"}
+{"timestamp":"2026-09-06T18:01:33.135Z","step":"schedule","action_class":"mutation","result":"PASS","detail":"status ok; update.state=scheduled"}
+{"timestamp":"2026-09-06T18:13:47Z","step":"power_cycle","action_class":"mutation","result":"UNAVAILABLE","detail":"operator confirmed inbuilt wall socket shares breaker with analysis infrastructure (coordinator/HA); target-only power cycle impossible without switching unrelated infrastructure - forbidden by ruling step 5; runner will unschedule deterministically at sentinel timeout"}
+{"timestamp":"2026-09-06T18:46:33.895Z","step":"power_cycle","action_class":"mutation","result":"UNAVAILABLE","detail":"sentinel not seen within 45min"}
+{"timestamp":"2026-09-06T18:46:34.398Z","step":"unschedule","action_class":"mutation","result":"SENT","detail":"deterministic unschedule for LivingRoomSocketWifiLeft"}
+{"timestamp":"2026-09-06T18:46:41.403Z","step":"unschedule","action_class":"mutation","result":"PASS","detail":"response={\"data\":{\"id\":\"LivingRoomSocketWifiLeft\"},\"status\":\"ok\"} update.state=idle"}

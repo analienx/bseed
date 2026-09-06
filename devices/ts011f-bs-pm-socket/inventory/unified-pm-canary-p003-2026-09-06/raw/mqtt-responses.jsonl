@@ -1,0 +1,3 @@
+{"timestamp":"2026-09-06T18:01:26.139Z","topic":"zigbee2mqtt/bridge/response/device/ota_update/schedule","data":"{\"data\":{\"id\":\"LivingRoomSocketWifiLeft\",\"url\":\"/config/zigbee2mqtt/ota/bseed-ts011f-pm-v8-ded91a1.ota\"},\"status\":\"ok\"}"}
+{"timestamp":"2026-09-06T18:46:34.404Z","topic":"zigbee2mqtt/bridge/response/device/ota_update/unschedule","data":"{\"data\":{\"id\":\"LivingRoomSocketWifiLeft\"},\"status\":\"ok\"}"}
+{"timestamp":"2026-09-06T18:46:34.405Z","topic":"zigbee2mqtt/bridge/response/device/ota_update/unschedule","data":"{\"data\":{\"id\":\"LivingRoomSocketWifiLeft\"},\"status\":\"ok\"}"}

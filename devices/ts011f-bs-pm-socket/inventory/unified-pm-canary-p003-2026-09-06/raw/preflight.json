@@ -1,0 +1,48 @@
+{
+ "timestamp": "2026-09-06T18:01:06.395Z",
+ "proposal": "P003",
+ "authorization": "issue#11 comment 5560609637 APPROVED / OTA-CANARY",
+ "artifact": {
+  "file_name": "bseed-ts011f-pm-v8-ded91a1.ota",
+  "bytes": 195394,
+  "sha256": "c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c",
+  "header": {
+   "identifier": "0xBEEF11E",
+   "headerVersion": 256,
+   "headerLength": 56,
+   "manufacturerCode": 4417,
+   "imageType": 43556,
+   "fileVersion": 302329858,
+   "stackVersion": 2,
+   "totalImageSize": 195394
+  },
+  "source_SHA": "ded91a1fb1cdeb320d0858c8f4bcabab32bf5564"
+ },
+ "pr_head_reconfirmed": "ded91a1fb1cdeb320d0858c8f4bcabab32bf5564",
+ "target": {
+  "friendly_name": "LivingRoomSocketWifiLeft",
+  "ieee": "0xa4c138ba60b92c5f",
+  "manufacturer": "b28wrpvx",
+  "model_id": "TS011F-BS-PM",
+  "software_build_id": "1.2.5-8b8cc492",
+  "update": {
+   "installed_version": 302329856,
+   "latest_release_notes": null,
+   "latest_source": null,
+   "latest_version": 302329856,
+   "state": "idle"
+  },
+  "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+  "availability": {
+   "state": "online"
+  },
+  "relay": "OFF",
+  "metering": {
+   "voltage": 245.06,
+   "current": 0.1,
+   "power": 2,
+   "energy": 0.26,
+   "overload_alarm_switch": "none"
+  }
+ }
+}
