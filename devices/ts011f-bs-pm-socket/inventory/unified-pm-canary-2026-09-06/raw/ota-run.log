@@ -1,0 +1,13 @@
+artifact OK {
+  bytes: 195394,
+  sha256: 'c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c',
+  mfr: 4417,
+  img: 43556,
+  fv: 302329858,
+  total: 195394
+}
+07:58:44 request sent (hex payload, 195394 bytes )
+07:59:43 waiting... progress=1 responses=1
+07:59:45 RESP {"data":{},"error":"OTA update of 'LivingRoomSocketWifiLeft' failed (Device didn't respond to OTA request)","status":"error"}
+08:00:43 waiting... progress=4 responses=3
+08:01:43 waiting... progress=4 responses=4

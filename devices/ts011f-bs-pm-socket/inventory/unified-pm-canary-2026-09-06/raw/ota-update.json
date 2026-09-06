@@ -1,0 +1,54 @@
+{
+ "mode": "update",
+ "target": "LivingRoomSocketWifiLeft",
+ "ota_sha256": "c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c",
+ "ota_bytes": 195394,
+ "ota_header": {
+  "mfr": 4417,
+  "img": 43556,
+  "fv": 302329858,
+  "total": 195394
+ },
+ "request_sent_at": "2026-09-06T07:58:44.778Z",
+ "at": "2026-09-06T07:58:43.257Z",
+ "progress": [
+  {
+   "at": "07:58:44",
+   "line": "{\"level\":\"info\",\"message\":\"z2m: OTA updating 'LivingRoomSocketWifiLeft' to latest firmware\"}"
+  },
+  {
+   "at": "07:59:44",
+   "line": "{\"level\":\"info\",\"message\":\"z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/LivingRoomMainDimmer', payload '{\\\"a_ep1_ff05_switch_left\\\":{\\\"65285\\\":3},\\\"a_ep1_ff06_switch_left\\\":{\\\"65286\\\":3},\\\"a_ep1_std0010_switch_left\\\":{\\\"switchActions\\\":2},\\\"a"
+  },
+  {
+   "at": "07:59:45",
+   "line": "{\"level\":\"info\",\"message\":\"z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/ota_update/update', payload '{\\\"data\\\":{},\\\"error\\\":\\\"OTA update of 'LivingRoomSocketWifiLeft' failed (Device didn't respond to OTA request)\\\",\\\"st"
+  },
+  {
+   "at": "07:59:45",
+   "line": "{\"level\":\"error\",\"message\":\"z2m: OTA update of 'LivingRoomSocketWifiLeft' failed (Device didn't respond to OTA request)\"}"
+  }
+ ],
+ "events": [
+  {
+   "at": "07:58:43",
+   "topic": "zigbee2mqtt/LivingRoomSocketWifiLeft/availability",
+   "data": "{\"state\":\"online\"}"
+  },
+  {
+   "at": "07:59:45",
+   "topic": "state.update",
+   "data": "{\"installed_version\":302329856,\"latest_release_notes\":null,\"latest_source\":null,\"latest_version\":302329856,\"state\":\"available\"}"
+  },
+  {
+   "at": "07:59:45",
+   "topic": "zigbee2mqtt/bridge/response/device/ota_update/update",
+   "data": "{\"data\":{},\"error\":\"OTA update of 'LivingRoomSocketWifiLeft' failed (Device didn't respond to OTA request)\",\"status\":\"error\"}"
+  },
+  {
+   "at": "08:01:13",
+   "topic": "state.update",
+   "data": "{\"installed_version\":302329856,\"latest_release_notes\":null,\"latest_source\":null,\"latest_version\":302329856,\"state\":\"available\"}"
+  }
+ ]
+}
