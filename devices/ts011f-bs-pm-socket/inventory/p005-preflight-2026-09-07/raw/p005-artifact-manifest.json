@@ -1,0 +1,63 @@
+{
+  "artifacts": {
+    "forward.bin": {
+      "bytes": 195253,
+      "sha256": "6bf4b02c84bc987d9c7232499e59c0415e71833dd0b8f20aebdfb44bff095a19",
+      "sha512": "fbfe058ef1d81301433c0e1f44fe467616e24f0b94a3f1122f79f38c4f5125b9a647ac70ea3c4158bdfd8810984e78931ed24011d5405661729e5ca622aabb40"
+    },
+    "forward.ota": {
+      "bytes": 195330,
+      "sha256": "1c07fa0461f3716641d39da92da4af53593028d009605d6484b838e185643dbb",
+      "sha512": "7ccd9ad14528c8e575ed2f40633729be38ad371e9604f68cfe3f68ac4849c8c90e5ea3528c61b722ae6ad664e236051cc88057e7db3e5a13390100d6cf320d9a"
+    }
+  },
+  "board": "OUTLET_BSEED_PM_TS011F",
+  "canonicalConfig": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+  "fileVersion": 302329859,
+  "imageType": 43556,
+  "legacyPmNvmMigration": {
+    "copyOnly": true,
+    "destinationItems": {
+      "calibration": 68,
+      "energyEndpoint1": 64,
+      "overload": 69
+    },
+    "sourceItems": {
+      "calibration": 44,
+      "energy": 40,
+      "overload": 51
+    }
+  },
+  "manufacturerCode": 4417,
+  "meter": {
+    "backend": "HLW8012-compatible pulse counter",
+    "cf": "PA1",
+    "cf1": "PC2",
+    "currentMultiplier": 144679,
+    "noLoadSuppression": false,
+    "powerMultiplier": 16989,
+    "protectionEnabled": true,
+    "samplingSemantics": "8b8cc492-compatible",
+    "sel": "PB1",
+    "selStartup": "legacy-init-then-set",
+    "type": "BL0937",
+    "voltageMultiplier": 161460
+  },
+  "note": "BUILD ONLY; GitHub Actions artifact is authoritative; no live-device mutation",
+  "nvmMigrationsVersion": 1,
+  "otaHeader": {
+    "fieldControl": 0,
+    "fileVersion": 302329859,
+    "headerLength": 56,
+    "headerVersion": 256,
+    "imageType": 43556,
+    "manufacturerCode": 4417,
+    "totalImageSize": 195330,
+    "zigbeeStackVersion": 2
+  },
+  "purpose": "V8-lineage recovery with hardware-proven predecessor PM sampling semantics",
+  "schema": 2,
+  "sourceCommit": "fd96011983220949c21b6acc9d9b0904993eb2cf",
+  "sourceDirty": false,
+  "swBuildId": "1.2.5-bseed-pm-recovery1"
+}
