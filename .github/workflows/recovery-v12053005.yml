@@ -1,0 +1,86 @@
+name: BSEED known-good recovery v12053005
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - supervisor/recovery-v12053005-actions
+
+jobs:
+  build-recovery-successor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify clean exact checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test -z "$(git status --porcelain)"
+
+      - name: Build deterministic 0x12053005 recovery successor
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_recovery_v12053005.py | tee "$RUNNER_TEMP/recovery-build.log"
+
+      - name: Independently verify artifact and immutable payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' | tee "$RUNNER_TEMP/recovery-verify.log"
+          import binascii, hashlib, json, pathlib, struct
+          src = pathlib.Path('.qwen/tmp/pm-canary/recovery-v8-patch.zigbee').read_bytes()
+          out = pathlib.Path('build/recovery-v12053005/recovery-v12053005.zigbee').read_bytes()
+          m = json.loads(pathlib.Path('build/recovery-v12053005/manifest.json').read_text())
+          assert hashlib.sha256(src).hexdigest() == 'c4ae03266204c05f8b95c9a0e723040d7775cce2095a4059466e082315351b63'
+          assert hashlib.sha256(out).hexdigest() == m['sha256']
+          assert len(out) == m['bytes']
+          assert struct.unpack_from('<I', out, 0)[0] == 0x0BEEF11E
+          assert struct.unpack_from('<H', out, 10)[0] == 4417
+          assert struct.unpack_from('<H', out, 12)[0] == 43556
+          assert struct.unpack_from('<I', out, 14)[0] == 0x12053005
+          assert struct.unpack_from('<I', out, 52)[0] == len(out)
+          hdr_len = struct.unpack_from('<H', out, 6)[0]
+          _, sub_len = struct.unpack_from('<HI', out, hdr_len)
+          inner_start = hdr_len + 6
+          inner = out[inner_start:inner_start+sub_len]
+          assert struct.unpack_from('<I', inner, 2)[0] == 0x12053005
+          stored_crc = struct.unpack_from('<I', inner, len(inner)-4)[0]
+          calc_crc = (binascii.crc32(inner[:-4]) ^ 0xFFFFFFFF) & 0xFFFFFFFF
+          assert stored_crc == calc_crc
+          diffs = [i for i,(a,b) in enumerate(zip(src,out)) if a != b]
+          assert diffs == m['changedOffsets']
+          print(json.dumps({'status':'PASS','sha256':m['sha256'],'bytes':len(out),'changedOffsets':diffs}, indent=2))
+          PY
+
+      - name: Rebuild and require byte identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp build/recovery-v12053005/recovery-v12053005.zigbee "$RUNNER_TEMP/first.zigbee"
+          rm -rf build/recovery-v12053005
+          python3 scripts/build_recovery_v12053005.py > "$RUNNER_TEMP/recovery-build-2.log"
+          cmp "$RUNNER_TEMP/first.zigbee" build/recovery-v12053005/recovery-v12053005.zigbee
+          sha256sum build/recovery-v12053005/recovery-v12053005.zigbee > "$RUNNER_TEMP/recovery-sha256.txt"
+          sha512sum build/recovery-v12053005/recovery-v12053005.zigbee > "$RUNNER_TEMP/recovery-sha512.txt"
+
+      - name: Upload authoritative recovery artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bseed-known-good-recovery-v12053005
+          path: |
+            build/recovery-v12053005/recovery-v12053005.zigbee
+            build/recovery-v12053005/manifest.json
+            ${{ runner.temp }}/recovery-build.log
+            ${{ runner.temp }}/recovery-build-2.log
+            ${{ runner.temp }}/recovery-verify.log
+            ${{ runner.temp }}/recovery-sha256.txt
+            ${{ runner.temp }}/recovery-sha512.txt
+          if-no-files-found: error
