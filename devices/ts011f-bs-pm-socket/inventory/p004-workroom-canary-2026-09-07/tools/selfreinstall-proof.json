@@ -1,0 +1,33 @@
+{
+ "source": {
+  "bytes": 195394,
+  "sha256": "c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c",
+  "mfr": 4417,
+  "imageType": 43556,
+  "fileVersion": "0x12053002"
+ },
+ "wrapper": {
+  "path": ".qwen\\tmp\\pm-canary\\wrapout\\bseed-ts011f-pm-v8-ded91a1-selfreinstall-forced.bin",
+  "bytes": 195394,
+  "sha256": "0a652e4568210610e3b427105631f0cedcd0213c9cf4737bf4920ea25b8291e1",
+  "sha512": "7bc2c4b7e1a569894d9b1205acb4cc3c34b3edbf99db5cb60c22633b7edc1eb505da30fc837a78c677b10ebf8c5942d8ee01ed5c7000e8899f61445bf81a8976",
+  "mfr": 4417,
+  "imageType": 43556,
+  "fileVersion": "0xFFFFFFFF",
+  "header_length": 56
+ },
+ "byte_identity_proof": {
+  "changed_offsets": [
+   14,
+   15,
+   16,
+   17
+  ],
+  "changed_fields": [
+   "fileVersion@14 (0x12053002->0xFFFFFFFF)"
+  ],
+  "inner_telink_payload_identical": true,
+  "payload_region": "offsets 56..195393 byte-identical",
+  "purpose": "P004 Phase 5 forced V8 self-reinstall; deployment packaging only; PR#5 untouched"
+ }
+}

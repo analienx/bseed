@@ -1,0 +1,68 @@
+{
+ "cycles": [
+  {
+   "at": "2026-09-07T06:36:44.985Z",
+   "cycle": 1,
+   "phase": "ON",
+   "relay": "ON",
+   "voltage": 242.72,
+   "current": 0,
+   "power": 0,
+   "energy": 0.04
+  },
+  {
+   "at": "2026-09-07T06:37:00.995Z",
+   "cycle": 1,
+   "phase": "OFF",
+   "relay": "OFF",
+   "voltage": 242.72,
+   "current": 0,
+   "power": 0,
+   "energy": 0.04
+  },
+  {
+   "at": "2026-09-07T06:37:17.005Z",
+   "cycle": 2,
+   "phase": "ON",
+   "relay": "ON",
+   "voltage": 242.72,
+   "current": 0,
+   "power": 0,
+   "energy": 0.04
+  },
+  {
+   "at": "2026-09-07T06:37:33.014Z",
+   "cycle": 2,
+   "phase": "OFF",
+   "relay": "OFF",
+   "voltage": 242.72,
+   "current": 0,
+   "power": 0,
+   "energy": 0.04
+  },
+  {
+   "at": "2026-09-07T06:37:49.024Z",
+   "cycle": 3,
+   "phase": "ON",
+   "relay": "ON",
+   "voltage": 242.72,
+   "current": 0,
+   "power": 0,
+   "energy": 0.04
+  },
+  {
+   "at": "2026-09-07T06:38:05.033Z",
+   "cycle": 3,
+   "phase": "OFF",
+   "relay": "OFF",
+   "voltage": 242.72,
+   "current": 0,
+   "power": 0,
+   "energy": 0.04
+  }
+ ],
+ "energyStart": 0.04,
+ "energyEnd": 0.04,
+ "overloadEvents": [],
+ "finalRelay": "OFF"
+}

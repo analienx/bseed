@@ -1,0 +1,8 @@
+[2026-09-06 21:10:41] error: 	z2m: No converter available for 'update' on 'WorkroomSocketCabinet': ({})
+[2026-09-06 21:10:41] error: 	z2m: No converter available for 'energy' on 'WorkroomSocketCabinet': ("")
+[2026-09-06 21:10:41] error: 	z2m: No converter available for 'voltage' on 'WorkroomSocketCabinet': ("")
+[2026-09-06 21:10:41] error: 	z2m: No converter available for 'power' on 'WorkroomSocketCabinet': ("")
+[2026-09-06 22:25:08] error: 	z2m: No converter available for 'update' on 'WorkroomSocketCabinet': ("")
+[2026-09-06 22:25:24] error: 	z2m: No converter available for 'update' on 'WorkroomSocketCabinet': ("")
+[2026-09-06 22:25:35] error: 	z2m: No converter available for 'update' on 'WorkroomSocketCabinet': ("")
+[2026-09-06 22:45:19] error: 	z2m: No converter available for 'update' on 'WorkroomSocketCabinet': ("")

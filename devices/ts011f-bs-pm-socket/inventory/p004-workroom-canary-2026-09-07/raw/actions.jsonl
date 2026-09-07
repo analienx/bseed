@@ -1,0 +1,13 @@
+{"timestamp":"2026-09-07T06:29:34.803Z","step":"postcheck","action_class":"read","result":"FAIL","detail":"{\"fileVersion\":true,\"software_build\":true,\"manufacturer\":true,\"model\":true,\"ieee\":true,\"device_config\":true,\"relay_off\":true,\"online\":true,\"energy_nondecreasing\":true,\"overload_alarm\":false,\"no_load_power_near_zero\":true}"}
+{"timestamp":"2026-09-07T06:30:11.189Z","step":"artifact","action_class":"gate","result":"PASS","detail":"bytes=195394 sha256=c3ccb484c28d7ef08594acc306b2054aed3ba9fcfc9579643da339f7fcc9fe7c mfr=4417 img=43556 fv=302329858 total=195394"}
+{"timestamp":"2026-09-07T06:30:20.372Z","step":"target","action_class":"gate","result":"PASS","detail":"identity+device_config exact: WorkroomSocketCabinet / 0xa4c138c5f07ee732"}
+{"timestamp":"2026-09-07T06:30:20.372Z","step":"preflight","action_class":"read","result":"PASS","detail":"{\"online\":true,\"relay_off\":true,\"no_load\":true,\"idle\":true}"}
+{"timestamp":"2026-09-07T06:38:11.039Z","step":"functional_canary","action_class":"mutation","result":"DONE","detail":"cycles=3 finalRelay=OFF energy 0.04->0.04 overloadEvents=0"}
+{"timestamp":"2026-09-07T06:48:40.639Z","step":"recovery","action_class":"gate","result":"PASS","detail":"artifact 201986B sha=02fe4b9f hdr=4417/43556/0xffffffff"}
+{"timestamp":"2026-09-07T06:48:41.803Z","step":"recovery","action_class":"mutation","result":"SENT","detail":"direct ota_update/update (revert) at 2026-09-07T06:48:41.803Z"}
+{"timestamp":"2026-09-07T06:50:37.905Z","step":"recovery","action_class":"read","result":"FAIL","detail":"z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/ota_update/update', payload '{\"data\":{},\"error\":\"OTA update of 'WorkroomSocketCabinet' failed (OTA update of 0xa4c138c5f07ee732 failed with reason: ABORT)\",\"status\":\"error\"}'"}
+{"timestamp":"2026-09-07T06:50:37.905Z","step":"recovery","action_class":"read","result":"FAIL","detail":"z2m: OTA update of 'WorkroomSocketCabinet' failed (OTA update of 0xa4c138c5f07ee732 failed with reason: ABORT)"}
+{"timestamp":"2026-09-07T06:50:38.827Z","step":"recovery","action_class":"read","result":"DONE","detail":"{\"imageOffered\":true,\"firstBlock\":true,\"maxProgress\":0.5,\"terminal\":\"failed\",\"finalBuild\":\"1.2.5-bseedv8u1\",\"finalRelay\":\"OFF\"}"}
+{"timestamp":"2026-09-07T06:51:47.191Z","step":"recovery","action_class":"gate","result":"PASS","detail":"artifact 201986B sha=02fe4b9f hdr=4417/43556/0xffffffff"}
+{"timestamp":"2026-09-07T06:51:48.363Z","step":"recovery","action_class":"mutation","result":"SENT","detail":"direct ota_update/update (revert) at 2026-09-07T06:51:48.363Z"}
+{"timestamp":"2026-09-07T06:58:57.325Z","step":"native_downgrade","action_class":"mutation","result":"NO-RESP","detail":""}

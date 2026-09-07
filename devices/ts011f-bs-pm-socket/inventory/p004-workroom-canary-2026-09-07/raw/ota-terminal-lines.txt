@@ -1,0 +1,4 @@
+[2026-09-06 23:17:29] info: 	z2m: Updating 'WorkroomSocketCabinet' to latest firmware
+[2026-09-07 06:10:00] info: 	z2m: Updating 'WorkroomSocketCabinet' to latest firmware
+[2026-09-07 06:18:18] info: 	z2m: Updating 'WorkroomSocketCabinet' to latest firmware
+[2026-09-07 06:27:39] info: 	z2m: Device 'WorkroomSocketCabinet' was OTA updated from '302329856' to '302329858'

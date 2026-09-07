@@ -1,0 +1,18 @@
+{
+ "at": "2026-09-07T06:50:38.827Z",
+ "sentAt": "2026-09-07T06:48:41.803Z",
+ "directResponse": "{\"data\":{},\"error\":\"OTA update of 'WorkroomSocketCabinet' failed (OTA update of 0xa4c138c5f07ee732 failed with reason: ABORT)\",\"status\":\"error\"}",
+ "imageOffered": true,
+ "firstBlock": true,
+ "maxProgress": 0.5,
+ "terminal": "failed",
+ "finalUpdate": {
+  "installed_version": 302329858,
+  "latest_release_notes": null,
+  "latest_source": null,
+  "latest_version": 302329858,
+  "state": "available"
+ },
+ "finalBuild": "1.2.5-bseedv8u1",
+ "finalRelay": "OFF"
+}

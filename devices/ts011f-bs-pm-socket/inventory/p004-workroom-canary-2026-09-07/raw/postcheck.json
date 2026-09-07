@@ -1,0 +1,39 @@
+{
+ "timestamp": "2026-09-07T06:29:34.797Z",
+ "checks": {
+  "fileVersion": true,
+  "software_build": true,
+  "manufacturer": true,
+  "model": true,
+  "ieee": true,
+  "device_config": true,
+  "relay_off": true,
+  "online": true,
+  "energy_nondecreasing": true,
+  "overload_alarm": false,
+  "no_load_power_near_zero": true
+ },
+ "measured": {
+  "softwareBuildID": "1.2.5-bseedv8u1",
+  "dateCode": "20260906",
+  "update": {
+   "installed_version": 302329858,
+   "latest_release_notes": null,
+   "latest_source": null,
+   "latest_version": 302329858,
+   "state": "idle"
+  },
+  "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+  "relay": "OFF",
+  "metering": {
+   "voltage": 242.72,
+   "current": 0,
+   "power": 0,
+   "energy": 0.04
+  },
+  "calibration": "NOT_EXPOSED",
+  "availability": {
+   "state": "online"
+  }
+ }
+}
