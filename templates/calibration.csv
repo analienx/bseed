@@ -1,0 +1,4 @@
+point_id,device_id,load_description,reference_voltage_v,reference_current_a,reference_active_power_w,reference_pf,cf_frequency_hz,cf1_current_frequency_hz,cf1_voltage_frequency_hz,power_coefficient_w_per_hz,current_coefficient_a_per_hz,voltage_coefficient_v_per_hz,include_in_fit,notes
+C-01,DEV-001,low_resistive,,,,,,,,,,,YES,
+C-02,DEV-001,medium_resistive,,,,,,,,,,,YES,
+C-03,DEV-001,high_resistive,,,,,,,,,,,YES,

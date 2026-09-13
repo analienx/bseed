@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "kind": "bseed_two_unit_validation",
+  "status": "TWO_UNIT_VALIDATION_COMPLETE",
+  "target_family": "b28wrpvx / TS011F-BS-PM",
+  "accepted_asymmetry": {
+    "unit_1": "LivingRoomSocketWifiLeft carries the deep Shelly calibration, PF/reactive-power reconciliation, repeated protection, and recovery/OTA evidence.",
+    "unit_2": "WorkroomSocketCabinet independently proves stock-Tuya to custom migration, native PM/no-load behavior, distinct per-device calibration state, and autonomous protection trip/settings restoration."
+  },
+  "units": [
+    {
+      "label": "unit_1",
+      "friendly_name": "LivingRoomSocketWifiLeft",
+      "identity": {"manufacturer": "b28wrpvx", "model": "TS011F-BS-PM", "role": "Router"},
+      "runtime": "1.2.5-8b8cc492",
+      "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+      "conversion": "custom-to-custom canary OTA",
+      "metrology": {
+        "calibration": "Shelly phase-B differential accepted; post-calibration active-power error approximately +0.21% at kettle load",
+        "pf_reactive_power": "observed and reconciled for the accepted resistive load",
+        "no_load": {"current_a": 0, "power_w": 0}
+      },
+      "protection": {"status": "PASS", "autonomous_relay_off": true, "alarm": "power", "settings_restored": true},
+      "recovery_ota": "Recovery Class A A-R01/A-R02/A-R03 accepted PASS"
+    },
+    {
+      "label": "unit_2",
+      "friendly_name": "WorkroomSocketCabinet",
+      "identity": {"manufacturer": "b28wrpvx", "model": "TS011F-BS-PM", "role": "Router"},
+      "runtime": "1.2.5-8b8cc492",
+      "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+      "conversion": {
+        "path": "direct stock-Tuya to custom via from_tuya wrapper",
+        "validated_source_sha256": "02fe4b9f75c6b48b17de913c1aa5a5d1550d622399376c1a38c54d984ea7e4d7",
+        "from_tuya_wrapper_sha256": "8f3450522768ad18d29b1908607ae61a6b4eed1ce86fd5038de5527c48d4118a",
+        "from_tuya_ota_identity": [4417, 54179, 4294967295],
+        "payload_byte_identity": "PASS"
+      },
+      "metrology": {
+        "calibration_values": "V161460A144679W16989",
+        "no_load_samples": 3,
+        "no_load_voltage_v": [242.25, 243.21],
+        "no_load_current_a": 0,
+        "no_load_power_w": 0,
+        "energy_channel_present": true
+      },
+      "protection": {
+        "status": "PASS",
+        "kettle_median_power_w": 2001,
+        "temporary_limit_w": 1000,
+        "temporary_trip_delay_s": 5,
+        "trip_power_w": 1769,
+        "trip_voltage_v": 238.16,
+        "trip_current_a": 4.87,
+        "trip_latency_ms": 8084,
+        "alarm": "power",
+        "autonomous_relay_off": true,
+        "settings_restored": true
+      }
+    }
+  ],
+  "non_blocking_not_repeated": [
+    "dedicated second-unit physical power-cycle persistence proof",
+    "simultaneous second-unit Shelly calibration window",
+    "separate human button/LED observation"
+  ],
+  "upstream_summary_ready": true,
+  "secrets_or_private_identifiers_included": false
+}
