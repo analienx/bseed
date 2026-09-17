@@ -5,6 +5,13 @@ repo: analienx/bseed
 project_path: devices/ts0726-3bs-livedimmer
 lifecycle: active
 
+execution:
+  schema_version: 1
+  default_mode: host_specialist
+  optional_modes: [foundry_isolated]
+  build_lane: firmware builder CI
+  host_specialist: USB, MQTT, HA API
+
 # Isolated device subproject. The root ../../../.supervisor/project.yaml remains the
 # TS011F-BS-PM BL0937 metering campaign and is NOT widened by this file. The two firmware
 # campaigns must not share a target, an OTA identity or a control ledger.

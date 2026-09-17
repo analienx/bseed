@@ -3,6 +3,13 @@ project_id: bseed
 repo: analienx/bseed
 lifecycle: active
 
+execution:
+  schema_version: 1
+  default_mode: host_specialist
+  optional_modes: [foundry_isolated]
+  build_lane: firmware builder CI
+  host_specialist: USB, MQTT, HA API
+
 canonical:
   supervisor_skill:
     repo: analienx/config
