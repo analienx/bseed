@@ -1,0 +1,6 @@
+test_id,device_id,firmware_commit,condition,duration_s,reference_voltage_v,reference_current_a,reference_active_power_w,reference_pf,cf_count_start,cf_count_end,cf_frequency_hz,cf1_sel0_count_start,cf1_sel0_count_end,cf1_sel0_frequency_hz,cf1_sel1_count_start,cf1_sel1_count_end,cf1_sel1_frequency_hz,status,notes
+D-01,DEV-001,,relay_off_no_load,60,,,,,,,,,,,,,,PENDING,
+D-02,DEV-001,,relay_on_no_load,60,,,,,,,,,,,,,,PENDING,
+D-03,DEV-001,,low_resistive_40_100W,90,,,,,,,,,,,,,,PENDING,
+D-04,DEV-001,,medium_resistive_400_600W,90,,,,,,,,,,,,,,PENDING,
+D-05,DEV-001,,high_resistive_800_1000W,90,,,,,,,,,,,,,,PENDING,

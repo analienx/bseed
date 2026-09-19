@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "candidate_kind": "adopted_bseed_metering",
+  "candidate_id": "",
+  "supervisor_commit": "",
+  "build_provenance": "build-provenance.json",
+  "source": {
+    "repo": "HobboRobin/tuya-zigbee-switch-with-metering",
+    "commit": "8b8cc4924a353b35880666f7b48f0afbee89eb17",
+    "overlay_script_sha256": "",
+    "overlay_guard_sha256": "",
+    "source_guard_report": "source-guard.json"
+  },
+  "board_profile": {
+    "manufacturer_name": "b28wrpvx",
+    "model_id": "TS011F-BS-PM",
+    "device_type": "router",
+    "mcu_family": "Telink",
+    "mcu": "TLSR8258",
+    "device_config": "b28wrpvx;TS011F-BS-PM;LC3;SB5u;RD2;IB4;M;",
+    "ota_manufacturer_code": 4417,
+    "ota_image_type": 43556
+  },
+  "meter": {
+    "ic": "BL0937",
+    "cf_gpio": "PA1",
+    "cf1_gpio": "PC2",
+    "sel_gpio": "PB1",
+    "activation": "identity_scoped_implicit_fallback",
+    "boot_enabled": true,
+    "overload_relay_actuation": false,
+    "voltage_multiplier": 161460,
+    "current_multiplier": 144679,
+    "power_multiplier": 16989
+  },
+  "candidate": {
+    "ota_mode": "normal",
+    "ota": "bseed-b28wrpvx-metering-canary.zigbee",
+    "sha256": ""
+  },
+  "from_tuya": {
+    "ota": "bseed-b28wrpvx-metering-canary-from_tuya.zigbee",
+    "sha256": ""
+  },
+  "converter": {
+    "path": "switch_custom.js",
+    "sha256": "",
+    "git_blob": "c8d03d1fa2d5ef125e720a7878908a4f5a63992e"
+  },
+  "rollback": {
+    "ota": "rollback-forced.zigbee",
+    "sha256": "",
+    "baseline_manifest": "baseline.json"
+  },
+  "invariants": {
+    "device_config_changed": false,
+    "device_config_write_required": false,
+    "factory_reset_required": false,
+    "base_gpio_changed": false,
+    "ota_identity_changed": false,
+    "router_role_changed": false,
+    "overload_relay_actuation": false
+  },
+  "offline_checks": {
+    "build": "PENDING",
+    "downstream_tests": "PENDING",
+    "project_policy_tests": "PENDING",
+    "source_guard": "PENDING",
+    "ota_guard": "PENDING",
+    "converter_pin": "PENDING",
+    "build_provenance": "PENDING",
+    "from_tuya_ota_guard": "PENDING"
+  },
+  "notes": ""
+}

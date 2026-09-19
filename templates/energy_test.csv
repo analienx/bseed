@@ -1,0 +1,5 @@
+test_id,device_id,firmware_commit,test_type,start_timestamp,end_timestamp,reference_start_wh,reference_end_wh,firmware_start_wh,firmware_end_wh,error_percent,status,notes
+E-01,DEV-001,,continuous_calibration,,,,,,,,PENDING,
+E-02,DEV-001,,mains_interruption,,,,,,,,PENDING,
+E-03,DEV-001,,firmware_reboot,,,,,,,,PENDING,
+E-04,DEV-001,,ota_update,,,,,,,,PENDING,

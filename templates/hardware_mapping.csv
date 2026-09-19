@@ -1,0 +1,4 @@
+device_id,pcb_front_marking,pcb_rear_marking,signal,bl0937_pin,ztu_physical_pin,telink_gpio,resistance_ohms,intermediate_components,evidence_photo,status,notes
+DEV-001,,,CF,6,,,,,,UNKNOWN,
+DEV-001,,,CF1,7,,,,,,UNKNOWN,
+DEV-001,,,SEL,8,,,,,,UNKNOWN,

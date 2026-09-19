@@ -1,0 +1,37 @@
+schema: 1
+observed_at: 2026-08-18
+firmware_upstream:
+  repo: romasku/tuya-zigbee-switch
+  branch: main
+  commit: bf1059ee4c029e320a97fbfa6b07bd6ce4aa1702
+pm_precursor_pr:
+  number: 314
+  url: https://github.com/romasku/tuya-zigbee-switch/pull/314
+  state: open
+  merged: false
+  head_branch: hardware-pulse-counting
+  head_commit: 47611b7d9d4b782556392416769fdb24226a8302
+  recorded_base_commit: 8234061fd095d4e37639c4d67146d3392a242151
+hardware:
+  stock_manufacturer: _TZ3000_b28wrpvx
+  stock_model: TS011F
+  project_model: TS011F-BS-PM
+  module: ZTU
+  mcu_family: Telink
+  mcu: TLSR8258
+  meter_ic: BL0937
+ota_identity:
+  manufacturer_code: 4417
+  manufacturer_code_hex: '0x1141'
+  custom_firmware_image_type: 43556
+  custom_firmware_image_type_hex: '0xAA24'
+  source_device_db_commit: bf1059ee4c029e320a97fbfa6b07bd6ce4aa1702
+  forced_index: zigbee2mqtt/ota/index_router-FORCE.json
+  forced_index_observed_file_version: 4294967295
+  forced_index_purpose: same-version reinstall / branch or operation-mode switching on custom firmware
+notes:
+  - Do not update refs automatically.
+  - Supervisor must inspect upstream changes before changing this lock.
+  - PR 314 is source material, not an approved merge.
+  - OTA manufacturer code and image type are recovery-critical invariants for ordinary PM work.
+  - A force-index entry is evidence of upstream reinstall support, not proof that an arbitrary rollback image is accepted by the target; rollback must be round-trip tested.
